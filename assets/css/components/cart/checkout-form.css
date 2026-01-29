@@ -1,0 +1,966 @@
+/* ==========================================================================
+   CHECKOUT PAGE - Form Styles
+   @package aaapos-prime
+   @since 1.0.0
+   UPDATED: Custom checkbox styling and proper alignment + Skeleton Loading
+   ========================================================================== */
+
+/* ==========================================================================
+   SKELETON LOADING ANIMATION - ENHANCED ROUNDED LINE-BY-LINE
+   ========================================================================== */
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-loading {
+  background: linear-gradient(90deg, #f5f5f5 25%, #e8e8e8 37%, #f5f5f5 63%) !important;
+  background-size: 400% 100% !important;
+  animation: skeleton-loading 1.6s ease-in-out infinite !important;
+  pointer-events: none !important;
+  opacity: 0.9 !important;
+  color: transparent !important;
+  user-select: none !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border-radius: 8px !important;
+}
+
+.skeleton-loading * {
+  color: transparent !important;
+  cursor: wait !important;
+  visibility: hidden !important;
+}
+
+/* Line-by-line skeleton items */
+.skeleton-line {
+  background: linear-gradient(90deg, #f5f5f5 25%, #e8e8e8 37%, #f5f5f5 63%) !important;
+  background-size: 400% 100% !important;
+  animation: skeleton-loading 1.6s ease-in-out infinite !important;
+  border-radius: 4px !important;
+  display: block !important;
+}
+
+/* Form field skeleton variants */
+.skeleton-input {
+  height: 46px !important;
+  border-radius: 12px !important;
+  margin-bottom: 0.875rem !important;
+}
+
+.skeleton-textarea {
+  height: 90px !important;
+  border-radius: 12px !important;
+  margin-bottom: 0.875rem !important;
+}
+
+.skeleton-select {
+  height: 46px !important;
+  border-radius: 12px !important;
+  margin-bottom: 0.875rem !important;
+}
+
+.skeleton-label {
+  height: 14px !important;
+  width: 60% !important;
+  border-radius: 7px !important;
+  margin-bottom: 0.375rem !important;
+}
+
+.skeleton-checkbox {
+  height: 20px !important;
+  width: 20px !important;
+  border-radius: 6px !important;
+}
+
+.skeleton-checkbox-label {
+  height: 20px !important;
+  width: 80% !important;
+  border-radius: 10px !important;
+  margin-left: 0.625rem !important;
+}
+
+/* Shipping method skeleton */
+.skeleton-shipping-method {
+  height: 52px !important;
+  border-radius: 12px !important;
+  margin-bottom: 0.625rem !important;
+}
+
+/* Payment method skeleton */
+.skeleton-payment-method {
+  height: 56px !important;
+  border-radius: 12px !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.skeleton-payment-box {
+  height: 80px !important;
+  border-radius: 0 0 10px 10px !important;
+  margin-top: -0.75rem !important;
+}
+
+/* Apply to sections during update */
+.checkout-section.updating {
+  position: relative;
+  opacity: 0.7;
+}
+
+.checkout-section.updating::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 14px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   FORM FIELDS */
+.woocommerce-checkout .form-row {
+  margin-bottom: 0.875rem;
+  transition: opacity 0.3s ease;
+}
+
+.woocommerce-checkout label {
+  display: block;
+  margin-bottom: 0.375rem;
+  font-weight: 600;
+  color: var(--color-text);
+  font-size: 0.875rem;
+}
+
+.woocommerce-checkout label .required {
+  color: var(--color-danger);
+  font-weight: 700;
+}
+
+/* INPUT STYLES - SLIGHTLY TALLER, NO SHADOWS */
+.woocommerce-checkout input.input-text,
+.woocommerce-checkout textarea,
+.woocommerce-checkout select {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border: 2px solid var(--color-gray-300);
+  border-radius: 12px;
+  font-size: 0.9375rem;
+  transition: var(--transition);
+  background: var(--color-white);
+  color: var(--color-text);
+  min-height: 46px;
+  height: 46px;
+  line-height: 1.4;
+}
+
+.woocommerce-checkout input.input-text:focus,
+.woocommerce-checkout textarea:focus,
+.woocommerce-checkout select:focus {
+  outline: none;
+  border-color: var(--brand-color);
+}
+
+.woocommerce-checkout input::placeholder,
+.woocommerce-checkout textarea::placeholder {
+  color: var(--color-text-lighter);
+  font-size: 0.875rem;
+}
+
+.woocommerce-checkout textarea {
+  min-height: 90px;
+  height: auto;
+  resize: vertical;
+  padding: 0.75rem 0.875rem;
+  border-radius: 12px;
+}
+
+/* SELECT DROPDOWN */
+.woocommerce-checkout select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 14px;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+/* FORM LAYOUT */
+.woocommerce-checkout .form-row-first,
+.woocommerce-checkout .form-row-last {
+  width: 100%;
+  float: none;
+}
+
+@media (min-width: 768px) {
+  .woocommerce-checkout .form-row-first,
+  .woocommerce-checkout .form-row-last {
+    width: calc(50% - 0.5rem);
+  }
+  
+  .woocommerce-checkout .form-row-first {
+    float: left;
+    clear: both;
+  }
+  
+  .woocommerce-checkout .form-row-last {
+    float: right;
+  }
+}
+
+.woocommerce-checkout .form-row-wide {
+  width: 100%;
+  clear: both;
+}
+
+/* ==========================================================================
+   CUSTOM CHECKBOX STYLING - Ship to Different Address
+   ========================================================================== */
+
+/* Hide the default checkbox */
+.ship-different-checkbox input.custom-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+/* Custom checkbox container */
+.custom-checkbox-box {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #D1D5DB;
+  border-radius: 6px;
+  background: var(--color-white);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* Checkmark icon (hidden by default) */
+.custom-checkbox-box .checkmark {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.2s ease;
+}
+
+/* Hover state */
+.ship-different-checkbox:hover .custom-checkbox-box {
+  border-color: var(--brand-color);
+  background: rgba(var(--brand-color-rgb), 0.05);
+}
+
+/* Checked state */
+.ship-different-checkbox input.custom-checkbox:checked + .custom-checkbox-box {
+  background: var(--brand-color);
+  border-color: var(--brand-color);
+}
+
+.ship-different-checkbox input.custom-checkbox:checked + .custom-checkbox-box .checkmark {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Focus state for accessibility */
+.ship-different-checkbox input.custom-checkbox:focus + .custom-checkbox-box {
+  outline: 2px solid var(--brand-color);
+  outline-offset: 2px;
+}
+
+/* Checkbox label text */
+.checkbox-label-text {
+  font-weight: 700;
+  color: #212529;
+  font-size: 1.25rem;
+  user-select: none;
+  cursor: pointer;
+  margin: 0;
+  line-height: 1.2;
+  font-family: var(--font-heading);
+}
+
+/* Label container - properly aligned */
+.ship-different-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  cursor: pointer;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+}
+
+/* Section title adjustments for checkbox */
+.shipping-section .section-title {
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.875rem;
+  border-bottom: 1px solid var(--color-border-light);
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+/* Title with icon wrapper - REMOVED */
+.title-with-icon {
+  display: contents;
+}
+
+.shipping-section .title-icon {
+  flex-shrink: 0;
+  order: -1;
+}
+
+/* Shipping fields animation */
+.shipping-fields {
+  display: none;
+  animation: slideDown 0.3s ease-out;
+  margin-top: 1rem;
+}
+
+#ship-to-different-address-checkbox:checked ~ .shipping-fields {
+  display: block;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   SHIPPING METHODS
+   ========================================================================== */
+
+   /* Hide the duplicate "Shipping" label that WooCommerce adds */
+        .shipping-method-options > #shipping_method {
+            display: block;
+        }
+        
+        /* Remove duplicate shipping text from table output */
+        .shipping-method-options tr.woocommerce-shipping-totals th {
+            display: none;
+        }
+        
+        .shipping-method-options tr.woocommerce-shipping-totals td {
+            display: block;
+            padding: 0;
+            border: none;
+        }
+        
+        /* Style the shipping methods list properly */
+        .shipping-method-options .woocommerce-shipping-methods {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .shipping-method-options .woocommerce-shipping-methods li {
+            margin-bottom: 0.75rem;
+        }
+        
+        /* Remove table styling when shipping methods are in the section */
+        .shipping-method-options table {
+            margin: 0;
+            border: none;
+        }
+        
+        .shipping-method-options table tbody {
+            border: none;
+        }
+        
+        /* Style the no shipping message */
+        .shipping-method-options .woocommerce-shipping-totals td[data-title="Shipping"] {
+            font-size: 0.9375rem;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+.checkout-main .woocommerce-shipping-fields {
+  background: var(--color-white);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #E5E5E5;
+}
+
+.woocommerce-shipping-methods {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.625rem !important;
+}
+
+.woocommerce-shipping-methods li {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+  transition: all 0.3s ease !important;
+}
+
+.woocommerce-shipping-methods li input[type="radio"] {
+  position: absolute !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none !important;
+}
+
+.woocommerce-shipping-methods li label {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0.5rem 1rem !important;
+  padding-left: 2.75rem !important;
+  border: 2px solid #D1D5DB !important;
+  border-radius: 12px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  background: var(--color-white) !important;
+  position: relative !important;
+  margin: 0 !important;
+  width: 100% !important;
+  min-height: 52px;
+  font-weight: 500 !important;
+  color: var(--color-text-dark) !important;
+}
+
+.woocommerce-shipping-methods li label:hover {
+  border-color: var(--brand-color) !important;
+  background: rgba(var(--brand-color-rgb), 0.03) !important;
+}
+
+.woocommerce-shipping-methods li input[type="radio"]:checked + label {
+  border-color: var(--brand-color) !important;
+  background: rgba(var(--brand-color-rgb), 0.06) !important;
+}
+
+/* Custom radio button - IMPROVED VISIBILITY */
+.woocommerce-shipping-methods li input[type="radio"] + label::before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2.5px solid #9CA3AF;
+  background: var(--color-white);
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.woocommerce-shipping-methods li label:hover::before {
+  border-color: var(--brand-color);
+}
+
+.woocommerce-shipping-methods li input[type="radio"]:checked + label::before {
+  border-color: var(--brand-color);
+  border-width: 2.5px;
+  background: var(--color-white);
+}
+
+/* Inner dot for checked state - LARGER AND MORE VISIBLE */
+.woocommerce-shipping-methods li input[type="radio"]:checked + label::after {
+  content: '';
+  position: absolute;
+  left: 1.3125rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brand-color);
+  box-shadow: 0 0 0 2px var(--color-white);
+}
+
+.woocommerce-shipping-methods li label .woocommerce-Price-amount {
+  font-weight: 700 !important;
+  color: var(--color-text-dark) !important;
+  font-size: 1rem !important;
+}
+
+/* ==========================================================================
+   TERMS & PRIVACY
+   ========================================================================== */
+
+.woocommerce-privacy-policy-text,
+.woocommerce-terms-and-conditions-wrapper {
+  margin: 0.875rem 0;
+  font-size: 0.8125rem;
+  color: var(--color-text-light);
+}
+
+.woocommerce-terms-and-conditions {
+  max-height: 180px;
+  overflow-y: auto;
+  padding: 0.875rem;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-bg-secondary);
+  margin-bottom: 0.875rem;
+  font-size: 0.8125rem;
+}
+
+.woocommerce-form__label-for-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.8125rem;
+}
+
+.woocommerce-form__label-for-checkbox input[type="checkbox"] {
+  margin-top: 0.125rem;
+  flex-shrink: 0;
+  accent-color: var(--brand-color);
+  width: 16px;
+  height: 16px;
+}
+
+/* ==========================================================================
+   VALIDATION MESSAGES
+   ========================================================================== */
+
+.woocommerce-error,
+.woocommerce-message,
+.woocommerce-info {
+  padding: 0.875rem 1rem;
+  margin-bottom: 1.25rem;
+  border-radius: 10px;
+  border-left: 4px solid;
+  background: var(--color-white);
+  font-size: 0.875rem;
+}
+
+.woocommerce-error {
+  border-left-color: var(--color-danger);
+  background: var(--color-danger-light);
+  color: var(--color-danger);
+}
+
+.woocommerce-message {
+  border-left-color: var(--color-success);
+  background: var(--color-success-light);
+  color: var(--color-success);
+}
+
+.woocommerce-info {
+  border-left-color: var(--color-info);
+  background: var(--color-info-light);
+  color: var(--color-info);
+}
+
+.woocommerce-error li,
+.woocommerce-message li,
+.woocommerce-info li {
+  list-style: none;
+}
+
+/* ==========================================================================
+   CLEAN COUPON FIELD - Bottom Placement (No Icon, Minimal Text)
+   ========================================================================== */
+
+/* Hide default WooCommerce coupon elements */
+.woocommerce-form-coupon-toggle,
+.checkout_coupon:not(.coupon-form-bottom) {
+  display: none !important;
+}
+
+/* Clean coupon field at bottom */
+.checkout-coupon-bottom {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.coupon-form-bottom {
+  width: 100%;
+}
+
+.coupon-input-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.coupon-form-bottom input.input-text {
+  flex: 1;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  min-height: 42px;
+  background: var(--color-white);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.coupon-form-bottom input.input-text:focus {
+  border-color: var(--brand-color);
+  outline: none;
+}
+
+.coupon-form-bottom input.input-text::placeholder {
+  color: var(--color-text-lighter);
+  font-size: 0.875rem;
+}
+
+.coupon-form-bottom button.coupon-apply-btn {
+  padding: 0.625rem 1.5rem;
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 42px;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.coupon-form-bottom button.coupon-apply-btn:hover {
+  background: var(--brand-color);
+  transform: translateY(-1px);
+}
+
+.coupon-form-bottom button.coupon-apply-btn:active {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   PAYMENT METHODS SECTION - CUSTOM RADIO BUTTON STYLING
+   ========================================================================== */
+
+/* Payment methods list */
+.wc_payment_methods.payment_methods.methods {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+}
+
+/* Individual payment method item */
+.wc_payment_methods li.wc_payment_method {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+  background: var(--color-white) !important;
+  border: 2px solid #D1D5DB !important;
+  border-radius: 12px !important;
+  transition: all 0.2s ease !important;
+}
+
+.wc_payment_methods li.wc_payment_method:hover {
+  border-color: var(--brand-color) !important;
+  background: rgba(var(--brand-color-rgb), 0.03) !important;
+}
+
+/* Hide default radio button */
+.wc_payment_methods input[type="radio"].input-radio {
+  position: absolute !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Payment method label */
+.wc_payment_methods li.wc_payment_method > label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.625rem !important;
+  padding: 1rem 1.25rem !important;
+  padding-left: 3rem !important;
+  cursor: pointer !important;
+  margin: 0 !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  color: var(--color-text-dark) !important;
+  position: relative !important;
+  min-height: 56px !important;
+  width: 100% !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Payment method icons (Klarna, Afterpay, Card icons) */
+.wc_payment_methods li.wc_payment_method > label img.stripe-icon {
+  height: 24px !important;
+  width: auto !important;
+  max-width: 80px !important;
+  object-fit: contain !important;
+  flex-shrink: 0 !important;
+  margin-left: auto !important;
+}
+
+/* Custom radio button (outer circle) */
+.wc_payment_methods li.wc_payment_method > label::before {
+  content: '' !important;
+  position: absolute !important;
+  left: 1.125rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  border: 2.5px solid #9CA3AF !important;
+  background: var(--color-white) !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
+}
+
+/* Hover state for radio button */
+.wc_payment_methods li.wc_payment_method:hover > label::before {
+  border-color: var(--brand-color) !important;
+}
+
+/* Checked state - outer circle */
+.wc_payment_methods input[type="radio"].input-radio:checked + label::before {
+  border-color: var(--brand-color) !important;
+  border-width: 2.5px !important;
+  background: var(--color-white) !important;
+}
+
+/* Checked state - inner dot */
+.wc_payment_methods input[type="radio"].input-radio:checked + label::after {
+  content: '' !important;
+  position: absolute !important;
+  left: 1.4375rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  background: var(--brand-color) !important;
+  box-shadow: 0 0 0 2px var(--color-white) !important;
+}
+
+/* Checked state - card border */
+.wc_payment_methods input[type="radio"].input-radio:checked + label {
+  border: none !important;
+  background: transparent !important;
+}
+
+.wc_payment_methods li.wc_payment_method input[type="radio"].input-radio:checked ~ * {
+  border: none !important;
+}
+
+.wc_payment_methods input[type="radio"].input-radio:checked ~ label,
+.wc_payment_methods input[type="radio"].input-radio:checked + label {
+  border: none !important;
+}
+
+/* Checked payment method - highlight the entire card */
+.wc_payment_methods li.wc_payment_method:has(input[type="radio"]:checked) {
+  border-color: var(--brand-color) !important;
+  background: rgba(var(--brand-color-rgb), 0.06) !important;
+}
+
+/* Focus state for accessibility */
+.wc_payment_methods input[type="radio"].input-radio:focus + label::before {
+  outline: 2px solid var(--brand-color) !important;
+  outline-offset: 2px !important;
+}
+
+/* Payment box (expanded content area) */
+.wc_payment_methods .payment_box {
+  padding: 1.25rem !important;
+  margin: 0 !important;
+  border-top: 1px solid var(--color-border-light) !important;
+  background: rgba(var(--brand-color-rgb), 0.02) !important;
+  border-radius: 0 0 10px 10px !important;
+}
+
+/* Payment description text */
+.wc_payment_methods .payment_box p {
+  margin: 0 0 0.75rem 0 !important;
+  font-size: 0.875rem !important;
+  color: var(--color-text-light) !important;
+  line-height: 1.5 !important;
+}
+
+.wc_payment_methods .payment_box p:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* ==========================================================================
+   STRIPE PAYMENT ELEMENTS STYLING - CLEAN & MODERN
+   ========================================================================== */
+
+/* Stripe form wrapper */
+.wc_payment_methods .payment_box .wc-upe-form,
+.wc_payment_methods .payment_box fieldset {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* Stripe Element Container */
+.wc_payment_methods .payment_box .wc-stripe-upe-element,
+.wc_payment_methods .payment_box .StripeElement {
+  margin: 0 0 1rem 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Private Stripe Element Wrapper - Clean styling */
+.wc_payment_methods .payment_box .__PrivateStripeElement {
+  border: 2px solid var(--color-gray-300) !important;
+  border-radius: 12px !important;
+  background: var(--color-white) !important;
+  padding: 0.875rem !important;
+  transition: border-color 0.2s ease !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+}
+
+/* Hover state */
+.wc_payment_methods .payment_box .__PrivateStripeElement:hover {
+  border-color: var(--color-primary) !important;
+}
+
+/* Focus state - NO BOX SHADOW */
+.wc_payment_methods .payment_box .__PrivateStripeElement:focus-within,
+.wc_payment_methods .payment_box .wc-stripe-upe-element:focus-within .__PrivateStripeElement {
+  border-color: var(--color-primary) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Stripe iFrame */
+.wc_payment_methods .payment_box .__PrivateStripeElement iframe {
+  border: none !important;
+  background: transparent !important;
+  display: block !important;
+}
+
+/* Error messages container */
+.wc_payment_methods .payment_box #wc-stripe-upe-errors,
+.wc_payment_methods .payment_box #wc-stripe_klarna-upe-errors,
+.wc_payment_methods .payment_box #wc-stripe_afterpay_clearpay-upe-errors {
+  margin-top: 0.75rem !important;
+  padding: 0.75rem 1rem !important;
+  background: #FEE2E2 !important;
+  border: 1px solid #FCA5A5 !important;
+  border-radius: 8px !important;
+  color: #991B1B !important;
+  font-size: 0.875rem !important;
+  display: none !important;
+}
+
+/* Show error when it has content */
+.wc_payment_methods .payment_box #wc-stripe-upe-errors:not(:empty),
+.wc_payment_methods .payment_box #wc-stripe_klarna-upe-errors:not(:empty),
+.wc_payment_methods .payment_box #wc-stripe_afterpay_clearpay-upe-errors:not(:empty) {
+  display: block !important;
+}
+
+/* Hidden inputs */
+.wc_payment_methods .payment_box input[type="hidden"] {
+  display: none !important;
+}
+
+/* Saved payment methods */
+.wc_payment_methods .payment_box .woocommerce-SavedPaymentMethods {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 1rem 0 !important;
+}
+
+/* Payment method description text */
+.wc_payment_methods .payment_box > p {
+  margin: 0 0 1rem 0 !important;
+  padding: 0 !important;
+  font-size: 0.875rem !important;
+  color: var(--color-text-light) !important;
+  line-height: 1.6 !important;
+}
+
+.wc_payment_methods .payment_box > p:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Payment box spacing adjustments */
+.wc_payment_methods .payment_box {
+  padding: 1.25rem 1.25rem 1rem 1.25rem !important;
+}
+
+/* Klarna specific messaging */
+.wc_payment_methods .payment_method_stripe_klarna .payment_box {
+  background: rgba(var(--brand-color-rgb), 0.03) !important;
+}
+
+/* Remove any default WooCommerce/Stripe shadows */
+.wc_payment_methods .payment_box *,
+.wc_payment_methods .payment_box *:focus,
+.wc_payment_methods .payment_box *:hover {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Ensure clean focus states throughout */
+.wc_payment_methods .payment_box *:focus-visible {
+  outline: 2px solid var(--color-primary) !important;
+  outline-offset: 2px !important;
+  box-shadow: none !important;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .wc_payment_methods li.wc_payment_method > label {
+    padding: 0.875rem 1rem !important;
+    padding-left: 2.75rem !important;
+    min-height: 52px !important;
+    font-size: 0.9375rem !important;
+  }
+  
+  .wc_payment_methods li.wc_payment_method > label::before {
+    left: 1rem !important;
+    width: 18px !important;
+    height: 18px !important;
+  }
+  
+  .wc_payment_methods input[type="radio"].input-radio:checked + label::after {
+    left: 1.3125rem !important;
+    width: 9px !important;
+    height: 9px !important;
+  }
+  
+  .wc_payment_methods li.wc_payment_method > label img.stripe-icon {
+    height: 20px !important;
+    max-width: 60px !important;
+  }
+}
