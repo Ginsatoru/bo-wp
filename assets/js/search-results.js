@@ -1,7 +1,7 @@
 /**
  * Search Results - AJAX Sorting & Column View Toggle (2, 3, or 4 columns)
  * WITH RESPONSIVE MOBILE OVERRIDE
- * @package aaapos-prime
+ * @package Bo-prime
  */
 
 (function($) {

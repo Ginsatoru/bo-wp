@@ -51,12 +51,12 @@
 
         // Fetch product data via AJAX
         $.ajax({
-            url: aaaposQuickView.ajax_url,
+            url: BoQuickView.ajax_url,
             type: 'POST',
             data: {
                 action: 'get_quick_view_product',
                 product_id: productId,
-                security: aaaposQuickView.nonce
+                security: BoQuickView.nonce
             },
             success: function(response) {
                 if (response.success && response.data.html) {

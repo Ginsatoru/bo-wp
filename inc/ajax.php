@@ -8,8 +8,8 @@
  * CRITICAL FIX: Redirect after add-to-cart on single product page
  * This prevents the "confirm form resubmission" browser warning
  */
-add_action('template_redirect', 'aaapos_redirect_after_add_to_cart');
-function aaapos_redirect_after_add_to_cart() {
+add_action('template_redirect', 'Bo_redirect_after_add_to_cart');
+function Bo_redirect_after_add_to_cart() {
     // Only on single product pages
     if (!is_product()) {
         return;
@@ -37,10 +37,10 @@ function aaapos_redirect_after_add_to_cart() {
  * Get Quick View Product Content - FIXED VERSION
  * Now properly validates nonce and supports both simple and variable products
  */
-function aaapos_get_quick_view_product()
+function Bo_get_quick_view_product()
 {
     // FIXED: Security check with correct nonce name
-    check_ajax_referer('aaapos_quick_view_nonce', 'security');
+    check_ajax_referer('Bo_quick_view_nonce', 'security');
 
     $product_id = isset($_POST["product_id"])
         ? absint($_POST["product_id"])
@@ -110,7 +110,7 @@ function aaapos_get_quick_view_product()
         <div class="rating-stars-wrapper">
             <div class="rating-stars" aria-label="<?php echo esc_attr(
                 sprintf(
-                    __("Rated %s out of 5", "aaapos-prime"),
+                    __("Rated %s out of 5", "Bo-prime"),
                     number_format($average_rating, 2),
                 ),
             ); ?>">
@@ -143,7 +143,7 @@ function aaapos_get_quick_view_product()
                         "(%s review)",
                         "(%s reviews)",
                         $review_count,
-                        "aaapos-prime",
+                        "Bo-prime",
                     ),
                     '<span class="count">' .
                         esc_html($review_count) .
@@ -189,7 +189,7 @@ endif; ?>
             <a href="<?php echo esc_url(
                 $product->get_permalink(),
             ); ?>" class="quick-view-full-details">
-                <?php esc_html_e("View Full Details", "aaapos-prime"); ?>
+                <?php esc_html_e("View Full Details", "Bo-prime"); ?>
                 <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
                 </svg>
@@ -207,10 +207,10 @@ endif; ?>
 
     wp_send_json_success(["html" => $html]);
 }
-add_action("wp_ajax_get_quick_view_product", "aaapos_get_quick_view_product");
+add_action("wp_ajax_get_quick_view_product", "Bo_get_quick_view_product");
 add_action(
     "wp_ajax_nopriv_get_quick_view_product",
-    "aaapos_get_quick_view_product",
+    "Bo_get_quick_view_product",
 );
 
 // Newsletter subscription

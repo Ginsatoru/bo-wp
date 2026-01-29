@@ -1,6 +1,6 @@
 <?php
 /**
- * AAAPOS Theme Functions
+ * Bo Theme Functions
  */
 
 if (!defined("ABSPATH")) {
@@ -9,16 +9,16 @@ if (!defined("ABSPATH")) {
 
 // Theme Constants
 define('THEME_VERSION', '1.0.0');
-define("AAAPOS_VERSION", wp_get_theme()->get("Version"));
-define("AAAPOS_THEME_DIR", get_template_directory());
-define("AAAPOS_THEME_URI", get_template_directory_uri());
-define("AAAPOS_ASSETS_URI", AAAPOS_THEME_URI . "/assets");
-define("AAAPOS_INC_DIR", AAAPOS_THEME_DIR . "/inc");
+define("Bo_VERSION", wp_get_theme()->get("Version"));
+define("Bo_THEME_DIR", get_template_directory());
+define("Bo_THEME_URI", get_template_directory_uri());
+define("Bo_ASSETS_URI", Bo_THEME_URI . "/assets");
+define("Bo_INC_DIR", Bo_THEME_DIR . "/inc");
 
 // MR Constants (for compatibility with included files)
-define("MR_THEME_VERSION", AAAPOS_VERSION);
-define("MR_THEME_DIR", AAAPOS_THEME_DIR);
-define("MR_THEME_URI", AAAPOS_THEME_URI);
+define("MR_THEME_VERSION", Bo_VERSION);
+define("MR_THEME_DIR", Bo_THEME_DIR);
+define("MR_THEME_URI", Bo_THEME_URI);
 
 // Content Width
 if (!isset($content_width)) {
@@ -26,7 +26,7 @@ if (!isset($content_width)) {
 }
 
 // Load theme files
-function aaapos_load_theme_files()
+function Bo_load_theme_files()
 {
     $includes = [
         "inc/setup.php",
@@ -56,18 +56,18 @@ function aaapos_load_theme_files()
     ];
 
     foreach ($includes as $file) {
-        $filepath = AAAPOS_THEME_DIR . "/" . $file;
+        $filepath = Bo_THEME_DIR . "/" . $file;
 
         if (file_exists($filepath)) {
             require_once $filepath;
         } else {
             if (defined("WP_DEBUG") && WP_DEBUG) {
-                error_log("AAAPOS: Missing file " . $file);
+                error_log("Bo: Missing file " . $file);
             }
         }
     }
 }
-add_action("after_setup_theme", "aaapos_load_theme_files", 1);
+add_action("after_setup_theme", "Bo_load_theme_files", 1);
 
 // code for off the site display while maintenance
 // add_action('template_redirect', function () {
@@ -96,10 +96,10 @@ define('MR_PRODUCTION_MODE', false);
  * Configure theme features, image sizes, and WordPress support.
  * This runs early in the WordPress initialization process.
  */
-function aaapos_theme_setup()
+function Bo_theme_setup()
 {
     // Internationalization
-    load_theme_textdomain("AAAPOS", AAAPOS_THEME_DIR . "/languages");
+    load_theme_textdomain("Bo", Bo_THEME_DIR . "/languages");
 
     // Essential WordPress features
     add_theme_support("automatic-feed-links");
@@ -144,10 +144,10 @@ function aaapos_theme_setup()
 
     // Navigation menus
     register_nav_menus([
-        "primary" => esc_html__("Primary Navigation", "AAAPOS"),
-        "mobile" => esc_html__("Mobile Navigation", "AAAPOS"),
-        "footer" => esc_html__("Footer Navigation", "AAAPOS"),
-        "utility" => esc_html__("Utility Navigation", "AAAPOS"),
+        "primary" => esc_html__("Primary Navigation", "Bo"),
+        "mobile" => esc_html__("Mobile Navigation", "Bo"),
+        "footer" => esc_html__("Footer Navigation", "Bo"),
+        "utility" => esc_html__("Utility Navigation", "Bo"),
     ]);
 
     // WooCommerce support
@@ -159,16 +159,16 @@ function aaapos_theme_setup()
     }
 
     // Custom image sizes
-    aaapos_register_image_sizes();
+    Bo_register_image_sizes();
 }
-add_action("after_setup_theme", "aaapos_theme_setup");
+add_action("after_setup_theme", "Bo_theme_setup");
 
 /**
  * Replace Cart & Checkout Blocks with Classic Templates on Theme Activation
  */
-function aaapos_setup_classic_woocommerce_pages() {
+function Bo_setup_classic_woocommerce_pages() {
     // Only run once
-    if (get_option('aaapos_wc_blocks_replaced')) {
+    if (get_option('Bo_wc_blocks_replaced')) {
         return;
     }
     
@@ -191,9 +191,9 @@ function aaapos_setup_classic_woocommerce_pages() {
     }
     
     // Mark as complete
-    update_option('aaapos_wc_blocks_replaced', true);
+    update_option('Bo_wc_blocks_replaced', true);
 }
-add_action('after_switch_theme', 'aaapos_setup_classic_woocommerce_pages');
+add_action('after_switch_theme', 'Bo_setup_classic_woocommerce_pages');
 
 /**
  * Register Custom Image Sizes
@@ -201,29 +201,29 @@ add_action('after_switch_theme', 'aaapos_setup_classic_woocommerce_pages');
  * Define optimized image sizes for various components.
  * Organized by use case for easy maintenance.
  */
-function aaapos_register_image_sizes()
+function Bo_register_image_sizes()
 {
     // Product images
-    add_image_size("aaapos-product-thumbnail", 400, 400, true);
-    add_image_size("aaapos-product-card", 600, 600, true);
-    add_image_size("aaapos-product-featured", 800, 800, true);
+    add_image_size("Bo-product-thumbnail", 400, 400, true);
+    add_image_size("Bo-product-card", 600, 600, true);
+    add_image_size("Bo-product-featured", 800, 800, true);
 
     // Blog images
-    add_image_size("aaapos-blog-card", 600, 400, true);
-    add_image_size("aaapos-blog-featured", 1200, 600, true);
+    add_image_size("Bo-blog-card", 600, 400, true);
+    add_image_size("Bo-blog-featured", 1200, 600, true);
 
     // Category images
-    add_image_size("aaapos-category-card", 600, 400, true);
-    add_image_size("aaapos-category-banner", 1400, 400, true);
+    add_image_size("Bo-category-card", 600, 400, true);
+    add_image_size("Bo-category-banner", 1400, 400, true);
 
     // Hero images
-    add_image_size("aaapos-hero-small", 1200, 600, true);
-    add_image_size("aaapos-hero-large", 1920, 800, true);
-    add_image_size("aaapos-hero-xlarge", 2560, 1080, true);
+    add_image_size("Bo-hero-small", 1200, 600, true);
+    add_image_size("Bo-hero-large", 1920, 800, true);
+    add_image_size("Bo-hero-xlarge", 2560, 1080, true);
 
     // Misc
-    add_image_size("aaapos-testimonial", 200, 200, true);
-    add_image_size("aaapos-team-member", 400, 500, true);
+    add_image_size("Bo-testimonial", 200, 200, true);
+    add_image_size("Bo-team-member", 400, 500, true);
 }
 
 /**
@@ -231,23 +231,23 @@ function aaapos_register_image_sizes()
  *
  * Makes custom image sizes selectable in the media library.
  */
-function aaapos_custom_image_sizes($sizes)
+function Bo_custom_image_sizes($sizes)
 {
     return array_merge($sizes, [
-        "aaapos-product-card" => esc_html__("Product Card", "AAAPOS"),
-        "aaapos-blog-card" => esc_html__("Blog Card", "AAAPOS"),
-        "aaapos-category-card" => esc_html__("Category Card", "AAAPOS"),
-        "aaapos-hero-large" => esc_html__("Hero Large", "AAAPOS"),
+        "Bo-product-card" => esc_html__("Product Card", "Bo"),
+        "Bo-blog-card" => esc_html__("Blog Card", "Bo"),
+        "Bo-category-card" => esc_html__("Category Card", "Bo"),
+        "Bo-hero-large" => esc_html__("Hero Large", "Bo"),
     ]);
 }
-add_filter("image_size_names_choose", "aaapos_custom_image_sizes");
+add_filter("image_size_names_choose", "Bo_custom_image_sizes");
 
 /**
  * Body Classes
  *
  * Add contextual classes to body element for styling hooks.
  */
-function aaapos_body_classes($classes)
+function Bo_body_classes($classes)
 {
     // WooCommerce active
     if (class_exists("WooCommerce")) {
@@ -298,14 +298,14 @@ function aaapos_body_classes($classes)
 
     return $classes;
 }
-add_filter("body_class", "aaapos_body_classes");
+add_filter("body_class", "Bo_body_classes");
 
 /**
  * Post Classes
  *
  * Add custom classes to post elements.
  */
-function aaapos_post_classes($classes, $class, $post_id)
+function Bo_post_classes($classes, $class, $post_id)
 {
     // Add animation trigger class
     if (get_theme_mod("enable_animations", true)) {
@@ -314,14 +314,14 @@ function aaapos_post_classes($classes, $class, $post_id)
 
     return $classes;
 }
-add_filter("post_class", "aaapos_post_classes", 10, 3);
+add_filter("post_class", "Bo_post_classes", 10, 3);
 
 /**
  * Excerpt Length
  *
  * Customize excerpt length by word count.
  */
-function aaapos_excerpt_length($length)
+function Bo_excerpt_length($length)
 {
     if (is_admin()) {
         return $length;
@@ -332,14 +332,14 @@ function aaapos_excerpt_length($length)
 
     return absint($custom_length);
 }
-add_filter("excerpt_length", "aaapos_excerpt_length");
+add_filter("excerpt_length", "Bo_excerpt_length");
 
 /**
  * Excerpt More String
  *
  * Customize the "read more" text.
  */
-function aaapos_excerpt_more($more)
+function Bo_excerpt_more($more)
 {
     if (is_admin()) {
         return $more;
@@ -347,14 +347,14 @@ function aaapos_excerpt_more($more)
 
     return "&hellip;";
 }
-add_filter("excerpt_more", "aaapos_excerpt_more");
+add_filter("excerpt_more", "Bo_excerpt_more");
 
 /**
  * Custom Logo Helper
  *
  * Returns custom logo or site title fallback with proper markup.
  */
-function aaapos_get_logo($echo = true)
+function Bo_get_logo($echo = true)
 {
     $logo_html = "";
 
@@ -395,7 +395,7 @@ function aaapos_get_logo($echo = true)
  *
  * Display helpful message when no menu is assigned.
  */
-function aaapos_menu_fallback($args)
+function Bo_menu_fallback($args)
 {
     if (!current_user_can("edit_theme_options")) {
         return;
@@ -403,7 +403,7 @@ function aaapos_menu_fallback($args)
 
     echo '<ul class="' . esc_attr($args["menu_class"]) . '">';
     echo '<li><a href="' . esc_url(admin_url("nav-menus.php")) . '">';
-    esc_html_e("Add a Menu", "AAAPOS");
+    esc_html_e("Add a Menu", "Bo");
     echo "</a></li>";
     echo "</ul>";
 }
@@ -413,7 +413,7 @@ function aaapos_menu_fallback($args)
  *
  * Preload fonts, styles, and scripts for performance.
  */
-function aaapos_preload_critical_assets()
+function Bo_preload_critical_assets()
 {
     // Preconnect to external domains
     echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
@@ -421,10 +421,10 @@ function aaapos_preload_critical_assets()
         "\n";
 
     // Preload critical fonts (if self-hosted)
-    $font_dir = AAAPOS_ASSETS_URI . "/fonts/";
+    $font_dir = Bo_ASSETS_URI . "/fonts/";
 
     // Only preload if fonts exist
-    if (file_exists(AAAPOS_THEME_DIR . "/assets/fonts/")) {
+    if (file_exists(Bo_THEME_DIR . "/assets/fonts/")) {
         // Example: Preload primary font
         // Uncomment and adjust when using self-hosted fonts
         /*
@@ -436,14 +436,14 @@ function aaapos_preload_critical_assets()
         */
     }
 }
-add_action("wp_head", "aaapos_preload_critical_assets", 1);
+add_action("wp_head", "Bo_preload_critical_assets", 1);
 
 /**
  * Resource Hints
  *
  * Add DNS prefetch and preconnect for performance.
  */
-function aaapos_resource_hints($urls, $relation_type)
+function Bo_resource_hints($urls, $relation_type)
 {
     if ("dns-prefetch" === $relation_type) {
         $urls[] = "https://fonts.googleapis.com";
@@ -452,7 +452,7 @@ function aaapos_resource_hints($urls, $relation_type)
 
     return $urls;
 }
-add_filter("wp_resource_hints", "aaapos_resource_hints", 10, 2);
+add_filter("wp_resource_hints", "Bo_resource_hints", 10, 2);
 
 /**
  * Theme Activation
@@ -460,10 +460,10 @@ add_filter("wp_resource_hints", "aaapos_resource_hints", 10, 2);
  * Set default theme options on activation.
  * NOTE: Page creation is handled by setup.php to avoid duplicates
  */
-function aaapos_theme_activation()
+function Bo_theme_activation()
 {
     // Only run once
-    if (get_option('aaapos_theme_activated')) {
+    if (get_option('Bo_theme_activated')) {
         return;
     }
     
@@ -493,32 +493,32 @@ function aaapos_theme_activation()
     flush_rewrite_rules();
     
     // Mark as activated
-    update_option('aaapos_theme_activated', true);
+    update_option('Bo_theme_activated', true);
 }
-add_action("after_switch_theme", "aaapos_theme_activation");
+add_action("after_switch_theme", "Bo_theme_activation");
 
 /**
  * Theme Deactivation
  *
  * Cleanup on theme switch.
  */
-function aaapos_theme_deactivation()
+function Bo_theme_deactivation()
 {
     // Flush rewrite rules
     flush_rewrite_rules();
     
     // Remove activation flags so theme can re-run setup if reactivated
-    delete_option('aaapos_theme_activated');
-    delete_option('aaapos_wc_blocks_replaced');
+    delete_option('Bo_theme_activated');
+    delete_option('Bo_wc_blocks_replaced');
 }
-add_action("switch_theme", "aaapos_theme_deactivation");
+add_action("switch_theme", "Bo_theme_deactivation");
 
 /**
  * Admin Notice for Missing Dependencies
  *
  * Alert admin if WooCommerce is not installed/activated.
  */
-function aaapos_woocommerce_notice()
+function Bo_woocommerce_notice()
 {
     if (!class_exists("WooCommerce")) { ?>
         <div class="notice notice-warning is-dismissible">
@@ -526,8 +526,8 @@ function aaapos_woocommerce_notice()
                 <?php printf(
                     /* translators: %s: WooCommerce plugin link */
                     esc_html__(
-                        "The AAAPOS theme recommends installing %s for full functionality.",
-                        "AAAPOS",
+                        "The Bo theme recommends installing %s for full functionality.",
+                        "Bo",
                     ),
                     '<a href="' .
                         esc_url(
@@ -541,14 +541,14 @@ function aaapos_woocommerce_notice()
         </div>
         <?php }
 }
-add_action("admin_notices", "aaapos_woocommerce_notice");
+add_action("admin_notices", "Bo_woocommerce_notice");
 
 /**
  * Remove Unnecessary WordPress Features
  *
  * Clean up and optimize WordPress output.
  */
-function aaapos_cleanup_head()
+function Bo_cleanup_head()
 {
     // Remove unnecessary WordPress meta tags
     remove_action("wp_head", "rsd_link");
@@ -562,12 +562,12 @@ function aaapos_cleanup_head()
     remove_action("admin_print_scripts", "print_emoji_detection_script");
     remove_action("admin_print_styles", "print_emoji_styles");
 }
-add_action("init", "aaapos_cleanup_head");
+add_action("init", "Bo_cleanup_head");
 
 /**
  * Remove jQuery Migrate
  */
-function aaapos_remove_jquery_migrate($scripts)
+function Bo_remove_jquery_migrate($scripts)
 {
     if (!is_admin() && isset($scripts->registered["jquery"])) {
         $script = $scripts->registered["jquery"];
@@ -576,17 +576,17 @@ function aaapos_remove_jquery_migrate($scripts)
         }
     }
 }
-add_action("wp_default_scripts", "aaapos_remove_jquery_migrate");
+add_action("wp_default_scripts", "Bo_remove_jquery_migrate");
 
 /**
  * Defer Non-Critical JavaScript
  *
  * Add defer attribute to non-critical scripts for performance.
  */
-function aaapos_defer_scripts($tag, $handle, $src)
+function Bo_defer_scripts($tag, $handle, $src)
 {
     // List of scripts to defer
-    $defer_scripts = ["aaapos-animations", "aaapos-slider", "aaapos-modal"];
+    $defer_scripts = ["Bo-animations", "Bo-slider", "Bo-modal"];
 
     if (in_array($handle, $defer_scripts, true)) {
         return str_replace(" src", " defer src", $tag);
@@ -594,25 +594,25 @@ function aaapos_defer_scripts($tag, $handle, $src)
 
     return $tag;
 }
-add_filter("script_loader_tag", "aaapos_defer_scripts", 10, 3);
+add_filter("script_loader_tag", "Bo_defer_scripts", 10, 3);
 
 /**
  * Allow SVG Upload in Media Library
  *
  * Enable SVG file upload for logos and icons.
  */
-function aaapos_mime_types($mimes)
+function Bo_mime_types($mimes)
 {
     $mimes["svg"] = "image/svg+xml";
     $mimes["svgz"] = "image/svg+xml";
     return $mimes;
 }
-add_filter("upload_mimes", "aaapos_mime_types");
+add_filter("upload_mimes", "Bo_mime_types");
 
 /**
  * Fix SVG Display in Media Library
  */
-function aaapos_fix_svg_display($response, $attachment, $meta)
+function Bo_fix_svg_display($response, $attachment, $meta)
 {
     if ($response["type"] === "image" && $response["subtype"] === "svg+xml") {
         $response["image"] = [
@@ -621,15 +621,15 @@ function aaapos_fix_svg_display($response, $attachment, $meta)
     }
     return $response;
 }
-add_filter("wp_prepare_attachment_for_js", "aaapos_fix_svg_display", 10, 3);
+add_filter("wp_prepare_attachment_for_js", "Bo_fix_svg_display", 10, 3);
 
 /**
  * Debug Helper Function
  *
  * Pretty print debug information (only in WP_DEBUG mode).
  */
-if (!function_exists("aaapos_debug")) {
-    function aaapos_debug($data, $label = "")
+if (!function_exists("Bo_debug")) {
+    function Bo_debug($data, $label = "")
     {
         if (defined("WP_DEBUG") && WP_DEBUG) {
             echo '<pre style="background: #f4f4f4; padding: 10px; border: 1px solid #ddd; border-radius: 4px; margin: 10px 0;">';
@@ -645,11 +645,11 @@ if (!function_exists("aaapos_debug")) {
 /**
  * Remove WordPress default Colors section
  */
-function aaapos_remove_default_colors_section($wp_customize)
+function Bo_remove_default_colors_section($wp_customize)
 {
     $wp_customize->remove_section("colors");
 }
-add_action("customize_register", "aaapos_remove_default_colors_section", 99);
+add_action("customize_register", "Bo_remove_default_colors_section", 99);
 
 /* ==========================================================================
    WOOCOMMERCE CATEGORY CUSTOMIZATION - FIXED
@@ -665,22 +665,22 @@ add_filter("woocommerce_subcategory_count_html", "__return_empty_string");
  * Customize WooCommerce Category Display
  * Adds description and product count BELOW the title
  */
-function aaapos_custom_category_display()
+function Bo_custom_category_display()
 {
     // Add custom content after the title
     add_action(
         "woocommerce_after_subcategory_title",
-        "aaapos_category_custom_content",
+        "Bo_category_custom_content",
         10,
     );
 }
-add_action("init", "aaapos_custom_category_display");
+add_action("init", "Bo_custom_category_display");
 
 /**
  * Add custom content to category cards
  * Shows: Description (if exists) + Product count
  */
-function aaapos_category_custom_content($category)
+function Bo_category_custom_content($category)
 {
     $count = $category->count;
     $description = $category->description;
@@ -709,7 +709,7 @@ function aaapos_category_custom_content($category)
  *
  * Processes form data, validates, sends email, and redirects with status message.
  */
-function aaapos_handle_contact_form_submission()
+function Bo_handle_contact_form_submission()
 {
     // Verify nonce for security
     if (
@@ -719,9 +719,9 @@ function aaapos_handle_contact_form_submission()
         wp_die(
             esc_html__(
                 "Security check failed. Please go back and try again.",
-                "AAAPOS",
+                "Bo",
             ),
-            esc_html__("Security Error", "AAAPOS"),
+            esc_html__("Security Error", "Bo"),
             ["response" => 403, "back_link" => true],
         );
     }
@@ -753,24 +753,24 @@ function aaapos_handle_contact_form_submission()
     $errors = [];
 
     if (empty($name)) {
-        $errors[] = esc_html__("Name is required", "AAAPOS");
+        $errors[] = esc_html__("Name is required", "Bo");
     }
 
     if (empty($email)) {
-        $errors[] = esc_html__("Email is required", "AAAPOS");
+        $errors[] = esc_html__("Email is required", "Bo");
     } elseif (!is_email($email)) {
         $errors[] = esc_html__(
             "Please enter a valid email address",
-            "AAAPOS",
+            "Bo",
         );
     }
 
     if (empty($subject)) {
-        $errors[] = esc_html__("Subject is required", "AAAPOS");
+        $errors[] = esc_html__("Subject is required", "Bo");
     }
 
     if (empty($message)) {
-        $errors[] = esc_html__("Message is required", "AAAPOS");
+        $errors[] = esc_html__("Message is required", "Bo");
     }
 
     // If there are validation errors, redirect back with error
@@ -803,7 +803,7 @@ function aaapos_handle_contact_form_submission()
         get_bloginfo("name"),
         $name,
         $email,
-        !empty($phone) ? $phone : esc_html__("Not provided", "AAAPOS"),
+        !empty($phone) ? $phone : esc_html__("Not provided", "Bo"),
         $subject,
         $message,
         home_url(),
@@ -838,13 +838,13 @@ function aaapos_handle_contact_form_submission()
 // Hook for logged-in users
 add_action(
     "admin_post_submit_contact_form",
-    "aaapos_handle_contact_form_submission",
+    "Bo_handle_contact_form_submission",
 );
 
 // Hook for non-logged-in users
 add_action(
     "admin_post_nopriv_submit_contact_form",
-    "aaapos_handle_contact_form_submission",
+    "Bo_handle_contact_form_submission",
 );
 
 /**
@@ -852,7 +852,7 @@ add_action(
  *
  * Call this function at the top of your contact form to display feedback
  */
-function aaapos_display_contact_form_messages()
+function Bo_display_contact_form_messages()
 {
     // Check for success message
     if (isset($_GET["form_success"]) && $_GET["form_success"] == "1") {
@@ -864,7 +864,7 @@ function aaapos_display_contact_form_messages()
         echo "<span>" .
             esc_html__(
                 'Thank you! Your message has been sent successfully. We\'ll get back to you soon.',
-                "AAAPOS",
+                "Bo",
             ) .
             "</span>";
         echo "</div>";
@@ -877,11 +877,11 @@ function aaapos_display_contact_form_messages()
         $error_messages = [
             "email_failed" => esc_html__(
                 "Sorry, there was a problem sending your message. Please try again or contact us directly.",
-                "AAAPOS",
+                "Bo",
             ),
             "spam" => esc_html__(
                 "Your submission was flagged as spam. Please try again.",
-                "AAAPOS",
+                "Bo",
             ),
         ];
 
@@ -915,57 +915,57 @@ require_once get_template_directory() . '/inc/setup-wizard.php';
 /**
  * Set activation redirect transient on theme switch
  */
-function aaapos_setup_theme_activation() {
+function Bo_setup_theme_activation() {
     // Only run on theme activation, not on every page load
-    if (!get_option('aaapos_setup_complete')) {
-        set_transient('_aaapos_activation_redirect', 1, 30);
+    if (!get_option('Bo_setup_complete')) {
+        set_transient('_Bo_activation_redirect', 1, 30);
     }
 }
-add_action('after_switch_theme', 'aaapos_setup_theme_activation');
+add_action('after_switch_theme', 'Bo_setup_theme_activation');
 
 /**
  * Add setup wizard link to admin menu (for re-running setup)
  */
-function aaapos_add_setup_menu_link() {
+function Bo_add_setup_menu_link() {
     // Only show if setup is complete (to re-run) or not (to complete)
     add_theme_page(
-        __('Theme Setup', 'aaapos'),
-        __('Theme Setup', 'aaapos'),
+        __('Theme Setup', 'Bo'),
+        __('Theme Setup', 'Bo'),
         'manage_options',
-        'aaapos-setup',
+        'Bo-setup',
         '__return_false' // The wizard handles its own output
     );
 }
-add_action('admin_menu', 'aaapos_add_setup_menu_link');
+add_action('admin_menu', 'Bo_add_setup_menu_link');
 
 /**
  * Add setup wizard link to Appearance menu
  */
-function aaapos_add_appearance_setup_link($wp_admin_bar) {
+function Bo_add_appearance_setup_link($wp_admin_bar) {
     if (!current_user_can('manage_options')) {
         return;
     }
     
     $wp_admin_bar->add_node(array(
         'parent' => 'appearance',
-        'id' => 'aaapos-setup-wizard',
-        'title' => __('Theme Setup Wizard', 'aaapos'),
-        'href' => admin_url('admin.php?page=aaapos-setup'),
+        'id' => 'Bo-setup-wizard',
+        'title' => __('Theme Setup Wizard', 'Bo'),
+        'href' => admin_url('admin.php?page=Bo-setup'),
     ));
 }
-add_action('admin_bar_menu', 'aaapos_add_appearance_setup_link', 999);
+add_action('admin_bar_menu', 'Bo_add_appearance_setup_link', 999);
 
 /**
  * Add admin notice if setup is not complete
  */
-function aaapos_setup_admin_notice() {
+function Bo_setup_admin_notice() {
     // Don't show on setup wizard page
-    if (isset($_GET['page']) && $_GET['page'] === 'aaapos-setup') {
+    if (isset($_GET['page']) && $_GET['page'] === 'Bo-setup') {
         return;
     }
     
     // Don't show if setup is complete
-    if (get_option('aaapos_setup_complete')) {
+    if (get_option('Bo_setup_complete')) {
         return;
     }
     
@@ -973,37 +973,37 @@ function aaapos_setup_admin_notice() {
     ?>
     <div class="notice notice-info is-dismissible">
         <p>
-            <strong><?php esc_html_e('Welcome to AAAPOS Theme!', 'aaapos'); ?></strong>
-            <?php esc_html_e('Complete the setup wizard to configure your store.', 'aaapos'); ?>
-            <a href="<?php echo esc_url(admin_url('admin.php?page=aaapos-setup')); ?>" class="button button-primary" style="margin-left: 10px;">
-                <?php esc_html_e('Start Setup', 'aaapos'); ?>
+            <strong><?php esc_html_e('Welcome to Bo Theme!', 'Bo'); ?></strong>
+            <?php esc_html_e('Complete the setup wizard to configure your store.', 'Bo'); ?>
+            <a href="<?php echo esc_url(admin_url('admin.php?page=Bo-setup')); ?>" class="button button-primary" style="margin-left: 10px;">
+                <?php esc_html_e('Start Setup', 'Bo'); ?>
             </a>
         </p>
     </div>
     <?php
 }
-add_action('admin_notices', 'aaapos_setup_admin_notice');
+add_action('admin_notices', 'Bo_setup_admin_notice');
 
 /**
  * Reset setup wizard (for development/testing)
  * Add ?reset_setup=1 to any admin URL to reset
  */
-function aaapos_reset_setup_wizard() {
+function Bo_reset_setup_wizard() {
     if (isset($_GET['reset_setup']) && current_user_can('manage_options')) {
-        delete_option('aaapos_setup_complete');
-        delete_option('aaapos_pages_created');
-        wp_redirect(admin_url('admin.php?page=aaapos-setup'));
+        delete_option('Bo_setup_complete');
+        delete_option('Bo_pages_created');
+        wp_redirect(admin_url('admin.php?page=Bo-setup'));
         exit;
     }
 }
-add_action('admin_init', 'aaapos_reset_setup_wizard');
+add_action('admin_init', 'Bo_reset_setup_wizard');
 
 /**
  * Check if current page should display homepage sections
  * 
  * @return bool True if homepage sections should be displayed
  */
-function aaapos_should_display_homepage_sections() {
+function Bo_should_display_homepage_sections() {
     // Only on front page
     if (!is_front_page()) {
         return false;
@@ -1029,14 +1029,14 @@ function aaapos_should_display_homepage_sections() {
  * 
  * @return bool True if WooCommerce is active and sections should show
  */
-function aaapos_show_woocommerce_sections() {
-    return class_exists('WooCommerce') && aaapos_should_display_homepage_sections();
+function Bo_show_woocommerce_sections() {
+    return class_exists('WooCommerce') && Bo_should_display_homepage_sections();
 }
 
 /**
  * Get homepage template status for admin notices
  */
-function aaapos_homepage_setup_notice() {
+function Bo_homepage_setup_notice() {
     // Only show on Pages screen
     $screen = get_current_screen();
     if (!$screen || $screen->id !== 'edit-page') {
@@ -1051,8 +1051,8 @@ function aaapos_homepage_setup_notice() {
         ?>
         <div class="notice notice-info is-dismissible">
             <p>
-                <strong><?php esc_html_e('AAAPOS Theme Tip:', 'aaapos'); ?></strong>
-                <?php esc_html_e('To use the homepage sections (hero, products, categories), create a page with the "Homepage Template" and set it as your homepage in Settings > Reading.', 'aaapos'); ?>
+                <strong><?php esc_html_e('Bo Theme Tip:', 'Bo'); ?></strong>
+                <?php esc_html_e('To use the homepage sections (hero, products, categories), create a page with the "Homepage Template" and set it as your homepage in Settings > Reading.', 'Bo'); ?>
             </p>
         </div>
         <?php
@@ -1066,11 +1066,11 @@ function aaapos_homepage_setup_notice() {
         ?>
         <div class="notice notice-warning is-dismissible">
             <p>
-                <strong><?php esc_html_e('AAAPOS Theme Notice:', 'aaapos'); ?></strong>
+                <strong><?php esc_html_e('Bo Theme Notice:', 'Bo'); ?></strong>
                 <?php 
                 printf(
                     /* translators: %s: Edit page link */
-                    esc_html__('Your homepage is not using the "Homepage Template". %sEdit the page%s and select "Homepage Template" from the Template dropdown to enable homepage sections.', 'aaapos'),
+                    esc_html__('Your homepage is not using the "Homepage Template". %sEdit the page%s and select "Homepage Template" from the Template dropdown to enable homepage sections.', 'Bo'),
                     '<a href="' . esc_url($edit_link) . '">',
                     '</a>'
                 );
@@ -1080,15 +1080,15 @@ function aaapos_homepage_setup_notice() {
         <?php
     }
 }
-add_action('admin_notices', 'aaapos_homepage_setup_notice');
+add_action('admin_notices', 'Bo_homepage_setup_notice');
 
 /**
  * Add helpful text to the Homepage Template in the template selector
  */
-function aaapos_add_template_descriptions($templates) {
+function Bo_add_template_descriptions($templates) {
     if (isset($templates['page-templates/homepage.php'])) {
-        $templates['page-templates/homepage.php'] = __('Homepage Template (Enables hero, products, categories sections)', 'aaapos');
+        $templates['page-templates/homepage.php'] = __('Homepage Template (Enables hero, products, categories sections)', 'Bo');
     }
     return $templates;
 }
-add_filter('theme_page_templates', 'aaapos_add_template_descriptions');
+add_filter('theme_page_templates', 'Bo_add_template_descriptions');

@@ -20,7 +20,7 @@ $blog_posts = new WP_Query(array(
             <h2 class="section-title"><?php echo esc_html($title); ?></h2>
             <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" 
                class="btn btn--outline">
-                <?php esc_html_e('View All Posts', 'AAAPOS'); ?>
+                <?php esc_html_e('View All Posts', 'Bo'); ?>
             </a>
         </div>
 
@@ -71,7 +71,7 @@ $blog_posts = new WP_Query(array(
                             </div>
 
                             <a href="<?php the_permalink(); ?>" class="blog-card__link">
-                                <?php esc_html_e('Read More', 'AAAPOS'); ?>
+                                <?php esc_html_e('Read More', 'Bo'); ?>
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                     <path fill-rule="evenodd" d="M1 8a.5.5 0 01.5-.5h11.793l-3.147-3.146a.5.5 0 01.708-.708l4 4a.5.5 0 010 .708l-4 4a.5.5 0 01-.708-.708L13.293 8.5H1.5A.5.5 0 011 8z" clip-rule="evenodd"/>
                                 </svg>
@@ -87,7 +87,7 @@ $blog_posts = new WP_Query(array(
             <p class="no-posts" 
                data-animate="fade-up" 
                data-animate-delay="200">
-                <?php esc_html_e('No blog posts found.', 'AAAPOS'); ?>
+                <?php esc_html_e('No blog posts found.', 'Bo'); ?>
             </p>
         <?php endif; ?>
     </div>

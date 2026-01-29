@@ -9,7 +9,7 @@
  * - Resource hints
  * - Auto-detection of production/development mode
  *
- * @package AAAPOS
+ * @package Bo
  * @since 1.0.0
  */
 
@@ -151,7 +151,7 @@ function mr_enqueue_styles()
 
     // Cart Notifications CSS
     wp_enqueue_style(
-        "aaapos-cart-notifications",
+        "Bo-cart-notifications",
         MR_THEME_URI . "/assets/css/cart-notifications.css",
         [],
         MR_THEME_VERSION,
@@ -184,7 +184,7 @@ function mr_enqueue_styles()
         );
 
         wp_enqueue_style(
-            "aaapos-checkout-progress",
+            "Bo-checkout-progress",
             get_template_directory_uri() .
                 "/assets/css/components/cart/checkout-progress.css",
             [],
@@ -195,7 +195,7 @@ function mr_enqueue_styles()
     // Order Received Page
     if (is_order_received_page()) {
         wp_enqueue_style(
-            "aaapos-order-received",
+            "Bo-order-received",
             get_template_directory_uri() .
                 "/assets/css/components/cart/order-received.css",
             [],
@@ -205,7 +205,7 @@ function mr_enqueue_styles()
 
     // Category cards styles
     wp_enqueue_style(
-        "aaapos-categories",
+        "Bo-categories",
         get_template_directory_uri() .
             "/assets/css/components/categories-shop.css",
         $is_production ? ["mr-main"] : ["mr-components"],
@@ -226,7 +226,7 @@ function mr_enqueue_styles()
     if (class_exists("WooCommerce")) {
         // Quick View Modal styles
         wp_enqueue_style(
-            "aaapos-quick-view",
+            "Bo-quick-view",
             MR_THEME_URI . "/assets/css/quick-view.css",
             [],
             MR_THEME_VERSION,
@@ -234,7 +234,7 @@ function mr_enqueue_styles()
     }
     // Variation Alert styles
     wp_enqueue_style(
-    'aaapos-variation-alert',
+    'Bo-variation-alert',
     get_template_directory_uri() . '/assets/css/variation-alert.css',
     array(),
     '1.0.0'
@@ -242,7 +242,7 @@ function mr_enqueue_styles()
 
 
 wp_enqueue_script(
-    'aaapos-variation-alert',
+    'Bo-variation-alert',
     get_template_directory_uri() . '/assets/js/variation-alert.js',
     array('jquery'),
     '1.0.0',
@@ -317,11 +317,11 @@ function mr_enqueue_scripts()
             "animationEnabled" => get_theme_mod("mr_enable_animations", true),
             "animationSpeed" => get_theme_mod("mr_animation_speed", "normal"),
             "i18n" => [
-                "loading" => esc_html__("Loading...", "aaapos-prime"),
-                "error" => esc_html__("An error occurred", "aaapos-prime"),
-                "close" => esc_html__("Close", "aaapos-prime"),
-                "search" => esc_html__("Search", "aaapos-prime"),
-                "noResults" => esc_html__("No results found", "aaapos-prime"),
+                "loading" => esc_html__("Loading...", "Bo-prime"),
+                "error" => esc_html__("An error occurred", "Bo-prime"),
+                "close" => esc_html__("Close", "Bo-prime"),
+                "search" => esc_html__("Search", "Bo-prime"),
+                "noResults" => esc_html__("No results found", "Bo-prime"),
             ],
         ]);
 
@@ -351,9 +351,9 @@ function mr_enqueue_scripts()
                 is_search() ||
                 is_front_page()
             ) {
-                wp_localize_script("mr-bundle", "aaaposQuickView", [
+                wp_localize_script("mr-bundle", "BoQuickView", [
                     "ajax_url" => admin_url("admin-ajax.php"),
-                    "nonce" => wp_create_nonce("aaapos_quick_view_nonce"),
+                    "nonce" => wp_create_nonce("Bo_quick_view_nonce"),
                 ]);
             }
         }
@@ -471,7 +471,7 @@ function mr_enqueue_scripts()
                 is_front_page()
             ) {
                 wp_enqueue_script(
-                    "aaapos-quick-view",
+                    "Bo-quick-view",
                     MR_THEME_URI . "/assets/js/quick-view.js",
                     ["jquery"],
                     MR_THEME_VERSION,
@@ -479,9 +479,9 @@ function mr_enqueue_scripts()
                 );
 
                 // Localize Quick View script
-                wp_localize_script("aaapos-quick-view", "aaaposQuickView", [
+                wp_localize_script("Bo-quick-view", "BoQuickView", [
                     "ajax_url" => admin_url("admin-ajax.php"),
-                    "nonce" => wp_create_nonce("aaapos_quick_view_nonce"),
+                    "nonce" => wp_create_nonce("Bo_quick_view_nonce"),
                 ]);
             }
 
@@ -507,7 +507,7 @@ function mr_enqueue_scripts()
             // Shop column toggle
             if (is_shop() || is_product_category() || is_product_tag()) {
                 wp_enqueue_script(
-                    "aaapos-shop-column-toggle",
+                    "Bo-shop-column-toggle",
                     get_template_directory_uri() .
                         "/assets/js/shop-column-toggle.js",
                     ["jquery"],
@@ -518,7 +518,7 @@ function mr_enqueue_scripts()
 
             // Category filter drag
             wp_enqueue_script(
-                "aaapos-category-filter-drag",
+                "Bo-category-filter-drag",
                 get_template_directory_uri() . "/assets/js/category-filter-drag.js",
                 [],
                 MR_THEME_VERSION,
@@ -528,7 +528,7 @@ function mr_enqueue_scripts()
             // Product Share - ONLY on single product pages
 if (is_product()) {
     wp_enqueue_script(
-        'aaapos-product-share',
+        'Bo-product-share',
         get_template_directory_uri() . '/assets/js/product-share.js',
         array('jquery'),
         MR_THEME_VERSION,
@@ -539,19 +539,19 @@ if (is_product()) {
 /**
  * Enqueue Checkout Shipping Visibility Handler
  */
-function aaapos_enqueue_checkout_shipping_handler() {
+function Bo_enqueue_checkout_shipping_handler() {
     // Only on checkout page
     if (is_checkout() && !is_order_received_page()) {
         wp_enqueue_script(
-            'aaapos-checkout-shipping-visibility',
+            'Bo-checkout-shipping-visibility',
             get_template_directory_uri() . '/assets/js/checkout-shipping.js',
             array('jquery', 'wc-checkout'),
-            AAAPOS_VERSION,
+            Bo_VERSION,
             true
         );
     }
 }
-add_action('wp_enqueue_scripts', 'aaapos_enqueue_checkout_shipping_handler', 1001);
+add_action('wp_enqueue_scripts', 'Bo_enqueue_checkout_shipping_handler', 1001);
             // Localize for cart.js and woocommerce.js
             wp_localize_script("mr-cart", "mr_ajax", [
                 "url" => admin_url("admin-ajax.php"),
@@ -573,11 +573,11 @@ add_action('wp_enqueue_scripts', 'aaapos_enqueue_checkout_shipping_handler', 100
             "animationEnabled" => get_theme_mod("mr_enable_animations", true),
             "animationSpeed" => get_theme_mod("mr_animation_speed", "normal"),
             "i18n" => [
-                "loading" => esc_html__("Loading...", "aaapos-prime"),
-                "error" => esc_html__("An error occurred", "aaapos-prime"),
-                "close" => esc_html__("Close", "aaapos-prime"),
-                "search" => esc_html__("Search", "aaapos-prime"),
-                "noResults" => esc_html__("No results found", "aaapos-prime"),
+                "loading" => esc_html__("Loading...", "Bo-prime"),
+                "error" => esc_html__("An error occurred", "Bo-prime"),
+                "close" => esc_html__("Close", "Bo-prime"),
+                "search" => esc_html__("Search", "Bo-prime"),
+                "noResults" => esc_html__("No results found", "Bo-prime"),
             ],
         ]);
     }
@@ -605,7 +605,7 @@ add_action('wp_enqueue_scripts', 'aaapos_enqueue_checkout_shipping_handler', 100
     // Deals Rotation Script - ALWAYS LOAD (Both production and development)
 if (is_front_page()) {
     wp_enqueue_script(
-        'aaapos-deals-rotation',
+        'Bo-deals-rotation',
         get_template_directory_uri() . '/assets/js/deals-rotation.js',
         array(), // REMOVE jQuery dependency - script is vanilla JS
         MR_THEME_VERSION,
@@ -632,8 +632,8 @@ if (is_front_page()) {
         "nonce" => wp_create_nonce("mr_auth_nonce"),
         "login_image" => $login_image_url,
         "has_custom_image" => $has_custom_image,
-        "login_subtitle" => get_theme_mod('auth_modal_login_subtitle', __('Welcome back! Please enter your details', 'aaapos')),
-        "register_subtitle" => get_theme_mod('auth_modal_register_subtitle', __('Create your account to get started', 'aaapos')),
+        "login_subtitle" => get_theme_mod('auth_modal_login_subtitle', __('Welcome back! Please enter your details', 'Bo')),
+        "register_subtitle" => get_theme_mod('auth_modal_register_subtitle', __('Create your account to get started', 'Bo')),
         "lost_password_url" => wp_lostpassword_url(),
     ]);
 
@@ -649,7 +649,7 @@ if (is_front_page()) {
         is_singular()
     ) {
         wp_enqueue_script(
-            "aaapos-cart-notifications",
+            "Bo-cart-notifications",
             MR_THEME_URI . "/assets/js/cart-notifications.js",
             ["jquery"],
             MR_THEME_VERSION,
@@ -660,7 +660,7 @@ if (is_front_page()) {
     // Checkout scripts - ONLY on checkout page (Not in bundle)
     if (is_checkout() && !is_order_received_page()) {
         wp_enqueue_script(
-            "aaapos-checkout",
+            "Bo-checkout",
             get_template_directory_uri() . "/assets/js/checkout.js",
             ["jquery", "wc-checkout"],
             MR_THEME_VERSION,
@@ -718,7 +718,7 @@ function mr_resource_hints($urls, $relation_type)
 }
 add_filter("wp_resource_hints", "mr_resource_hints", 10, 2);
 
-function aaapos_customizer_controls_assets()
+function Bo_customizer_controls_assets()
 {
     // Add custom CSS for the customizer panel if needed
     wp_add_inline_style(
@@ -728,7 +728,7 @@ function aaapos_customizer_controls_assets()
             border-radius: 4px;
         }
         
-        #accordion-panel-aaapos_colors_panel .accordion-section {
+        #accordion-panel-Bo_colors_panel .accordion-section {
             border-left: 3px solid #0ea5e9;
         }
         
@@ -740,7 +740,7 @@ function aaapos_customizer_controls_assets()
 }
 add_action(
     "customize_controls_enqueue_scripts",
-    "aaapos_customizer_controls_assets",
+    "Bo_customizer_controls_assets",
 );
 
 /**
@@ -862,10 +862,10 @@ function mr_script_loader_tag($tag, $handle, $src)
         "mr-header-scroll",
         "mr-variation-swatches",
         "mr-quantity-selector",
-        "aaapos-quick-view",
-        "aaapos-cart-notifications",
-        "aaapos-shop-column-toggle",
-        "aaapos-category-filter-drag",
+        "Bo-quick-view",
+        "Bo-cart-notifications",
+        "Bo-shop-column-toggle",
+        "Bo-category-filter-drag",
     ];
 
     if (in_array($handle, $async_scripts, true)) {
@@ -883,12 +883,12 @@ add_filter("script_loader_tag", "mr_script_loader_tag", 10, 3);
 /**
  * Enqueue WooCommerce Product Collection Block Styles
  */
-function aaapos_enqueue_woocommerce_blocks_styles()
+function Bo_enqueue_woocommerce_blocks_styles()
 {
     // Only load on pages that have WooCommerce blocks
     if (is_singular() || is_front_page() || is_page()) {
         wp_enqueue_style(
-            "aaapos-woocommerce-blocks",
+            "Bo-woocommerce-blocks",
             get_template_directory_uri() .
                 "/assets/css/woocommerce/woocommerce-blocks.css",
             [],
@@ -899,6 +899,6 @@ function aaapos_enqueue_woocommerce_blocks_styles()
 }
 add_action(
     "wp_enqueue_scripts",
-    "aaapos_enqueue_woocommerce_blocks_styles",
+    "Bo_enqueue_woocommerce_blocks_styles",
     999,
 );

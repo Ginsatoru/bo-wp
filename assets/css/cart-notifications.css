@@ -1,10 +1,10 @@
 /* ============================================
-   AAAPOS – CART NOTIFICATION
+   Bo – CART NOTIFICATION
    COMPACT ROW TOAST
    NOW WITH COUPON SUPPORT - ROW LAYOUT FOR TITLE
    ============================================ */
 
-.aaapos-cart-notification {
+.Bo-cart-notification {
   position: fixed;
   top: 120px;
   right: 24px;
@@ -33,20 +33,20 @@
 }
 
 /* Visible */
-.aaapos-cart-notification.is-active {
+.Bo-cart-notification.is-active {
   opacity: 1;
   transform: scale(1);
   pointer-events: auto;
 }
 
 /* Center slide */
-.aaapos-cart-notification.is-center {
+.Bo-cart-notification.is-center {
   right: 50%;
   transform: translateX(50%) scale(1);
 }
 
 /* Expanded (COMPACT) */
-.aaapos-cart-notification.is-expanded {
+.Bo-cart-notification.is-expanded {
   width: 520px;
   height: 60px;
   border-radius: 50px;
@@ -55,7 +55,7 @@
 }
 
 /* Tick */
-.aaapos-cart-tick {
+.Bo-cart-tick {
   width: 28px;
   height: 28px;
   display: flex;
@@ -64,19 +64,19 @@
   transition: opacity .25s ease, transform .25s ease;
 }
 
-.aaapos-cart-tick svg {
+.Bo-cart-tick svg {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-.is-expanded .aaapos-cart-tick {
+.is-expanded .Bo-cart-tick {
   opacity: 0;
   transform: scale(0.5);
 }
 
 /* Content row */
-.aaapos-cart-content.aaapos-cart-row {
+.Bo-cart-content.Bo-cart-row {
   position: absolute;
   inset: 0;
   padding: 0 20px;
@@ -88,13 +88,13 @@
   transition: opacity .3s ease, transform .3s ease;
 }
 
-.is-expanded .aaapos-cart-content {
+.is-expanded .Bo-cart-content {
   opacity: 1;
   transform: translateY(0);
 }
 
 /* Icon */
-.aaapos-cart-icon {
+.Bo-cart-icon {
   width: 32px;
   height: 32px;
   display: flex;
@@ -106,24 +106,24 @@
   flex-shrink: 0;
 }
 
-.aaapos-cart-icon svg {
+.Bo-cart-icon svg {
   width: 20px;
   height: 20px;
   display: block;
 }
 
 /* Coupon-specific icon styling */
-.aaapos-cart-icon--coupon {
+.Bo-cart-icon--coupon {
   background: var(--color-primary);
 }
 
-.aaapos-cart-icon--coupon svg {
+.Bo-cart-icon--coupon svg {
   width: 18px;
   height: 18px;
 }
 
 /* Text container - ROW LAYOUT */
-.aaapos-cart-text {
+.Bo-cart-text {
   display: flex;
   flex-direction: row; 
   align-items: center; 
@@ -133,7 +133,7 @@
 }
 
 /* Product Name */
-.aaapos-cart-product-name {
+.Bo-cart-product-name {
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--color-text-dark);
@@ -143,20 +143,20 @@
 }
 
 /* Status text */
-.aaapos-cart-status {
+.Bo-cart-status {
   font-size: 0.875rem;
   color: var(--color-text-light);
   white-space: nowrap;
 }
 
 /* Remove old title and description styles */
-.aaapos-cart-title,
-.aaapos-cart-desc {
+.Bo-cart-title,
+.Bo-cart-desc {
   display: none;
 }
 
 /* Title */
-.aaapos-cart-title {
+.Bo-cart-title {
   font-size: 0.85rem;
   font-weight: 600;
   white-space: nowrap;
@@ -166,7 +166,7 @@
 }
 
 /* Description */
-.aaapos-cart-desc {
+.Bo-cart-desc {
   font-size: 0.8rem;
   color: var(--color-text-light);
   white-space: nowrap;
@@ -176,14 +176,14 @@
 }
 
 /* Actions */
-.aaapos-cart-actions {
+.Bo-cart-actions {
   margin-left: auto;
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
 
-.aaapos-cart-view {
+.Bo-cart-view {
   padding: 6px 14px;
   border-radius: 999px;
   font-size: 0.8rem;
@@ -194,14 +194,14 @@
   white-space: nowrap;
 }
 
-.aaapos-cart-view:hover {
+.Bo-cart-view:hover {
   background: var(--color-primary-hover);
   transform: translateY(-1px);
   color: var(--color-white);
 }
 
 /* Close */
-.aaapos-cart-close {
+.Bo-cart-close {
   margin-left: 10px;
   font-size: 20px;
   cursor: pointer;
@@ -209,7 +209,7 @@
   flex-shrink: 0;
 }
 
-.aaapos-cart-close:hover {
+.Bo-cart-close:hover {
   color: var(--color-text-dark);
 }
 
@@ -219,62 +219,62 @@
 
 /* Tablet */
 @media (max-width: 768px) {
-  .aaapos-cart-notification {
+  .Bo-cart-notification {
     top: 100px;
     right: 16px;
     width: 50px;
     height: 50px;
   }
 
-  .aaapos-cart-tick {
+  .Bo-cart-tick {
     width: 24px;
     height: 24px;
   }
 
-  .aaapos-cart-notification.is-expanded {
+  .Bo-cart-notification.is-expanded {
     width: calc(100vw - 32px);
     max-width: 520px;
     height: 56px;
   }
 
-  .aaapos-cart-content.aaapos-cart-row {
+  .Bo-cart-content.Bo-cart-row {
     padding: 0 16px;
     gap: 10px;
   }
 
-  .aaapos-cart-icon {
+  .Bo-cart-icon {
     width: 28px;
     height: 28px;
   }
 
-  .aaapos-cart-icon svg {
+  .Bo-cart-icon svg {
     width: 16px;
     height: 16px;
   }
 
-  .aaapos-cart-icon--coupon svg {
+  .Bo-cart-icon--coupon svg {
     width: 15px;
     height: 15px;
   }
 
-  .aaapos-cart-text {
+  .Bo-cart-text {
     gap: 6px; /* Slightly smaller gap on tablet */
   }
 
-  .aaapos-cart-title {
+  .Bo-cart-title {
     font-size: 0.8rem;
   }
 
-  .aaapos-cart-desc {
+  .Bo-cart-desc {
     font-size: 0.75rem;
   }
 
-  .aaapos-cart-view {
+  .Bo-cart-view {
     padding: 5px 12px;
     font-size: 0.75rem;
   }
 
-  .aaapos-cart-close {
+  .Bo-cart-close {
     font-size: 18px;
     margin-left: 8px;
   }
@@ -282,19 +282,19 @@
 
 /* Mobile - Keep row layout */
 @media (max-width: 480px) {
-  .aaapos-cart-notification {
+  .Bo-cart-notification {
     top: 80px;
     right: 12px;
     width: 46px;
     height: 46px;
   }
 
-  .aaapos-cart-tick {
+  .Bo-cart-tick {
     width: 22px;
     height: 22px;
   }
 
-  .aaapos-cart-notification.is-expanded {
+  .Bo-cart-notification.is-expanded {
     width: calc(100vw - 24px);
     height: auto;
     min-height: 50px;
@@ -302,29 +302,29 @@
     padding: 8px 0;
   }
 
-  .aaapos-cart-content.aaapos-cart-row {
+  .Bo-cart-content.Bo-cart-row {
     padding: 0 12px;
     gap: 8px;
     flex-wrap: nowrap;
     justify-content: flex-start;
   }
 
-  .aaapos-cart-icon {
+  .Bo-cart-icon {
     width: 26px;
     height: 26px;
   }
 
-  .aaapos-cart-icon svg {
+  .Bo-cart-icon svg {
     width: 14px;
     height: 14px;
   }
 
-  .aaapos-cart-icon--coupon svg {
+  .Bo-cart-icon--coupon svg {
     width: 13px;
     height: 13px;
   }
 
-  .aaapos-cart-text {
+  .Bo-cart-text {
     display: flex;
     flex-direction: row; /* Maintain row layout on mobile */
     align-items: center;
@@ -333,31 +333,31 @@
     flex: 1;
   }
 
-  .aaapos-cart-title {
+  .Bo-cart-title {
     font-size: 0.7rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  .aaapos-cart-desc {
+  .Bo-cart-desc {
     font-size: 0.65rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  .aaapos-cart-actions {
+  .Bo-cart-actions {
     margin-left: auto;
     flex-shrink: 0;
   }
 
-  .aaapos-cart-view {
+  .Bo-cart-view {
     padding: 4px 10px;
     font-size: 0.7rem;
   }
 
-  .aaapos-cart-close {
+  .Bo-cart-close {
     font-size: 16px;
     margin-left: 6px;
   }
@@ -365,69 +365,69 @@
 
 /* Extra small screens */
 @media (max-width: 360px) {
-  .aaapos-cart-notification {
+  .Bo-cart-notification {
     width: 44px;
     height: 44px;
   }
 
-  .aaapos-cart-tick {
+  .Bo-cart-tick {
     width: 20px;
     height: 20px;
   }
 
-  .aaapos-cart-notification.is-expanded {
+  .Bo-cart-notification.is-expanded {
     height: auto;
     min-height: 48px;
     border-radius: 36px;
     padding: 8px 0;
   }
 
-  .aaapos-cart-content.aaapos-cart-row {
+  .Bo-cart-content.Bo-cart-row {
     padding: 0 10px;
     gap: 6px;
   }
 
-  .aaapos-cart-icon {
+  .Bo-cart-icon {
     width: 24px;
     height: 24px;
   }
 
-  .aaapos-cart-icon svg {
+  .Bo-cart-icon svg {
     width: 13px;
     height: 13px;
   }
 
-  .aaapos-cart-icon--coupon svg {
+  .Bo-cart-icon--coupon svg {
     width: 12px;
     height: 12px;
   }
 
-  .aaapos-cart-text {
+  .Bo-cart-text {
     flex: 1;
     min-width: 0;
     gap: 4px;
   }
 
-  .aaapos-cart-title {
+  .Bo-cart-title {
     font-size: 0.65rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  .aaapos-cart-desc {
+  .Bo-cart-desc {
     font-size: 0.6rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  .aaapos-cart-view {
+  .Bo-cart-view {
     padding: 4px 8px;
     font-size: 0.65rem;
   }
 
-  .aaapos-cart-close {
+  .Bo-cart-close {
     font-size: 14px;
     margin-left: 4px;
   }
@@ -435,11 +435,11 @@
 
 /* Very small screens - Optional: Hide description to save space */
 @media (max-width: 320px) {
-  .aaapos-cart-desc {
+  .Bo-cart-desc {
     display: none;
   }
 
-  .aaapos-cart-text {
+  .Bo-cart-text {
     justify-content: flex-start;
   }
 }

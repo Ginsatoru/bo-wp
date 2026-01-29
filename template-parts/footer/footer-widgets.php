@@ -3,7 +3,7 @@
  * Site Footer Template
  * template-parts/footer/site-footer.php
  * 
- * @package AAAPOS
+ * @package Bo
  */
 
 if (!defined('ABSPATH')) {
@@ -35,7 +35,7 @@ if (!defined('ABSPATH')) {
                 
                 <!-- Footer Menu -->
                 <?php if (get_theme_mod('footer_show_menu', true) && has_nav_menu('footer')) : ?>
-                    <nav class="footer-bottom-menu" aria-label="<?php esc_attr_e('Footer Navigation', 'aaapos-prime'); ?>">
+                    <nav class="footer-bottom-menu" aria-label="<?php esc_attr_e('Footer Navigation', 'Bo-prime'); ?>">
                         <?php
                         wp_nav_menu(array(
                             'theme_location' => 'footer',
@@ -57,23 +57,23 @@ if (!defined('ABSPATH')) {
                     // Define payment methods with their default images
                     $payment_methods = array(
                         'visa' => array(
-                            'name' => __('Visa', 'aaapos-prime'),
+                            'name' => __('Visa', 'Bo-prime'),
                             'default_image' => $assets_uri . 'payment-visa.png',
                         ),
                         'mastercard' => array(
-                            'name' => __('Mastercard', 'aaapos-prime'),
+                            'name' => __('Mastercard', 'Bo-prime'),
                             'default_image' => $assets_uri . 'payment-mastercard.png',
                         ),
                         'amex' => array(
-                            'name' => __('American Express', 'aaapos-prime'),
+                            'name' => __('American Express', 'Bo-prime'),
                             'default_image' => $assets_uri . 'payment-amex.png',
                         ),
                         'paypal' => array(
-                            'name' => __('PayPal', 'aaapos-prime'),
+                            'name' => __('PayPal', 'Bo-prime'),
                             'default_image' => $assets_uri . 'payment-paypal.png',
                         ),
                         'discover' => array(
-                            'name' => __('Discover', 'aaapos-prime'),
+                            'name' => __('Discover', 'Bo-prime'),
                             'default_image' => $assets_uri . 'payment-discover.png',
                         ),
                     );
@@ -91,7 +91,7 @@ if (!defined('ABSPATH')) {
                     if ($has_payment_methods) :
                 ?>
                     <div class="footer-payment-icons">
-                        <span class="payment-label"><?php esc_html_e('We Accept:', 'aaapos-prime'); ?></span>
+                        <span class="payment-label"><?php esc_html_e('We Accept:', 'Bo-prime'); ?></span>
                         <div class="payment-icons-list">
                             <?php foreach ($payment_methods as $key => $method) : 
                                 // Check if this specific payment method is enabled
@@ -139,7 +139,7 @@ if (!defined('ABSPATH')) {
         <button 
             id="back-to-top" 
             class="back-to-top back-to-top--<?php echo esc_attr($position); ?>" 
-            aria-label="<?php esc_attr_e('Back to top', 'aaapos-prime'); ?>"
+            aria-label="<?php esc_attr_e('Back to top', 'Bo-prime'); ?>"
             style="display: none;">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M18 15l-6-6-6 6"/>

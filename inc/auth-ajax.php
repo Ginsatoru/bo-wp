@@ -65,8 +65,8 @@ function mr_enqueue_auth_scripts() {
             'nonce'             => wp_create_nonce('mr_auth_nonce'),
             'lost_password_url' => wp_lostpassword_url(),
             'login_image'       => esc_url($login_image),
-            'login_subtitle'    => get_theme_mod('auth_modal_login_subtitle', __('Welcome back! Please enter your details', 'aaapos')),
-            'register_subtitle' => get_theme_mod('auth_modal_register_subtitle', __('Create your account to get started', 'aaapos')),
+            'login_subtitle'    => get_theme_mod('auth_modal_login_subtitle', __('Welcome back! Please enter your details', 'Bo')),
+            'register_subtitle' => get_theme_mod('auth_modal_register_subtitle', __('Create your account to get started', 'Bo')),
             'has_custom_image'  => (!empty($raw_image_value)) ? 'yes' : 'no',
         ));
     }
@@ -80,7 +80,7 @@ function mr_ajax_login() {
     // Verify nonce
     if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'mr_auth_nonce')) {
         wp_send_json_error(array(
-            'message' => __('Security check failed. Please refresh the page and try again.', 'aaapos')
+            'message' => __('Security check failed. Please refresh the page and try again.', 'Bo')
         ));
     }
 
@@ -92,7 +92,7 @@ function mr_ajax_login() {
     // Validate
     if (empty($username) || empty($password)) {
         wp_send_json_error(array(
-            'message' => __('Please fill in all required fields.', 'aaapos')
+            'message' => __('Please fill in all required fields.', 'Bo')
         ));
     }
 
@@ -107,13 +107,13 @@ function mr_ajax_login() {
 
     if (is_wp_error($user)) {
         wp_send_json_error(array(
-            'message' => __('Invalid username or password. Please try again.', 'aaapos')
+            'message' => __('Invalid username or password. Please try again.', 'Bo')
         ));
     }
 
     // Success
     wp_send_json_success(array(
-        'message' => __('Login successful! Redirecting...', 'aaapos'),
+        'message' => __('Login successful! Redirecting...', 'Bo'),
         'redirect' => get_permalink(get_option('woocommerce_myaccount_page_id'))
     ));
 }
@@ -126,14 +126,14 @@ function mr_ajax_register() {
     // Verify nonce
     if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'mr_auth_nonce')) {
         wp_send_json_error(array(
-            'message' => __('Security check failed. Please refresh the page and try again.', 'aaapos')
+            'message' => __('Security check failed. Please refresh the page and try again.', 'Bo')
         ));
     }
 
     // Check if registration is enabled
     if (!get_option('users_can_register')) {
         wp_send_json_error(array(
-            'message' => __('User registration is currently disabled.', 'aaapos')
+            'message' => __('User registration is currently disabled.', 'Bo')
         ));
     }
 
@@ -145,42 +145,42 @@ function mr_ajax_register() {
     // Validate
     if (empty($username) || empty($email) || empty($password)) {
         wp_send_json_error(array(
-            'message' => __('Please fill in all required fields.', 'aaapos')
+            'message' => __('Please fill in all required fields.', 'Bo')
         ));
     }
 
     // Validate username
     if (!validate_username($username)) {
         wp_send_json_error(array(
-            'message' => __('Invalid username. Only lowercase letters, numbers, and underscores are allowed.', 'aaapos')
+            'message' => __('Invalid username. Only lowercase letters, numbers, and underscores are allowed.', 'Bo')
         ));
     }
 
     // Check if username exists
     if (username_exists($username)) {
         wp_send_json_error(array(
-            'message' => __('This username is already taken. Please choose another one.', 'aaapos')
+            'message' => __('This username is already taken. Please choose another one.', 'Bo')
         ));
     }
 
     // Validate email
     if (!is_email($email)) {
         wp_send_json_error(array(
-            'message' => __('Please enter a valid email address.', 'aaapos')
+            'message' => __('Please enter a valid email address.', 'Bo')
         ));
     }
 
     // Check if email exists
     if (email_exists($email)) {
         wp_send_json_error(array(
-            'message' => __('This email is already registered. Please use another email or login.', 'aaapos')
+            'message' => __('This email is already registered. Please use another email or login.', 'Bo')
         ));
     }
 
     // Validate password strength (minimum 6 characters)
     if (strlen($password) < 6) {
         wp_send_json_error(array(
-            'message' => __('Password must be at least 6 characters long.', 'aaapos')
+            'message' => __('Password must be at least 6 characters long.', 'Bo')
         ));
     }
 
@@ -202,7 +202,7 @@ function mr_ajax_register() {
 
     // Success
     wp_send_json_success(array(
-        'message' => __('Registration successful! Welcome aboard!', 'aaapos'),
+        'message' => __('Registration successful! Welcome aboard!', 'Bo'),
         'redirect' => get_permalink(get_option('woocommerce_myaccount_page_id'))
     ));
 }

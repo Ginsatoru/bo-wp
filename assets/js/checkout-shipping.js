@@ -4,7 +4,7 @@
  * 
  * FILE: assets/js/checkout-shipping.js
  * 
- * @package aaapos-prime
+ * @package Bo-prime
  */
 
 (function($) {
@@ -247,7 +247,7 @@
     });
 
     // Expose functions globally for manual triggering if needed
-    window.aaaposUpdateShippingVisibility = updateShippingVisibility;
-    window.aaaposTriggerCheckoutUpdate = triggerCheckoutUpdate;
+    window.BoUpdateShippingVisibility = updateShippingVisibility;
+    window.BoTriggerCheckoutUpdate = triggerCheckoutUpdate;
 
 })(jQuery);

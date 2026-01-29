@@ -2,7 +2,7 @@
  * Footer JavaScript
  * Back to Top button and footer interactions
  * 
- * @package aaapos-prime
+ * @package Bo-prime
  * @since 1.0.0
  */
 

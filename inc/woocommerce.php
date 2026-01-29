@@ -15,14 +15,14 @@ if (!defined("ABSPATH")) {
 /**
  * Add WooCommerce Support
  */
-function aaapos_woocommerce_setup()
+function Bo_woocommerce_setup()
 {
     add_theme_support("woocommerce");
     add_theme_support("wc-product-gallery-zoom");
     add_theme_support("wc-product-gallery-lightbox");
     add_theme_support("wc-product-gallery-slider");
 }
-add_action("after_setup_theme", "aaapos_woocommerce_setup");
+add_action("after_setup_theme", "Bo_woocommerce_setup");
 /**
  * Reorganize single product layout
  */
@@ -44,10 +44,10 @@ add_filter('woocommerce_add_to_cart_redirect', '__return_false');
  * AJAX Handler: Add to Cart for Single Product Page (Simple + Variable)
  * This handles AJAX add-to-cart from single product pages
  */
-add_action('wp_ajax_woocommerce_ajax_add_to_cart', 'aaapos_ajax_add_to_cart_handler');
-add_action('wp_ajax_nopriv_woocommerce_ajax_add_to_cart', 'aaapos_ajax_add_to_cart_handler');
+add_action('wp_ajax_woocommerce_ajax_add_to_cart', 'Bo_ajax_add_to_cart_handler');
+add_action('wp_ajax_nopriv_woocommerce_ajax_add_to_cart', 'Bo_ajax_add_to_cart_handler');
 
-function aaapos_ajax_add_to_cart_handler() {
+function Bo_ajax_add_to_cart_handler() {
     // Check if WooCommerce is active
     if (!function_exists('WC')) {
         wp_send_json_error(array('message' => 'WooCommerce not active'));
@@ -127,7 +127,7 @@ function aaapos_ajax_add_to_cart_handler() {
     <span class="cart-item-count">
         <?php 
         echo esc_html($cart_count) . ' ';
-        echo $cart_count === 1 ? esc_html__('item', 'aaapos') : esc_html__('items', 'aaapos'); 
+        echo $cart_count === 1 ? esc_html__('item', 'Bo') : esc_html__('items', 'Bo'); 
         ?>
     </span>
     <?php
@@ -171,7 +171,7 @@ function aaapos_ajax_add_to_cart_handler() {
                     <span class="cart-item-price"><?php echo WC()->cart->get_product_price($_product); ?></span>
                 </div>
             </div>
-            <button type="button" class="cart-item-remove" data-cart-item-key="<?php echo esc_attr($cart_item_key_loop); ?>" aria-label="<?php esc_attr_e('Remove item', 'aaapos'); ?>">
+            <button type="button" class="cart-item-remove" data-cart-item-key="<?php echo esc_attr($cart_item_key_loop); ?>" aria-label="<?php esc_attr_e('Remove item', 'Bo'); ?>">
                 <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
                 </svg>
@@ -181,7 +181,7 @@ function aaapos_ajax_add_to_cart_handler() {
         endforeach;
     else: ?>
         <li class="cart-dropdown-empty">
-            <p><?php esc_html_e('Your cart is empty.', 'aaapos'); ?></p>
+            <p><?php esc_html_e('Your cart is empty.', 'Bo'); ?></p>
         </li>
     <?php endif;
     $fragments['.cart-dropdown-items'] = ob_get_clean();
@@ -204,7 +204,7 @@ function aaapos_ajax_add_to_cart_handler() {
  *
  * @return string Image URL
  */
-function aaapos_get_shop_header_bg_image()
+function Bo_get_shop_header_bg_image()
 {
     // Get customizer setting
     $custom_image = get_theme_mod("shop_header_bg_image", "");
@@ -247,7 +247,7 @@ function custom_add_stock_to_meta() {
  * Shows how many people have added this product to their cart
  * Displays as a full-width bar below the purchase group
  */
-function aaapos_display_cart_activity() {
+function Bo_display_cart_activity() {
     global $product;
     
     if (!$product) {
@@ -287,31 +287,31 @@ function aaapos_display_cart_activity() {
         </svg>
         <span class="product-cart-activity__text">
             <span class="product-cart-activity__count"><?php echo esc_html($cart_count); ?></span>
-            <?php esc_html_e(' people have added this product to their cart', 'aaapos'); ?>
+            <?php esc_html_e(' people have added this product to their cart', 'Bo'); ?>
         </span>
     </div>
     <?php
 }
 
 // Add new hook to display after the entire purchase group
-add_action('woocommerce_after_add_to_cart_form', 'aaapos_display_cart_activity', 10);
+add_action('woocommerce_after_add_to_cart_form', 'Bo_display_cart_activity', 10);
 
 /**
  * Increment cart activity count when product is added to cart
  */
-function aaapos_track_cart_activity($cart_item_key, $product_id) {
+function Bo_track_cart_activity($cart_item_key, $product_id) {
     $current_count = (int) get_post_meta($product_id, '_cart_activity_count', true);
     $new_count = max(1, $current_count + 1);
     update_post_meta($product_id, '_cart_activity_count', $new_count);
 }
-add_action('woocommerce_add_to_cart', 'aaapos_track_cart_activity', 10, 2);
+add_action('woocommerce_add_to_cart', 'Bo_track_cart_activity', 10, 2);
 
 /**
  * Display Product Trust Badges / Benefits
  * Shows shipping, returns, and other trust signals below product meta
  * Now customizable via WordPress Customizer
  */
-function aaapos_display_product_trust_badges() {
+function Bo_display_product_trust_badges() {
     
     // Check if trust badges are enabled
     if (!get_theme_mod('show_trust_badges', true)) {
@@ -319,9 +319,9 @@ function aaapos_display_product_trust_badges() {
     }
     
     // Get badge texts from customizer
-    $badge_1_text = get_theme_mod('trust_badge_1_text', __('Free shipping on all orders over $100', 'aaapos'));
-    $badge_2_text = get_theme_mod('trust_badge_2_text', __('14 days easy refund & returns', 'aaapos'));
-    $badge_3_text = get_theme_mod('trust_badge_3_text', __('Product taxes and customs duties included', 'aaapos'));
+    $badge_1_text = get_theme_mod('trust_badge_1_text', __('Free shipping on all orders over $100', 'Bo'));
+    $badge_2_text = get_theme_mod('trust_badge_2_text', __('14 days easy refund & returns', 'Bo'));
+    $badge_3_text = get_theme_mod('trust_badge_3_text', __('Product taxes and customs duties included', 'Bo'));
     
     $badge_1_enable = get_theme_mod('trust_badge_1_enable', true);
     $badge_2_enable = get_theme_mod('trust_badge_2_enable', true);
@@ -365,14 +365,14 @@ function aaapos_display_product_trust_badges() {
 }
 
 // Hook after product meta section
-add_action('woocommerce_single_product_summary', 'aaapos_display_product_trust_badges', 45);
+add_action('woocommerce_single_product_summary', 'Bo_display_product_trust_badges', 45);
 
 /**
  * Display Secure Payment Badges
  * Shows payment method icons below trust badges
  * Uses the same payment icons as footer for consistency
  */
-function aaapos_display_secure_payment_badges() {
+function Bo_display_secure_payment_badges() {
     
     // Check if secure payments are enabled
     if (!get_theme_mod('show_secure_payments', true)) {
@@ -380,7 +380,7 @@ function aaapos_display_secure_payment_badges() {
     }
     
     // Get title from customizer
-    $title = get_theme_mod('secure_payments_title', __('Secure payments:', 'aaapos'));
+    $title = get_theme_mod('secure_payments_title', __('Secure payments:', 'Bo'));
     
     // Payment cards mapping
     $payment_cards = array(
@@ -448,7 +448,7 @@ function aaapos_display_secure_payment_badges() {
         <span class="secure-payments-title"><?php echo esc_html($title); ?></span>
         <div class="payment-icons-wrapper">
             <?php foreach ($payment_icons as $icon_url): ?>
-                <img src="<?php echo esc_url($icon_url); ?>" alt="<?php esc_attr_e('Payment method', 'aaapos'); ?>" class="payment-icon">
+                <img src="<?php echo esc_url($icon_url); ?>" alt="<?php esc_attr_e('Payment method', 'Bo'); ?>" class="payment-icon">
             <?php endforeach; ?>
         </div>
     </div>
@@ -456,26 +456,26 @@ function aaapos_display_secure_payment_badges() {
 }
 
 // Hook it after trust badges
-add_action('woocommerce_single_product_summary', 'aaapos_display_secure_payment_badges', 46);
+add_action('woocommerce_single_product_summary', 'Bo_display_secure_payment_badges', 46);
 
 
 /**
  * Custom Review Layout - Works WITH WooCommerce Tabs
  * Replace the previous code in: inc/woocommerce.php
  * 
- * @package AAAPOS_Prime
+ * @package Bo_Prime
  * @version 2.0.4
  */
 
 /**
  * Modify the reviews tab content
  */
-add_filter('woocommerce_product_tabs', 'aaapos_customize_reviews_tab', 98);
+add_filter('woocommerce_product_tabs', 'Bo_customize_reviews_tab', 98);
 
-function aaapos_customize_reviews_tab($tabs) {
+function Bo_customize_reviews_tab($tabs) {
     if (isset($tabs['reviews'])) {
         // Replace the callback for reviews tab
-        $tabs['reviews']['callback'] = 'aaapos_custom_reviews_tab_content';
+        $tabs['reviews']['callback'] = 'Bo_custom_reviews_tab_content';
     }
     return $tabs;
 }
@@ -483,7 +483,7 @@ function aaapos_customize_reviews_tab($tabs) {
 /**
  * Custom reviews tab content
  */
-function aaapos_custom_reviews_tab_content() {
+function Bo_custom_reviews_tab_content() {
     global $product;
     
     if (!comments_open()) {
@@ -518,7 +518,7 @@ function aaapos_custom_reviews_tab_content() {
                     </div>
                     
                     <div class="summary-rating-count">
-                        (<?php echo $rating_count; ?> <?php echo _n('Rating', 'Ratings', $rating_count, 'aaapos'); ?>)
+                        (<?php echo $rating_count; ?> <?php echo _n('Rating', 'Ratings', $rating_count, 'Bo'); ?>)
                     </div>
                 </div>
                 
@@ -547,13 +547,13 @@ function aaapos_custom_reviews_tab_content() {
                     $commenter = wp_get_current_commenter();
                     
                     $comment_form = array(
-                        'title_reply'          => esc_html__('Add a review', 'aaapos'),
-                        'title_reply_to'       => esc_html__('Leave a Reply to %s', 'aaapos'),
+                        'title_reply'          => esc_html__('Add a review', 'Bo'),
+                        'title_reply_to'       => esc_html__('Leave a Reply to %s', 'Bo'),
                         'title_reply_before'   => '<h3 id="reply-title" class="comment-reply-title">',
                         'title_reply_after'    => '</h3>',
-                        'comment_notes_before' => '<p class="comment-notes">' . esc_html__('Your email address will not be published. Required fields are marked', 'aaapos') . ' <span class="required">*</span></p>',
+                        'comment_notes_before' => '<p class="comment-notes">' . esc_html__('Your email address will not be published. Required fields are marked', 'Bo') . ' <span class="required">*</span></p>',
                         'comment_notes_after'  => '',
-                        'label_submit'         => esc_html__('Submit', 'aaapos'),
+                        'label_submit'         => esc_html__('Submit', 'Bo'),
                         'logged_in_as'         => '',
                         'comment_field'        => '',
                         'submit_button'        => '<button type="submit" class="submit">%4$s</button>',
@@ -562,7 +562,7 @@ function aaapos_custom_reviews_tab_content() {
                     
                     $account_page_url = wc_get_page_permalink('myaccount');
                     if ($account_page_url) {
-                        $comment_form['must_log_in'] = '<p class="must-log-in">' . sprintf(esc_html__('You must be %1$slogged in%2$s to post a review.', 'aaapos'), '<a href="' . esc_url($account_page_url) . '">', '</a>') . '</p>';
+                        $comment_form['must_log_in'] = '<p class="must-log-in">' . sprintf(esc_html__('You must be %1$slogged in%2$s to post a review.', 'Bo'), '<a href="' . esc_url($account_page_url) . '">', '</a>') . '</p>';
                     }
                     
                     comment_form(apply_filters('woocommerce_product_review_comment_form_args', $comment_form));
@@ -577,9 +577,9 @@ function aaapos_custom_reviews_tab_content() {
             <h2 class="woocommerce-Reviews-title">
                 <?php
                 if ($review_count && wc_review_ratings_enabled()) {
-                    printf(esc_html(_n('%1$s review for %2$s', '%1$s reviews for %2$s', $review_count, 'aaapos')), esc_html($review_count), '<span>' . get_the_title() . '</span>');
+                    printf(esc_html(_n('%1$s review for %2$s', '%1$s reviews for %2$s', $review_count, 'Bo')), esc_html($review_count), '<span>' . get_the_title() . '</span>');
                 } else {
-                    esc_html_e('Reviews', 'aaapos');
+                    esc_html_e('Reviews', 'Bo');
                 }
                 ?>
             </h2>
@@ -595,7 +595,7 @@ function aaapos_custom_reviews_tab_content() {
             if ($comments) : ?>
                 <ol class="commentlist">
                     <?php wp_list_comments(apply_filters('woocommerce_product_review_list_args', array(
-                        'callback' => 'aaapos_custom_review_callback',
+                        'callback' => 'Bo_custom_review_callback',
                         'style'    => 'ol',
                         'per_page' => -1,
                     )), $comments); ?>
@@ -613,7 +613,7 @@ function aaapos_custom_reviews_tab_content() {
                 endif;
                 ?>
             <?php else : ?>
-                <p class="woocommerce-noreviews"><?php esc_html_e('There are no reviews yet.', 'aaapos'); ?></p>
+                <p class="woocommerce-noreviews"><?php esc_html_e('There are no reviews yet.', 'Bo'); ?></p>
             <?php endif; ?>
         </div>
         
@@ -624,7 +624,7 @@ function aaapos_custom_reviews_tab_content() {
 /**
  * Custom review callback - Restructured layout
  */
-function aaapos_custom_review_callback($comment, $args, $depth) {
+function Bo_custom_review_callback($comment, $args, $depth) {
     $GLOBALS['comment'] = $comment;
     
     $rating = intval(get_comment_meta($comment->comment_ID, 'rating', true));
@@ -645,7 +645,7 @@ function aaapos_custom_review_callback($comment, $args, $depth) {
                         
                         <?php if ($verified) : ?>
                             <em class="woocommerce-review__verified verified">
-                                <?php esc_html_e('(verified owner)', 'aaapos'); ?>
+                                <?php esc_html_e('(verified owner)', 'Bo'); ?>
                             </em>
                         <?php endif; ?>
                         
@@ -657,7 +657,7 @@ function aaapos_custom_review_callback($comment, $args, $depth) {
                     <?php if ($rating && wc_review_ratings_enabled()) : ?>
                         <div class="review-stars-right">
                             <?php
-                            echo '<div class="star-rating" role="img" aria-label="' . sprintf(esc_attr__('Rated %d out of 5', 'aaapos'), $rating) . '">';
+                            echo '<div class="star-rating" role="img" aria-label="' . sprintf(esc_attr__('Rated %d out of 5', 'Bo'), $rating) . '">';
                             for ($i = 1; $i <= 5; $i++) {
                                 if ($i <= $rating) {
                                     echo '<span class="star filled">★</span>';
@@ -685,24 +685,24 @@ function aaapos_custom_review_callback($comment, $args, $depth) {
 /**
  * Customize comment form fields
  */
-add_filter('comment_form_default_fields', 'aaapos_custom_comment_fields');
+add_filter('comment_form_default_fields', 'Bo_custom_comment_fields');
 
-function aaapos_custom_comment_fields($fields) {
+function Bo_custom_comment_fields($fields) {
     $commenter = wp_get_current_commenter();
     
     $fields['author'] = '<div class="comment-form-author">
-        <label for="author">' . esc_html__('Name', 'aaapos') . ' <span class="required">*</span></label>
-        <input id="author" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" required placeholder="' . esc_attr__('Enter your name', 'aaapos') . '" />
+        <label for="author">' . esc_html__('Name', 'Bo') . ' <span class="required">*</span></label>
+        <input id="author" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" required placeholder="' . esc_attr__('Enter your name', 'Bo') . '" />
     </div>';
     
     $fields['email'] = '<div class="comment-form-email">
-        <label for="email">' . esc_html__('Email', 'aaapos') . ' <span class="required">*</span></label>
-        <input id="email" name="email" type="email" value="' . esc_attr($commenter['comment_author_email']) . '" required placeholder="' . esc_attr__('Enter your email', 'aaapos') . '" />
+        <label for="email">' . esc_html__('Email', 'Bo') . ' <span class="required">*</span></label>
+        <input id="email" name="email" type="email" value="' . esc_attr($commenter['comment_author_email']) . '" required placeholder="' . esc_attr__('Enter your email', 'Bo') . '" />
     </div>';
     
     $fields['cookies'] = '<div class="comment-form-cookies-consent">
         <input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" />
-        <label for="wp-comment-cookies-consent">' . esc_html__('Save my name, email, and website in this browser for the next time I comment.', 'aaapos') . '</label>
+        <label for="wp-comment-cookies-consent">' . esc_html__('Save my name, email, and website in this browser for the next time I comment.', 'Bo') . '</label>
     </div>';
     
     unset($fields['url']);
@@ -713,37 +713,37 @@ function aaapos_custom_comment_fields($fields) {
 /**
  * Add rating field and comment field
  */
-add_filter('woocommerce_product_review_comment_form_args', 'aaapos_add_rating_and_comment_field');
+add_filter('woocommerce_product_review_comment_form_args', 'Bo_add_rating_and_comment_field');
 
-function aaapos_add_rating_and_comment_field($comment_form) {
+function Bo_add_rating_and_comment_field($comment_form) {
     $comment_form['comment_field'] = '<div class="comment-form-rating">
-        <label for="rating">' . esc_html__('Your rating', 'aaapos') . ' <span class="required">*</span></label>
+        <label for="rating">' . esc_html__('Your rating', 'Bo') . ' <span class="required">*</span></label>
         <div class="stars-rating-input">
             <input type="radio" id="rating-5" name="rating" value="5" required />
-            <label for="rating-5" title="' . esc_attr__('5 stars', 'aaapos') . '">★</label>
+            <label for="rating-5" title="' . esc_attr__('5 stars', 'Bo') . '">★</label>
             
             <input type="radio" id="rating-4" name="rating" value="4" />
-            <label for="rating-4" title="' . esc_attr__('4 stars', 'aaapos') . '">★</label>
+            <label for="rating-4" title="' . esc_attr__('4 stars', 'Bo') . '">★</label>
             
             <input type="radio" id="rating-3" name="rating" value="3" />
-            <label for="rating-3" title="' . esc_attr__('3 stars', 'aaapos') . '">★</label>
+            <label for="rating-3" title="' . esc_attr__('3 stars', 'Bo') . '">★</label>
             
             <input type="radio" id="rating-2" name="rating" value="2" />
-            <label for="rating-2" title="' . esc_attr__('2 stars', 'aaapos') . '">★</label>
+            <label for="rating-2" title="' . esc_attr__('2 stars', 'Bo') . '">★</label>
             
             <input type="radio" id="rating-1" name="rating" value="1" />
-            <label for="rating-1" title="' . esc_attr__('1 star', 'aaapos') . '">★</label>
+            <label for="rating-1" title="' . esc_attr__('1 star', 'Bo') . '">★</label>
         </div>
     </div>
     
     <div class="comment-form-comment">
-        <label for="comment">' . esc_html__('Your review', 'aaapos') . ' <span class="required">*</span></label>
-        <textarea id="comment" name="comment" cols="45" rows="8" required placeholder="' . esc_attr__('Share your experience with this product...', 'aaapos') . '"></textarea>
+        <label for="comment">' . esc_html__('Your review', 'Bo') . ' <span class="required">*</span></label>
+        <textarea id="comment" name="comment" cols="45" rows="8" required placeholder="' . esc_attr__('Share your experience with this product...', 'Bo') . '"></textarea>
     </div>
     
     <div class="comment-form-captcha">
         <label for="captcha">6 + 10 = ?</label>
-        <input id="captcha" name="captcha" type="text" required placeholder="' . esc_attr__('Enter answer', 'aaapos') . '" />
+        <input id="captcha" name="captcha" type="text" required placeholder="' . esc_attr__('Enter answer', 'Bo') . '" />
     </div>';
     
     return $comment_form;
@@ -752,9 +752,9 @@ function aaapos_add_rating_and_comment_field($comment_form) {
 /**
  * Hide default rating select field
  */
-add_action('wp_head', 'aaapos_hide_default_rating_field');
+add_action('wp_head', 'Bo_hide_default_rating_field');
 
-function aaapos_hide_default_rating_field() {
+function Bo_hide_default_rating_field() {
     if (!is_product()) {
         return;
     }
@@ -773,7 +773,7 @@ function aaapos_hide_default_rating_field() {
  * Shows Facebook, X (Twitter), Pinterest, WhatsApp, Telegram, Email, and Copy Link buttons
  * WITH TOOLTIP LABELS
  */
-function aaapos_display_product_share_buttons() {
+function Bo_display_product_share_buttons() {
     global $product;
     
     // Check if feature is enabled in customizer
@@ -804,7 +804,7 @@ function aaapos_display_product_share_buttons() {
     $email_url = 'mailto:?subject=' . $encoded_title . '&body=' . $encoded_url;
     
     // Get customizable title
-    $share_title = get_theme_mod('product_share_title', __('Share this post', 'aaapos'));
+    $share_title = get_theme_mod('product_share_title', __('Share this post', 'Bo'));
     
     ?>
     <div class="product-share-section">
@@ -816,8 +816,8 @@ function aaapos_display_product_share_buttons() {
                class="share-button share-button--facebook" 
                target="_blank" 
                rel="noopener noreferrer"
-               data-tooltip="<?php esc_attr_e('Share on Facebook', 'aaapos'); ?>"
-               aria-label="<?php esc_attr_e('Share on Facebook', 'aaapos'); ?>">
+               data-tooltip="<?php esc_attr_e('Share on Facebook', 'Bo'); ?>"
+               aria-label="<?php esc_attr_e('Share on Facebook', 'Bo'); ?>">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                 </svg>
@@ -828,8 +828,8 @@ function aaapos_display_product_share_buttons() {
                class="share-button share-button--twitter" 
                target="_blank" 
                rel="noopener noreferrer"
-               data-tooltip="<?php esc_attr_e('Share on X', 'aaapos'); ?>"
-               aria-label="<?php esc_attr_e('Share on X', 'aaapos'); ?>">
+               data-tooltip="<?php esc_attr_e('Share on X', 'Bo'); ?>"
+               aria-label="<?php esc_attr_e('Share on X', 'Bo'); ?>">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                 </svg>
@@ -840,8 +840,8 @@ function aaapos_display_product_share_buttons() {
                class="share-button share-button--pinterest" 
                target="_blank" 
                rel="noopener noreferrer"
-               data-tooltip="<?php esc_attr_e('Share on Pinterest', 'aaapos'); ?>"
-               aria-label="<?php esc_attr_e('Share on Pinterest', 'aaapos'); ?>">
+               data-tooltip="<?php esc_attr_e('Share on Pinterest', 'Bo'); ?>"
+               aria-label="<?php esc_attr_e('Share on Pinterest', 'Bo'); ?>">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/>
                 </svg>
@@ -852,8 +852,8 @@ function aaapos_display_product_share_buttons() {
                class="share-button share-button--whatsapp" 
                target="_blank" 
                rel="noopener noreferrer"
-               data-tooltip="<?php esc_attr_e('Share on WhatsApp', 'aaapos'); ?>"
-               aria-label="<?php esc_attr_e('Share on WhatsApp', 'aaapos'); ?>">
+               data-tooltip="<?php esc_attr_e('Share on WhatsApp', 'Bo'); ?>"
+               aria-label="<?php esc_attr_e('Share on WhatsApp', 'Bo'); ?>">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                 </svg>
@@ -864,8 +864,8 @@ function aaapos_display_product_share_buttons() {
                class="share-button share-button--telegram" 
                target="_blank" 
                rel="noopener noreferrer"
-               data-tooltip="<?php esc_attr_e('Share on Telegram', 'aaapos'); ?>"
-               aria-label="<?php esc_attr_e('Share on Telegram', 'aaapos'); ?>">
+               data-tooltip="<?php esc_attr_e('Share on Telegram', 'Bo'); ?>"
+               aria-label="<?php esc_attr_e('Share on Telegram', 'Bo'); ?>">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
                 </svg>
@@ -874,8 +874,8 @@ function aaapos_display_product_share_buttons() {
             <!-- Email -->
             <a href="<?php echo esc_url($email_url); ?>" 
                class="share-button share-button--email"
-               data-tooltip="<?php esc_attr_e('Share via Email', 'aaapos'); ?>"
-               aria-label="<?php esc_attr_e('Share via Email', 'aaapos'); ?>">
+               data-tooltip="<?php esc_attr_e('Share via Email', 'Bo'); ?>"
+               aria-label="<?php esc_attr_e('Share via Email', 'Bo'); ?>">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                 </svg>
@@ -885,8 +885,8 @@ function aaapos_display_product_share_buttons() {
             <button type="button" 
                     class="share-button share-button--copy" 
                     data-url="<?php echo esc_attr($product_url); ?>"
-                    data-tooltip="<?php esc_attr_e('Copy link', 'aaapos'); ?>"
-                    aria-label="<?php esc_attr_e('Copy link', 'aaapos'); ?>">
+                    data-tooltip="<?php esc_attr_e('Copy link', 'Bo'); ?>"
+                    aria-label="<?php esc_attr_e('Copy link', 'Bo'); ?>">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
                 </svg>
@@ -897,7 +897,7 @@ function aaapos_display_product_share_buttons() {
 }
 
 // Hook it after secure payment badges (priority 47)
-add_action('woocommerce_single_product_summary', 'aaapos_display_product_share_buttons', 47);
+add_action('woocommerce_single_product_summary', 'Bo_display_product_share_buttons', 47);
 
 /**
  * Display Product Navigation (Previous/Next + Return to Shop)
@@ -913,9 +913,9 @@ add_action('woocommerce_single_product_summary', 'aaapos_display_product_share_b
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
 
 // Add custom title with navigation wrapper
-add_action('woocommerce_single_product_summary', 'aaapos_product_title_with_navigation', 5);
+add_action('woocommerce_single_product_summary', 'Bo_product_title_with_navigation', 5);
 
-function aaapos_product_title_with_navigation() {
+function Bo_product_title_with_navigation() {
     global $post;
     
     // Get adjacent products (in same category for better relevance)
@@ -944,7 +944,7 @@ function aaapos_product_title_with_navigation() {
                 ?>
                     <a href="<?php echo esc_url(get_permalink($prev_post->ID)); ?>" 
                        class="product-nav-btn product-nav-prev"
-                       aria-label="<?php esc_attr_e('Previous product', 'aaapos'); ?>">
+                       aria-label="<?php esc_attr_e('Previous product', 'Bo'); ?>">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M15 18l-6-6 6-6"/>
                         </svg>
@@ -970,7 +970,7 @@ function aaapos_product_title_with_navigation() {
                 <!-- Products Grid Button (Return to shop) -->
                 <a href="<?php echo esc_url($shop_url); ?>" 
                    class="product-nav-btn product-nav-grid"
-                   aria-label="<?php esc_attr_e('View all products', 'aaapos'); ?>">
+                   aria-label="<?php esc_attr_e('View all products', 'Bo'); ?>">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <rect x="3" y="3" width="7" height="7" rx="1"/>
                         <rect x="14" y="3" width="7" height="7" rx="1"/>
@@ -988,7 +988,7 @@ function aaapos_product_title_with_navigation() {
                 ?>
                     <a href="<?php echo esc_url(get_permalink($next_post->ID)); ?>" 
                        class="product-nav-btn product-nav-next"
-                       aria-label="<?php esc_attr_e('Next product', 'aaapos'); ?>">
+                       aria-label="<?php esc_attr_e('Next product', 'Bo'); ?>">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9 18l6-6-6-6"/>
                         </svg>
@@ -1019,7 +1019,7 @@ function aaapos_product_title_with_navigation() {
 }
 
 // Add custom title with navigation wrapper
-add_action('woocommerce_single_product_summary', 'aaapos_product_title_with_navigation', 5);
+add_action('woocommerce_single_product_summary', 'Bo_product_title_with_navigation', 5);
 
 /**
  * REPLACE TEXT RATINGS WITH STAR ICONS
@@ -1039,7 +1039,7 @@ remove_action(
 /**
  * Add Custom Star Rating to Product Loop (Shop/Archive Pages)
  */
-function aaapos_custom_loop_rating()
+function Bo_custom_loop_rating()
 {
     global $product;
 
@@ -1059,7 +1059,7 @@ function aaapos_custom_loop_rating()
     <div class="product-rating">
         <div class="rating-stars" aria-label="<?php echo esc_attr(
             sprintf(
-                __("Rated %s out of 5", "aaapos-prime"),
+                __("Rated %s out of 5", "Bo-prime"),
                 number_format($average_rating, 2),
             ),
         ); ?>">
@@ -1093,7 +1093,7 @@ function aaapos_custom_loop_rating()
 }
 add_action(
     "woocommerce_after_shop_loop_item_title",
-    "aaapos_custom_loop_rating",
+    "Bo_custom_loop_rating",
     5,
 );
 
@@ -1102,8 +1102,8 @@ add_action(
  * Updated version with proper folder icon SVGs
  */
 
-if (!function_exists("aaapos_render_category_filter")) {
-    function aaapos_render_category_filter()
+if (!function_exists("Bo_render_category_filter")) {
+    function Bo_render_category_filter()
     {
         // Check if we're on shop or category page
         if (!is_shop() && !is_product_category()) {
@@ -1190,7 +1190,7 @@ if (!function_exists("aaapos_render_category_filter")) {
                     <div class="filter-content">
                         <span class="filter-label"><?php esc_html_e(
                             "All Products",
-                            "aaapos-prime",
+                            "Bo-prime",
                         ); ?></span>
                         <span class="filter-count"><?php printf(
                             esc_html(
@@ -1198,7 +1198,7 @@ if (!function_exists("aaapos_render_category_filter")) {
                                     "%s Item",
                                     "%s Items",
                                     $all_products_count,
-                                    "aaapos-prime",
+                                    "Bo-prime",
                                 ),
                             ),
                             number_format_i18n($all_products_count),
@@ -1245,7 +1245,7 @@ if (!function_exists("aaapos_render_category_filter")) {
                                     "%s Item",
                                     "%s Items",
                                     $product_count,
-                                    "aaapos-prime",
+                                    "Bo-prime",
                                 ),
                             ),
                             number_format_i18n($product_count),
@@ -1276,9 +1276,9 @@ function woocommerce_order_review_shipping() {
  * This ensures the shipping method section updates when address changes
  * FIXED: Properly wraps content and forces recalculation
  */
-add_filter('woocommerce_update_order_review_fragments', 'aaapos_shipping_method_fragment', 10, 1);
+add_filter('woocommerce_update_order_review_fragments', 'Bo_shipping_method_fragment', 10, 1);
 
-function aaapos_shipping_method_fragment($fragments) {
+function Bo_shipping_method_fragment($fragments) {
     // Force WooCommerce to recalculate shipping
     WC()->cart->calculate_shipping();
     
@@ -1295,7 +1295,7 @@ function aaapos_shipping_method_fragment($fragments) {
 /**
  * Add Custom Star Rating to Single Product Page
  */
-function aaapos_custom_single_rating()
+function Bo_custom_single_rating()
 {
     global $product;
 
@@ -1316,7 +1316,7 @@ function aaapos_custom_single_rating()
     <div class="woocommerce-product-rating">
         <div class="rating-stars" aria-label="<?php echo esc_attr(
             sprintf(
-                __("Rated %s out of 5", "aaapos-prime"),
+                __("Rated %s out of 5", "Bo-prime"),
                 number_format($average_rating, 2),
             ),
         ); ?>">
@@ -1348,7 +1348,7 @@ function aaapos_custom_single_rating()
         <?php if ($review_count > 0): ?>
             <a href="#reviews" class="woocommerce-review-link" rel="nofollow">
                 <?php printf(
-                    _n('(%s review)', '(%s reviews)', $review_count, 'aaapos-prime'),
+                    _n('(%s review)', '(%s reviews)', $review_count, 'Bo-prime'),
                     '<span class="count">' . esc_html($review_count) . '</span>'
                 ); ?>
             </a>
@@ -1358,14 +1358,14 @@ function aaapos_custom_single_rating()
 }
 add_action(
     "woocommerce_single_product_summary",
-    "aaapos_custom_single_rating",
+    "Bo_custom_single_rating",
     10,
 );
 
 /**
  * Enqueue WooCommerce Styles - COMPLETE SYSTEM
  */
-function aaapos_woocommerce_nuclear_styles()
+function Bo_woocommerce_nuclear_styles()
 {
     // Only on WooCommerce pages
     if (
@@ -1380,11 +1380,11 @@ function aaapos_woocommerce_nuclear_styles()
 
     // Main WooCommerce styles (base styles, buttons, forms, etc.)
     wp_enqueue_style(
-        "aaapos-woocommerce-base",
+        "Bo-woocommerce-base",
         get_template_directory_uri() .
             "/assets/css/woocommerce/woocommerce.css",
         [],
-        AAAPOS_VERSION . "." . time(),
+        Bo_VERSION . "." . time(),
         "all",
     );
 
@@ -1394,11 +1394,11 @@ function aaapos_woocommerce_nuclear_styles()
         (is_shop() || is_product_category())
     ) {
         wp_enqueue_style(
-            "aaapos-category-filter",
+            "Bo-category-filter",
             get_template_directory_uri() .
                 "/assets/css/components/categories-shop.css",
-            ["aaapos-woocommerce-base"],
-            AAAPOS_VERSION . "." . time(),
+            ["Bo-woocommerce-base"],
+            Bo_VERSION . "." . time(),
             "all",
         );
     }
@@ -1406,11 +1406,11 @@ function aaapos_woocommerce_nuclear_styles()
     // Cart page styles
     if (is_cart()) {
         wp_enqueue_style(
-            "aaapos-cart",
+            "Bo-cart",
             get_template_directory_uri() .
                 "/assets/css/components/cart/cart-main.css",
-            ["aaapos-woocommerce-base"],
-            AAAPOS_VERSION . "." . time(),
+            ["Bo-woocommerce-base"],
+            Bo_VERSION . "." . time(),
             "all",
         );
     }
@@ -1418,62 +1418,62 @@ function aaapos_woocommerce_nuclear_styles()
     // My Account page styles
 if (is_account_page()) {
     wp_enqueue_style(
-        "aaapos-woocommerce-myaccount",
+        "Bo-woocommerce-myaccount",
         get_template_directory_uri() .
             "/assets/css/myaccount/myaccount-main.css",
-        ["aaapos-woocommerce-base"],
-        AAAPOS_VERSION . "." . time(),
+        ["Bo-woocommerce-base"],
+        Bo_VERSION . "." . time(),
     );
     
     // Enqueue responsive styles separately to ensure proper cascade
     wp_enqueue_style(
-        "aaapos-myaccount-responsive",
+        "Bo-myaccount-responsive",
         get_template_directory_uri() .
             "/assets/css/myaccount/myaccount-responsive.css",
-        ["aaapos-woocommerce-myaccount"],
-        AAAPOS_VERSION . "." . time(),
+        ["Bo-woocommerce-myaccount"],
+        Bo_VERSION . "." . time(),
     );
 }
 
     // Cart notifications CSS (toast notifications)
     wp_enqueue_style(
-        "aaapos-cart-notifications",
+        "Bo-cart-notifications",
         get_template_directory_uri() . "/assets/css/cart-notifications.css",
-        ["aaapos-woocommerce-base"],
-        AAAPOS_VERSION,
+        ["Bo-woocommerce-base"],
+        Bo_VERSION,
         "all",
     );
 
     // WooCommerce cart functionality
     wp_enqueue_script(
-        "aaapos-woocommerce-js",
+        "Bo-woocommerce-js",
         get_template_directory_uri() . "/assets/js/woocommerce.js",
         ["jquery", "wc-add-to-cart"],
-        AAAPOS_VERSION,
+        Bo_VERSION,
         true,
     );
 
     // Cart notifications JS (handles toast notifications)
     wp_enqueue_script(
-        "aaapos-cart-notifications-js",
+        "Bo-cart-notifications-js",
         get_template_directory_uri() . "/assets/js/cart-notifications.js",
-        ["jquery", "aaapos-woocommerce-js"],
-        AAAPOS_VERSION,
+        ["jquery", "Bo-woocommerce-js"],
+        Bo_VERSION,
         true,
     );
 
     // Quantity selector enhancement (for single product page)
     if (is_product()) {
         wp_enqueue_script(
-            "aaapos-quantity-selector",
+            "Bo-quantity-selector",
             get_template_directory_uri() . "/assets/js/quantity-selector.js",
             ["jquery"],
-            AAAPOS_VERSION,
+            Bo_VERSION,
             true,
         );
     }
 }
-add_action("wp_enqueue_scripts", "aaapos_woocommerce_nuclear_styles", 999);
+add_action("wp_enqueue_scripts", "Bo_woocommerce_nuclear_styles", 999);
 
 /**
  * Add Clear Shopping Cart Button
@@ -1489,9 +1489,9 @@ function add_clear_cart_button()
        class="button clear-cart-link" 
        onclick="return confirm('<?php esc_attr_e(
            "Are you sure you want to clear your cart?",
-           "aaapos",
+           "Bo",
        ); ?>');">
-        <?php esc_html_e("Clear Shopping Cart", "aaapos"); ?>
+        <?php esc_html_e("Clear Shopping Cart", "Bo"); ?>
     </a>
     <?php
 }
@@ -1529,7 +1529,7 @@ function mr_handle_coupon_removal()
         ) {
             WC()->cart->remove_coupon($coupon_code);
             wc_add_notice(
-                __("Coupon removed successfully.", "aaapos"),
+                __("Coupon removed successfully.", "Bo"),
                 "success",
             );
             if (is_cart()) {
@@ -1543,7 +1543,7 @@ function mr_handle_coupon_removal()
     if (isset($_GET["remove_coupon"]) && is_cart()) {
         $coupon_code = sanitize_text_field($_GET["remove_coupon"]);
         WC()->cart->remove_coupon($coupon_code);
-        wc_add_notice(__("Coupon removed successfully.", "aaapos"), "success");
+        wc_add_notice(__("Coupon removed successfully.", "Bo"), "success");
         wp_safe_redirect(wc_get_cart_url());
         exit();
     }
@@ -1576,7 +1576,7 @@ function mr_enforce_single_coupon($valid, $coupon)
             sprintf(
                 __(
                     'Previous coupon "%s" was removed. Only one coupon can be applied at a time.',
-                    "aaapos",
+                    "Bo",
                 ),
                 $applied_coupons[0],
             ),
@@ -1622,7 +1622,7 @@ function enable_cart_update_button()
 /**
  * Enqueue Quick View Assets (FIXED - Works everywhere)
  */
-function aaapos_enqueue_quick_view_assets()
+function Bo_enqueue_quick_view_assets()
 {
     // Only load if enabled in customizer
     if (!get_theme_mod("show_quick_view", true)) {
@@ -1647,10 +1647,10 @@ function aaapos_enqueue_quick_view_assets()
         get_template_directory() . "/assets/css/quick-view-button.css";
     if (file_exists($quick_view_button_css)) {
         wp_enqueue_style(
-            "aaapos-quick-view-button",
+            "Bo-quick-view-button",
             get_template_directory_uri() . "/assets/css/quick-view-button.css",
-            ["aaapos-woocommerce-base"],
-            AAAPOS_VERSION . "." . time(),
+            ["Bo-woocommerce-base"],
+            Bo_VERSION . "." . time(),
             "all",
         );
     }
@@ -1659,10 +1659,10 @@ function aaapos_enqueue_quick_view_assets()
     $quick_view_css = get_template_directory() . "/assets/css/quick-view.css";
     if (file_exists($quick_view_css)) {
         wp_enqueue_style(
-            "aaapos-quick-view",
+            "Bo-quick-view",
             get_template_directory_uri() . "/assets/css/quick-view.css",
-            ["aaapos-woocommerce-base"],
-            AAAPOS_VERSION,
+            ["Bo-woocommerce-base"],
+            Bo_VERSION,
             "all",
         );
     }
@@ -1671,27 +1671,27 @@ function aaapos_enqueue_quick_view_assets()
     $quick_view_js = get_template_directory() . "/assets/js/quick-view.js";
     if (file_exists($quick_view_js)) {
         wp_enqueue_script(
-            "aaapos-quick-view-js",
+            "Bo-quick-view-js",
             get_template_directory_uri() . "/assets/js/quick-view.js",
             ["jquery", "wc-add-to-cart-variation"],
-            AAAPOS_VERSION,
+            Bo_VERSION,
             true,
         );
 
         // FIXED: Always localize with the correct nonce
-        wp_localize_script("aaapos-quick-view-js", "aaaposQuickView", [
+        wp_localize_script("Bo-quick-view-js", "BoQuickView", [
             "ajax_url" => admin_url("admin-ajax.php"),
-            "nonce" => wp_create_nonce("aaapos_quick_view_nonce"),
+            "nonce" => wp_create_nonce("Bo_quick_view_nonce"),
         ]);
     }
 }
-add_action("wp_enqueue_scripts", "aaapos_enqueue_quick_view_assets", 1000);
+add_action("wp_enqueue_scripts", "Bo_enqueue_quick_view_assets", 1000);
 
 /**
  * AJAX Handler: Update checkout fragments when shipping method changes
  * This ensures the order review updates when shipping is selected
  */
-function aaapos_update_order_review_shipping() {
+function Bo_update_order_review_shipping() {
     check_ajax_referer( 'update-order-review', 'security' );
     
     if ( isset( $_POST['shipping_method'] ) && is_array( $_POST['shipping_method'] ) ) {
@@ -1707,13 +1707,13 @@ function aaapos_update_order_review_shipping() {
     
     die();
 }
-add_action( 'wp_ajax_update_order_review', 'aaapos_update_order_review_shipping' );
-add_action( 'wp_ajax_nopriv_update_order_review', 'aaapos_update_order_review_shipping' );
+add_action( 'wp_ajax_update_order_review', 'Bo_update_order_review_shipping' );
+add_action( 'wp_ajax_nopriv_update_order_review', 'Bo_update_order_review_shipping' );
 
 /**
  * Enqueue Search Results Assets
  */
-function aaapos_enqueue_search_assets()
+function Bo_enqueue_search_assets()
 {
     if (!is_search()) {
         return;
@@ -1721,29 +1721,29 @@ function aaapos_enqueue_search_assets()
 
     // Search results CSS
     wp_enqueue_style(
-        "aaapos-search-results",
+        "Bo-search-results",
         get_template_directory_uri() .
             "/assets/css/components/search-results.css",
-        ["aaapos-woocommerce-base"],
-        AAAPOS_VERSION,
+        ["Bo-woocommerce-base"],
+        Bo_VERSION,
         "all",
     );
 
     // Search results JS (sorting & view toggle)
     wp_enqueue_script(
-        "aaapos-search-results-js",
+        "Bo-search-results-js",
         get_template_directory_uri() . "/assets/js/search-results.js",
         ["jquery"],
-        AAAPOS_VERSION,
+        Bo_VERSION,
         true,
     );
 }
-add_action("wp_enqueue_scripts", "aaapos_enqueue_search_assets", 1001);
+add_action("wp_enqueue_scripts", "Bo_enqueue_search_assets", 1001);
 
 /**
  * Add Critical Inline CSS - UPDATED TO USE CUSTOMIZER COLUMNS
  */
-function aaapos_woocommerce_inline_critical_css()
+function Bo_woocommerce_inline_critical_css()
 {
     if (!is_woocommerce() && !is_cart() && !is_checkout() && !is_search()) {
         return;
@@ -1811,7 +1811,7 @@ function aaapos_woocommerce_inline_critical_css()
     </style>
     <?php
 }
-add_action("wp_head", "aaapos_woocommerce_inline_critical_css", 999);
+add_action("wp_head", "Bo_woocommerce_inline_critical_css", 999);
 
 /**
  * Disable WooCommerce's Default Conflicting Styles
@@ -1827,7 +1827,7 @@ add_filter("woocommerce_enqueue_styles", function ($styles) {
 /**
  * Force Remove WooCommerce's Inline Grid CSS
  */
-function aaapos_remove_woo_inline_css()
+function Bo_remove_woo_inline_css()
 {
     if (is_woocommerce() || is_search()) {
         wp_add_inline_style(
@@ -1842,7 +1842,7 @@ function aaapos_remove_woo_inline_css()
         );
     }
 }
-add_action("wp_enqueue_scripts", "aaapos_remove_woo_inline_css", 9999);
+add_action("wp_enqueue_scripts", "Bo_remove_woo_inline_css", 9999);
 
 /**
  * Remove Default WooCommerce Wrappers
@@ -1866,25 +1866,25 @@ remove_action("woocommerce_sidebar", "woocommerce_get_sidebar", 10);
 /**
  * Products Per Page - USES CUSTOMIZER SETTING
  */
-function aaapos_products_per_page()
+function Bo_products_per_page()
 {
     return absint(get_theme_mod("products_per_page", 12));
 }
-add_filter("loop_shop_per_page", "aaapos_products_per_page", 20);
+add_filter("loop_shop_per_page", "Bo_products_per_page", 20);
 
 /**
  * Products Per Row - USES CUSTOMIZER SETTING (FIXED!)
  */
-function aaapos_products_per_row()
+function Bo_products_per_row()
 {
     return absint(get_theme_mod("products_per_row", 3));
 }
-add_filter("loop_shop_columns", "aaapos_products_per_row");
+add_filter("loop_shop_columns", "Bo_products_per_row");
 
 /**
  * Related Products Configuration - USES CUSTOMIZER SETTING
  */
-function aaapos_related_products_args($args)
+function Bo_related_products_args($args)
 {
     $related_count = absint(get_theme_mod("related_products_count", 4));
 
@@ -1895,34 +1895,34 @@ function aaapos_related_products_args($args)
 }
 add_filter(
     "woocommerce_output_related_products_args",
-    "aaapos_related_products_args",
+    "Bo_related_products_args",
 );
 
 /**
  * Custom Sale Badge Text - USES CUSTOMIZER SETTING (NEW!)
  */
-function aaapos_custom_sale_flash($html, $post, $product)
+function Bo_custom_sale_flash($html, $post, $product)
 {
-    $sale_text = get_theme_mod("sale_badge_text", __("Sale", "aaapos-prime"));
+    $sale_text = get_theme_mod("sale_badge_text", __("Sale", "Bo-prime"));
     return '<span class="onsale">' . esc_html($sale_text) . "</span>";
 }
-add_filter("woocommerce_sale_flash", "aaapos_custom_sale_flash", 10, 3);
+add_filter("woocommerce_sale_flash", "Bo_custom_sale_flash", 10, 3);
 
 /**
  * Custom Image Sizes for WooCommerce
  */
-function aaapos_woocommerce_image_sizes()
+function Bo_woocommerce_image_sizes()
 {
     add_image_size("woocommerce_thumbnail", 400, 400, true);
     add_image_size("woocommerce_single", 800, 800, true);
     add_image_size("woocommerce_gallery_thumbnail", 150, 150, true);
 }
-add_action("after_setup_theme", "aaapos_woocommerce_image_sizes", 11);
+add_action("after_setup_theme", "Bo_woocommerce_image_sizes", 11);
 
 /**
  * Set WooCommerce Default Image Dimensions
  */
-function aaapos_woocommerce_theme_image_dimensions()
+function Bo_woocommerce_theme_image_dimensions()
 {
     $catalog = [
         "width" => "400",
@@ -1946,28 +1946,28 @@ function aaapos_woocommerce_theme_image_dimensions()
     update_option("shop_single_image_size", $single);
     update_option("shop_thumbnail_image_size", $thumbnail);
 }
-add_action("after_switch_theme", "aaapos_woocommerce_theme_image_dimensions");
+add_action("after_switch_theme", "Bo_woocommerce_theme_image_dimensions");
 
 /**
  * Modify Product Gallery Classes
  */
-function aaapos_product_gallery_classes($classes)
+function Bo_product_gallery_classes($classes)
 {
     $classes[] = "woocommerce-product-gallery--custom";
     return $classes;
 }
 add_filter(
     "woocommerce_single_product_image_gallery_classes",
-    "aaapos_product_gallery_classes",
+    "Bo_product_gallery_classes",
 );
 
 /**
  * Add Body Classes for WooCommerce Pages
  */
-function aaapos_woo_body_classes($classes)
+function Bo_woo_body_classes($classes)
 {
     if (is_shop() || is_product_category() || is_product_tag()) {
-        $classes[] = "aaapos-shop-page";
+        $classes[] = "Bo-shop-page";
         $classes[] = "woocommerce-shop";
 
         // Add sidebar class if enabled
@@ -1990,12 +1990,12 @@ function aaapos_woo_body_classes($classes)
 
     return $classes;
 }
-add_filter("body_class", "aaapos_woo_body_classes");
+add_filter("body_class", "Bo_woo_body_classes");
 
 /**
  * Customize My Account Menu Order
  */
-function aaapos_custom_my_account_menu_order()
+function Bo_custom_my_account_menu_order()
 {
     return [
         "dashboard" => __("Dashboard", "woocommerce"),
@@ -2009,13 +2009,13 @@ function aaapos_custom_my_account_menu_order()
 }
 add_filter(
     "woocommerce_account_menu_items",
-    "aaapos_custom_my_account_menu_order",
+    "Bo_custom_my_account_menu_order",
 );
 
 /**
  * Custom Dashboard Content with Grid Cards
  */
-function aaapos_custom_dashboard_content()
+function Bo_custom_dashboard_content()
 {
     $current_user = wp_get_current_user();
     $display_name = !empty($current_user->first_name)
@@ -2052,11 +2052,11 @@ function aaapos_custom_dashboard_content()
             </div>
             <h3 class="dashboard-card__title"><?php esc_html_e(
                 "Orders",
-                "aaapos-prime",
+                "Bo-prime",
             ); ?></h3>
             <p class="dashboard-card__description"><?php esc_html_e(
                 "View your order history",
-                "aaapos-prime",
+                "Bo-prime",
             ); ?></p>
         </a>
 
@@ -2070,11 +2070,11 @@ function aaapos_custom_dashboard_content()
             </div>
             <h3 class="dashboard-card__title"><?php esc_html_e(
                 "Downloads",
-                "aaapos-prime",
+                "Bo-prime",
             ); ?></h3>
             <p class="dashboard-card__description"><?php esc_html_e(
                 "Access your downloads",
-                "aaapos-prime",
+                "Bo-prime",
             ); ?></p>
         </a>
 
@@ -2089,11 +2089,11 @@ function aaapos_custom_dashboard_content()
             </div>
             <h3 class="dashboard-card__title"><?php esc_html_e(
                 "Addresses",
-                "aaapos-prime",
+                "Bo-prime",
             ); ?></h3>
             <p class="dashboard-card__description"><?php esc_html_e(
                 "Manage billing & shipping",
-                "aaapos-prime",
+                "Bo-prime",
             ); ?></p>
         </a>
 
@@ -2107,11 +2107,11 @@ function aaapos_custom_dashboard_content()
             </div>
             <h3 class="dashboard-card__title"><?php esc_html_e(
                 "Account Details",
-                "aaapos-prime",
+                "Bo-prime",
             ); ?></h3>
             <p class="dashboard-card__description"><?php esc_html_e(
                 "Update your information",
-                "aaapos-prime",
+                "Bo-prime",
             ); ?></p>
         </a>
 
@@ -2125,11 +2125,11 @@ function aaapos_custom_dashboard_content()
             </div>
             <h3 class="dashboard-card__title"><?php esc_html_e(
                 "Payment Methods",
-                "aaapos-prime",
+                "Bo-prime",
             ); ?></h3>
             <p class="dashboard-card__description"><?php esc_html_e(
                 "Manage saved payment cards",
-                "aaapos-prime",
+                "Bo-prime",
             ); ?></p>
         </a>
 
@@ -2144,11 +2144,11 @@ function aaapos_custom_dashboard_content()
                 </div>
                 <h3 class="dashboard-card__title"><?php esc_html_e(
                     "Support",
-                    "aaapos-prime",
+                    "Bo-prime",
                 ); ?></h3>
                 <p class="dashboard-card__description"><?php esc_html_e(
                     "Get help & contact us",
-                    "aaapos-prime",
+                    "Bo-prime",
                 ); ?></p>
             </a>
         <?php endif; ?>
@@ -2163,21 +2163,21 @@ remove_action(
 );
 add_action(
     "woocommerce_account_dashboard",
-    "aaapos_custom_dashboard_content",
+    "Bo_custom_dashboard_content",
     10,
 );
 
 /**
  * Register Shop Sidebar Widget Area
  */
-function aaapos_register_shop_sidebar()
+function Bo_register_shop_sidebar()
 {
     register_sidebar([
-        "name" => __("Shop Sidebar", "aaapos-prime"),
+        "name" => __("Shop Sidebar", "Bo-prime"),
         "id" => "shop-sidebar",
         "description" => __(
             "Widgets in this area will be shown on the shop pages.",
-            "aaapos-prime",
+            "Bo-prime",
         ),
         "before_widget" => '<div id="%1$s" class="widget %2$s">',
         "after_widget" => "</div>",
@@ -2185,12 +2185,12 @@ function aaapos_register_shop_sidebar()
         "after_title" => "</h3>",
     ]);
 }
-add_action("widgets_init", "aaapos_register_shop_sidebar");
+add_action("widgets_init", "Bo_register_shop_sidebar");
 
 /**
  * Add Data Attributes to Order Table for Responsive Design
  */
-function aaapos_add_data_title_to_order_table()
+function Bo_add_data_title_to_order_table()
 {
     if (!is_account_page()) {
         return;
@@ -2209,14 +2209,14 @@ function aaapos_add_data_title_to_order_table()
 }
 add_action(
     "woocommerce_account_orders_endpoint",
-    "aaapos_add_data_title_to_order_table",
+    "Bo_add_data_title_to_order_table",
 );
 
 /**
  * Update Cart Icon Count via AJAX
  * Used by header cart to update dynamically
  */
-function aaapos_update_cart_count()
+function Bo_update_cart_count()
 {
     $cart_style = get_theme_mod("cart_icon_style", "icon-count");
 
@@ -2231,8 +2231,8 @@ function aaapos_update_cart_count()
 
     wp_send_json_success($response);
 }
-add_action("wp_ajax_update_cart_count", "aaapos_update_cart_count");
-add_action("wp_ajax_nopriv_update_cart_count", "aaapos_update_cart_count");
+add_action("wp_ajax_update_cart_count", "Bo_update_cart_count");
+add_action("wp_ajax_nopriv_update_cart_count", "Bo_update_cart_count");
 
 /**
  * =========================================================================
@@ -2244,7 +2244,7 @@ add_action("wp_ajax_nopriv_update_cart_count", "aaapos_update_cart_count");
 /**
  * Modify Search Query for Product Sorting
  */
-function aaapos_search_product_sorting($query)
+function Bo_search_product_sorting($query)
 {
     // Only on search results page, main query, not admin
     if (!is_search() || !$query->is_main_query() || is_admin()) {
@@ -2317,13 +2317,13 @@ function aaapos_search_product_sorting($query)
             break;
     }
 }
-add_action("pre_get_posts", "aaapos_search_product_sorting", 20);
+add_action("pre_get_posts", "Bo_search_product_sorting", 20);
 
 /**
  * Add WooCommerce Product Meta to Search Results
  * Ensures product data is available for sorting
  */
-function aaapos_search_product_meta($query)
+function Bo_search_product_meta($query)
 {
     if (!is_search() || !$query->is_main_query() || is_admin()) {
         return;
@@ -2339,7 +2339,7 @@ function aaapos_search_product_meta($query)
         $query->set("post_type", $post_types);
     }
 }
-add_action("pre_get_posts", "aaapos_search_product_meta", 10);
+add_action("pre_get_posts", "Bo_search_product_meta", 10);
 
 /**
  * =============================================================================
@@ -2352,7 +2352,7 @@ add_action("pre_get_posts", "aaapos_search_product_meta", 10);
  * Display Checkout Progress Steps
  * Shows current step in the checkout process
  */
-function aaapos_checkout_progress_steps()
+function Bo_checkout_progress_steps()
 {
     // Determine current step
     $current_step = 1; // Default to step 1 (cart)
@@ -2369,17 +2369,17 @@ function aaapos_checkout_progress_steps()
     $steps = [
         1 => [
             "number" => "1",
-            "label" => __("Shopping cart", "aaapos"),
+            "label" => __("Shopping cart", "Bo"),
             "url" => wc_get_cart_url(),
         ],
         2 => [
             "number" => "2",
-            "label" => __("Checkout details", "aaapos"),
+            "label" => __("Checkout details", "Bo"),
             "url" => wc_get_checkout_url(),
         ],
         3 => [
             "number" => "3",
-            "label" => __("Order complete", "aaapos"),
+            "label" => __("Order complete", "Bo"),
             "url" => "", // No link for this step
         ],
     ];
@@ -2444,7 +2444,7 @@ function aaapos_checkout_progress_steps()
 /**
  * Add progress steps to cart page
  */
-function aaapos_add_progress_to_cart()
+function Bo_add_progress_to_cart()
 {
     // Always show progress steps on cart page
     // This ensures proper layout even when transitioning from empty to non-empty
@@ -2453,38 +2453,38 @@ function aaapos_add_progress_to_cart()
         if (WC()->cart->is_empty() && !isset($_GET["add-to-cart"])) {
             return;
         }
-        aaapos_checkout_progress_steps();
+        Bo_checkout_progress_steps();
     }
 }
-add_action("woocommerce_before_cart", "aaapos_add_progress_to_cart", 5);
+add_action("woocommerce_before_cart", "Bo_add_progress_to_cart", 5);
 
 /**
  * Add progress steps to checkout page
  */
-// function aaapos_add_progress_to_checkout()
+// function Bo_add_progress_to_checkout()
 // {
 //     if (is_checkout() && !is_order_received_page()) {
-//         aaapos_checkout_progress_steps();
+//         Bo_checkout_progress_steps();
 //     }
 // }
 // add_action(
 //     "woocommerce_before_checkout_form",
-//     "aaapos_add_progress_to_checkout",
+//     "Bo_add_progress_to_checkout",
 //     5,
 // );
 
 /**
  * Add progress steps to order received page
  */
-function aaapos_add_progress_to_order_received()
+function Bo_add_progress_to_order_received()
 {
     if (is_order_received_page()) {
-        aaapos_checkout_progress_steps();
+        Bo_checkout_progress_steps();
     }
 }
 add_action(
     "woocommerce_before_thankyou",
-    "aaapos_add_progress_to_order_received",
+    "Bo_add_progress_to_order_received",
     5,
 );
 
@@ -2492,7 +2492,7 @@ add_action(
  * Display suggested products on cart page
  * UPDATED: Uses wrapper for full-width display without breaking layout
  */
-function aaapos_cart_suggested_products()
+function Bo_cart_suggested_products()
 {
     if (!is_cart()) {
         return;
@@ -2555,7 +2555,7 @@ function aaapos_cart_suggested_products()
 
     // Get customizer settings
     $show_rating = get_theme_mod("show_product_rating", true);
-    $sale_badge_text = get_theme_mod("sale_badge_text", __("Sale", "aaapos"));
+    $sale_badge_text = get_theme_mod("sale_badge_text", __("Sale", "Bo"));
     $show_quick_view = get_theme_mod("show_quick_view", true);
     ?>
     
@@ -2565,11 +2565,11 @@ function aaapos_cart_suggested_products()
             <div class="cart-suggested-products__header">
                 <h2 class="cart-suggested-products__title"><?php esc_html_e(
                     "You May Also Like",
-                    "aaapos",
+                    "Bo",
                 ); ?></h2>
                 <p class="cart-suggested-products__subtitle"><?php esc_html_e(
                     "Customers who bought these items also bought",
-                    "aaapos",
+                    "Bo",
                 ); ?></p>
             </div>
             
@@ -2625,7 +2625,7 @@ function aaapos_cart_suggested_products()
                                 <div class="product-rating">
                                     <div class="rating-stars" aria-label="<?php echo esc_attr(
                                         sprintf(
-                                            __("Rated %s out of 5", "aaapos"),
+                                            __("Rated %s out of 5", "Bo"),
                                             number_format($average_rating, 2),
                                         ),
                                     ); ?>">
@@ -2679,7 +2679,7 @@ function aaapos_cart_suggested_products()
             class="quick-view-button" 
             data-product-id="<?php echo esc_attr($product->get_id()); ?>"
             aria-label="<?php echo esc_attr(
-                sprintf(__("Quick view %s", "aaapos"), $product->get_name()),
+                sprintf(__("Quick view %s", "Bo"), $product->get_name()),
             ); ?>"
             style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1.5rem; color: #374151; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease; width: 100%; margin-bottom: 0.875rem; line-height: 1; background: transparent; border: none;"
             onmouseover="this.style.color='var(--brand-color, #0ea5e9)'; this.style.transform='translateY(-2px)';"
@@ -2688,7 +2688,7 @@ function aaapos_cart_suggested_products()
             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
             <circle cx="12" cy="12" r="3"/>
         </svg>
-        <span><?php esc_html_e("Quick View", "aaapos"); ?></span>
+        <span><?php esc_html_e("Quick View", "Bo"); ?></span>
     </button>
 <?php endif; ?>
                         
@@ -2702,7 +2702,7 @@ function aaapos_cart_suggested_products()
             <circle cx="20" cy="21" r="1"></circle>
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
         </svg>
-        <span><?php esc_html_e("Select options", "aaapos"); ?></span>
+        <span><?php esc_html_e("Select options", "Bo"); ?></span>
     </a>
 <?php else: ?>
     <a href="<?php echo esc_url("?add-to-cart=" . $product->get_id()); ?>" 
@@ -2711,7 +2711,7 @@ function aaapos_cart_suggested_products()
        data-product_id="<?php echo esc_attr($product->get_id()); ?>" 
        data-product_sku="<?php echo esc_attr($product->get_sku()); ?>" 
        aria-label="<?php echo esc_attr(
-           sprintf(__('Add "%s" to your cart', "aaapos"), $product->get_name()),
+           sprintf(__('Add "%s" to your cart', "Bo"), $product->get_name()),
        ); ?>" 
        rel="nofollow"
        style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;">
@@ -2734,23 +2734,23 @@ function aaapos_cart_suggested_products()
     
     <?php wp_reset_postdata();
 }
-add_action("woocommerce_after_cart", "aaapos_cart_suggested_products", 20);
+add_action("woocommerce_after_cart", "Bo_cart_suggested_products", 20);
 
 /**
  * Setup WooCommerce template path
  */
-function aaapos_woocommerce_template_path()
+function Bo_woocommerce_template_path()
 {
     return "woocommerce/";
 }
-add_filter("woocommerce_template_path", "aaapos_woocommerce_template_path");
+add_filter("woocommerce_template_path", "Bo_woocommerce_template_path");
 
 /**
  * Display Recommended Products on Empty Cart Page
  * Shows 4 popular or recent products when cart is empty
  * UPDATED: Full width layout to match viewport edges
  */
-function aaapos_empty_cart_recommended_products()
+function Bo_empty_cart_recommended_products()
 {
     // Query for popular products (by sales) or recent products
     $args = [
@@ -2784,7 +2784,7 @@ function aaapos_empty_cart_recommended_products()
     $show_rating = get_theme_mod("show_product_rating", true);
     $sale_badge_text = get_theme_mod(
         "sale_badge_text",
-        __("Sale", "aaapos"),
+        __("Sale", "Bo"),
     );
     $show_quick_view = get_theme_mod("show_quick_view", true);
     ?>
@@ -2794,15 +2794,15 @@ function aaapos_empty_cart_recommended_products()
             <div class="cart-empty-recommended__header">
                 <span class="cart-empty-recommended__badge"><?php esc_html_e(
                     "START SHOPPING",
-                    "aaapos",
+                    "Bo",
                 ); ?></span>
                 <h2 class="cart-empty-recommended__title"><?php esc_html_e(
                     "Popular Products",
-                    "aaapos",
+                    "Bo",
                 ); ?></h2>
                 <p class="cart-empty-recommended__subtitle"><?php esc_html_e(
                     "Check out our most popular items to get started",
-                    "aaapos",
+                    "Bo",
                 ); ?></p>
             </div>
             
@@ -2897,7 +2897,7 @@ function aaapos_empty_cart_recommended_products()
                             </svg>
                             <span><?php esc_html_e(
                                 "Quick View",
-                                "aaapos",
+                                "Bo",
                             ); ?></span>
                         </button>
                     <?php endif; ?>
@@ -2914,7 +2914,7 @@ function aaapos_empty_cart_recommended_products()
                             </svg>
                             <span><?php esc_html_e(
                                 "Select options",
-                                "aaapos",
+                                "Bo",
                             ); ?></span>
                         </a>
                     <?php else: ?>

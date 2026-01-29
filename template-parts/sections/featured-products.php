@@ -3,7 +3,7 @@
  * Featured Products Section - Best Selling Products
  * Template: template-parts/sections/featured-products.php
  *
- * @package aaapos-prime
+ * @package Bo-prime
  */
 
 // Check if WooCommerce is active
@@ -134,7 +134,7 @@ $show_quick_view = get_theme_mod("show_quick_view", true);
                                     class="quick-view-button" 
                                     data-product-id="<?php echo esc_attr($product->get_id()); ?>"
                                     aria-label="<?php echo esc_attr(
-                                        sprintf(__("Quick view %s", "aaapos-prime"), $product->get_name()),
+                                        sprintf(__("Quick view %s", "Bo-prime"), $product->get_name()),
                                     ); ?>">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
@@ -162,7 +162,7 @@ $show_quick_view = get_theme_mod("show_quick_view", true);
                                data-product_id="<?php echo esc_attr($product->get_id()); ?>" 
                                data-product_sku="<?php echo esc_attr($product->get_sku()); ?>" 
                                aria-label="<?php echo esc_attr(
-                                   sprintf(__('Add "%s" to your cart', "aaapos-prime"), $product->get_name()),
+                                   sprintf(__('Add "%s" to your cart', "Bo-prime"), $product->get_name()),
                                ); ?>" 
                                rel="nofollow">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

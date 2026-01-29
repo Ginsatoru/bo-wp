@@ -2,7 +2,7 @@
 /**
  * Special Deals Section - Auto-rotates through products with scheduled sales
  *
- * @package AAAPOS
+ * @package Bo
  */
 
 // Don't display if not on front page OR if section is disabled
@@ -153,11 +153,11 @@ $total_deals = count($deal_products);
                                             100,
                                     );
                                     echo sprintf(
-                                        esc_html__("SAVE %s%%", "AAAPOS"),
+                                        esc_html__("SAVE %s%%", "Bo"),
                                         $percentage,
                                     );
                                 } else {
-                                    esc_html_e("SALE!", "AAAPOS");
+                                    esc_html_e("SALE!", "Bo");
                                 }
                                 ?>
                             </span>
@@ -219,7 +219,7 @@ $total_deals = count($deal_products);
                                         <?php printf(
                                             esc_html__(
                                                 "You save: %s",
-                                                "AAAPOS",
+                                                "Bo",
                                             ),
                                             wc_price($saved),
                                         ); ?>
@@ -241,7 +241,7 @@ $total_deals = count($deal_products);
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <polyline points="20 6 9 17 4 12"></polyline>
                                     </svg>
-                                    <?php esc_html_e("In Stock", "AAAPOS"); ?>
+                                    <?php esc_html_e("In Stock", "Bo"); ?>
                                 </span>
                             <?php endif; ?>
                         </div>
@@ -250,7 +250,7 @@ $total_deals = count($deal_products);
                             <div class="deal-countdown">
                                 <h4 class="countdown-title"><?php esc_html_e(
                                     "Offer ends in:",
-                                    "AAAPOS",
+                                    "Bo",
                                 ); ?></h4>
                                 <div class="countdown-timer" data-end-date="<?php echo esc_attr(
                                     $deal_end_date,
@@ -259,28 +259,28 @@ $total_deals = count($deal_products);
                                         <span class="countdown-value days">00</span>
                                         <span class="countdown-label"><?php esc_html_e(
                                             "DAYS",
-                                            "AAAPOS",
+                                            "Bo",
                                         ); ?></span>
                                     </div>
                                     <div class="countdown-item">
                                         <span class="countdown-value hours">00</span>
                                         <span class="countdown-label"><?php esc_html_e(
                                             "HOURS",
-                                            "AAAPOS",
+                                            "Bo",
                                         ); ?></span>
                                     </div>
                                     <div class="countdown-item">
                                         <span class="countdown-value minutes">00</span>
                                         <span class="countdown-label"><?php esc_html_e(
                                             "MINUTES",
-                                            "AAAPOS",
+                                            "Bo",
                                         ); ?></span>
                                     </div>
                                     <div class="countdown-item">
                                         <span class="countdown-value seconds">00</span>
                                         <span class="countdown-label"><?php esc_html_e(
                                             "SECONDS",
-                                            "AAAPOS",
+                                            "Bo",
                                         ); ?></span>
                                     </div>
                                 </div>
@@ -302,7 +302,7 @@ $total_deals = count($deal_products);
                                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
                                     </svg>
-                                    <?php esc_html_e("Add to Cart", "AAAPOS"); ?>
+                                    <?php esc_html_e("Add to Cart", "Bo"); ?>
                                 </a>
                             <?php endif; ?>
                             
@@ -313,7 +313,7 @@ $total_deals = count($deal_products);
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
                                 </svg>
-                                <?php esc_html_e("View Details", "AAAPOS"); ?>
+                                <?php esc_html_e("View Details", "Bo"); ?>
                             </a>
                         </div>
                         
@@ -331,19 +331,19 @@ $total_deals = count($deal_products);
                         <?php for ($i = 0; $i < $total_deals; $i++): ?>
                             <button class="deals-dot <?php echo $i === 0 ? 'active' : ''; ?>" 
                                     data-slide-to="<?php echo esc_attr($i); ?>"
-                                    aria-label="<?php echo esc_attr(sprintf(__('Go to deal %d', 'AAAPOS'), $i + 1)); ?>">
+                                    aria-label="<?php echo esc_attr(sprintf(__('Go to deal %d', 'Bo'), $i + 1)); ?>">
                             </button>
                         <?php endfor; ?>
                     </div>
                     
                     <!-- Navigation Arrows -->
                     <div class="deals-nav-arrows">
-                        <button class="deals-arrow deals-arrow-prev" aria-label="<?php esc_attr_e('Previous deal', 'AAAPOS'); ?>">
+                        <button class="deals-arrow deals-arrow-prev" aria-label="<?php esc_attr_e('Previous deal', 'Bo'); ?>">
                             <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                             </svg>
                         </button>
-                        <button class="deals-arrow deals-arrow-next" aria-label="<?php esc_attr_e('Next deal', 'AAAPOS'); ?>">
+                        <button class="deals-arrow deals-arrow-next" aria-label="<?php esc_attr_e('Next deal', 'Bo'); ?>">
                             <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                             </svg>
@@ -363,16 +363,16 @@ $total_deals = count($deal_products);
                 </svg>
                 <h3><?php esc_html_e(
                     "No Special Deals Available",
-                    "AAAPOS",
+                    "Bo",
                 ); ?></h3>
                 <p><?php esc_html_e(
                     "Check back soon for amazing deals and special offers!",
-                    "AAAPOS",
+                    "Bo",
                 ); ?></p>
                 <a href="<?php echo esc_url(
                     wc_get_page_permalink("shop"),
                 ); ?>" class="deal-btn deal-btn-primary">
-                    <?php esc_html_e("Browse All Products", "AAAPOS"); ?>
+                    <?php esc_html_e("Browse All Products", "Bo"); ?>
                 </a>
             </div>
             

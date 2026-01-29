@@ -5,7 +5,7 @@
  * Cart page uses separate auto-update functionality
  * 
  * quantity-selector.js
- * @package AAAPOS_Prime
+ * @package Bo_Prime
  * @version 1.0.2
  */
 

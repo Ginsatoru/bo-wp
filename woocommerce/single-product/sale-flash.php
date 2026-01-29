@@ -5,7 +5,7 @@
  * This template displays a sale badge with percentage off on SINGLE PRODUCT pages.
  * Shows "SALE" text with the discount percentage.
  * 
- * @package AAAPOS_Prime
+ * @package Bo_Prime
  * @version 1.0.1
  * 
  * Location: woocommerce/single-product/sale-flash.php
@@ -59,7 +59,7 @@ if ($product->is_type('variable')) {
 // Only display if we have a valid percentage
 if ($percentage > 0) : ?>
     <span class="onsale">
-        <span class="sale-text"><?php esc_html_e('SALE', 'aaapos'); ?></span>
+        <span class="sale-text"><?php esc_html_e('SALE', 'Bo'); ?></span>
         <span class="sale-percentage">-<?php echo esc_html($percentage); ?>%</span>
     </span>
 <?php endif;

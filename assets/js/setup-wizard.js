@@ -2,7 +2,7 @@
  * Setup Wizard JavaScript - Fixed Version
  * Prevents browser "unsaved changes" warning while maintaining all functionality
  * 
- * @package AAAPOS
+ * @package Bo
  * @since 1.0.0
  */
 
@@ -136,11 +136,11 @@
             const self = this;
             
             $.ajax({
-                url: aaaposSetup.ajaxUrl,
+                url: BoSetup.ajaxUrl,
                 type: 'POST',
                 data: {
-                    action: 'aaapos_setup_configure_pages',
-                    nonce: aaaposSetup.nonce
+                    action: 'Bo_setup_configure_pages',
+                    nonce: BoSetup.nonce
                 },
                 success: function(response) {
                     if (response.success) {
@@ -156,7 +156,7 @@
                         
                         // Redirect after animation completes
                         setTimeout(function() {
-                            window.location.href = aaaposSetup.adminUrl + 'admin.php?page=aaapos-setup&step=branding';
+                            window.location.href = BoSetup.adminUrl + 'admin.php?page=Bo-setup&step=branding';
                         }, 1800);
                     } else {
                         self.showNotification('error', response.data.message || 'An error occurred');
@@ -232,11 +232,11 @@
             const self = this;
             
             $.ajax({
-                url: aaaposSetup.ajaxUrl,
+                url: BoSetup.ajaxUrl,
                 type: 'POST',
                 data: {
-                    action: 'aaapos_setup_save_branding',
-                    nonce: aaaposSetup.nonce,
+                    action: 'Bo_setup_save_branding',
+                    nonce: BoSetup.nonce,
                     site_title: siteTitle,
                     brand_color: brandColor
                 },
@@ -253,7 +253,7 @@
                         
                         // Redirect after delay
                         setTimeout(function() {
-                            window.location.href = aaaposSetup.adminUrl + 'admin.php?page=aaapos-setup&step=ready';
+                            window.location.href = BoSetup.adminUrl + 'admin.php?page=Bo-setup&step=ready';
                         }, 1200);
                     } else {
                         self.showNotification('error', response.data.message || 'An error occurred');
@@ -284,11 +284,11 @@
             const self = this;
             
             $.ajax({
-                url: aaaposSetup.ajaxUrl,
+                url: BoSetup.ajaxUrl,
                 type: 'POST',
                 data: {
-                    action: 'aaapos_setup_complete',
-                    nonce: aaaposSetup.nonce
+                    action: 'Bo_setup_complete',
+                    nonce: BoSetup.nonce
                 },
                 success: function(response) {
                     if (response.success && response.data.redirect) {

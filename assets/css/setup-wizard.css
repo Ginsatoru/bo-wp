@@ -2,7 +2,7 @@
  * Setup Wizard Styles - iPhone Style
  * Premium modern design with #0f8abe brand color
  * 
- * @package AAAPOS
+ * @package Bo
  * @since 1.0.0
  */
 
@@ -33,7 +33,7 @@
    RESET & BASE
    ========================================================================== */
 
-.aaapos-setup-wizard {
+.Bo-setup-wizard {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
@@ -48,9 +48,9 @@
   text-rendering: optimizeLegibility;
 }
 
-.aaapos-setup-wizard *,
-.aaapos-setup-wizard *::before,
-.aaapos-setup-wizard *::after {
+.Bo-setup-wizard *,
+.Bo-setup-wizard *::before,
+.Bo-setup-wizard *::after {
   box-sizing: border-box;
 }
 

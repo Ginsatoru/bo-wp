@@ -2,7 +2,7 @@
  * Variation Alert
  * Clean alert system for product variation selection
  * 
- * @package aaapos-prime
+ * @package Bo-prime
  * @since 1.0.0
  */
 

@@ -3,11 +3,11 @@
  * Template part for displaying a message that posts cannot be found
  * UPDATED: Now uses shop header style with fallback background image
  * 
- * @package aaapos-prime
+ * @package Bo-prime
  */
 
 // Get shop header customizer settings with FALLBACK SUPPORT
-$header_bg_image = aaapos_get_shop_header_bg_image(); // Uses fallback image
+$header_bg_image = Bo_get_shop_header_bg_image(); // Uses fallback image
 ?>
 
 <section class="no-results not-found">
@@ -20,18 +20,18 @@ $header_bg_image = aaapos_get_shop_header_bg_image(); // Uses fallback image
         
         <div class="woocommerce-products-header__inner">
             <h1 class="woocommerce-products-header__title page-title">
-                <?php esc_html_e('Nothing Found', 'aaapos-prime'); ?>
+                <?php esc_html_e('Nothing Found', 'Bo-prime'); ?>
             </h1>
             
             <div class="woocommerce-archive-description">
                 <p>
                     <?php
                     if (is_home() && current_user_can('publish_posts')) {
-                        esc_html_e('Ready to publish your first post? Get started here.', 'aaapos-prime');
+                        esc_html_e('Ready to publish your first post? Get started here.', 'Bo-prime');
                     } elseif (is_search()) {
-                        esc_html_e('Sorry, but nothing matched your search terms. Please try again with different keywords.', 'aaapos-prime');
+                        esc_html_e('Sorry, but nothing matched your search terms. Please try again with different keywords.', 'Bo-prime');
                     } else {
-                        esc_html_e('It seems we can\'t find what you\'re looking for. Perhaps searching can help.', 'aaapos-prime');
+                        esc_html_e('It seems we can\'t find what you\'re looking for. Perhaps searching can help.', 'Bo-prime');
                     }
                     ?>
                 </p>
@@ -56,15 +56,15 @@ $header_bg_image = aaapos_get_shop_header_bg_image(); // Uses fallback image
                 </div>
                 
                 <h2 class="no-results-title">
-                    <?php esc_html_e('Start Publishing', 'aaapos-prime'); ?>
+                    <?php esc_html_e('Start Publishing', 'Bo-prime'); ?>
                 </h2>
                 
                 <p class="no-results-text">
-                    <?php esc_html_e('Ready to publish your first post? Get started here.', 'aaapos-prime'); ?>
+                    <?php esc_html_e('Ready to publish your first post? Get started here.', 'Bo-prime'); ?>
                 </p>
                 
                 <a href="<?php echo esc_url(admin_url('post-new.php')); ?>" class="button button-primary">
-                    <?php esc_html_e('Create New Post', 'aaapos-prime'); ?>
+                    <?php esc_html_e('Create New Post', 'Bo-prime'); ?>
                 </a>
             </div>
             <?php
@@ -81,11 +81,11 @@ $header_bg_image = aaapos_get_shop_header_bg_image(); // Uses fallback image
                     </div>
                     
                     <h2 class="no-results-title">
-                        <?php esc_html_e('No results found', 'aaapos-prime'); ?>
+                        <?php esc_html_e('No results found', 'Bo-prime'); ?>
                     </h2>
                     
                     <p class="no-results-text">
-                        <?php esc_html_e('Sorry, but nothing matched your search terms. Please try again with different keywords.', 'aaapos-prime'); ?>
+                        <?php esc_html_e('Sorry, but nothing matched your search terms. Please try again with different keywords.', 'Bo-prime'); ?>
                     </p>
                     
                     <!-- Try Again Search -->
@@ -94,13 +94,13 @@ $header_bg_image = aaapos_get_shop_header_bg_image(); // Uses fallback image
                             <input 
                                 type="search" 
                                 class="search-input-field" 
-                                placeholder="<?php esc_attr_e('Try another search...', 'aaapos-prime'); ?>" 
+                                placeholder="<?php esc_attr_e('Try another search...', 'Bo-prime'); ?>" 
                                 value="" 
                                 name="s"
                                 autofocus
                             />
                             <button type="submit" class="search-submit-btn">
-                                <?php esc_html_e('Search', 'aaapos-prime'); ?>
+                                <?php esc_html_e('Search', 'Bo-prime'); ?>
                             </button>
                         </div>
                     </form>
@@ -108,7 +108,7 @@ $header_bg_image = aaapos_get_shop_header_bg_image(); // Uses fallback image
                 
                 <!-- Helpful Suggestions -->
                 <div class="no-results-suggestions">
-                    <h3 class="suggestions-title"><?php esc_html_e('Explore these instead', 'aaapos-prime'); ?></h3>
+                    <h3 class="suggestions-title"><?php esc_html_e('Explore these instead', 'Bo-prime'); ?></h3>
                     <div class="suggestion-grid">
                         <?php if (class_exists('WooCommerce')) : ?>
                             <a href="<?php echo esc_url(get_permalink(wc_get_page_id('shop'))); ?>" class="suggestion-card">
@@ -118,8 +118,8 @@ $header_bg_image = aaapos_get_shop_header_bg_image(); // Uses fallback image
                                     </svg>
                                 </div>
                                 <div class="suggestion-content">
-                                    <h4><?php esc_html_e('Browse Products', 'aaapos-prime'); ?></h4>
-                                    <p><?php esc_html_e('Explore our full catalog', 'aaapos-prime'); ?></p>
+                                    <h4><?php esc_html_e('Browse Products', 'Bo-prime'); ?></h4>
+                                    <p><?php esc_html_e('Explore our full catalog', 'Bo-prime'); ?></p>
                                 </div>
                             </a>
                         <?php endif; ?>
@@ -132,8 +132,8 @@ $header_bg_image = aaapos_get_shop_header_bg_image(); // Uses fallback image
                                 </svg>
                             </div>
                             <div class="suggestion-content">
-                                <h4><?php esc_html_e('Visit Blog', 'aaapos-prime'); ?></h4>
-                                <p><?php esc_html_e('Read our latest articles', 'aaapos-prime'); ?></p>
+                                <h4><?php esc_html_e('Visit Blog', 'Bo-prime'); ?></h4>
+                                <p><?php esc_html_e('Read our latest articles', 'Bo-prime'); ?></p>
                             </div>
                         </a>
                         
@@ -144,8 +144,8 @@ $header_bg_image = aaapos_get_shop_header_bg_image(); // Uses fallback image
                                 </svg>
                             </div>
                             <div class="suggestion-content">
-                                <h4><?php esc_html_e('Get Help', 'aaapos-prime'); ?></h4>
-                                <p><?php esc_html_e('Contact our team', 'aaapos-prime'); ?></p>
+                                <h4><?php esc_html_e('Get Help', 'Bo-prime'); ?></h4>
+                                <p><?php esc_html_e('Contact our team', 'Bo-prime'); ?></p>
                             </div>
                         </a>
                     </div>
@@ -166,11 +166,11 @@ $header_bg_image = aaapos_get_shop_header_bg_image(); // Uses fallback image
                 </div>
                 
                 <h2 class="no-results-title">
-                    <?php esc_html_e('Oops! Nothing here', 'aaapos-prime'); ?>
+                    <?php esc_html_e('Oops! Nothing here', 'Bo-prime'); ?>
                 </h2>
                 
                 <p class="no-results-text">
-                    <?php esc_html_e('It seems we can\'t find what you\'re looking for. Perhaps searching can help.', 'aaapos-prime'); ?>
+                    <?php esc_html_e('It seems we can\'t find what you\'re looking for. Perhaps searching can help.', 'Bo-prime'); ?>
                 </p>
                 
                 <?php get_search_form(); ?>

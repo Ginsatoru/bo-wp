@@ -3,7 +3,7 @@
  * Template Name: Contact Page
  * Template Post Type: page
  * 
- * @package aaapos-prime
+ * @package Bo-prime
  */
 
 if (!defined('ABSPATH')) {
@@ -73,7 +73,7 @@ get_header();
                     </svg>
                     <div class="quick-stat__text">
                         <strong><?php echo esc_html(get_theme_mod('contact_stat3_title', 'Visit Us')); ?></strong>
-                        <span><?php echo esc_html(get_theme_mod('contact_stat3_text', 'AAAPOS')); ?></span>
+                        <span><?php echo esc_html(get_theme_mod('contact_stat3_text', 'Bo')); ?></span>
                     </div>
                 </div>
                 <?php endif; ?>
@@ -99,8 +99,8 @@ get_header();
                     </div>
                     
                     <?php
-                    if (function_exists('aaapos_display_contact_form_messages')) {
-                        aaapos_display_contact_form_messages();
+                    if (function_exists('Bo_display_contact_form_messages')) {
+                        Bo_display_contact_form_messages();
                     }
                     ?>
                     
@@ -225,7 +225,7 @@ get_header();
                             
                             <!-- Email -->
                             <?php 
-                            $email = get_theme_mod('contact_email', 'support@aaapos.com');
+                            $email = get_theme_mod('contact_email', 'support@Bo.com');
                             if (!empty($email)) : 
                             ?>
                             <a href="mailto:<?php echo esc_attr(antispambot($email)); ?>" 
@@ -245,7 +245,7 @@ get_header();
                             
                             <!-- Address -->
                             <?php 
-                            $address = get_theme_mod('contact_address', '123 Farm Road, AAAPOS VIC 3440');
+                            $address = get_theme_mod('contact_address', '123 Farm Road, Bo VIC 3440');
                             if (!empty($address)) : 
                             ?>
                             <div class="contact-info-link">
@@ -305,7 +305,7 @@ get_header();
                             $social_icons = array(
                                 'facebook' => array(
                                     'icon' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>',
-                                    'fallback' => 'https://www.facebook.com/aaapos.retailmanager'
+                                    'fallback' => 'https://www.facebook.com/Bo.retailmanager'
                                 ),
                                 'instagram' => array(
                                     'icon' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"/><path d="M6.5 3h11A3.5 3.5 0 0121 6.5v11a3.5 3.5 0 01-3.5 3.5h-11A3.5 3.5 0 013 17.5v-11A3.5 3.5 0 016.5 3z"/></svg>',
@@ -317,7 +317,7 @@ get_header();
                                 ),
                                 'youtube' => array(
                                     'icon' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z M9.75 15.02l.01-6.27 5.77 3.14-5.78 3.13z"/></svg>',
-                                    'fallback' => 'https://www.youtube.com/@aaapos'
+                                    'fallback' => 'https://www.youtube.com/@Bo'
                                 ),
                                 'linkedin' => array(
                                     'icon' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z M4 6a2 2 0 110-4 2 2 0 010 4z"/></svg>',

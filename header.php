@@ -4,7 +4,7 @@
  * 
  * Displays all of the <head> section and everything up until <div id="content">
  *
- * @package AAAPOS
+ * @package Bo
  */
 ?>
 <!DOCTYPE html>
@@ -30,7 +30,7 @@
 
 <div id="page" class="site">
     <a class="skip-link sr-only" href="#main">
-        <?php esc_html_e('Skip to content', 'aaapos'); ?>
+        <?php esc_html_e('Skip to content', 'Bo'); ?>
     </a>
 
     <?php
@@ -59,23 +59,23 @@
                 </div>
 
                 <!-- Primary Navigation -->
-                <nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e('Primary Navigation', 'aaapos'); ?>">
+                <nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e('Primary Navigation', 'Bo'); ?>">
                     
                     <?php if (get_theme_mod('show_search_bar', true)): ?>
                     <div class="mobile-search-wrapper">
                         <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">
                             <label for="mobile-search-input" class="sr-only">
-                                <?php esc_html_e('Search for:', 'aaapos'); ?>
+                                <?php esc_html_e('Search for:', 'Bo'); ?>
                             </label>
                             <input 
                                 type="search" 
                                 id="mobile-search-input"
                                 class="search-field" 
-                                placeholder="<?php esc_attr_e('Search products...', 'aaapos'); ?>" 
+                                placeholder="<?php esc_attr_e('Search products...', 'Bo'); ?>" 
                                 value="<?php echo get_search_query(); ?>" 
                                 name="s"
                             />
-                            <button type="submit" class="search-submit" aria-label="<?php esc_attr_e('Search', 'aaapos'); ?>">
+                            <button type="submit" class="search-submit" aria-label="<?php esc_attr_e('Search', 'Bo'); ?>">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                     <circle cx="11" cy="11" r="8"/>
                                     <path d="m21 21-4.35-4.35"/>
@@ -100,7 +100,7 @@
                                     </svg>
                                     <div class="mobile-account-info">
                                         <span class="mobile-account-name"><?php echo esc_html($username); ?></span>
-                                        <span class="mobile-account-status"><?php esc_html_e('View Account', 'aaapos'); ?></span>
+                                        <span class="mobile-account-status"><?php esc_html_e('View Account', 'Bo'); ?></span>
                                     </div>
                                     <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                         <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
@@ -113,7 +113,7 @@
                                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                                 <path d="M16 11V7a4 4 0 0 0-8 0v4M5 9h14l1 12H4L5 9z"/>
                                             </svg>
-                                            <?php esc_html_e('My Orders', 'aaapos'); ?>
+                                            <?php esc_html_e('My Orders', 'Bo'); ?>
                                         </a>
                                     </li>
                                     <li>
@@ -122,7 +122,7 @@
                                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                                                 <circle cx="12" cy="10" r="3"/>
                                             </svg>
-                                            <?php esc_html_e('Addresses', 'aaapos'); ?>
+                                            <?php esc_html_e('Addresses', 'Bo'); ?>
                                         </a>
                                     </li>
                                     <li class="menu-divider"></li>
@@ -133,7 +133,7 @@
                                                 <polyline points="16 17 21 12 16 7"/>
                                                 <line x1="21" y1="12" x2="9" y2="12"/>
                                             </svg>
-                                            <?php esc_html_e('Logout', 'aaapos'); ?>
+                                            <?php esc_html_e('Logout', 'Bo'); ?>
                                         </a>
                                     </li>
                                 </ul>
@@ -144,8 +144,8 @@
                                         <circle cx="12" cy="7" r="4"/>
                                     </svg>
                                     <div class="mobile-account-info">
-                                        <span class="mobile-account-name"><?php esc_html_e('Sign In', 'aaapos'); ?></span>
-                                        <span class="mobile-account-status"><?php esc_html_e('Login or Register', 'aaapos'); ?></span>
+                                        <span class="mobile-account-name"><?php esc_html_e('Sign In', 'Bo'); ?></span>
+                                        <span class="mobile-account-status"><?php esc_html_e('Login or Register', 'Bo'); ?></span>
                                     </div>
                                     <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                         <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
@@ -170,12 +170,12 @@
                     } else {
                         echo '<div id="primary-menu-container" class="menu-container">';
                         echo '<ul id="primary-menu" class="nav-menu">';
-                        echo '<li><a href="' . esc_url(home_url('/')) . '">' . esc_html__('Home', 'aaapos') . '</a></li>';
+                        echo '<li><a href="' . esc_url(home_url('/')) . '">' . esc_html__('Home', 'Bo') . '</a></li>';
                         if (class_exists('WooCommerce')) {
-                            echo '<li><a href="' . esc_url(get_permalink(wc_get_page_id('shop'))) . '">' . esc_html__('Shop', 'aaapos') . '</a></li>';
+                            echo '<li><a href="' . esc_url(get_permalink(wc_get_page_id('shop'))) . '">' . esc_html__('Shop', 'Bo') . '</a></li>';
                         }
-                        echo '<li><a href="' . esc_url(home_url('/about')) . '">' . esc_html__('About', 'aaapos') . '</a></li>';
-                        echo '<li><a href="' . esc_url(home_url('/contact')) . '">' . esc_html__('Contact', 'aaapos') . '</a></li>';
+                        echo '<li><a href="' . esc_url(home_url('/about')) . '">' . esc_html__('About', 'Bo') . '</a></li>';
+                        echo '<li><a href="' . esc_url(home_url('/contact')) . '">' . esc_html__('Contact', 'Bo') . '</a></li>';
                         echo '</ul>';
                         echo '</div>';
                     }
@@ -189,17 +189,17 @@
                     <div class="header-search-bar" data-animate="zoom-in" data-animate-duration="normal" data-animate-delay="200">
                         <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">
                             <label for="header-search-input" class="sr-only">
-                                <?php esc_html_e('Search for:', 'aaapos'); ?>
+                                <?php esc_html_e('Search for:', 'Bo'); ?>
                             </label>
                             <input 
                                 type="search" 
                                 id="header-search-input"
                                 class="search-field" 
-                                placeholder="<?php esc_attr_e('Search...', 'aaapos'); ?>" 
+                                placeholder="<?php esc_attr_e('Search...', 'Bo'); ?>" 
                                 value="<?php echo get_search_query(); ?>" 
                                 name="s"
                             />
-                            <button type="submit" class="search-submit" aria-label="<?php esc_attr_e('Search', 'aaapos'); ?>">
+                            <button type="submit" class="search-submit" aria-label="<?php esc_attr_e('Search', 'Bo'); ?>">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                     <circle cx="11" cy="11" r="8"/>
                                     <path d="m21 21-4.35-4.35"/>
@@ -238,7 +238,7 @@
                                                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
                                                     <polyline points="9 22 9 12 15 12 15 22"/>
                                                 </svg>
-                                                <?php esc_html_e('Dashboard', 'aaapos'); ?>
+                                                <?php esc_html_e('Dashboard', 'Bo'); ?>
                                             </a>
                                         </li>
                                         <li>
@@ -246,7 +246,7 @@
                                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                                     <path d="M16 11V7a4 4 0 0 0-8 0v4M5 9h14l1 12H4L5 9z"/>
                                                 </svg>
-                                                <?php esc_html_e('Orders', 'aaapos'); ?>
+                                                <?php esc_html_e('Orders', 'Bo'); ?>
                                             </a>
                                         </li>
                                         <li>
@@ -255,7 +255,7 @@
                                                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                                                     <circle cx="12" cy="10" r="3"/>
                                                 </svg>
-                                                <?php esc_html_e('Addresses', 'aaapos'); ?>
+                                                <?php esc_html_e('Addresses', 'Bo'); ?>
                                             </a>
                                         </li>
                                         <li>
@@ -264,7 +264,7 @@
                                                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
                                                     <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
                                                 </svg>
-                                                <?php esc_html_e('Account Details', 'aaapos'); ?>
+                                                <?php esc_html_e('Account Details', 'Bo'); ?>
                                             </a>
                                         </li>
                                         <li class="account-dropdown-divider"></li>
@@ -275,7 +275,7 @@
                                                     <polyline points="16 17 21 12 16 7"/>
                                                     <line x1="21" y1="12" x2="9" y2="12"/>
                                                 </svg>
-                                                <?php esc_html_e('Logout', 'aaapos'); ?>
+                                                <?php esc_html_e('Logout', 'Bo'); ?>
                                             </a>
                                         </li>
                                     </ul>
@@ -288,7 +288,7 @@
                                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
                                         <circle cx="12" cy="7" r="4"/>
                                     </svg>
-                                    <span><?php esc_html_e('Login', 'aaapos'); ?></span>
+                                    <span><?php esc_html_e('Login', 'Bo'); ?></span>
                                 </a>
                             </div>
                         <?php endif; ?>
@@ -322,11 +322,11 @@
                             
                             <div class="cart-dropdown">
                                 <div class="cart-dropdown-header">
-                                    <h3><?php esc_html_e('Shopping Cart', 'aaapos'); ?></h3>
+                                    <h3><?php esc_html_e('Shopping Cart', 'Bo'); ?></h3>
                                     <span class="cart-item-count">
                                         <?php 
                                         echo esc_html($cart_count) . ' ';
-                                        echo $cart_count === 1 ? esc_html__('item', 'aaapos') : esc_html__('items', 'aaapos'); 
+                                        echo $cart_count === 1 ? esc_html__('item', 'Bo') : esc_html__('items', 'Bo'); 
                                         ?>
                                     </span>
                                 </div>
@@ -349,7 +349,7 @@
                                                     <span class="cart-item-price"><?php echo WC()->cart->get_product_price($_product); ?></span>
                                                 </div>
                                             </div>
-                                            <button type="button" class="cart-item-remove" data-cart-item-key="<?php echo esc_attr($cart_item_key); ?>" aria-label="<?php esc_attr_e('Remove item', 'aaapos'); ?>">
+                                            <button type="button" class="cart-item-remove" data-cart-item-key="<?php echo esc_attr($cart_item_key); ?>" aria-label="<?php esc_attr_e('Remove item', 'Bo'); ?>">
                                                 <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                     <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
                                                 </svg>
@@ -359,21 +359,21 @@
                                         endforeach;
                                     else: ?>
                                         <li class="cart-dropdown-empty">
-                                            <p><?php esc_html_e('Your cart is empty.', 'aaapos'); ?></p>
+                                            <p><?php esc_html_e('Your cart is empty.', 'Bo'); ?></p>
                                         </li>
                                     <?php endif; ?>
                                 </ul>
                                 <div class="cart-dropdown-footer">
                                     <div class="cart-subtotal">
-                                        <span><?php esc_html_e('Subtotal:', 'aaapos'); ?></span>
+                                        <span><?php esc_html_e('Subtotal:', 'Bo'); ?></span>
                                         <strong class="cart-subtotal-amount"><?php echo WC()->cart->get_cart_subtotal(); ?></strong>
                                     </div>
                                     <div class="cart-dropdown-actions">
                                         <a href="<?php echo esc_url(wc_get_cart_url()); ?>" class="btn btn-secondary btn-block">
-                                            <?php esc_html_e('View Cart', 'aaapos'); ?>
+                                            <?php esc_html_e('View Cart', 'Bo'); ?>
                                         </a>
                                         <a href="<?php echo esc_url(wc_get_checkout_url()); ?>" class="btn btn-primary btn-block">
-                                            <?php esc_html_e('Checkout', 'aaapos'); ?>
+                                            <?php esc_html_e('Checkout', 'Bo'); ?>
                                         </a>
                                     </div>
                                 </div>
@@ -384,7 +384,7 @@
                     <button class="mobile-menu-toggle" 
                             aria-expanded="false"
                             aria-controls="site-navigation"
-                            aria-label="<?php esc_attr_e('Toggle mobile menu', 'aaapos'); ?>"
+                            aria-label="<?php esc_attr_e('Toggle mobile menu', 'Bo'); ?>"
                             data-animate="fade-left" 
                             data-animate-duration="slow" 
                             data-animate-delay="300">

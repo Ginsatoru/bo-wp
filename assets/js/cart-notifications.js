@@ -1,5 +1,5 @@
 /**
- * AAAPOS – WooCommerce Animated Cart Notification
+ * Bo – WooCommerce Animated Cart Notification
  * Tick → Expand → Collapse → Slide
  * FULL ROW LAYOUT (COMPACT + GROUPED)
  * NOW WITH COUPON SUPPORT + SINGLE PRODUCT PAGE
@@ -38,24 +38,24 @@
     removeNotification();
 
     const $el = $(`
-      <div class="aaapos-cart-notification">
-        <div class="aaapos-cart-tick">${checkmarkSVG}</div>
+      <div class="Bo-cart-notification">
+        <div class="Bo-cart-tick">${checkmarkSVG}</div>
 
-        <div class="aaapos-cart-content aaapos-cart-row">
-          <div class="aaapos-cart-icon">${checkmarkSVG}</div>
+        <div class="Bo-cart-content Bo-cart-row">
+          <div class="Bo-cart-icon">${checkmarkSVG}</div>
 
-          <div class="aaapos-cart-text">
-            <span class="aaapos-cart-product-name">${escapeHtml(productName)}</span>
-            <span class="aaapos-cart-status">added to cart</span>
+          <div class="Bo-cart-text">
+            <span class="Bo-cart-product-name">${escapeHtml(productName)}</span>
+            <span class="Bo-cart-status">added to cart</span>
           </div>
 
-          <div class="aaapos-cart-actions">
-            <a href="${getCartUrl()}" class="aaapos-cart-view">
+          <div class="Bo-cart-actions">
+            <a href="${getCartUrl()}" class="Bo-cart-view">
               View Cart
             </a>
           </div>
 
-          <div class="aaapos-cart-close">&times;</div>
+          <div class="Bo-cart-close">&times;</div>
         </div>
       </div>
     `);
@@ -72,24 +72,24 @@
     removeNotification();
 
     const $el = $(`
-      <div class="aaapos-cart-notification">
-        <div class="aaapos-cart-tick">${checkmarkSVG}</div>
+      <div class="Bo-cart-notification">
+        <div class="Bo-cart-tick">${checkmarkSVG}</div>
 
-        <div class="aaapos-cart-content aaapos-cart-row">
-          <div class="aaapos-cart-icon aaapos-cart-icon--coupon">${couponSVG}</div>
+        <div class="Bo-cart-content Bo-cart-row">
+          <div class="Bo-cart-icon Bo-cart-icon--coupon">${couponSVG}</div>
 
-          <div class="aaapos-cart-text">
-            <span class="aaapos-cart-product-name"><strong>${escapeHtml(couponCode.toUpperCase())}</strong></span>
-            <span class="aaapos-cart-status">${discountAmount ? 'Discount: ' + discountAmount : 'coupon applied'}</span>
+          <div class="Bo-cart-text">
+            <span class="Bo-cart-product-name"><strong>${escapeHtml(couponCode.toUpperCase())}</strong></span>
+            <span class="Bo-cart-status">${discountAmount ? 'Discount: ' + discountAmount : 'coupon applied'}</span>
           </div>
 
-          <div class="aaapos-cart-actions">
-            <a href="${getCartUrl()}" class="aaapos-cart-view">
+          <div class="Bo-cart-actions">
+            <a href="${getCartUrl()}" class="Bo-cart-view">
               View Cart
             </a>
           </div>
 
-          <div class="aaapos-cart-close">&times;</div>
+          <div class="Bo-cart-close">&times;</div>
         </div>
       </div>
     `);
@@ -116,11 +116,11 @@
       autoCloseTimer = setTimeout(closeNotification, 4000);
     });
 
-    $el.on('click', '.aaapos-cart-close', closeNotification);
+    $el.on('click', '.Bo-cart-close', closeNotification);
   }
 
   function closeNotification() {
-    const $el = $('.aaapos-cart-notification');
+    const $el = $('.Bo-cart-notification');
     if (!$el.length) return;
 
     clearTimeout(autoCloseTimer);
@@ -138,7 +138,7 @@
   }
 
   function removeNotification() {
-    $('.aaapos-cart-notification').remove();
+    $('.Bo-cart-notification').remove();
   }
 
   /**

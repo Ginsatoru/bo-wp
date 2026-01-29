@@ -3,7 +3,7 @@
  * Template part for displaying search results (blog posts/pages)
  * Clean card design matching the product cards
  * 
- * @package aaapos-prime
+ * @package Bo-prime
  */
 
 $post_id = get_the_ID();
@@ -30,9 +30,9 @@ $post_date = get_the_date('M j, Y');
             <span class="search-card__badge">
                 <?php
                 if ($post_type === 'post') {
-                    esc_html_e('Blog', 'aaapos-prime');
+                    esc_html_e('Blog', 'Bo-prime');
                 } elseif ($post_type === 'page') {
-                    esc_html_e('Page', 'aaapos-prime');
+                    esc_html_e('Page', 'Bo-prime');
                 } else {
                     echo esc_html(ucfirst($post_type));
                 }
@@ -52,9 +52,9 @@ $post_date = get_the_date('M j, Y');
             <span class="search-card__badge">
                 <?php
                 if ($post_type === 'post') {
-                    esc_html_e('Blog', 'aaapos-prime');
+                    esc_html_e('Blog', 'Bo-prime');
                 } elseif ($post_type === 'page') {
-                    esc_html_e('Page', 'aaapos-prime');
+                    esc_html_e('Page', 'Bo-prime');
                 } else {
                     echo esc_html(ucfirst($post_type));
                 }
@@ -113,7 +113,7 @@ $post_date = get_the_date('M j, Y');
         
         <!-- Read More Link -->
         <a href="<?php the_permalink(); ?>" class="search-card__link">
-            <?php esc_html_e('Read More', 'aaapos-prime'); ?>
+            <?php esc_html_e('Read More', 'Bo-prime'); ?>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="5" y1="12" x2="19" y2="12"/>
                 <polyline points="12 5 19 12 12 19"/>

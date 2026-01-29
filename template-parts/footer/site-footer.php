@@ -3,7 +3,7 @@
  * Site Footer Template - Modernized with Image-based Payment Icons
  * UPDATED: Footer categories now sync with homepage category order
  * site-footer.php
- * @package aaapos-prime
+ * @package Bo-prime
  * @since 1.0.0
  */
 
@@ -74,14 +74,14 @@ $social_icon_style = get_theme_mod('social_icon_style', 'rounded');
                     <!-- Social Media Links -->
                     <?php if ($show_social): ?>
                         <div class="footer-social-links">
-                            <?php aaapos_social_media_icons($social_icon_style); ?>
+                            <?php Bo_social_media_icons($social_icon_style); ?>
                         </div>
                     <?php endif; ?>
                 </div>
                 
                 <!-- Column 2: Quick Links -->
                 <div class="footer-widget footer-links">
-                    <h4 class="widget-title"><?php esc_html_e('Quick Links', 'aaapos-prime'); ?></h4>
+                    <h4 class="widget-title"><?php esc_html_e('Quick Links', 'Bo-prime'); ?></h4>
                     
                     <?php
                     // Check if footer menu is set
@@ -92,10 +92,10 @@ $social_icon_style = get_theme_mod('social_icon_style', 'rounded');
                             'container' => 'nav',
                             'container_class' => 'footer-navigation',
                             'depth' => 1,
-                            'fallback_cb' => 'aaapos_footer_quick_links_fallback',
+                            'fallback_cb' => 'Bo_footer_quick_links_fallback',
                         ));
                     } else {
-                        aaapos_footer_quick_links_fallback();
+                        Bo_footer_quick_links_fallback();
                     }
                     ?>
                 </div>
@@ -103,7 +103,7 @@ $social_icon_style = get_theme_mod('social_icon_style', 'rounded');
                 <!-- Column 3: Product Categories -->
                 <?php if (class_exists('WooCommerce')): ?>
                     <div class="footer-widget footer-categories">
-                        <h4 class="widget-title"><?php esc_html_e('Categories', 'aaapos-prime'); ?></h4>
+                        <h4 class="widget-title"><?php esc_html_e('Categories', 'Bo-prime'); ?></h4>
                         
                         <?php
                         // Get the same category order as homepage
@@ -154,7 +154,7 @@ $social_icon_style = get_theme_mod('social_icon_style', 'rounded');
                 
                 <!-- Column 4: Contact Information -->
                 <div class="footer-widget footer-contact-info">
-                    <h4 class="widget-title"><?php esc_html_e('Contact Us', 'aaapos-prime'); ?></h4>
+                    <h4 class="widget-title"><?php esc_html_e('Contact Us', 'Bo-prime'); ?></h4>
                     
                     <ul class="footer-contact">
                         <li class="contact-item contact-address">
@@ -205,14 +205,14 @@ $social_icon_style = get_theme_mod('social_icon_style', 'rounded');
             <div class="footer-bottom-inner">
                 <!-- Copyright -->
                 <div class="footer-copyright">
-                    <?php aaapos_copyright_text(); ?>
+                    <?php Bo_copyright_text(); ?>
                 </div>
                 
                 <!-- Footer Bottom Navigation & Payment Icons -->
                 <div class="footer-bottom-nav">
                     <!-- Footer Bottom Menu -->
                     <?php if ($show_footer_menu): ?>
-                        <nav class="footer-nav-wrapper" aria-label="<?php esc_attr_e('Footer Menu', 'aaapos-prime'); ?>">
+                        <nav class="footer-nav-wrapper" aria-label="<?php esc_attr_e('Footer Menu', 'Bo-prime'); ?>">
                             <?php
                             // Check if utility menu is set
                             if (has_nav_menu('utility')) {
@@ -221,10 +221,10 @@ $social_icon_style = get_theme_mod('social_icon_style', 'rounded');
                                     'menu_class' => 'footer-nav',
                                     'container' => false,
                                     'depth' => 1,
-                                    'fallback_cb' => 'aaapos_footer_bottom_menu_fallback',
+                                    'fallback_cb' => 'Bo_footer_bottom_menu_fallback',
                                 ));
                             } else {
-                                aaapos_footer_bottom_menu_fallback();
+                                Bo_footer_bottom_menu_fallback();
                             }
                             ?>
                         </nav>
@@ -233,9 +233,9 @@ $social_icon_style = get_theme_mod('social_icon_style', 'rounded');
                     <!-- Payment Methods Icons -->
                     <?php if ($show_payment_icons): ?>
                         <div class="footer-payment-methods">
-                            <span class="payment-methods-label"><?php esc_html_e('We Accept', 'aaapos-prime'); ?></span>
+                            <span class="payment-methods-label"><?php esc_html_e('We Accept', 'Bo-prime'); ?></span>
                             <div class="payment-icons">
-                                <?php aaapos_payment_method_icons(); ?>
+                                <?php Bo_payment_method_icons(); ?>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -247,8 +247,8 @@ $social_icon_style = get_theme_mod('social_icon_style', 'rounded');
     <!-- Back to Top Button -->
     <?php if ($show_back_to_top): ?>
         <button class="back-to-top back-to-top-<?php echo esc_attr($back_to_top_position); ?>" 
-                aria-label="<?php esc_attr_e('Back to top', 'aaapos-prime'); ?>"
-                title="<?php esc_attr_e('Scroll to top', 'aaapos-prime'); ?>">
+                aria-label="<?php esc_attr_e('Back to top', 'Bo-prime'); ?>"
+                title="<?php esc_attr_e('Scroll to top', 'Bo-prime'); ?>">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="18 15 12 9 6 15"></polyline>
             </svg>
@@ -265,16 +265,16 @@ $social_icon_style = get_theme_mod('social_icon_style', 'rounded');
 /**
  * Display Social Media Icons
  */
-function aaapos_social_media_icons($style = 'rounded') {
+function Bo_social_media_icons($style = 'rounded') {
     $social_platforms = array(
-        'facebook' => array('label' => __('Facebook', 'aaapos-prime'), 'icon' => 'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z', 'type' => 'fill'),
-        'twitter' => array('label' => __('Twitter/X', 'aaapos-prime'), 'icon' => 'M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z', 'type' => 'fill'),
-        'instagram' => array('label' => __('Instagram', 'aaapos-prime'), 'icon' => 'M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01', 'icon2' => 'M6.5 3h11A3.5 3.5 0 0121 6.5v11a3.5 3.5 0 01-3.5 3.5h-11A3.5 3.5 0 013 17.5v-11A3.5 3.5 0 016.5 3z', 'type' => 'stroke'),
-        'youtube' => array('label' => __('YouTube', 'aaapos-prime'), 'icon' => 'M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z M9.75 15.02l.01-6.27 5.77 3.14-5.78 3.13z', 'type' => 'fill'),
-        'linkedin' => array('label' => __('LinkedIn', 'aaapos-prime'), 'icon' => 'M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z M4 6a2 2 0 110-4 2 2 0 010 4z', 'type' => 'fill'),
-        'pinterest' => array('label' => __('Pinterest', 'aaapos-prime'), 'icon' => 'M8 2.1c-3.3 0-6 2.7-6 6 0 2.5 1.5 4.7 3.7 5.7.1 0 .2 0 .2-.1 0-.1.1-.4.1-.5 0-.1 0-.2-.1-.3-.4-.5-.7-1.1-.7-1.8 0-2.3 1.7-4.4 4.4-4.4 2.4 0 3.7 1.5 3.7 3.4 0 2.6-1.1 4.7-2.8 4.7-.9 0-1.6-.7-1.4-1.6.2-1.1.7-2.2.7-3 0-.7-.4-1.3-1.1-1.3-1 0-1.7 1-1.7 2.3 0 .8.3 1.4.3 1.4s-.9 3.8-1 4.5c-.3 1.3-.1 2.9 0 3.1 0 .1.1.1.2.1.1 0 1.4-1.8 1.8-3 .1-.4.6-2.3.6-2.3.3.6 1.2 1.1 2.2 1.1 2.9 0 4.9-2.7 4.9-6.2 0-2.7-2.2-5.2-5.6-5.2z', 'type' => 'fill'),
-        'tiktok' => array('label' => __('TikTok', 'aaapos-prime'), 'icon' => 'M9 12a4 4 0 104 4V4a5 5 0 005 5', 'type' => 'stroke'),
-        'whatsapp' => array('label' => __('WhatsApp', 'aaapos-prime'), 'icon' => 'M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z', 'type' => 'stroke'),
+        'facebook' => array('label' => __('Facebook', 'Bo-prime'), 'icon' => 'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z', 'type' => 'fill'),
+        'twitter' => array('label' => __('Twitter/X', 'Bo-prime'), 'icon' => 'M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z', 'type' => 'fill'),
+        'instagram' => array('label' => __('Instagram', 'Bo-prime'), 'icon' => 'M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01', 'icon2' => 'M6.5 3h11A3.5 3.5 0 0121 6.5v11a3.5 3.5 0 01-3.5 3.5h-11A3.5 3.5 0 013 17.5v-11A3.5 3.5 0 016.5 3z', 'type' => 'stroke'),
+        'youtube' => array('label' => __('YouTube', 'Bo-prime'), 'icon' => 'M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z M9.75 15.02l.01-6.27 5.77 3.14-5.78 3.13z', 'type' => 'fill'),
+        'linkedin' => array('label' => __('LinkedIn', 'Bo-prime'), 'icon' => 'M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z M4 6a2 2 0 110-4 2 2 0 010 4z', 'type' => 'fill'),
+        'pinterest' => array('label' => __('Pinterest', 'Bo-prime'), 'icon' => 'M8 2.1c-3.3 0-6 2.7-6 6 0 2.5 1.5 4.7 3.7 5.7.1 0 .2 0 .2-.1 0-.1.1-.4.1-.5 0-.1 0-.2-.1-.3-.4-.5-.7-1.1-.7-1.8 0-2.3 1.7-4.4 4.4-4.4 2.4 0 3.7 1.5 3.7 3.4 0 2.6-1.1 4.7-2.8 4.7-.9 0-1.6-.7-1.4-1.6.2-1.1.7-2.2.7-3 0-.7-.4-1.3-1.1-1.3-1 0-1.7 1-1.7 2.3 0 .8.3 1.4.3 1.4s-.9 3.8-1 4.5c-.3 1.3-.1 2.9 0 3.1 0 .1.1.1.2.1.1 0 1.4-1.8 1.8-3 .1-.4.6-2.3.6-2.3.3.6 1.2 1.1 2.2 1.1 2.9 0 4.9-2.7 4.9-6.2 0-2.7-2.2-5.2-5.6-5.2z', 'type' => 'fill'),
+        'tiktok' => array('label' => __('TikTok', 'Bo-prime'), 'icon' => 'M9 12a4 4 0 104 4V4a5 5 0 005 5', 'type' => 'stroke'),
+        'whatsapp' => array('label' => __('WhatsApp', 'Bo-prime'), 'icon' => 'M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z', 'type' => 'stroke'),
     );
     
     $has_social_links = false;
@@ -306,26 +306,26 @@ function aaapos_social_media_icons($style = 'rounded') {
 /**
  * Display Payment Method Icons - Image Based with Show/Hide Control
  */
-function aaapos_payment_method_icons() {
+function Bo_payment_method_icons() {
     $payment_methods = array(
         'visa' => array(
-            'label' => __('Visa', 'aaapos-prime'),
+            'label' => __('Visa', 'Bo-prime'),
             'image' => 'payment-visa.png'
         ),
         'mastercard' => array(
-            'label' => __('Mastercard', 'aaapos-prime'),
+            'label' => __('Mastercard', 'Bo-prime'),
             'image' => 'payment-mastercard.png'
         ),
         'amex' => array(
-            'label' => __('American Express', 'aaapos-prime'),
+            'label' => __('American Express', 'Bo-prime'),
             'image' => 'payment-amex.png'
         ),
         'paypal' => array(
-            'label' => __('PayPal', 'aaapos-prime'),
+            'label' => __('PayPal', 'Bo-prime'),
             'image' => 'payment-paypal.png'
         ),
         'discover' => array(
-            'label' => __('Discover', 'aaapos-prime'),
+            'label' => __('Discover', 'Bo-prime'),
             'image' => 'payment-discover.png'
         ),
     );
@@ -364,8 +364,8 @@ function aaapos_payment_method_icons() {
 /**
  * Display Copyright Text
  */
-function aaapos_copyright_text() {
-    $copyright = get_theme_mod('footer_copyright_text', sprintf(__('© %s {sitename}. All rights reserved.', 'aaapos-prime'), '{year}'));
+function Bo_copyright_text() {
+    $copyright = get_theme_mod('footer_copyright_text', sprintf(__('© %s {sitename}. All rights reserved.', 'Bo-prime'), '{year}'));
     $copyright = str_replace('{year}', date('Y'), $copyright);
     $copyright = str_replace('{sitename}', get_bloginfo('name'), $copyright);
     echo '<p>' . wp_kses_post($copyright) . '</p>';
@@ -374,23 +374,23 @@ function aaapos_copyright_text() {
 /**
  * Footer Quick Links Fallback
  */
-function aaapos_footer_quick_links_fallback() {
+function Bo_footer_quick_links_fallback() {
     echo '<ul class="footer-menu">';
-    if (class_exists('WooCommerce')) echo '<li><a href="' . esc_url(get_permalink(wc_get_page_id('shop'))) . '">' . esc_html__('Shop', 'aaapos-prime') . '</a></li>';
-    echo '<li><a href="' . esc_url(home_url('/about')) . '">' . esc_html__('About', 'aaapos-prime') . '</a></li>';
-    echo '<li><a href="' . esc_url(home_url('/contact')) . '">' . esc_html__('Contact', 'aaapos-prime') . '</a></li>';
-    echo '<li><a href="' . esc_url(home_url('/blog')) . '">' . esc_html__('Blog', 'aaapos-prime') . '</a></li>';
+    if (class_exists('WooCommerce')) echo '<li><a href="' . esc_url(get_permalink(wc_get_page_id('shop'))) . '">' . esc_html__('Shop', 'Bo-prime') . '</a></li>';
+    echo '<li><a href="' . esc_url(home_url('/about')) . '">' . esc_html__('About', 'Bo-prime') . '</a></li>';
+    echo '<li><a href="' . esc_url(home_url('/contact')) . '">' . esc_html__('Contact', 'Bo-prime') . '</a></li>';
+    echo '<li><a href="' . esc_url(home_url('/blog')) . '">' . esc_html__('Blog', 'Bo-prime') . '</a></li>';
     echo '</ul>';
 }
 
 /**
  * Footer Bottom Menu Fallback
  */
-function aaapos_footer_bottom_menu_fallback() {
+function Bo_footer_bottom_menu_fallback() {
     echo '<ul class="footer-nav">';
-    echo '<li><a href="' . esc_url(home_url('/privacy-policy')) . '">' . esc_html__('Privacy', 'aaapos-prime') . '</a></li>';
-    echo '<li><a href="' . esc_url(home_url('/terms-of-service')) . '">' . esc_html__('Terms', 'aaapos-prime') . '</a></li>';
-    echo '<li><a href="' . esc_url(home_url('/refund-policy')) . '">' . esc_html__('Refunds', 'aaapos-prime') . '</a></li>';
+    echo '<li><a href="' . esc_url(home_url('/privacy-policy')) . '">' . esc_html__('Privacy', 'Bo-prime') . '</a></li>';
+    echo '<li><a href="' . esc_url(home_url('/terms-of-service')) . '">' . esc_html__('Terms', 'Bo-prime') . '</a></li>';
+    echo '<li><a href="' . esc_url(home_url('/refund-policy')) . '">' . esc_html__('Refunds', 'Bo-prime') . '</a></li>';
     echo '</ul>';
 }
 ?>

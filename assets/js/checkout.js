@@ -5,7 +5,7 @@
  * UPDATED: Shows discount amount in notification and proper error messages
  * FIXED: Auto-select single shipping method and force visual display
  * 
- * @package aaapos-prime
+ * @package Bo-prime
  */
 
 (function($) {
@@ -508,18 +508,18 @@
         const checkmarkSVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>';
         
         // Remove any existing notification
-        $('.aaapos-cart-notification').remove();
+        $('.Bo-cart-notification').remove();
         
         const $notification = $(`
-            <div class="aaapos-cart-notification">
-                <div class="aaapos-cart-tick">${checkmarkSVG}</div>
-                <div class="aaapos-cart-content aaapos-cart-row">
-                    <div class="aaapos-cart-icon">${checkmarkSVG}</div>
-                    <div class="aaapos-cart-text">
-                        <div class="aaapos-cart-title"><strong>${title}</strong></div>
-                        <div class="aaapos-cart-desc">${subtitle}</div>
+            <div class="Bo-cart-notification">
+                <div class="Bo-cart-tick">${checkmarkSVG}</div>
+                <div class="Bo-cart-content Bo-cart-row">
+                    <div class="Bo-cart-icon">${checkmarkSVG}</div>
+                    <div class="Bo-cart-text">
+                        <div class="Bo-cart-title"><strong>${title}</strong></div>
+                        <div class="Bo-cart-desc">${subtitle}</div>
                     </div>
-                    <div class="aaapos-cart-close">&times;</div>
+                    <div class="Bo-cart-close">&times;</div>
                 </div>
             </div>
         `);
@@ -545,7 +545,7 @@
             }, 3000);
         });
         
-        $notification.on('click', '.aaapos-cart-close', function() {
+        $notification.on('click', '.Bo-cart-close', function() {
             $notification.removeClass('is-expanded');
             setTimeout(() => $notification.remove(), 600);
         });
@@ -790,7 +790,7 @@
  * Checkout Skeleton Loading
  * Fixed: Prevents layout shifts by controlling when skeleton is applied
  * 
- * @package aaapos-prime
+ * @package Bo-prime
  */
 
 (function($) {

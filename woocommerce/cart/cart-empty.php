@@ -73,8 +73,8 @@ add_filter('body_class', function($classes) {
 /**
  * Display Recommended Products on Empty Cart
  */
-if ( function_exists( 'aaapos_empty_cart_recommended_products' ) ) {
-    aaapos_empty_cart_recommended_products();
+if ( function_exists( 'Bo_empty_cart_recommended_products' ) ) {
+    Bo_empty_cart_recommended_products();
 } else {
     // Fallback: Display products directly if function doesn't exist
     $args = array(

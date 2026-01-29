@@ -5,13 +5,13 @@
  * NOW WITH SHOP HEADER BACKGROUND IMAGE SUPPORT + FALLBACK
  * UPDATED: Uses fallback image function for consistency
  * 
- * @package aaapos-prime
+ * @package Bo-prime
  */
 
 get_header();
 
 // Get shop header customizer settings with FALLBACK SUPPORT
-$header_bg_image = aaapos_get_shop_header_bg_image(); // Now uses fallback image
+$header_bg_image = Bo_get_shop_header_bg_image(); // Now uses fallback image
 $header_title = get_theme_mod('shop_header_title', 'Shop');
 $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlight artisan quality, create a unique experience.');
 ?>
@@ -29,7 +29,7 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
                 <h1 class="search-title woocommerce-products-header__title">
                     <?php
                     printf(
-                        esc_html__('Search Results for %s', 'aaapos-prime'),
+                        esc_html__('Search Results for %s', 'Bo-prime'),
                         '<span class="search-query">' . get_search_query() . '</span>'
                     );
                     ?>
@@ -45,7 +45,7 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
                                 'We found %s product matching your search',
                                 'We found %s products matching your search',
                                 $total,
-                                'aaapos-prime'
+                                'Bo-prime'
                             ),
                             '<strong>' . number_format_i18n($total) . '</strong>'
                         );
@@ -65,7 +65,7 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
                 <div class="woocommerce-result-count">
                     <?php
                     printf(
-                        esc_html__('Showing all %d results', 'aaapos-prime'),
+                        esc_html__('Showing all %d results', 'Bo-prime'),
                         $wp_query->found_posts
                     );
                     ?>
@@ -76,15 +76,15 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
                     
                     <!-- Sort By Dropdown (NO SUBMIT - AJAX HANDLED) -->
                     <form class="woocommerce-ordering" method="get" action="#">
-                        <select name="orderby" class="orderby" aria-label="<?php esc_attr_e('Shop order', 'aaapos-prime'); ?>">
+                        <select name="orderby" class="orderby" aria-label="<?php esc_attr_e('Shop order', 'Bo-prime'); ?>">
                             <?php
                             $orderby_options = array(
-                                'menu_order' => __('Default sorting', 'aaapos-prime'),
-                                'popularity' => __('Sort by popularity', 'aaapos-prime'),
-                                'rating'     => __('Sort by average rating', 'aaapos-prime'),
-                                'date'       => __('Sort by latest', 'aaapos-prime'),
-                                'price'      => __('Sort by price: low to high', 'aaapos-prime'),
-                                'price-desc' => __('Sort by price: high to low', 'aaapos-prime'),
+                                'menu_order' => __('Default sorting', 'Bo-prime'),
+                                'popularity' => __('Sort by popularity', 'Bo-prime'),
+                                'rating'     => __('Sort by average rating', 'Bo-prime'),
+                                'date'       => __('Sort by latest', 'Bo-prime'),
+                                'price'      => __('Sort by price: low to high', 'Bo-prime'),
+                                'price-desc' => __('Sort by price: high to low', 'Bo-prime'),
                             );
                             
                             $current_orderby = isset($_GET['orderby']) ? wc_clean($_GET['orderby']) : 'menu_order';
@@ -105,8 +105,8 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
                             type="button" 
                             class="column-toggle" 
                             data-columns="2" 
-                            data-tooltip="<?php esc_attr_e('2 columns', 'aaapos-prime'); ?>"
-                            aria-label="<?php esc_attr_e('2 columns view', 'aaapos-prime'); ?>">
+                            data-tooltip="<?php esc_attr_e('2 columns', 'Bo-prime'); ?>"
+                            aria-label="<?php esc_attr_e('2 columns view', 'Bo-prime'); ?>">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <rect x="3" y="3" width="8" height="8" rx="1"></rect>
                                 <rect x="13" y="3" width="8" height="8" rx="1"></rect>
@@ -120,8 +120,8 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
                             type="button" 
                             class="column-toggle" 
                             data-columns="3" 
-                            data-tooltip="<?php esc_attr_e('3 columns', 'aaapos-prime'); ?>"
-                            aria-label="<?php esc_attr_e('3 columns view', 'aaapos-prime'); ?>">
+                            data-tooltip="<?php esc_attr_e('3 columns', 'Bo-prime'); ?>"
+                            aria-label="<?php esc_attr_e('3 columns view', 'Bo-prime'); ?>">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <rect x="2" y="3" width="5" height="5" rx="0.5"></rect>
                                 <rect x="9.5" y="3" width="5" height="5" rx="0.5"></rect>
@@ -140,8 +140,8 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
                             type="button" 
                             class="column-toggle active" 
                             data-columns="4" 
-                            data-tooltip="<?php esc_attr_e('4 columns', 'aaapos-prime'); ?>"
-                            aria-label="<?php esc_attr_e('4 columns view', 'aaapos-prime'); ?>">
+                            data-tooltip="<?php esc_attr_e('4 columns', 'Bo-prime'); ?>"
+                            aria-label="<?php esc_attr_e('4 columns view', 'Bo-prime'); ?>">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <rect x="2" y="3" width="3.5" height="3.5" rx="0.5"></rect>
                                 <rect x="7.5" y="3" width="3.5" height="3.5" rx="0.5"></rect>
@@ -251,7 +251,7 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
                                     <?php endif; ?>
                                     
                                     <a href="<?php the_permalink(); ?>" class="search-card__link">
-                                        <?php esc_html_e('Read More', 'aaapos-prime'); ?>
+                                        <?php esc_html_e('Read More', 'Bo-prime'); ?>
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                             <polyline points="9 18 15 12 9 6"/>
                                         </svg>
@@ -274,11 +274,11 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
                     'mid_size' => 2,
                     'prev_text' => sprintf(
                         '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg> %s',
-                        esc_html__('Previous', 'aaapos-prime')
+                        esc_html__('Previous', 'Bo-prime')
                     ),
                     'next_text' => sprintf(
                         '%s <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>',
-                        esc_html__('Next', 'aaapos-prime')
+                        esc_html__('Next', 'Bo-prime')
                     ),
                 ));
                 ?>
@@ -297,11 +297,11 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
                     </div>
                     
                     <h2 class="no-results-title">
-                        <?php esc_html_e('No results found', 'aaapos-prime'); ?>
+                        <?php esc_html_e('No results found', 'Bo-prime'); ?>
                     </h2>
                     
                     <p class="no-results-text">
-                        <?php esc_html_e('We couldn\'t find anything matching your search. Try adjusting your keywords or explore our suggestions below.', 'aaapos-prime'); ?>
+                        <?php esc_html_e('We couldn\'t find anything matching your search. Try adjusting your keywords or explore our suggestions below.', 'Bo-prime'); ?>
                     </p>
                     
                     <!-- Try Again Search -->
@@ -310,13 +310,13 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
                             <input 
                                 type="search" 
                                 class="search-input-field" 
-                                placeholder="<?php esc_attr_e('Try another search...', 'aaapos-prime'); ?>" 
+                                placeholder="<?php esc_attr_e('Try another search...', 'Bo-prime'); ?>" 
                                 value="" 
                                 name="s"
                                 autofocus
                             />
                             <button type="submit" class="search-submit-btn">
-                                <?php esc_html_e('Search', 'aaapos-prime'); ?>
+                                <?php esc_html_e('Search', 'Bo-prime'); ?>
                             </button>
                         </div>
                     </form>
@@ -324,7 +324,7 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
                 
                 <!-- Helpful Suggestions -->
                 <div class="no-results-suggestions">
-                    <h3 class="suggestions-title"><?php esc_html_e('Explore these instead', 'aaapos-prime'); ?></h3>
+                    <h3 class="suggestions-title"><?php esc_html_e('Explore these instead', 'Bo-prime'); ?></h3>
                     <div class="suggestion-grid">
                         <?php if (class_exists('WooCommerce')) : ?>
                             <a href="<?php echo esc_url(get_permalink(wc_get_page_id('shop'))); ?>" class="suggestion-card">
@@ -334,8 +334,8 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
                                     </svg>
                                 </div>
                                 <div class="suggestion-content">
-                                    <h4><?php esc_html_e('Browse Products', 'aaapos-prime'); ?></h4>
-                                    <p><?php esc_html_e('Explore our full catalog', 'aaapos-prime'); ?></p>
+                                    <h4><?php esc_html_e('Browse Products', 'Bo-prime'); ?></h4>
+                                    <p><?php esc_html_e('Explore our full catalog', 'Bo-prime'); ?></p>
                                 </div>
                             </a>
                         <?php endif; ?>
@@ -348,8 +348,8 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
                                 </svg>
                             </div>
                             <div class="suggestion-content">
-                                <h4><?php esc_html_e('Visit Blog', 'aaapos-prime'); ?></h4>
-                                <p><?php esc_html_e('Read our latest articles', 'aaapos-prime'); ?></p>
+                                <h4><?php esc_html_e('Visit Blog', 'Bo-prime'); ?></h4>
+                                <p><?php esc_html_e('Read our latest articles', 'Bo-prime'); ?></p>
                             </div>
                         </a>
                         
@@ -360,8 +360,8 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
                                 </svg>
                             </div>
                             <div class="suggestion-content">
-                                <h4><?php esc_html_e('Get Help', 'aaapos-prime'); ?></h4>
-                                <p><?php esc_html_e('Contact our team', 'aaapos-prime'); ?></p>
+                                <h4><?php esc_html_e('Get Help', 'Bo-prime'); ?></h4>
+                                <p><?php esc_html_e('Contact our team', 'Bo-prime'); ?></p>
                             </div>
                         </a>
                     </div>

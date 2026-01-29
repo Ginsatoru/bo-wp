@@ -2,7 +2,7 @@
  * Special Deals Auto-Rotation Script
  * Handles automatic product rotation with countdown timers
  * 
- * @package AAAPOS
+ * @package Bo
  */
 
 (function () {

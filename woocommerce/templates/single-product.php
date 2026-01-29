@@ -4,7 +4,7 @@
  * single-product.php
  * FIXED: Prevents "confirm form resubmission" warning on page refresh
  * 
- * @package AAAPOS_Prime
+ * @package Bo_Prime
  * @version 1.0.1
  */
 

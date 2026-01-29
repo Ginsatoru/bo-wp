@@ -3,7 +3,7 @@
  * 
  * Single brand color updates all accent elements in real-time.
  * 
- * @package aaapos-prime
+ * @package Bo-prime
  * @since 1.0.0
  */
 

@@ -3,7 +3,7 @@
  * Top bar component
  * Displays contact info, promo text, and social links (topbar.php)
  * 
- * @package AAAPOS
+ * @package Bo
  */
 
 if (!get_theme_mod('show_top_bar', true)) {
@@ -11,7 +11,7 @@ if (!get_theme_mod('show_top_bar', true)) {
 }
 
 $phone = get_theme_mod('topbar_phone', '+61 3 8400 3083');
-$email = get_theme_mod('topbar_email', 'support@aaapos.com');
+$email = get_theme_mod('topbar_email', 'support@Bo.com');
 $promo_text = get_theme_mod('topbar_promo_text', 'Fresh local produce delivered daily!');
 ?>
 

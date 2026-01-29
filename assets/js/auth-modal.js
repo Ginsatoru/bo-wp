@@ -2,7 +2,7 @@
  * Authentication Modal
  * Handles login and registration modal functionality
  * 
- * @package AAAPOS
+ * @package Bo
  * @since 1.0.0
  */
 class AuthModal {

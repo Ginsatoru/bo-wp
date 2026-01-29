@@ -4,7 +4,7 @@
  *
  * FINAL FIX: Quick View button same width as Add to Cart
  *
- * @package AAAPOS_Prime
+ * @package Bo_Prime
  * @version 1.0.0
  */
 
@@ -19,7 +19,7 @@ if (empty($product) || !$product->is_visible()) {
 
 // Get customizer settings
 $show_rating = get_theme_mod("show_product_rating", true);
-$sale_badge_text = get_theme_mod("sale_badge_text", __("Sale", "aaapos-prime"));
+$sale_badge_text = get_theme_mod("sale_badge_text", __("Sale", "Bo-prime"));
 $show_quick_view = get_theme_mod("show_quick_view", true);
 
 // Get rating data
@@ -60,7 +60,7 @@ $rating_count = $product->get_rating_count();
             <div class="product-rating">
                 <div class="rating-stars" aria-label="<?php echo esc_attr(
                     sprintf(
-                        __("Rated %s out of 5", "aaapos-prime"),
+                        __("Rated %s out of 5", "Bo-prime"),
                         number_format($average_rating, 2),
                     ),
                 ); ?>">
@@ -112,7 +112,7 @@ $rating_count = $product->get_rating_count();
                 data-product-id="<?php echo esc_attr($product->get_id()); ?>"
                 aria-label="<?php echo esc_attr(
                     sprintf(
-                        __("Quick view %s", "aaapos-prime"),
+                        __("Quick view %s", "Bo-prime"),
                         $product->get_name(),
                     ),
                 ); ?>">
@@ -120,7 +120,7 @@ $rating_count = $product->get_rating_count();
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
                 <circle cx="12" cy="12" r="3"/>
             </svg>
-            <span><?php esc_html_e("Quick View", "aaapos-prime"); ?></span>
+            <span><?php esc_html_e("Quick View", "Bo-prime"); ?></span>
         </button>
     <?php endif; ?>
     
@@ -134,7 +134,7 @@ $rating_count = $product->get_rating_count();
             <circle cx="20" cy="21" r="1"></circle>
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
         </svg>
-        <span><?php esc_html_e("Select options", "aaapos-prime"); ?></span>
+        <span><?php esc_html_e("Select options", "Bo-prime"); ?></span>
     </a>
 <?php else: ?>
     <a href="<?php echo esc_url("?add-to-cart=" . $product->get_id()); ?>" 
@@ -144,7 +144,7 @@ $rating_count = $product->get_rating_count();
        data-product_sku="<?php echo esc_attr($product->get_sku()); ?>" 
        aria-label="<?php echo esc_attr(
            sprintf(
-               __('Add "%s" to your cart', "aaapos-prime"),
+               __('Add "%s" to your cart', "Bo-prime"),
                $product->get_name(),
            ),
        ); ?>" 

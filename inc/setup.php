@@ -5,7 +5,7 @@
  * Comprehensive theme initialization with automatic setup,
  * intelligent defaults, and progressive enhancement.
  *
- * @package AAAPOS
+ * @package Bo
  * @since 1.0.0
  */
 

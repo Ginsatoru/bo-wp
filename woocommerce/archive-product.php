@@ -4,7 +4,7 @@
  * WITH ENHANCED HEADER & CATEGORY FILTER
  * UPDATED: Uses fallback background image function
  * 
- * @package AAAPOS_Prime
+ * @package Bo_Prime
  * @version 3.0.1
  */
 
@@ -25,7 +25,7 @@ $container_class = $show_sidebar ? 'has-sidebar' : 'no-sidebar';
 $show_category_filter = get_theme_mod('enable_category_filter', true);
 
 // Get shop header customizer settings with fallback
-$header_bg_image = aaapos_get_shop_header_bg_image(); // Uses new function with fallback
+$header_bg_image = Bo_get_shop_header_bg_image(); // Uses new function with fallback
 $header_title = get_theme_mod('shop_header_title', 'Shop');
 $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlight artisan quality, create a unique experience.');
 ?>
@@ -73,7 +73,7 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
                             <?php
                             $total = wc_get_loop_prop('total');
                             printf(
-                                esc_html__('Showing all %d results', 'aaapos-prime'),
+                                esc_html__('Showing all %d results', 'Bo-prime'),
                                 $total
                             );
                             ?>
@@ -92,8 +92,8 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
                                     type="button" 
                                     class="column-toggle" 
                                     data-columns="2" 
-                                    data-tooltip="<?php esc_attr_e('2 columns', 'aaapos-prime'); ?>"
-                                    aria-label="<?php esc_attr_e('2 columns view', 'aaapos-prime'); ?>">
+                                    data-tooltip="<?php esc_attr_e('2 columns', 'Bo-prime'); ?>"
+                                    aria-label="<?php esc_attr_e('2 columns view', 'Bo-prime'); ?>">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                         <rect x="3" y="3" width="8" height="8" rx="1"></rect>
                                         <rect x="13" y="3" width="8" height="8" rx="1"></rect>
@@ -107,8 +107,8 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
                                     type="button" 
                                     class="column-toggle" 
                                     data-columns="3" 
-                                    data-tooltip="<?php esc_attr_e('3 columns', 'aaapos-prime'); ?>"
-                                    aria-label="<?php esc_attr_e('3 columns view', 'aaapos-prime'); ?>">
+                                    data-tooltip="<?php esc_attr_e('3 columns', 'Bo-prime'); ?>"
+                                    aria-label="<?php esc_attr_e('3 columns view', 'Bo-prime'); ?>">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                         <rect x="2" y="3" width="5" height="5" rx="0.5"></rect>
                                         <rect x="9.5" y="3" width="5" height="5" rx="0.5"></rect>
@@ -127,8 +127,8 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
                                     type="button" 
                                     class="column-toggle active" 
                                     data-columns="4" 
-                                    data-tooltip="<?php esc_attr_e('4 columns', 'aaapos-prime'); ?>"
-                                    aria-label="<?php esc_attr_e('4 columns view', 'aaapos-prime'); ?>">
+                                    data-tooltip="<?php esc_attr_e('4 columns', 'Bo-prime'); ?>"
+                                    aria-label="<?php esc_attr_e('4 columns view', 'Bo-prime'); ?>">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                         <rect x="2" y="3" width="3.5" height="3.5" rx="0.5"></rect>
                                         <rect x="7.5" y="3" width="3.5" height="3.5" rx="0.5"></rect>
@@ -159,7 +159,7 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
                     // CATEGORY FILTER SECTION - BELOW TOOLBAR
                     // ============================================
                     if ($show_category_filter && (is_shop() || is_product_category())) {
-                        aaapos_render_category_filter();
+                        Bo_render_category_filter();
                     }
 
                     woocommerce_product_loop_start();
@@ -200,7 +200,7 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
             
             <!-- Shop Sidebar (Conditional) -->
             <?php if ($show_sidebar) : ?>
-                <aside class="shop-sidebar" role="complementary" aria-label="<?php esc_attr_e('Shop Sidebar', 'aaapos-prime'); ?>">
+                <aside class="shop-sidebar" role="complementary" aria-label="<?php esc_attr_e('Shop Sidebar', 'Bo-prime'); ?>">
                     <?php dynamic_sidebar('shop-sidebar'); ?>
                 </aside>
             <?php endif; ?>

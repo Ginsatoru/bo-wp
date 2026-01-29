@@ -3,7 +3,7 @@
  * Converts color and size dropdowns into modern UI elements
  * FIXED: Size buttons reset on page refresh (no persistent selection)
  * 
- * @package AAAPOS_Prime
+ * @package Bo_Prime
  * Location: assets/js/variation-swatches.js
  */
 

@@ -3,7 +3,7 @@
  * Template Name: About Us Page
  * Template Post Type: page
  *
- * @package AAAPOS
+ * @package Bo
  */
 
 if (!defined("ABSPATH")) {
@@ -208,7 +208,7 @@ get_header();
                     <article class="value-card" data-animate="fade-up" data-animate-delay="<?php echo $i *
                         100; ?>">
                         <div class="value-card__icon-wrapper">
-                            <?php echo aaapos_get_default_value_icon($i); ?>
+                            <?php echo Bo_get_default_value_icon($i); ?>
                         </div>
                         <h3 class="value-card__title"><?php echo esc_html(
                             get_theme_mod(
@@ -501,7 +501,7 @@ get_header();
 get_footer();
 
 // Helper function for default icons
-function aaapos_get_default_value_icon($index)
+function Bo_get_default_value_icon($index)
 {
     $icons = [
         1 => '<svg class="value-card__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>',

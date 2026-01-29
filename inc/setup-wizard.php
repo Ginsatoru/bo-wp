@@ -3,7 +3,7 @@
  * Theme Setup Wizard
  * File: inc/setup-wizard.php
  * 
- * @package AAAPOS
+ * @package Bo
  * @since 1.0.0
  */
 
@@ -11,15 +11,15 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class AAAPOS_Setup_Wizard {
+class Bo_Setup_Wizard {
     
     private $step = '';
     private $steps = array();
-    private $theme_slug = 'aaapos';
+    private $theme_slug = 'Bo';
     
     public function __construct() {
         // Check if setup should run
-        if (get_option('aaapos_setup_complete')) {
+        if (get_option('Bo_setup_complete')) {
             return;
         }
         
@@ -28,10 +28,10 @@ class AAAPOS_Setup_Wizard {
         add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts'));
         
         // AJAX handlers
-        add_action('wp_ajax_aaapos_setup_install_demo', array($this, 'ajax_install_demo'));
-        add_action('wp_ajax_aaapos_setup_configure_pages', array($this, 'ajax_configure_pages'));
-        add_action('wp_ajax_aaapos_setup_save_branding', array($this, 'ajax_save_branding'));
-        add_action('wp_ajax_aaapos_setup_complete', array($this, 'ajax_complete_setup'));
+        add_action('wp_ajax_Bo_setup_install_demo', array($this, 'ajax_install_demo'));
+        add_action('wp_ajax_Bo_setup_configure_pages', array($this, 'ajax_configure_pages'));
+        add_action('wp_ajax_Bo_setup_save_branding', array($this, 'ajax_save_branding'));
+        add_action('wp_ajax_Bo_setup_complete', array($this, 'ajax_complete_setup'));
     }
     
     /**
@@ -39,11 +39,11 @@ class AAAPOS_Setup_Wizard {
      */
     public function redirect_to_setup() {
         // Only redirect if this is theme activation
-        if (get_transient('_aaapos_activation_redirect')) {
-            delete_transient('_aaapos_activation_redirect');
+        if (get_transient('_Bo_activation_redirect')) {
+            delete_transient('_Bo_activation_redirect');
             
             if (!is_network_admin() && !isset($_GET['activate-multi'])) {
-                wp_safe_redirect(admin_url('admin.php?page=aaapos-setup'));
+                wp_safe_redirect(admin_url('admin.php?page=Bo-setup'));
                 exit;
             }
         }
@@ -54,10 +54,10 @@ class AAAPOS_Setup_Wizard {
      */
     public function admin_menus() {
         add_dashboard_page(
-            __('AAAPOS Theme Setup', 'aaapos'),
-            __('Theme Setup', 'aaapos'),
+            __('Bo Theme Setup', 'Bo'),
+            __('Theme Setup', 'Bo'),
             'manage_options',
-            'aaapos-setup',
+            'Bo-setup',
             array($this, 'setup_wizard_page')
         );
     }
@@ -66,28 +66,28 @@ class AAAPOS_Setup_Wizard {
      * Enqueue scripts and styles
      */
     public function enqueue_scripts($hook) {
-        if ('dashboard_page_aaapos-setup' !== $hook) {
+        if ('dashboard_page_Bo-setup' !== $hook) {
             return;
         }
         
         wp_enqueue_style(
-            'aaapos-setup-wizard',
+            'Bo-setup-wizard',
             get_template_directory_uri() . '/assets/css/setup-wizard.css',
             array(),
             '1.0.0'
         );
         
         wp_enqueue_script(
-            'aaapos-setup-wizard',
+            'Bo-setup-wizard',
             get_template_directory_uri() . '/assets/js/setup-wizard.js',
             array('jquery'),
             '1.0.0',
             true
         );
         
-        wp_localize_script('aaapos-setup-wizard', 'aaaposSetup', array(
+        wp_localize_script('Bo-setup-wizard', 'BoSetup', array(
             'ajaxUrl' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('aaapos_setup_nonce'),
+            'nonce' => wp_create_nonce('Bo_setup_nonce'),
             'homeUrl' => home_url(),
             'adminUrl' => admin_url(),
         ));
@@ -99,19 +99,19 @@ class AAAPOS_Setup_Wizard {
     public function setup_wizard_page() {
         $this->steps = array(
             'welcome' => array(
-                'name' => __('Welcome', 'aaapos'),
+                'name' => __('Welcome', 'Bo'),
                 'view' => array($this, 'step_welcome'),
             ),
             'pages' => array(
-                'name' => __('Pages', 'aaapos'),
+                'name' => __('Pages', 'Bo'),
                 'view' => array($this, 'step_pages'),
             ),
             'branding' => array(
-                'name' => __('Branding', 'aaapos'),
+                'name' => __('Branding', 'Bo'),
                 'view' => array($this, 'step_branding'),
             ),
             'ready' => array(
-                'name' => __('Ready', 'aaapos'),
+                'name' => __('Ready', 'Bo'),
                 'view' => array($this, 'step_ready'),
             ),
         );
@@ -135,11 +135,11 @@ class AAAPOS_Setup_Wizard {
         <head>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-            <title><?php esc_html_e('AAAPOS Theme Setup', 'aaapos'); ?></title>
+            <title><?php esc_html_e('Bo Theme Setup', 'Bo'); ?></title>
             <?php do_action('admin_print_styles'); ?>
             <?php do_action('admin_print_scripts'); ?>
         </head>
-        <body class="aaapos-setup-wizard">
+        <body class="Bo-setup-wizard">
             <div class="setup-container">
         <?php
     }
@@ -214,9 +214,9 @@ class AAAPOS_Setup_Wizard {
                         <path d="M24 36L32 44L48 28" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
-                <h1><?php esc_html_e('Welcome to AAAPOS', 'aaapos'); ?></h1>
+                <h1><?php esc_html_e('Welcome to Bo', 'Bo'); ?></h1>
                 <p class="hero-subtitle">
-                    <?php esc_html_e('Let\'s set up your store in just a few steps', 'aaapos'); ?>
+                    <?php esc_html_e('Let\'s set up your store in just a few steps', 'Bo'); ?>
                 </p>
             </div>
             
@@ -229,8 +229,8 @@ class AAAPOS_Setup_Wizard {
                         </svg>
                     </div>
                     <div class="feature-content">
-                        <h3><?php esc_html_e('Essential Pages', 'aaapos'); ?></h3>
-                        <p><?php esc_html_e('Automatically create all required WooCommerce pages', 'aaapos'); ?></p>
+                        <h3><?php esc_html_e('Essential Pages', 'Bo'); ?></h3>
+                        <p><?php esc_html_e('Automatically create all required WooCommerce pages', 'Bo'); ?></p>
                     </div>
                 </div>
                 
@@ -243,8 +243,8 @@ class AAAPOS_Setup_Wizard {
                         </svg>
                     </div>
                     <div class="feature-content">
-                        <h3><?php esc_html_e('Brand Identity', 'aaapos'); ?></h3>
-                        <p><?php esc_html_e('Customize your store name and brand colors', 'aaapos'); ?></p>
+                        <h3><?php esc_html_e('Brand Identity', 'Bo'); ?></h3>
+                        <p><?php esc_html_e('Customize your store name and brand colors', 'Bo'); ?></p>
                     </div>
                 </div>
                 
@@ -256,21 +256,21 @@ class AAAPOS_Setup_Wizard {
                         </svg>
                     </div>
                     <div class="feature-content">
-                        <h3><?php esc_html_e('Ready to Launch', 'aaapos'); ?></h3>
-                        <p><?php esc_html_e('Your store will be ready to start selling', 'aaapos'); ?></p>
+                        <h3><?php esc_html_e('Ready to Launch', 'Bo'); ?></h3>
+                        <p><?php esc_html_e('Your store will be ready to start selling', 'Bo'); ?></p>
                     </div>
                 </div>
             </div>
             
             <div class="setup-actions">
-                <a href="<?php echo esc_url(admin_url('admin.php?page=aaapos-setup&step=pages')); ?>" class="btn btn-primary">
-                    <?php esc_html_e('Get Started', 'aaapos'); ?>
+                <a href="<?php echo esc_url(admin_url('admin.php?page=Bo-setup&step=pages')); ?>" class="btn btn-primary">
+                    <?php esc_html_e('Get Started', 'Bo'); ?>
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                         <path d="M6.75 13.5L11.25 9L6.75 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </a>
-                <button class="btn btn-text" onclick="if(confirm('<?php esc_html_e('Are you sure? You can run this wizard again later from Appearance menu.', 'aaapos'); ?>')) { location.href='<?php echo esc_url(admin_url()); ?>'; }">
-                    <?php esc_html_e('Skip Setup', 'aaapos'); ?>
+                <button class="btn btn-text" onclick="if(confirm('<?php esc_html_e('Are you sure? You can run this wizard again later from Appearance menu.', 'Bo'); ?>')) { location.href='<?php echo esc_url(admin_url()); ?>'; }">
+                    <?php esc_html_e('Skip Setup', 'Bo'); ?>
                 </button>
             </div>
         </div>
@@ -281,7 +281,7 @@ class AAAPOS_Setup_Wizard {
      * STEP: Pages
      */
     private function step_pages() {
-        $pages_created = get_option('aaapos_pages_created', false);
+        $pages_created = get_option('Bo_pages_created', false);
         ?>
         <div class="setup-step step-pages">
             <div class="step-header">
@@ -293,9 +293,9 @@ class AAAPOS_Setup_Wizard {
                         <line x1="16" y1="28" x2="26" y2="28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
                     </svg>
                 </div>
-                <h1><?php esc_html_e('Create Essential Pages', 'aaapos'); ?></h1>
+                <h1><?php esc_html_e('Create Essential Pages', 'Bo'); ?></h1>
                 <p class="step-subtitle">
-                    <?php esc_html_e('We\'ll create the pages your store needs to function', 'aaapos'); ?>
+                    <?php esc_html_e('We\'ll create the pages your store needs to function', 'Bo'); ?>
                 </p>
             </div>
             
@@ -312,10 +312,10 @@ class AAAPOS_Setup_Wizard {
                             </svg>
                         </div>
                         <div class="page-details">
-                            <h3><?php esc_html_e('Homepage', 'aaapos'); ?></h3>
-                            <p><?php esc_html_e('Your store\'s front page', 'aaapos'); ?></p>
+                            <h3><?php esc_html_e('Homepage', 'Bo'); ?></h3>
+                            <p><?php esc_html_e('Your store\'s front page', 'Bo'); ?></p>
                         </div>
-                        <span class="page-badge pending"><?php esc_html_e('Pending', 'aaapos'); ?></span>
+                        <span class="page-badge pending"><?php esc_html_e('Pending', 'Bo'); ?></span>
                     </div>
                     <div class="page-card">
                         <div class="page-icon">
@@ -327,10 +327,10 @@ class AAAPOS_Setup_Wizard {
                             </svg>
                         </div>
                         <div class="page-details">
-                            <h3><?php esc_html_e('Shop', 'aaapos'); ?></h3>
-                            <p><?php esc_html_e('Product catalog', 'aaapos'); ?></p>
+                            <h3><?php esc_html_e('Shop', 'Bo'); ?></h3>
+                            <p><?php esc_html_e('Product catalog', 'Bo'); ?></p>
                         </div>
-                        <span class="page-badge pending"><?php esc_html_e('Pending', 'aaapos'); ?></span>
+                        <span class="page-badge pending"><?php esc_html_e('Pending', 'Bo'); ?></span>
                     </div>
                     <div class="page-card">
                         <div class="page-icon">
@@ -341,10 +341,10 @@ class AAAPOS_Setup_Wizard {
                             </svg>
                         </div>
                         <div class="page-details">
-                            <h3><?php esc_html_e('Cart', 'aaapos'); ?></h3>
-                            <p><?php esc_html_e('Shopping cart', 'aaapos'); ?></p>
+                            <h3><?php esc_html_e('Cart', 'Bo'); ?></h3>
+                            <p><?php esc_html_e('Shopping cart', 'Bo'); ?></p>
                         </div>
-                        <span class="page-badge pending"><?php esc_html_e('Pending', 'aaapos'); ?></span>
+                        <span class="page-badge pending"><?php esc_html_e('Pending', 'Bo'); ?></span>
                     </div>
                     <div class="page-card">
                         <div class="page-icon">
@@ -355,10 +355,10 @@ class AAAPOS_Setup_Wizard {
                             </svg>
                         </div>
                         <div class="page-details">
-                            <h3><?php esc_html_e('Checkout', 'aaapos'); ?></h3>
-                            <p><?php esc_html_e('Payment page', 'aaapos'); ?></p>
+                            <h3><?php esc_html_e('Checkout', 'Bo'); ?></h3>
+                            <p><?php esc_html_e('Payment page', 'Bo'); ?></p>
                         </div>
-                        <span class="page-badge pending"><?php esc_html_e('Pending', 'aaapos'); ?></span>
+                        <span class="page-badge pending"><?php esc_html_e('Pending', 'Bo'); ?></span>
                     </div>
                     <div class="page-card">
                         <div class="page-icon">
@@ -369,10 +369,10 @@ class AAAPOS_Setup_Wizard {
                             </svg>
                         </div>
                         <div class="page-details">
-                            <h3><?php esc_html_e('My Account', 'aaapos'); ?></h3>
-                            <p><?php esc_html_e('Customer dashboard', 'aaapos'); ?></p>
+                            <h3><?php esc_html_e('My Account', 'Bo'); ?></h3>
+                            <p><?php esc_html_e('Customer dashboard', 'Bo'); ?></p>
                         </div>
-                        <span class="page-badge pending"><?php esc_html_e('Pending', 'aaapos'); ?></span>
+                        <span class="page-badge pending"><?php esc_html_e('Pending', 'Bo'); ?></span>
                     </div>
                 <?php else : ?>
                     <div class="success-card">
@@ -380,8 +380,8 @@ class AAAPOS_Setup_Wizard {
                             <circle cx="28" cy="28" r="26" stroke="currentColor" stroke-width="2.5"/>
                             <path d="M16 28L24 36L40 20" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        <h3><?php esc_html_e('All pages created!', 'aaapos'); ?></h3>
-                        <p><?php esc_html_e('Your essential pages are ready', 'aaapos'); ?></p>
+                        <h3><?php esc_html_e('All pages created!', 'Bo'); ?></h3>
+                        <p><?php esc_html_e('Your essential pages are ready', 'Bo'); ?></p>
                     </div>
                 <?php endif; ?>
             </div>
@@ -389,7 +389,7 @@ class AAAPOS_Setup_Wizard {
             <div class="setup-actions">
                 <?php if (!$pages_created) : ?>
                     <button type="button" class="btn btn-primary btn-large" id="create-pages-btn">
-                        <span class="btn-text"><?php esc_html_e('Create Pages', 'aaapos'); ?></span>
+                        <span class="btn-text"><?php esc_html_e('Create Pages', 'Bo'); ?></span>
                         <span class="btn-loader">
                             <svg class="spinner" width="20" height="20" viewBox="0 0 24 24">
                                 <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" opacity="0.25"/>
@@ -398,15 +398,15 @@ class AAAPOS_Setup_Wizard {
                         </span>
                     </button>
                 <?php else : ?>
-                    <a href="<?php echo esc_url(admin_url('admin.php?page=aaapos-setup&step=branding')); ?>" class="btn btn-primary btn-large">
-                        <?php esc_html_e('Continue', 'aaapos'); ?>
+                    <a href="<?php echo esc_url(admin_url('admin.php?page=Bo-setup&step=branding')); ?>" class="btn btn-primary btn-large">
+                        <?php esc_html_e('Continue', 'Bo'); ?>
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                             <path d="M6.75 13.5L11.25 9L6.75 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </a>
                 <?php endif; ?>
-                <a href="<?php echo esc_url(admin_url('admin.php?page=aaapos-setup&step=branding')); ?>" class="btn btn-text">
-                    <?php esc_html_e('Skip this step', 'aaapos'); ?>
+                <a href="<?php echo esc_url(admin_url('admin.php?page=Bo-setup&step=branding')); ?>" class="btn btn-text">
+                    <?php esc_html_e('Skip this step', 'Bo'); ?>
                 </a>
             </div>
         </div>
@@ -428,31 +428,31 @@ private function step_branding() {
                     <path d="M14 36c0-5.5 4.5-8 10-8s10 2.5 10 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
                 </svg>
             </div>
-            <h1><?php esc_html_e('Brand Settings', 'aaapos'); ?></h1>
+            <h1><?php esc_html_e('Brand Settings', 'Bo'); ?></h1>
             <p class="step-subtitle">
-                <?php esc_html_e('Customize your store\'s identity', 'aaapos'); ?>
+                <?php esc_html_e('Customize your store\'s identity', 'Bo'); ?>
             </p>
         </div>
         
         <!-- Changed from form to div to prevent browser warning -->
         <div id="branding-form" class="branding-form">
             <div class="input-group">
-                <label for="site_title"><?php esc_html_e('Store Name', 'aaapos'); ?></label>
+                <label for="site_title"><?php esc_html_e('Store Name', 'Bo'); ?></label>
                 <input type="text" id="site_title" name="site_title" value="<?php echo esc_attr(get_bloginfo('name')); ?>" class="input-field" autocomplete="off">
-                <span class="input-hint"><?php esc_html_e('Appears in your header and browser tab', 'aaapos'); ?></span>
+                <span class="input-hint"><?php esc_html_e('Appears in your header and browser tab', 'Bo'); ?></span>
             </div>
             
             <div class="input-group">
-                <label for="brand_color"><?php esc_html_e('Brand Color', 'aaapos'); ?></label>
+                <label for="brand_color"><?php esc_html_e('Brand Color', 'Bo'); ?></label>
                 <div class="color-picker-group">
                     <input type="color" id="brand_color" name="brand_color" value="#0f8abe" class="color-swatch" autocomplete="off">
                     <input type="text" id="brand_color_text" value="#0f8abe" class="input-field color-value" autocomplete="off">
                 </div>
-                <span class="input-hint"><?php esc_html_e('Used for buttons, links, and accents', 'aaapos'); ?></span>
+                <span class="input-hint"><?php esc_html_e('Used for buttons, links, and accents', 'Bo'); ?></span>
             </div>
             
             <div class="preview-section">
-                <h3><?php esc_html_e('Preview', 'aaapos'); ?></h3>
+                <h3><?php esc_html_e('Preview', 'Bo'); ?></h3>
                 <div class="preview-window">
                     <div class="preview-toolbar">
                         <div class="preview-dots">
@@ -464,10 +464,10 @@ private function step_branding() {
                     <div class="preview-body">
                         <div class="preview-brand" id="preview-name"><?php echo esc_html(get_bloginfo('name')); ?></div>
                         <div class="preview-btn" id="preview-button">
-                            <?php esc_html_e('Shop Now', 'aaapos'); ?>
+                            <?php esc_html_e('Shop Now', 'Bo'); ?>
                         </div>
                         <div class="preview-link" id="preview-link">
-                            <?php esc_html_e('View Products', 'aaapos'); ?>
+                            <?php esc_html_e('View Products', 'Bo'); ?>
                         </div>
                     </div>
                 </div>
@@ -476,7 +476,7 @@ private function step_branding() {
         
         <div class="setup-actions">
             <button type="button" class="btn btn-primary btn-large" id="save-branding-btn">
-                <span class="btn-text"><?php esc_html_e('Save & Continue', 'aaapos'); ?></span>
+                <span class="btn-text"><?php esc_html_e('Save & Continue', 'Bo'); ?></span>
                 <span class="btn-loader">
                     <svg class="spinner" width="20" height="20" viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" opacity="0.25"/>
@@ -484,8 +484,8 @@ private function step_branding() {
                     </svg>
                 </span>
             </button>
-            <a href="<?php echo esc_url(admin_url('admin.php?page=aaapos-setup&step=ready')); ?>" class="btn btn-text">
-                <?php esc_html_e('Skip this step', 'aaapos'); ?>
+            <a href="<?php echo esc_url(admin_url('admin.php?page=Bo-setup&step=ready')); ?>" class="btn btn-text">
+                <?php esc_html_e('Skip this step', 'Bo'); ?>
             </a>
         </div>
     </div>
@@ -518,9 +518,9 @@ private function step_branding() {
                         <path d="M24 36L32 44L48 28" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
-                <h1><?php esc_html_e('You\'re All Set!', 'aaapos'); ?></h1>
+                <h1><?php esc_html_e('You\'re All Set!', 'Bo'); ?></h1>
                 <p class="hero-subtitle">
-                    <?php esc_html_e('Your store is ready to launch', 'aaapos'); ?>
+                    <?php esc_html_e('Your store is ready to launch', 'Bo'); ?>
                 </p>
             </div>
             
@@ -528,10 +528,10 @@ private function step_branding() {
                 <div class="next-step-item">
                     <div class="step-num">1</div>
                     <div class="step-info">
-                        <h3><?php esc_html_e('Add Products', 'aaapos'); ?></h3>
-                        <p><?php esc_html_e('Start adding your products to the store', 'aaapos'); ?></p>
+                        <h3><?php esc_html_e('Add Products', 'Bo'); ?></h3>
+                        <p><?php esc_html_e('Start adding your products to the store', 'Bo'); ?></p>
                         <a href="<?php echo esc_url(admin_url('post-new.php?post_type=product')); ?>" class="step-action">
-                            <?php esc_html_e('Add Products', 'aaapos'); ?> →
+                            <?php esc_html_e('Add Products', 'Bo'); ?> →
                         </a>
                     </div>
                 </div>
@@ -539,10 +539,10 @@ private function step_branding() {
                 <div class="next-step-item">
                     <div class="step-num">2</div>
                     <div class="step-info">
-                        <h3><?php esc_html_e('Customize Design', 'aaapos'); ?></h3>
-                        <p><?php esc_html_e('Fine-tune your store\'s appearance', 'aaapos'); ?></p>
+                        <h3><?php esc_html_e('Customize Design', 'Bo'); ?></h3>
+                        <p><?php esc_html_e('Fine-tune your store\'s appearance', 'Bo'); ?></p>
                         <a href="<?php echo esc_url(admin_url('customize.php')); ?>" class="step-action">
-                            <?php esc_html_e('Open Customizer', 'aaapos'); ?> →
+                            <?php esc_html_e('Open Customizer', 'Bo'); ?> →
                         </a>
                     </div>
                 </div>
@@ -550,10 +550,10 @@ private function step_branding() {
                 <div class="next-step-item">
                     <div class="step-num">3</div>
                     <div class="step-info">
-                        <h3><?php esc_html_e('Configure Payments', 'aaapos'); ?></h3>
-                        <p><?php esc_html_e('Set up payment methods', 'aaapos'); ?></p>
+                        <h3><?php esc_html_e('Configure Payments', 'Bo'); ?></h3>
+                        <p><?php esc_html_e('Set up payment methods', 'Bo'); ?></p>
                         <a href="<?php echo esc_url(admin_url('admin.php?page=wc-settings&tab=checkout')); ?>" class="step-action">
-                            <?php esc_html_e('Payment Settings', 'aaapos'); ?> →
+                            <?php esc_html_e('Payment Settings', 'Bo'); ?> →
                         </a>
                     </div>
                 </div>
@@ -561,13 +561,13 @@ private function step_branding() {
             
             <div class="setup-actions">
                 <button type="button" class="btn btn-primary btn-large" id="complete-setup-btn">
-                    <?php esc_html_e('View My Store', 'aaapos'); ?>
+                    <?php esc_html_e('View My Store', 'Bo'); ?>
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                         <path d="M6.75 13.5L11.25 9L6.75 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
                 <a href="<?php echo esc_url(admin_url()); ?>" class="btn btn-text">
-                    <?php esc_html_e('Go to Dashboard', 'aaapos'); ?>
+                    <?php esc_html_e('Go to Dashboard', 'Bo'); ?>
                 </a>
             </div>
         </div>
@@ -578,15 +578,15 @@ private function step_branding() {
      * AJAX: Configure Pages
      */
     public function ajax_configure_pages() {
-        check_ajax_referer('aaapos_setup_nonce', 'nonce');
+        check_ajax_referer('Bo_setup_nonce', 'nonce');
         
         if (!current_user_can('manage_options')) {
-            wp_send_json_error(array('message' => __('Insufficient permissions', 'aaapos')));
+            wp_send_json_error(array('message' => __('Insufficient permissions', 'Bo')));
         }
         
         // Create homepage
         $homepage_id = wp_insert_post(array(
-            'post_title' => __('Home', 'aaapos'),
+            'post_title' => __('Home', 'Bo'),
             'post_type' => 'page',
             'post_status' => 'publish',
             'page_template' => 'page-templates/homepage.php',
@@ -602,10 +602,10 @@ private function step_branding() {
             WC_Install::create_pages();
         }
         
-        update_option('aaapos_pages_created', true);
+        update_option('Bo_pages_created', true);
         
         wp_send_json_success(array(
-            'message' => __('Pages created successfully!', 'aaapos'),
+            'message' => __('Pages created successfully!', 'Bo'),
         ));
     }
     
@@ -613,10 +613,10 @@ private function step_branding() {
      * AJAX: Save Branding
      */
     public function ajax_save_branding() {
-        check_ajax_referer('aaapos_setup_nonce', 'nonce');
+        check_ajax_referer('Bo_setup_nonce', 'nonce');
         
         if (!current_user_can('manage_options')) {
-            wp_send_json_error(array('message' => __('Insufficient permissions', 'aaapos')));
+            wp_send_json_error(array('message' => __('Insufficient permissions', 'Bo')));
         }
         
         $site_title = isset($_POST['site_title']) ? sanitize_text_field($_POST['site_title']) : '';
@@ -629,7 +629,7 @@ private function step_branding() {
         set_theme_mod('brand_color', $brand_color);
         
         wp_send_json_success(array(
-            'message' => __('Branding saved successfully!', 'aaapos'),
+            'message' => __('Branding saved successfully!', 'Bo'),
         ));
     }
     
@@ -637,13 +637,13 @@ private function step_branding() {
      * AJAX: Complete Setup
      */
     public function ajax_complete_setup() {
-        check_ajax_referer('aaapos_setup_nonce', 'nonce');
+        check_ajax_referer('Bo_setup_nonce', 'nonce');
         
         if (!current_user_can('manage_options')) {
-            wp_send_json_error(array('message' => __('Insufficient permissions', 'aaapos')));
+            wp_send_json_error(array('message' => __('Insufficient permissions', 'Bo')));
         }
         
-        update_option('aaapos_setup_complete', true);
+        update_option('Bo_setup_complete', true);
         
         wp_send_json_success(array(
             'redirect' => home_url(),
@@ -652,4 +652,4 @@ private function step_branding() {
 }
 
 // Initialize
-new AAAPOS_Setup_Wizard();
+new Bo_Setup_Wizard();
