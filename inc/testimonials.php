@@ -16,48 +16,48 @@ if (!defined("ABSPATH")) {
 function register_testimonials_post_type()
 {
     $labels = [
-        "name" => _x("Testimonials", "Post Type General Name", "macedon-ranges"),
+        "name" => _x("Testimonials", "Post Type General Name", "Bo"),
         "singular_name" => _x(
             "Testimonial",
             "Post Type Singular Name",
-            "macedon-ranges"
+            "Bo"
         ),
-        "menu_name" => __("Testimonials", "macedon-ranges"),
-        "name_admin_bar" => __("Testimonial", "macedon-ranges"),
-        "archives" => __("Testimonial Archives", "macedon-ranges"),
-        "attributes" => __("Testimonial Attributes", "macedon-ranges"),
-        "parent_item_colon" => __("Parent Testimonial:", "macedon-ranges"),
-        "all_items" => __("All Testimonials", "macedon-ranges"),
-        "add_new_item" => __("Add New Testimonial", "macedon-ranges"),
-        "add_new" => __("Add New", "macedon-ranges"),
-        "new_item" => __("New Testimonial", "macedon-ranges"),
-        "edit_item" => __("Edit Testimonial", "macedon-ranges"),
-        "update_item" => __("Update Testimonial", "macedon-ranges"),
-        "view_item" => __("View Testimonial", "macedon-ranges"),
-        "view_items" => __("View Testimonials", "macedon-ranges"),
-        "search_items" => __("Search Testimonial", "macedon-ranges"),
-        "not_found" => __("Not found", "macedon-ranges"),
-        "not_found_in_trash" => __("Not found in Trash", "macedon-ranges"),
-        "featured_image" => __("Customer Photo", "macedon-ranges"),
-        "set_featured_image" => __("Set customer photo", "macedon-ranges"),
-        "remove_featured_image" => __("Remove customer photo", "macedon-ranges"),
-        "use_featured_image" => __("Use as customer photo", "macedon-ranges"),
-        "insert_into_item" => __("Insert into testimonial", "macedon-ranges"),
+        "menu_name" => __("Testimonials", "Bo"),
+        "name_admin_bar" => __("Testimonial", "Bo"),
+        "archives" => __("Testimonial Archives", "Bo"),
+        "attributes" => __("Testimonial Attributes", "Bo"),
+        "parent_item_colon" => __("Parent Testimonial:", "Bo"),
+        "all_items" => __("All Testimonials", "Bo"),
+        "add_new_item" => __("Add New Testimonial", "Bo"),
+        "add_new" => __("Add New", "Bo"),
+        "new_item" => __("New Testimonial", "Bo"),
+        "edit_item" => __("Edit Testimonial", "Bo"),
+        "update_item" => __("Update Testimonial", "Bo"),
+        "view_item" => __("View Testimonial", "Bo"),
+        "view_items" => __("View Testimonials", "Bo"),
+        "search_items" => __("Search Testimonial", "Bo"),
+        "not_found" => __("Not found", "Bo"),
+        "not_found_in_trash" => __("Not found in Trash", "Bo"),
+        "featured_image" => __("Customer Photo", "Bo"),
+        "set_featured_image" => __("Set customer photo", "Bo"),
+        "remove_featured_image" => __("Remove customer photo", "Bo"),
+        "use_featured_image" => __("Use as customer photo", "Bo"),
+        "insert_into_item" => __("Insert into testimonial", "Bo"),
         "uploaded_to_this_item" => __(
             "Uploaded to this testimonial",
-            "macedon-ranges"
+            "Bo"
         ),
-        "items_list" => __("Testimonials list", "macedon-ranges"),
+        "items_list" => __("Testimonials list", "Bo"),
         "items_list_navigation" => __(
             "Testimonials list navigation",
-            "macedon-ranges"
+            "Bo"
         ),
-        "filter_items_list" => __("Filter testimonials list", "macedon-ranges"),
+        "filter_items_list" => __("Filter testimonials list", "Bo"),
     ];
 
     $args = [
-        "label" => __("Testimonial", "macedon-ranges"),
-        "description" => __("Customer testimonials and reviews", "macedon-ranges"),
+        "label" => __("Testimonial", "Bo"),
+        "description" => __("Customer testimonials and reviews", "Bo"),
         "labels" => $labels,
         "supports" => ["title", "editor", "thumbnail"],
         "hierarchical" => false,
@@ -87,7 +87,7 @@ function add_testimonial_meta_boxes()
 {
     add_meta_box(
         "testimonial_details",
-        __("Testimonial Details", "macedon-ranges"),
+        __("Testimonial Details", "Bo"),
         "render_testimonial_meta_box",
         "testimonial",
         "normal",
@@ -131,7 +131,7 @@ function render_testimonial_meta_box($post)
             <th scope="row">
                 <label for="testimonial_customer_name"><?php _e(
                     "Customer Name",
-                    "macedon-ranges"
+                    "Bo"
                 ); ?></label>
             </th>
             <td>
@@ -145,7 +145,7 @@ function render_testimonial_meta_box($post)
                 />
                 <p class="description"><?php _e(
                     'Enter the customer\'s full name',
-                    "macedon-ranges"
+                    "Bo"
                 ); ?></p>
             </td>
         </tr>
@@ -154,7 +154,7 @@ function render_testimonial_meta_box($post)
             <th scope="row">
                 <label for="testimonial_customer_role"><?php _e(
                     "Location / Job Title",
-                    "macedon-ranges"
+                    "Bo"
                 ); ?></label>
             </th>
             <td>
@@ -168,7 +168,7 @@ function render_testimonial_meta_box($post)
                 />
                 <p class="description"><?php _e(
                     'Enter the customer\'s location or job title',
-                    "macedon-ranges"
+                    "Bo"
                 ); ?></p>
             </td>
         </tr>
@@ -177,7 +177,7 @@ function render_testimonial_meta_box($post)
             <th scope="row">
                 <label for="testimonial_star_rating"><?php _e(
                     "Star Rating",
-                    "macedon-ranges"
+                    "Bo"
                 ); ?></label>
             </th>
             <td>
@@ -199,7 +199,7 @@ function render_testimonial_meta_box($post)
                 </select>
                 <p class="description"><?php _e(
                     "Select the rating (1-5 stars)",
-                    "macedon-ranges"
+                    "Bo"
                 ); ?></p>
             </td>
         </tr>
@@ -283,11 +283,11 @@ function testimonial_custom_columns($columns)
 {
     $new_columns = [];
     $new_columns["cb"] = $columns["cb"];
-    $new_columns["featured_image"] = __("Photo", "macedon-ranges");
+    $new_columns["featured_image"] = __("Photo", "Bo");
     $new_columns["title"] = $columns["title"];
-    $new_columns["customer_name"] = __("Customer Name", "macedon-ranges");
-    $new_columns["customer_role"] = __("Location", "macedon-ranges");
-    $new_columns["rating"] = __("Rating", "macedon-ranges");
+    $new_columns["customer_name"] = __("Customer Name", "Bo");
+    $new_columns["customer_role"] = __("Location", "Bo");
+    $new_columns["rating"] = __("Rating", "Bo");
     $new_columns["date"] = $columns["date"];
 
     return $new_columns;
@@ -357,7 +357,7 @@ function testimonials_customizer_settings($wp_customize)
 {
     // Add Testimonials Section
     $wp_customize->add_section('testimonials_section', array(
-        'title'    => __('Testimonials Section', 'macedon-ranges'),
+        'title'    => __('Testimonials Section', 'Bo'),
         'priority' => 130,
     ));
 
@@ -369,7 +369,7 @@ function testimonials_customizer_settings($wp_customize)
     ));
 
     $wp_customize->add_control('testimonials_title', array(
-        'label'    => __('Section Title', 'macedon-ranges'),
+        'label'    => __('Section Title', 'Bo'),
         'section'  => 'testimonials_section',
         'type'     => 'text',
     ));
@@ -382,7 +382,7 @@ function testimonials_customizer_settings($wp_customize)
     ));
 
     $wp_customize->add_control('testimonials_subtitle', array(
-        'label'    => __('Section Subtitle', 'macedon-ranges'),
+        'label'    => __('Section Subtitle', 'Bo'),
         'section'  => 'testimonials_section',
         'type'     => 'textarea',
     ));
@@ -396,7 +396,7 @@ function testimonials_customizer_settings($wp_customize)
     ));
 
     $wp_customize->add_control('testimonials_stat_customers', array(
-        'label'    => __('Stat 1 Value', 'macedon-ranges'),
+        'label'    => __('Stat 1 Value', 'Bo'),
         'section'  => 'testimonials_section',
         'type'     => 'text',
     ));
@@ -408,7 +408,7 @@ function testimonials_customizer_settings($wp_customize)
     ));
 
     $wp_customize->add_control('testimonials_stat_customers_label', array(
-        'label'    => __('Stat 1 Label', 'macedon-ranges'),
+        'label'    => __('Stat 1 Label', 'Bo'),
         'section'  => 'testimonials_section',
         'type'     => 'text',
     ));
@@ -421,7 +421,7 @@ function testimonials_customizer_settings($wp_customize)
     ));
 
     $wp_customize->add_control('testimonials_stat_local', array(
-        'label'    => __('Stat 2 Value', 'macedon-ranges'),
+        'label'    => __('Stat 2 Value', 'Bo'),
         'section'  => 'testimonials_section',
         'type'     => 'text',
     ));
@@ -433,7 +433,7 @@ function testimonials_customizer_settings($wp_customize)
     ));
 
     $wp_customize->add_control('testimonials_stat_local_label', array(
-        'label'    => __('Stat 2 Label', 'macedon-ranges'),
+        'label'    => __('Stat 2 Label', 'Bo'),
         'section'  => 'testimonials_section',
         'type'     => 'text',
     ));
@@ -446,7 +446,7 @@ function testimonials_customizer_settings($wp_customize)
     ));
 
     $wp_customize->add_control('testimonials_stat_support', array(
-        'label'    => __('Stat 3 Value', 'macedon-ranges'),
+        'label'    => __('Stat 3 Value', 'Bo'),
         'section'  => 'testimonials_section',
         'type'     => 'text',
     ));
@@ -458,7 +458,7 @@ function testimonials_customizer_settings($wp_customize)
     ));
 
     $wp_customize->add_control('testimonials_stat_support_label', array(
-        'label'    => __('Stat 3 Label', 'macedon-ranges'),
+        'label'    => __('Stat 3 Label', 'Bo'),
         'section'  => 'testimonials_section',
         'type'     => 'text',
     ));
@@ -471,7 +471,7 @@ function testimonials_customizer_settings($wp_customize)
     ));
 
     $wp_customize->add_control('testimonials_stat_rating', array(
-        'label'    => __('Stat 4 Value', 'macedon-ranges'),
+        'label'    => __('Stat 4 Value', 'Bo'),
         'section'  => 'testimonials_section',
         'type'     => 'text',
     ));
@@ -483,7 +483,7 @@ function testimonials_customizer_settings($wp_customize)
     ));
 
     $wp_customize->add_control('testimonials_stat_rating_label', array(
-        'label'    => __('Stat 4 Label', 'macedon-ranges'),
+        'label'    => __('Stat 4 Label', 'Bo'),
         'section'  => 'testimonials_section',
         'type'     => 'text',
     ));

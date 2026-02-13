@@ -25,7 +25,7 @@ function mr_theme_setup()
     // ============================================
     // INTERNATIONALIZATION
     // ============================================
-    load_theme_textdomain("macedon-ranges", MR_THEME_DIR . "/languages");
+    load_theme_textdomain("Bo", MR_THEME_DIR . "/languages");
 
     // ============================================
     // CORE WORDPRESS FEATURES
@@ -148,11 +148,11 @@ function mr_theme_setup()
     // NAVIGATION MENUS
     // ============================================
     register_nav_menus([
-        "primary" => esc_html__("Primary Navigation", "macedon-ranges"),
-        "mobile" => esc_html__("Mobile Navigation", "macedon-ranges"),
-        "footer" => esc_html__("Footer Navigation", "macedon-ranges"),
-        "utility" => esc_html__("Utility Navigation", "macedon-ranges"),
-        "social" => esc_html__("Social Links", "macedon-ranges"),
+        "primary" => esc_html__("Primary Navigation", "Bo"),
+        "mobile" => esc_html__("Mobile Navigation", "Bo"),
+        "footer" => esc_html__("Footer Navigation", "Bo"),
+        "utility" => esc_html__("Utility Navigation", "Bo"),
+        "social" => esc_html__("Social Links", "Bo"),
     ]);
 
     // ============================================
@@ -224,42 +224,42 @@ function mr_get_editor_color_palette()
 {
     return [
         [
-            "name" => esc_html__("Primary", "macedon-ranges"),
+            "name" => esc_html__("Primary", "Bo"),
             "slug" => "primary",
             "color" => get_theme_mod("mr_primary_color", "#0ea5e9"),
         ],
         [
-            "name" => esc_html__("Secondary", "macedon-ranges"),
+            "name" => esc_html__("Secondary", "Bo"),
             "slug" => "secondary",
             "color" => get_theme_mod("mr_secondary_color", "#f59e0b"),
         ],
         [
-            "name" => esc_html__("Accent", "macedon-ranges"),
+            "name" => esc_html__("Accent", "Bo"),
             "slug" => "accent",
             "color" => get_theme_mod("mr_accent_color", "#10b981"),
         ],
         [
-            "name" => esc_html__("Dark", "macedon-ranges"),
+            "name" => esc_html__("Dark", "Bo"),
             "slug" => "dark",
             "color" => "#1f2937",
         ],
         [
-            "name" => esc_html__("Gray", "macedon-ranges"),
+            "name" => esc_html__("Gray", "Bo"),
             "slug" => "gray",
             "color" => "#6b7280",
         ],
         [
-            "name" => esc_html__("Light", "macedon-ranges"),
+            "name" => esc_html__("Light", "Bo"),
             "slug" => "light",
             "color" => "#f3f4f6",
         ],
         [
-            "name" => esc_html__("White", "macedon-ranges"),
+            "name" => esc_html__("White", "Bo"),
             "slug" => "white",
             "color" => "#ffffff",
         ],
         [
-            "name" => esc_html__("Black", "macedon-ranges"),
+            "name" => esc_html__("Black", "Bo"),
             "slug" => "black",
             "color" => "#000000",
         ],
@@ -275,32 +275,32 @@ function mr_get_editor_font_sizes()
 {
     return [
         [
-            "name" => esc_html__("Small", "macedon-ranges"),
+            "name" => esc_html__("Small", "Bo"),
             "slug" => "small",
             "size" => 14,
         ],
         [
-            "name" => esc_html__("Normal", "macedon-ranges"),
+            "name" => esc_html__("Normal", "Bo"),
             "slug" => "normal",
             "size" => 16,
         ],
         [
-            "name" => esc_html__("Medium", "macedon-ranges"),
+            "name" => esc_html__("Medium", "Bo"),
             "slug" => "medium",
             "size" => 18,
         ],
         [
-            "name" => esc_html__("Large", "macedon-ranges"),
+            "name" => esc_html__("Large", "Bo"),
             "slug" => "large",
             "size" => 24,
         ],
         [
-            "name" => esc_html__("Extra Large", "macedon-ranges"),
+            "name" => esc_html__("Extra Large", "Bo"),
             "slug" => "extra-large",
             "size" => 32,
         ],
         [
-            "name" => esc_html__("Huge", "macedon-ranges"),
+            "name" => esc_html__("Huge", "Bo"),
             "slug" => "huge",
             "size" => 48,
         ],
@@ -316,22 +316,22 @@ function mr_get_editor_gradients()
 {
     return [
         [
-            "name" => esc_html__("Primary Gradient", "macedon-ranges"),
+            "name" => esc_html__("Primary Gradient", "Bo"),
             "gradient" => "linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%)",
             "slug" => "primary-gradient",
         ],
         [
-            "name" => esc_html__("Sunset", "macedon-ranges"),
+            "name" => esc_html__("Sunset", "Bo"),
             "gradient" => "linear-gradient(135deg, #f59e0b 0%, #ef4444 100%)",
             "slug" => "sunset",
         ],
         [
-            "name" => esc_html__("Fresh", "macedon-ranges"),
+            "name" => esc_html__("Fresh", "Bo"),
             "gradient" => "linear-gradient(135deg, #10b981 0%, #06b6d4 100%)",
             "slug" => "fresh",
         ],
         [
-            "name" => esc_html__("Dark Overlay", "macedon-ranges"),
+            "name" => esc_html__("Dark Overlay", "Bo"),
             "gradient" =>
                 "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%)",
             "slug" => "dark-overlay",
@@ -364,14 +364,14 @@ function mr_widgets_init()
         register_sidebar(
             array_merge($widget_defaults, [
                 "name" => sprintf(
-                    esc_html__("Footer Column %d", "macedon-ranges"),
+                    esc_html__("Footer Column %d", "Bo"),
                     $i,
                 ),
                 "id" => "footer-" . $i,
                 "description" => sprintf(
                     esc_html__(
                         "Add widgets here for footer column %d.",
-                        "macedon-ranges",
+                        "Bo",
                     ),
                     $i,
                 ),
@@ -386,11 +386,11 @@ function mr_widgets_init()
     if (class_exists("WooCommerce")) {
         register_sidebar(
             array_merge($widget_defaults, [
-                "name" => esc_html__("Shop Sidebar", "macedon-ranges"),
+                "name" => esc_html__("Shop Sidebar", "Bo"),
                 "id" => "shop-sidebar",
                 "description" => esc_html__(
                     "Displays on WooCommerce shop and product pages.",
-                    "macedon-ranges",
+                    "Bo",
                 ),
             ]),
         );
@@ -402,11 +402,11 @@ function mr_widgets_init()
 
     register_sidebar(
         array_merge($widget_defaults, [
-            "name" => esc_html__("Blog Sidebar", "macedon-ranges"),
+            "name" => esc_html__("Blog Sidebar", "Bo"),
             "id" => "blog-sidebar",
             "description" => esc_html__(
                 "Displays on blog archive and single post pages.",
-                "macedon-ranges",
+                "Bo",
             ),
         ]),
     );
@@ -417,11 +417,11 @@ function mr_widgets_init()
 
     register_sidebar(
         array_merge($widget_defaults, [
-            "name" => esc_html__("Page Sidebar", "macedon-ranges"),
+            "name" => esc_html__("Page Sidebar", "Bo"),
             "id" => "page-sidebar",
             "description" => esc_html__(
                 "Displays on pages when sidebar layout is selected.",
-                "macedon-ranges",
+                "Bo",
             ),
         ]),
     );
@@ -433,11 +433,11 @@ function mr_widgets_init()
     if (get_theme_mod("mr_enable_header_widgets", false)) {
         register_sidebar(
             array_merge($widget_defaults, [
-                "name" => esc_html__("Header Widgets", "macedon-ranges"),
+                "name" => esc_html__("Header Widgets", "Bo"),
                 "id" => "header-widgets",
                 "description" => esc_html__(
                     "Displays in the header area (enable in Customizer).",
-                    "macedon-ranges",
+                    "Bo",
                 ),
             ]),
         );
@@ -449,11 +449,11 @@ function mr_widgets_init()
 
     register_sidebar(
         array_merge($widget_defaults, [
-            "name" => esc_html__("Off-Canvas Menu", "macedon-ranges"),
+            "name" => esc_html__("Off-Canvas Menu", "Bo"),
             "id" => "offcanvas-sidebar",
             "description" => esc_html__(
                 "Displays in the mobile off-canvas menu.",
-                "macedon-ranges",
+                "Bo",
             ),
         ]),
     );
@@ -531,27 +531,27 @@ function mr_create_default_pages()
 {
     $default_pages = [
         "home" => [
-            "title" => esc_html__("Home", "macedon-ranges"),
+            "title" => esc_html__("Home", "Bo"),
             "template" => "page-templates/homepage.php",
             "is_front" => true,
         ],
         "blog" => [
-            "title" => esc_html__("Blog", "macedon-ranges"),
+            "title" => esc_html__("Blog", "Bo"),
             "template" => "",
             "is_posts" => true,
         ],
         "about" => [
-            "title" => esc_html__("About Us", "macedon-ranges"),
+            "title" => esc_html__("About Us", "Bo"),
             "content" => esc_html__(
                 "Tell your story here. Edit this page to add your content.",
-                "macedon-ranges",
+                "Bo",
             ),
         ],
         "contact" => [
-            "title" => esc_html__("Contact", "macedon-ranges"),
+            "title" => esc_html__("Contact", "Bo"),
             "content" => esc_html__(
                 "Add your contact information and contact form here.",
-                "macedon-ranges",
+                "Bo",
             ),
         ],
     ];
@@ -641,7 +641,7 @@ function mr_create_default_menus()
             // Add menu items
             if ($home_page) {
                 wp_update_nav_menu_item($menu_id, 0, [
-                    "menu-item-title" => esc_html__("Home", "macedon-ranges"),
+                    "menu-item-title" => esc_html__("Home", "Bo"),
                     "menu-item-object-id" => $home_page->ID,
                     "menu-item-object" => "page",
                     "menu-item-type" => "post_type",
@@ -657,7 +657,7 @@ function mr_create_default_menus()
                     wp_update_nav_menu_item($menu_id, 0, [
                         "menu-item-title" => esc_html__(
                             "Shop",
-                            "macedon-ranges",
+                            "Bo",
                         ),
                         "menu-item-object-id" => $shop_page_id,
                         "menu-item-object" => "page",
@@ -670,7 +670,7 @@ function mr_create_default_menus()
 
             if ($about_page) {
                 wp_update_nav_menu_item($menu_id, 0, [
-                    "menu-item-title" => esc_html__("About", "macedon-ranges"),
+                    "menu-item-title" => esc_html__("About", "Bo"),
                     "menu-item-object-id" => $about_page->ID,
                     "menu-item-object" => "page",
                     "menu-item-type" => "post_type",
@@ -681,7 +681,7 @@ function mr_create_default_menus()
 
             if ($blog_page) {
                 wp_update_nav_menu_item($menu_id, 0, [
-                    "menu-item-title" => esc_html__("Blog", "macedon-ranges"),
+                    "menu-item-title" => esc_html__("Blog", "Bo"),
                     "menu-item-object-id" => $blog_page->ID,
                     "menu-item-object" => "page",
                     "menu-item-type" => "post_type",
@@ -694,7 +694,7 @@ function mr_create_default_menus()
                 wp_update_nav_menu_item($menu_id, 0, [
                     "menu-item-title" => esc_html__(
                         "Contact",
-                        "macedon-ranges",
+                        "Bo",
                     ),
                     "menu-item-object-id" => $contact_page->ID,
                     "menu-item-object" => "page",
@@ -798,10 +798,10 @@ function mr_configure_woocommerce_defaults()
 {
     // Create WooCommerce pages if they don't exist
     $wc_pages = [
-        "shop" => esc_html__("Shop", "macedon-ranges"),
-        "cart" => esc_html__("Cart", "macedon-ranges"),
-        "checkout" => esc_html__("Checkout", "macedon-ranges"),
-        "myaccount" => esc_html__("My Account", "macedon-ranges"),
+        "shop" => esc_html__("Shop", "Bo"),
+        "cart" => esc_html__("Cart", "Bo"),
+        "checkout" => esc_html__("Checkout", "Bo"),
+        "myaccount" => esc_html__("My Account", "Bo"),
     ];
 
     foreach ($wc_pages as $slug => $title) {
@@ -895,7 +895,7 @@ function mr_reset_theme_to_defaults()
 function mr_add_reset_button_to_customizer($wp_customize)
 {
     $wp_customize->add_section("mr_reset_section", [
-        "title" => esc_html__("Theme Reset", "macedon-ranges"),
+        "title" => esc_html__("Theme Reset", "Bo"),
         "priority" => 200,
     ]);
 
@@ -905,10 +905,10 @@ function mr_add_reset_button_to_customizer($wp_customize)
 
     $wp_customize->add_control(
         new WP_Customize_Control($wp_customize, "mr_reset_button", [
-            "label" => esc_html__("Reset Theme", "macedon-ranges"),
+            "label" => esc_html__("Reset Theme", "Bo"),
             "description" => esc_html__(
                 "Click to reset all theme settings to default values. This cannot be undone.",
-                "macedon-ranges",
+                "Bo",
             ),
             "section" => "mr_reset_section",
             "type" => "button",

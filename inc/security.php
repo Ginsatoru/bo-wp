@@ -119,7 +119,7 @@ function mr_login_errors()
 {
     return esc_html__(
         "Invalid login credentials. Please try again.",
-        "macedon-ranges",
+        "Bo",
     );
 }
 add_filter("login_errors", "mr_login_errors");
@@ -147,7 +147,7 @@ function mr_check_login_attempts($user, $username, $password)
                 /* translators: %d: minutes remaining */
                 esc_html__(
                     "Too many login attempts. Please try again in %d minutes.",
-                    "macedon-ranges",
+                    "Bo",
                 ),
                 ceil($remaining_time / 60),
             ),
@@ -357,7 +357,7 @@ function mr_rest_api_security($result)
             "rest_not_logged_in",
             esc_html__(
                 "You must be logged in to access this endpoint.",
-                "macedon-ranges",
+                "Bo",
             ),
             ["status" => 401],
         );
@@ -422,7 +422,7 @@ function mr_verify_comment_nonce($commentdata)
         wp_die(
             esc_html__(
                 "Security check failed. Please refresh and try again.",
-                "macedon-ranges",
+                "Bo",
             ),
         );
     }

@@ -281,7 +281,7 @@ function mr_product_search()
         echo "</div>";
     } else {
         echo '<p class="no-results">' .
-            esc_html__("No products found.", "macedon-ranges") .
+            esc_html__("No products found.", "Bo") .
             "</p>";
     }
 
@@ -310,14 +310,14 @@ function mr_ajax_remove_cart_item()
 
     if (!$nonce_valid) {
         wp_send_json_error([
-            "message" => __("Security check failed", "macedon-ranges"),
+            "message" => __("Security check failed", "Bo"),
         ]);
     }
 
     // Check if WooCommerce is active
     if (!class_exists("WooCommerce")) {
         wp_send_json_error([
-            "message" => __("WooCommerce is not active", "macedon-ranges"),
+            "message" => __("WooCommerce is not active", "Bo"),
         ]);
     }
 
@@ -328,7 +328,7 @@ function mr_ajax_remove_cart_item()
 
     if (empty($cart_item_key)) {
         wp_send_json_error([
-            "message" => __("Invalid cart item", "macedon-ranges"),
+            "message" => __("Invalid cart item", "Bo"),
         ]);
     }
 
@@ -343,7 +343,7 @@ function mr_ajax_remove_cart_item()
         $fragments = apply_filters("woocommerce_add_to_cart_fragments", []);
 
         wp_send_json_success([
-            "message" => __("Item removed from cart", "macedon-ranges"),
+            "message" => __("Item removed from cart", "Bo"),
             "cart_count" => WC()->cart->get_cart_contents_count(),
             "cart_subtotal" => WC()->cart->get_cart_subtotal(),
             "cart_total" => WC()->cart->get_total(),
@@ -353,7 +353,7 @@ function mr_ajax_remove_cart_item()
         wp_send_json_error([
             "message" => __(
                 "Failed to remove item from cart",
-                "macedon-ranges",
+                "Bo",
             ),
         ]);
     }
@@ -377,14 +377,14 @@ function mr_ajax_update_cart_quantity()
 
     if (!$nonce_valid) {
         wp_send_json_error([
-            "message" => __("Security check failed", "macedon-ranges"),
+            "message" => __("Security check failed", "Bo"),
         ]);
     }
 
     // Check if WooCommerce is active
     if (!class_exists("WooCommerce")) {
         wp_send_json_error([
-            "message" => __("WooCommerce is not active", "macedon-ranges"),
+            "message" => __("WooCommerce is not active", "Bo"),
         ]);
     }
 
@@ -395,7 +395,7 @@ function mr_ajax_update_cart_quantity()
 
     if (empty($cart_item_key)) {
         wp_send_json_error([
-            "message" => __("Invalid cart item", "macedon-ranges"),
+            "message" => __("Invalid cart item", "Bo"),
         ]);
     }
 
@@ -403,7 +403,7 @@ function mr_ajax_update_cart_quantity()
     $cart = WC()->cart->get_cart();
     if (!isset($cart[$cart_item_key])) {
         wp_send_json_error([
-            "message" => __("Cart item not found", "macedon-ranges"),
+            "message" => __("Cart item not found", "Bo"),
         ]);
     }
 
@@ -430,7 +430,7 @@ function mr_ajax_update_cart_quantity()
         $fragments = apply_filters("woocommerce_add_to_cart_fragments", []);
 
         wp_send_json_success([
-            "message" => __("Cart updated", "macedon-ranges"),
+            "message" => __("Cart updated", "Bo"),
             "cart_count" => WC()->cart->get_cart_contents_count(),
             "cart_subtotal" => WC()->cart->get_cart_subtotal(),
             "cart_total" => WC()->cart->get_total(),
@@ -440,7 +440,7 @@ function mr_ajax_update_cart_quantity()
         ]);
     } else {
         wp_send_json_error([
-            "message" => __("Failed to update cart", "macedon-ranges"),
+            "message" => __("Failed to update cart", "Bo"),
         ]);
     }
 }
@@ -472,7 +472,7 @@ function mr_refresh_cart_fragments($fragments)
     ?>
     <span class="cart-item-count"><?php echo esc_html(
         $cart_count,
-    ); ?> <?php echo $cart_count === 1 ? esc_html__("item", "macedon-ranges") : esc_html__("items", "macedon-ranges"); ?></span>
+    ); ?> <?php echo $cart_count === 1 ? esc_html__("item", "Bo") : esc_html__("items", "Bo"); ?></span>
     <?php
     $fragments[".cart-item-count"] = ob_get_clean();
 
@@ -544,7 +544,7 @@ function mr_render_cart_dropdown_items($max_items = 99)
     </div>
     <button type="button" class="cart-item-remove" data-cart-item-key="<?php echo esc_attr(
         $cart_item_key,
-    ); ?>" aria-label="<?php esc_attr_e("Remove item", "macedon-ranges"); ?>">
+    ); ?>" aria-label="<?php esc_attr_e("Remove item", "Bo"); ?>">
         <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
         </svg>
@@ -555,7 +555,7 @@ function mr_render_cart_dropdown_items($max_items = 99)
     else:
          ?>
 <li class="cart-dropdown-empty">
-    <p><?php esc_html_e("Your cart is empty.", "macedon-ranges"); ?></p>
+    <p><?php esc_html_e("Your cart is empty.", "Bo"); ?></p>
 </li>
     <?php
     endif;
@@ -574,7 +574,7 @@ function mr_ajax_apply_coupon()
     // Check if WooCommerce is active
     if (!class_exists("WooCommerce")) {
         wp_send_json_error([
-            "message" => __("WooCommerce is not active", "macedon-ranges"),
+            "message" => __("WooCommerce is not active", "Bo"),
         ]);
     }
 
@@ -585,7 +585,7 @@ function mr_ajax_apply_coupon()
 
     if (empty($coupon_code)) {
         wp_send_json_error([
-            "message" => __("Please enter a coupon code", "macedon-ranges"),
+            "message" => __("Please enter a coupon code", "Bo"),
         ]);
     }
 
@@ -595,7 +595,7 @@ function mr_ajax_apply_coupon()
     if (!$coupon || !$coupon->get_id()) {
         wp_send_json_error([
             "message" => sprintf(
-                __('Coupon "%s" does not exist!', "macedon-ranges"),
+                __('Coupon "%s" does not exist!', "Bo"),
                 esc_html($coupon_code)
             ),
         ]);
@@ -615,7 +615,7 @@ function mr_ajax_apply_coupon()
     $applied_coupons = WC()->cart->get_applied_coupons();
     if (in_array($coupon_code, $applied_coupons)) {
         wp_send_json_error([
-            "message" => __("Coupon code already applied!", "macedon-ranges"),
+            "message" => __("Coupon code already applied!", "Bo"),
         ]);
     }
 
@@ -626,7 +626,7 @@ function mr_ajax_apply_coupon()
         WC()->cart->calculate_totals();
 
         wp_send_json_success([
-            "message" => __("Coupon code applied successfully.", "macedon-ranges"),
+            "message" => __("Coupon code applied successfully.", "Bo"),
             "coupon_code" => $coupon_code,
         ]);
     } else {
@@ -634,7 +634,7 @@ function mr_ajax_apply_coupon()
         $error_messages = wc_get_notices('error');
         $error_message = !empty($error_messages) 
             ? strip_tags($error_messages[0]['notice']) 
-            : __("Failed to apply coupon. Please try again.", "macedon-ranges");
+            : __("Failed to apply coupon. Please try again.", "Bo");
         
         // Clear notices so they don't show elsewhere
         wc_clear_notices();
@@ -656,7 +656,7 @@ function mr_ajax_remove_coupon()
     // Check if WooCommerce is active
     if (!class_exists("WooCommerce")) {
         wp_send_json_error([
-            "message" => __("WooCommerce is not active", "macedon-ranges"),
+            "message" => __("WooCommerce is not active", "Bo"),
         ]);
     }
 
@@ -667,7 +667,7 @@ function mr_ajax_remove_coupon()
 
     if (empty($coupon_code)) {
         wp_send_json_error([
-            "message" => __("Invalid coupon code", "macedon-ranges"),
+            "message" => __("Invalid coupon code", "Bo"),
         ]);
     }
 
@@ -675,7 +675,7 @@ function mr_ajax_remove_coupon()
     $applied_coupons = WC()->cart->get_applied_coupons();
     if (!in_array($coupon_code, $applied_coupons)) {
         wp_send_json_error([
-            "message" => __("This coupon is not applied to your cart", "macedon-ranges"),
+            "message" => __("This coupon is not applied to your cart", "Bo"),
         ]);
     }
 
@@ -686,12 +686,12 @@ function mr_ajax_remove_coupon()
         WC()->cart->calculate_totals();
 
         wp_send_json_success([
-            "message" => __("Coupon removed successfully", "macedon-ranges"),
+            "message" => __("Coupon removed successfully", "Bo"),
             "coupon_code" => $coupon_code,
         ]);
     } else {
         wp_send_json_error([
-            "message" => __("Failed to remove coupon", "macedon-ranges"),
+            "message" => __("Failed to remove coupon", "Bo"),
         ]);
     }
 }

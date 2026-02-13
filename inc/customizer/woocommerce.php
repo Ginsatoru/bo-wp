@@ -21,7 +21,7 @@ function mr_woocommerce_customizer($wp_customize)
 {
     // Add WooCommerce Section
     $wp_customize->add_section("mr_woocommerce_settings", [
-        "title" => __("WooCommerce Settings", "macedon-ranges"),
+        "title" => __("WooCommerce Settings", "Bo"),
         "priority" => 120,
     ]);
 
@@ -38,10 +38,10 @@ function mr_woocommerce_customizer($wp_customize)
 
     $wp_customize->add_control(
         new WP_Customize_Image_Control($wp_customize, "shop_header_bg_image", [
-            "label" => __("Shop Header Background Image", "macedon-ranges"),
+            "label" => __("Shop Header Background Image", "Bo"),
             "description" => __(
                 "Upload a high-quality greenhouse or plant nursery image for the shop header. Recommended: Bright, airy interior with lush green plants.",
-                "macedon-ranges",
+                "Bo",
             ),
             "section" => "mr_woocommerce_settings",
             "priority" => 3,
@@ -56,8 +56,8 @@ function mr_woocommerce_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("shop_header_title", [
-        "label" => __("Shop Header Title", "macedon-ranges"),
-        "description" => __("Main heading text for shop page", "macedon-ranges"),
+        "label" => __("Shop Header Title", "Bo"),
+        "description" => __("Main heading text for shop page", "Bo"),
         "section" => "mr_woocommerce_settings",
         "type" => "text",
         "priority" => 4,
@@ -71,8 +71,8 @@ function mr_woocommerce_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("shop_header_subtitle", [
-        "label" => __("Shop Header Subtitle", "macedon-ranges"),
-        "description" => __("Descriptive text below the title", "macedon-ranges"),
+        "label" => __("Shop Header Subtitle", "Bo"),
+        "description" => __("Descriptive text below the title", "Bo"),
         "section" => "mr_woocommerce_settings",
         "type" => "textarea",
         "priority" => 4.5,
@@ -90,10 +90,10 @@ function mr_woocommerce_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("enable_category_filter", [
-        "label" => __("Enable Category Filter", "macedon-ranges"),
+        "label" => __("Enable Category Filter", "Bo"),
         "description" => __(
             "Show category filter buttons on shop page",
-            "macedon-ranges",
+            "Bo",
         ),
         "section" => "mr_woocommerce_settings",
         "type" => "checkbox",
@@ -126,10 +126,10 @@ function mr_woocommerce_customizer($wp_customize)
             $wp_customize,
             "category_filter_categories",
             [
-                "label" => __("Select Categories to Display", "macedon-ranges"),
+                "label" => __("Select Categories to Display", "Bo"),
                 "description" => __(
                     'Check categories to show in filter. Use "Select All" to show all categories. Unchecking all will hide the filter.',
-                    "macedon-ranges",
+                    "Bo",
                 ),
                 "section" => "mr_woocommerce_settings",
                 "choices" => $category_choices,
@@ -150,10 +150,10 @@ function mr_woocommerce_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("products_per_page", [
-        "label" => __("Products Per Page", "macedon-ranges"),
+        "label" => __("Products Per Page", "Bo"),
         "description" => __(
             "Number of products to display per page in shop",
-            "macedon-ranges",
+            "Bo",
         ),
         "section" => "mr_woocommerce_settings",
         "type" => "number",
@@ -173,12 +173,12 @@ function mr_woocommerce_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("shop_layout", [
-        "label" => __("Shop Layout", "macedon-ranges"),
+        "label" => __("Shop Layout", "Bo"),
         "section" => "mr_woocommerce_settings",
         "type" => "select",
         "choices" => [
-            "grid" => __("Grid", "macedon-ranges"),
-            "list" => __("List", "macedon-ranges"),
+            "grid" => __("Grid", "Bo"),
+            "list" => __("List", "Bo"),
         ],
         "priority" => 15,
     ]);
@@ -191,18 +191,18 @@ function mr_woocommerce_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("products_per_row", [
-        "label" => __("Products Per Row", "macedon-ranges"),
+        "label" => __("Products Per Row", "Bo"),
         "description" => __(
             "Number of product columns in grid layout",
-            "macedon-ranges",
+            "Bo",
         ),
         "section" => "mr_woocommerce_settings",
         "type" => "select",
         "choices" => [
-            "2" => __("2 Columns", "macedon-ranges"),
-            "3" => __("3 Columns", "macedon-ranges"),
-            "4" => __("4 Columns", "macedon-ranges"),
-            "5" => __("5 Columns", "macedon-ranges"),
+            "2" => __("2 Columns", "Bo"),
+            "3" => __("3 Columns", "Bo"),
+            "4" => __("4 Columns", "Bo"),
+            "5" => __("5 Columns", "Bo"),
         ],
         "priority" => 20,
     ]);
@@ -215,7 +215,7 @@ function mr_woocommerce_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("show_product_rating", [
-        "label" => __("Show Product Rating", "macedon-ranges"),
+        "label" => __("Show Product Rating", "Bo"),
         "section" => "mr_woocommerce_settings",
         "type" => "checkbox",
         "priority" => 25,
@@ -229,7 +229,7 @@ function mr_woocommerce_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("show_quick_view", [
-        "label" => __("Enable Quick View", "macedon-ranges"),
+        "label" => __("Enable Quick View", "Bo"),
         "section" => "mr_woocommerce_settings",
         "type" => "checkbox",
         "priority" => 30,
@@ -237,13 +237,13 @@ function mr_woocommerce_customizer($wp_customize)
 
     // Sale Badge Text
     $wp_customize->add_setting("sale_badge_text", [
-        "default" => __("Sale", "macedon-ranges"),
+        "default" => __("Sale", "Bo"),
         "sanitize_callback" => "sanitize_text_field",
         "transport" => "refresh",
     ]);
 
     $wp_customize->add_control("sale_badge_text", [
-        "label" => __("Sale Badge Text", "macedon-ranges"),
+        "label" => __("Sale Badge Text", "Bo"),
         "section" => "mr_woocommerce_settings",
         "type" => "text",
         "priority" => 35,
@@ -257,10 +257,10 @@ function mr_woocommerce_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("related_products_count", [
-        "label" => __("Related Products Count", "macedon-ranges"),
+        "label" => __("Related Products Count", "Bo"),
         "description" => __(
             "Number of related products to show on single product page",
-            "macedon-ranges",
+            "Bo",
         ),
         "section" => "mr_woocommerce_settings",
         "type" => "number",
@@ -280,7 +280,7 @@ function mr_woocommerce_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("show_shop_sidebar", [
-        "label" => __("Show Shop Sidebar", "macedon-ranges"),
+        "label" => __("Show Shop Sidebar", "Bo"),
         "section" => "mr_woocommerce_settings",
         "type" => "checkbox",
         "priority" => 45,
@@ -294,13 +294,13 @@ function mr_woocommerce_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("cart_icon_style", [
-        "label" => __("Cart Icon Style", "macedon-ranges"),
+        "label" => __("Cart Icon Style", "Bo"),
         "section" => "mr_woocommerce_settings",
         "type" => "select",
         "choices" => [
-            "icon-only" => __("Icon Only", "macedon-ranges"),
-            "icon-count" => __("Icon with Count", "macedon-ranges"),
-            "icon-total" => __("Icon with Total", "macedon-ranges"),
+            "icon-only" => __("Icon Only", "Bo"),
+            "icon-count" => __("Icon with Count", "Bo"),
+            "icon-total" => __("Icon with Total", "Bo"),
         ],
         "priority" => 50,
     ]);

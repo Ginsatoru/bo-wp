@@ -5,7 +5,7 @@
 function mr_typography_customizer($wp_customize) {
     // Typography Section
     $wp_customize->add_section('mr_typography', array(
-        'title' => __('Typography', 'macedon-ranges'),
+        'title' => __('Typography', 'Bo'),
         'priority' => 25,
     ));
 
@@ -17,7 +17,7 @@ function mr_typography_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control('heading_font', array(
-        'label' => __('Heading Font', 'macedon-ranges'),
+        'label' => __('Heading Font', 'Bo'),
         'section' => 'mr_typography',
         'type' => 'select',
         'choices' => array(
@@ -38,7 +38,7 @@ function mr_typography_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control('body_font', array(
-        'label' => __('Body Font', 'macedon-ranges'),
+        'label' => __('Body Font', 'Bo'),
         'section' => 'mr_typography',
         'type' => 'select',
         'choices' => array(
@@ -59,7 +59,7 @@ function mr_typography_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control('base_font_size', array(
-        'label' => __('Base Font Size (px)', 'macedon-ranges'),
+        'label' => __('Base Font Size (px)', 'Bo'),
         'section' => 'mr_typography',
         'type' => 'range',
         'input_attrs' => array(
@@ -78,13 +78,13 @@ function mr_typography_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control('font_weight_scale', array(
-        'label' => __('Font Weight Scale', 'macedon-ranges'),
+        'label' => __('Font Weight Scale', 'Bo'),
         'section' => 'mr_typography',
         'type' => 'select',
         'choices' => array(
-            'light' => __('Light', 'macedon-ranges'),
-            'normal' => __('Normal', 'macedon-ranges'),
-            'bold' => __('Bold', 'macedon-ranges'),
+            'light' => __('Light', 'Bo'),
+            'normal' => __('Normal', 'Bo'),
+            'bold' => __('Bold', 'Bo'),
         ),
         'priority' => 40,
     ));

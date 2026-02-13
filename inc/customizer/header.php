@@ -6,7 +6,7 @@ function mr_header_customizer($wp_customize)
 {
     // Header Section
     $wp_customize->add_section("mr_header", [
-        "title" => __("Header & Topbar Settings", "macedon-ranges"),
+        "title" => __("Header & Topbar Settings", "Bo"),
         "priority" => 30,
     ]);
 
@@ -21,7 +21,7 @@ function mr_header_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("show_top_bar", [
-        "label" => __("Show Top Bar", "macedon-ranges"),
+        "label" => __("Show Top Bar", "Bo"),
         "section" => "mr_header",
         "type" => "checkbox",
         "priority" => 10,
@@ -34,7 +34,7 @@ function mr_header_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("topbar_phone", [
-        "label" => __("Top Bar Phone", "macedon-ranges"),
+        "label" => __("Top Bar Phone", "Bo"),
         "section" => "mr_header",
         "type" => "text",
         "priority" => 20,
@@ -47,7 +47,7 @@ function mr_header_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("topbar_email", [
-        "label" => __("Top Bar Email", "macedon-ranges"),
+        "label" => __("Top Bar Email", "Bo"),
         "section" => "mr_header",
         "type" => "email",
         "priority" => 30,
@@ -60,7 +60,7 @@ function mr_header_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("topbar_promo_text", [
-        "label" => __("Top Bar Promo Text", "macedon-ranges"),
+        "label" => __("Top Bar Promo Text", "Bo"),
         "section" => "mr_header",
         "type" => "text",
         "priority" => 40,
@@ -77,7 +77,7 @@ function mr_header_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("sticky_header", [
-        "label" => __("Sticky Header", "macedon-ranges"),
+        "label" => __("Sticky Header", "Bo"),
         "section" => "mr_header",
         "type" => "checkbox",
         "priority" => 50,
@@ -94,8 +94,8 @@ function mr_header_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("show_search_bar", [
-        "label" => __("Show Search Bar", "macedon-ranges"),
-        "description" => __("Display search bar in header", "macedon-ranges"),
+        "label" => __("Show Search Bar", "Bo"),
+        "description" => __("Display search bar in header", "Bo"),
         "section" => "mr_header",
         "type" => "checkbox",
         "priority" => 55,
@@ -109,8 +109,8 @@ function mr_header_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("show_account_icon", [
-        "label" => __("Show Account/Profile Icon", "macedon-ranges"),
-        "description" => __("Display account login/profile link in header", "macedon-ranges"),
+        "label" => __("Show Account/Profile Icon", "Bo"),
+        "description" => __("Display account login/profile link in header", "Bo"),
         "section" => "mr_header",
         "type" => "checkbox",
         "priority" => 56,
@@ -124,8 +124,8 @@ function mr_header_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("show_cart_icon", [
-        "label" => __("Show Shopping Cart Icon", "macedon-ranges"),
-        "description" => __("Display shopping cart in header (WooCommerce required)", "macedon-ranges"),
+        "label" => __("Show Shopping Cart Icon", "Bo"),
+        "description" => __("Display shopping cart in header (WooCommerce required)", "Bo"),
         "section" => "mr_header",
         "type" => "checkbox",
         "priority" => 57,
@@ -142,14 +142,14 @@ function mr_header_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("cart_icon_style", [
-        "label" => __("Cart Icon Style", "macedon-ranges"),
-        "description" => __("Choose how to display the cart icon", "macedon-ranges"),
+        "label" => __("Cart Icon Style", "Bo"),
+        "description" => __("Choose how to display the cart icon", "Bo"),
         "section" => "mr_header",
         "type" => "select",
         "choices" => [
-            "icon-only" => __("Icon Only", "macedon-ranges"),
-            "icon-count" => __("Icon + Item Count", "macedon-ranges"),
-            "icon-total" => __("Icon + Cart Total", "macedon-ranges"),
+            "icon-only" => __("Icon Only", "Bo"),
+            "icon-count" => __("Icon + Item Count", "Bo"),
+            "icon-total" => __("Icon + Cart Total", "Bo"),
         ],
         "priority" => 58,
         "active_callback" => function() {

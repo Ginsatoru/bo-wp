@@ -5,7 +5,7 @@
 function mr_hero_customizer($wp_customize) {
     // Hero Section
     $wp_customize->add_section('mr_hero', array(
-        'title' => __('Hero Section', 'macedon-ranges'),
+        'title' => __('Hero Section', 'Bo'),
         'priority' => 40,
     ));
 
@@ -17,7 +17,7 @@ function mr_hero_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control('show_hero', array(
-        'label' => __('Show Hero Section', 'macedon-ranges'),
+        'label' => __('Show Hero Section', 'Bo'),
         'section' => 'mr_hero',
         'type' => 'checkbox',
         'priority' => 10,
@@ -31,12 +31,12 @@ function mr_hero_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control('hero_media_type', array(
-        'label' => __('Hero Background Type', 'macedon-ranges'),
+        'label' => __('Hero Background Type', 'Bo'),
         'section' => 'mr_hero',
         'type' => 'select',
         'choices' => array(
-            'image' => __('Image Slideshow', 'macedon-ranges'),
-            'video' => __('Single Video Background', 'macedon-ranges'),
+            'image' => __('Image Slideshow', 'Bo'),
+            'video' => __('Single Video Background', 'Bo'),
         ),
         'priority' => 15,
     ));
@@ -50,8 +50,8 @@ function mr_hero_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'hero_video_webm', array(
-        'label' => __('Hero Background Video (WebM)', 'macedon-ranges'),
-        'description' => __('Upload WebM video file. This will replace the image slideshow. Recommended: VP8/VP9 codec, max 15MB.', 'macedon-ranges'),
+        'label' => __('Hero Background Video (WebM)', 'Bo'),
+        'description' => __('Upload WebM video file. This will replace the image slideshow. Recommended: VP8/VP9 codec, max 15MB.', 'Bo'),
         'section' => 'mr_hero',
         'mime_type' => 'video/webm',
         'active_callback' => function() {
@@ -68,8 +68,8 @@ function mr_hero_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'hero_video_fallback', array(
-        'label' => __('Video Fallback Image', 'macedon-ranges'),
-        'description' => __('Image shown while video loads or if video cannot play. Also used on mobile devices.', 'macedon-ranges'),
+        'label' => __('Video Fallback Image', 'Bo'),
+        'description' => __('Image shown while video loads or if video cannot play. Also used on mobile devices.', 'Bo'),
         'section' => 'mr_hero',
         'mime_type' => 'image',
         'active_callback' => function() {
@@ -86,7 +86,7 @@ function mr_hero_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control('hero_video_loop', array(
-        'label' => __('Loop Video', 'macedon-ranges'),
+        'label' => __('Loop Video', 'Bo'),
         'section' => 'mr_hero',
         'type' => 'checkbox',
         'active_callback' => function() {
@@ -103,8 +103,8 @@ function mr_hero_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control('hero_video_mute', array(
-        'label' => __('Mute Video', 'macedon-ranges'),
-        'description' => __('Video is muted by default for autoplay compatibility.', 'macedon-ranges'),
+        'label' => __('Mute Video', 'Bo'),
+        'description' => __('Video is muted by default for autoplay compatibility.', 'Bo'),
         'section' => 'mr_hero',
         'type' => 'checkbox',
         'active_callback' => function() {
@@ -121,8 +121,8 @@ function mr_hero_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control('hero_video_mobile_fallback', array(
-        'label' => __('Use Image Fallback on Mobile', 'macedon-ranges'),
-        'description' => __('On mobile devices, show image instead of video for better performance.', 'macedon-ranges'),
+        'label' => __('Use Image Fallback on Mobile', 'Bo'),
+        'description' => __('On mobile devices, show image instead of video for better performance.', 'Bo'),
         'section' => 'mr_hero',
         'type' => 'checkbox',
         'active_callback' => function() {
@@ -140,8 +140,8 @@ function mr_hero_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control('hero_enable_slideshow', array(
-        'label' => __('Enable Image Slideshow', 'macedon-ranges'),
-        'description' => __('When disabled, only the first slide image will be displayed as a static background.', 'macedon-ranges'),
+        'label' => __('Enable Image Slideshow', 'Bo'),
+        'description' => __('When disabled, only the first slide image will be displayed as a static background.', 'Bo'),
         'section' => 'mr_hero',
         'type' => 'checkbox',
         'active_callback' => function() {
@@ -158,8 +158,8 @@ function mr_hero_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'hero_slide_1', array(
-        'label' => __('Slide 1 Image (Primary/Static)', 'macedon-ranges'),
-        'description' => __('This image is used as the static background when slideshow is disabled.', 'macedon-ranges'),
+        'label' => __('Slide 1 Image (Primary/Static)', 'Bo'),
+        'description' => __('This image is used as the static background when slideshow is disabled.', 'Bo'),
         'section' => 'mr_hero',
         'mime_type' => 'image',
         'active_callback' => function() {
@@ -176,7 +176,7 @@ function mr_hero_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'hero_slide_2', array(
-        'label' => __('Slide 2 Image', 'macedon-ranges'),
+        'label' => __('Slide 2 Image', 'Bo'),
         'section' => 'mr_hero',
         'mime_type' => 'image',
         'active_callback' => function() {
@@ -193,7 +193,7 @@ function mr_hero_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'hero_slide_3', array(
-        'label' => __('Slide 3 Image', 'macedon-ranges'),
+        'label' => __('Slide 3 Image', 'Bo'),
         'section' => 'mr_hero',
         'mime_type' => 'image',
         'active_callback' => function() {
@@ -210,7 +210,7 @@ function mr_hero_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'hero_slide_4', array(
-        'label' => __('Slide 4 Image', 'macedon-ranges'),
+        'label' => __('Slide 4 Image', 'Bo'),
         'section' => 'mr_hero',
         'mime_type' => 'image',
         'active_callback' => function() {
@@ -227,8 +227,8 @@ function mr_hero_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control('hero_slideshow_speed', array(
-        'label' => __('Slideshow Speed (ms)', 'macedon-ranges'),
-        'description' => __('Time between slide transitions in milliseconds.', 'macedon-ranges'),
+        'label' => __('Slideshow Speed (ms)', 'Bo'),
+        'description' => __('Time between slide transitions in milliseconds.', 'Bo'),
         'section' => 'mr_hero',
         'type' => 'number',
         'input_attrs' => array(
@@ -245,13 +245,13 @@ function mr_hero_customizer($wp_customize) {
     // === HERO CONTENT SETTINGS (Always shown) ===
     // Badge Text
     $wp_customize->add_setting('hero_badge_text', array(
-        'default' => '🐾 Quality Pet & Animal Supplies',
+        'default' => 'Kinglou - Story of Quality',
         'sanitize_callback' => 'sanitize_text_field',
         'transport' => 'postMessage',
     ));
 
     $wp_customize->add_control('hero_badge_text', array(
-        'label' => __('Badge Text', 'macedon-ranges'),
+        'label' => __('Badge Text', 'Bo'),
         'section' => 'mr_hero',
         'type' => 'text',
         'priority' => 100,
@@ -265,7 +265,7 @@ function mr_hero_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control('hero_title', array(
-        'label' => __('Hero Title', 'macedon-ranges'),
+        'label' => __('Hero Title', 'Bo'),
         'section' => 'mr_hero',
         'type' => 'text',
         'priority' => 110,
@@ -279,7 +279,7 @@ function mr_hero_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control('hero_title_highlight', array(
-        'label' => __('Hero Title Highlight', 'macedon-ranges'),
+        'label' => __('Hero Title Highlight', 'Bo'),
         'section' => 'mr_hero',
         'type' => 'text',
         'priority' => 120,
@@ -293,7 +293,7 @@ function mr_hero_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control('hero_subtitle', array(
-        'label' => __('Hero Subtitle', 'macedon-ranges'),
+        'label' => __('Hero Subtitle', 'Bo'),
         'section' => 'mr_hero',
         'type' => 'textarea',
         'priority' => 130,
@@ -307,7 +307,7 @@ function mr_hero_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control('hero_primary_button_text', array(
-        'label' => __('Primary Button Text', 'macedon-ranges'),
+        'label' => __('Primary Button Text', 'Bo'),
         'section' => 'mr_hero',
         'type' => 'text',
         'priority' => 140,
@@ -321,7 +321,7 @@ function mr_hero_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control('hero_primary_button_link', array(
-        'label' => __('Primary Button Link', 'macedon-ranges'),
+        'label' => __('Primary Button Link', 'Bo'),
         'section' => 'mr_hero',
         'type' => 'url',
         'priority' => 150,
@@ -335,7 +335,7 @@ function mr_hero_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control('hero_secondary_button_text', array(
-        'label' => __('Secondary Button Text', 'macedon-ranges'),
+        'label' => __('Secondary Button Text', 'Bo'),
         'section' => 'mr_hero',
         'type' => 'text',
         'priority' => 160,
@@ -349,7 +349,7 @@ function mr_hero_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control('hero_secondary_button_link', array(
-        'label' => __('Secondary Button Link', 'macedon-ranges'),
+        'label' => __('Secondary Button Link', 'Bo'),
         'section' => 'mr_hero',
         'type' => 'url',
         'priority' => 170,
@@ -362,8 +362,8 @@ function mr_hero_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control('hero_video_note', array(
-        'label' => __('Video Format Information', 'macedon-ranges'),
-        'description' => __('<strong>WebM Format Required:</strong><br>• Use .webm extension only<br>• Better compression than MP4<br>• Max recommended size: 15MB<br>• Modern browser compatibility', 'macedon-ranges'),
+        'label' => __('Video Format Information', 'Bo'),
+        'description' => __('<strong>WebM Format Required:</strong><br>• Use .webm extension only<br>• Better compression than MP4<br>• Max recommended size: 15MB<br>• Modern browser compatibility', 'Bo'),
         'section' => 'mr_hero',
         'type' => 'hidden',
         'active_callback' => function() {

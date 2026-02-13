@@ -17,7 +17,7 @@ function mr_header_dropdown_customizer($wp_customize) {
     
     // Add Header Dropdowns Section
     $wp_customize->add_section('mr_header_dropdowns', array(
-        'title'    => __('Header Dropdowns', 'macedon-ranges'),
+        'title'    => __('Header Dropdowns', 'Bo'),
         'priority' => 35,
         'panel'    => 'mr_header_settings', // If you have a header panel, otherwise remove this line
     ));
@@ -34,8 +34,8 @@ function mr_header_dropdown_customizer($wp_customize) {
     ));
     
     $wp_customize->add_control('show_cart_dropdown', array(
-        'label'       => __('Show Cart Dropdown on Hover', 'macedon-ranges'),
-        'description' => __('Display cart items when hovering over the cart icon', 'macedon-ranges'),
+        'label'       => __('Show Cart Dropdown on Hover', 'Bo'),
+        'description' => __('Display cart items when hovering over the cart icon', 'Bo'),
         'section'     => 'mr_header_dropdowns',
         'type'        => 'checkbox',
     ));
@@ -48,8 +48,8 @@ function mr_header_dropdown_customizer($wp_customize) {
     ));
     
     $wp_customize->add_control('cart_dropdown_max_items', array(
-        'label'       => __('Maximum Cart Items in Dropdown', 'macedon-ranges'),
-        'description' => __('Maximum number of items to show before scrolling', 'macedon-ranges'),
+        'label'       => __('Maximum Cart Items in Dropdown', 'Bo'),
+        'description' => __('Maximum number of items to show before scrolling', 'Bo'),
         'section'     => 'mr_header_dropdowns',
         'type'        => 'number',
         'input_attrs' => array(
@@ -70,7 +70,7 @@ function mr_header_dropdown_customizer($wp_customize) {
     ));
     
     $wp_customize->add_control('cart_dropdown_show_thumbnails', array(
-        'label'   => __('Show Product Thumbnails', 'macedon-ranges'),
+        'label'   => __('Show Product Thumbnails', 'Bo'),
         'section' => 'mr_header_dropdowns',
         'type'    => 'checkbox',
         'active_callback' => function() {
@@ -86,7 +86,7 @@ function mr_header_dropdown_customizer($wp_customize) {
     ));
     
     $wp_customize->add_control('cart_dropdown_show_prices', array(
-        'label'   => __('Show Product Prices', 'macedon-ranges'),
+        'label'   => __('Show Product Prices', 'Bo'),
         'section' => 'mr_header_dropdowns',
         'type'    => 'checkbox',
         'active_callback' => function() {
@@ -102,7 +102,7 @@ function mr_header_dropdown_customizer($wp_customize) {
     ));
     
     $wp_customize->add_control('cart_dropdown_show_quantity', array(
-        'label'   => __('Show Product Quantity', 'macedon-ranges'),
+        'label'   => __('Show Product Quantity', 'Bo'),
         'section' => 'mr_header_dropdowns',
         'type'    => 'checkbox',
         'active_callback' => function() {
@@ -118,8 +118,8 @@ function mr_header_dropdown_customizer($wp_customize) {
     ));
     
     $wp_customize->add_control('cart_dropdown_show_remove', array(
-        'label'       => __('Show Remove Item Button', 'macedon-ranges'),
-        'description' => __('Allow removing items directly from dropdown', 'macedon-ranges'),
+        'label'       => __('Show Remove Item Button', 'Bo'),
+        'description' => __('Allow removing items directly from dropdown', 'Bo'),
         'section'     => 'mr_header_dropdowns',
         'type'        => 'checkbox',
         'active_callback' => function() {
@@ -135,8 +135,8 @@ function mr_header_dropdown_customizer($wp_customize) {
     ));
     
     $wp_customize->add_control('cart_dropdown_show_buttons', array(
-        'label'       => __('Show View Cart & Checkout Buttons', 'macedon-ranges'),
-        'description' => __('Display action buttons at the bottom of dropdown', 'macedon-ranges'),
+        'label'       => __('Show View Cart & Checkout Buttons', 'Bo'),
+        'description' => __('Display action buttons at the bottom of dropdown', 'Bo'),
         'section'     => 'mr_header_dropdowns',
         'type'        => 'checkbox',
         'active_callback' => function() {
@@ -156,8 +156,8 @@ function mr_header_dropdown_customizer($wp_customize) {
     ));
     
     $wp_customize->add_control('show_account_dropdown', array(
-        'label'       => __('Show Account Dropdown on Hover', 'macedon-ranges'),
-        'description' => __('Display account menu when hovering over account icon (logged in users only)', 'macedon-ranges'),
+        'label'       => __('Show Account Dropdown on Hover', 'Bo'),
+        'description' => __('Display account menu when hovering over account icon (logged in users only)', 'Bo'),
         'section'     => 'mr_header_dropdowns',
         'type'        => 'checkbox',
     ));
@@ -170,8 +170,8 @@ function mr_header_dropdown_customizer($wp_customize) {
     ));
     
     $wp_customize->add_control('show_username_in_header', array(
-        'label'       => __('Show Username Next to Icon', 'macedon-ranges'),
-        'description' => __('Display username next to account icon for logged in users (desktop only)', 'macedon-ranges'),
+        'label'       => __('Show Username Next to Icon', 'Bo'),
+        'description' => __('Display username next to account icon for logged in users (desktop only)', 'Bo'),
         'section'     => 'mr_header_dropdowns',
         'type'        => 'checkbox',
     ));
@@ -184,13 +184,13 @@ function mr_header_dropdown_customizer($wp_customize) {
     ));
     
     $wp_customize->add_control('username_display_format', array(
-        'label'   => __('Username Display Format', 'macedon-ranges'),
+        'label'   => __('Username Display Format', 'Bo'),
         'section' => 'mr_header_dropdowns',
         'type'    => 'select',
         'choices' => array(
-            'first_name'   => __('First Name', 'macedon-ranges'),
-            'display_name' => __('Display Name', 'macedon-ranges'),
-            'username'     => __('Username', 'macedon-ranges'),
+            'first_name'   => __('First Name', 'Bo'),
+            'display_name' => __('Display Name', 'Bo'),
+            'username'     => __('Username', 'Bo'),
         ),
         'active_callback' => function() {
             return get_theme_mod('show_username_in_header', true);
@@ -205,7 +205,7 @@ function mr_header_dropdown_customizer($wp_customize) {
     ));
     
     $wp_customize->add_control('show_email_in_dropdown', array(
-        'label'   => __('Show Email in Dropdown Header', 'macedon-ranges'),
+        'label'   => __('Show Email in Dropdown Header', 'Bo'),
         'section' => 'mr_header_dropdowns',
         'type'    => 'checkbox',
         'active_callback' => function() {
@@ -225,8 +225,8 @@ function mr_header_dropdown_customizer($wp_customize) {
     ));
     
     $wp_customize->add_control('dropdown_animation_speed', array(
-        'label'       => __('Dropdown Animation Speed (ms)', 'macedon-ranges'),
-        'description' => __('Speed of dropdown show/hide animation in milliseconds', 'macedon-ranges'),
+        'label'       => __('Dropdown Animation Speed (ms)', 'Bo'),
+        'description' => __('Speed of dropdown show/hide animation in milliseconds', 'Bo'),
         'section'     => 'mr_header_dropdowns',
         'type'        => 'number',
         'input_attrs' => array(
@@ -244,8 +244,8 @@ function mr_header_dropdown_customizer($wp_customize) {
     ));
     
     $wp_customize->add_control('dropdown_hover_delay', array(
-        'label'       => __('Dropdown Hover Delay (ms)', 'macedon-ranges'),
-        'description' => __('Delay before dropdown appears on hover', 'macedon-ranges'),
+        'label'       => __('Dropdown Hover Delay (ms)', 'Bo'),
+        'description' => __('Delay before dropdown appears on hover', 'Bo'),
         'section'     => 'mr_header_dropdowns',
         'type'        => 'number',
         'input_attrs' => array(

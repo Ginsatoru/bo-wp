@@ -18,15 +18,15 @@ class MR_Featured_Products_Widget extends WP_Widget {
     public function __construct() {
         parent::__construct(
             'mr_featured_products',
-            __('Featured Products', 'macedon-ranges'),
-            array('description' => __('Display featured products', 'macedon-ranges'))
+            __('Featured Products', 'Bo'),
+            array('description' => __('Display featured products', 'Bo'))
         );
     }
 
     public function widget($args, $instance) {
         echo $args['before_widget'];
 
-        $title = !empty($instance['title']) ? $instance['title'] : __('Featured Products', 'macedon-ranges');
+        $title = !empty($instance['title']) ? $instance['title'] : __('Featured Products', 'Bo');
         $number = !empty($instance['number']) ? absint($instance['number']) : 4;
 
         echo $args['before_title'] . esc_html($title) . $args['after_title'];
@@ -52,7 +52,7 @@ class MR_Featured_Products_Widget extends WP_Widget {
             }
             echo '</div>';
         } else {
-            echo '<p>' . esc_html__('No featured products found.', 'macedon-ranges') . '</p>';
+            echo '<p>' . esc_html__('No featured products found.', 'Bo') . '</p>';
         }
 
         echo $args['after_widget'];
@@ -63,11 +63,11 @@ class MR_Featured_Products_Widget extends WP_Widget {
         $number = !empty($instance['number']) ? $instance['number'] : 4;
         ?>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_html_e('Title:', 'macedon-ranges'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_html_e('Title:', 'Bo'); ?></label>
             <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>" name="<?php echo esc_attr($this->get_field_name('title')); ?>" type="text" value="<?php echo esc_attr($title); ?>">
         </p>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('number')); ?>"><?php esc_html_e('Number of products:', 'macedon-ranges'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('number')); ?>"><?php esc_html_e('Number of products:', 'Bo'); ?></label>
             <input class="tiny-text" id="<?php echo esc_attr($this->get_field_id('number')); ?>" name="<?php echo esc_attr($this->get_field_name('number')); ?>" type="number" step="1" min="1" max="12" value="<?php echo esc_attr($number); ?>" size="3">
         </p>
         <?php
@@ -88,23 +88,23 @@ class MR_Testimonials_Widget extends WP_Widget {
     public function __construct() {
         parent::__construct(
             'mr_testimonials',
-            __('Testimonials', 'macedon-ranges'),
-            array('description' => __('Display customer testimonials', 'macedon-ranges'))
+            __('Testimonials', 'Bo'),
+            array('description' => __('Display customer testimonials', 'Bo'))
         );
     }
 
     public function widget($args, $instance) {
         echo $args['before_widget'];
 
-        $title = !empty($instance['title']) ? $instance['title'] : __('Testimonials', 'macedon-ranges');
+        $title = !empty($instance['title']) ? $instance['title'] : __('Testimonials', 'Bo');
 
         echo $args['before_title'] . esc_html($title) . $args['after_title'];
 
         // This would typically come from a custom setting or post type
         echo '<div class="widget-testimonials">';
         echo '<blockquote class="testimonial">';
-        echo '<p>"' . esc_html__('Great products and excellent service! Highly recommended.', 'macedon-ranges') . '"</p>';
-        echo '<cite>- ' . esc_html__('Happy Customer', 'macedon-ranges') . '</cite>';
+        echo '<p>"' . esc_html__('Great products and excellent service! Highly recommended.', 'Bo') . '"</p>';
+        echo '<cite>- ' . esc_html__('Happy Customer', 'Bo') . '</cite>';
         echo '</blockquote>';
         echo '</div>';
 
@@ -115,7 +115,7 @@ class MR_Testimonials_Widget extends WP_Widget {
         $title = !empty($instance['title']) ? $instance['title'] : '';
         ?>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_html_e('Title:', 'macedon-ranges'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_html_e('Title:', 'Bo'); ?></label>
             <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>" name="<?php echo esc_attr($this->get_field_name('title')); ?>" type="text" value="<?php echo esc_attr($title); ?>">
         </p>
         <?php
@@ -135,16 +135,16 @@ class MR_Newsletter_Widget extends WP_Widget {
     public function __construct() {
         parent::__construct(
             'mr_newsletter',
-            __('Newsletter Signup', 'macedon-ranges'),
-            array('description' => __('Display newsletter signup form', 'macedon-ranges'))
+            __('Newsletter Signup', 'Bo'),
+            array('description' => __('Display newsletter signup form', 'Bo'))
         );
     }
 
     public function widget($args, $instance) {
         echo $args['before_widget'];
 
-        $title = !empty($instance['title']) ? $instance['title'] : __('Newsletter', 'macedon-ranges');
-        $description = !empty($instance['description']) ? $instance['description'] : __('Subscribe to our newsletter for updates.', 'macedon-ranges');
+        $title = !empty($instance['title']) ? $instance['title'] : __('Newsletter', 'Bo');
+        $description = !empty($instance['description']) ? $instance['description'] : __('Subscribe to our newsletter for updates.', 'Bo');
 
         echo $args['before_title'] . esc_html($title) . $args['after_title'];
 
@@ -154,14 +154,14 @@ class MR_Newsletter_Widget extends WP_Widget {
         ?>
         <form class="newsletter-form widget-newsletter" method="post">
             <div class="form-group">
-                <input type="email" name="email" placeholder="<?php esc_attr_e('Your email address', 'macedon-ranges'); ?>" required>
-                <button type="submit"><?php esc_html_e('Subscribe', 'macedon-ranges'); ?></button>
+                <input type="email" name="email" placeholder="<?php esc_attr_e('Your email address', 'Bo'); ?>" required>
+                <button type="submit"><?php esc_html_e('Subscribe', 'Bo'); ?></button>
             </div>
             <?php if (!empty($instance['show_gdpr'])) : ?>
                 <div class="form-checkbox">
                     <label>
                         <input type="checkbox" name="gdpr" required>
-                        <span><?php esc_html_e('I agree to receive marketing emails.', 'macedon-ranges'); ?></span>
+                        <span><?php esc_html_e('I agree to receive marketing emails.', 'Bo'); ?></span>
                     </label>
                 </div>
             <?php endif; ?>
@@ -177,16 +177,16 @@ class MR_Newsletter_Widget extends WP_Widget {
         $show_gdpr = !empty($instance['show_gdpr']);
         ?>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_html_e('Title:', 'macedon-ranges'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_html_e('Title:', 'Bo'); ?></label>
             <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>" name="<?php echo esc_attr($this->get_field_name('title')); ?>" type="text" value="<?php echo esc_attr($title); ?>">
         </p>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('description')); ?>"><?php esc_html_e('Description:', 'macedon-ranges'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('description')); ?>"><?php esc_html_e('Description:', 'Bo'); ?></label>
             <textarea class="widefat" id="<?php echo esc_attr($this->get_field_id('description')); ?>" name="<?php echo esc_attr($this->get_field_name('description')); ?>"><?php echo esc_textarea($description); ?></textarea>
         </p>
         <p>
             <input class="checkbox" type="checkbox" <?php checked($show_gdpr); ?> id="<?php echo esc_attr($this->get_field_id('show_gdpr')); ?>" name="<?php echo esc_attr($this->get_field_name('show_gdpr')); ?>" />
-            <label for="<?php echo esc_attr($this->get_field_id('show_gdpr')); ?>"><?php esc_html_e('Show GDPR checkbox', 'macedon-ranges'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('show_gdpr')); ?>"><?php esc_html_e('Show GDPR checkbox', 'Bo'); ?></label>
         </p>
         <?php
     }

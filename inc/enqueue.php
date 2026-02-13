@@ -215,7 +215,7 @@ function mr_enqueue_styles()
     // 404 Page styles
     if (is_404()) {
         wp_enqueue_style(
-            "macedon-ranges-404",
+            "Bo-404",
             get_template_directory_uri() . "/assets/css/404.css",
             [],
             MR_THEME_VERSION,

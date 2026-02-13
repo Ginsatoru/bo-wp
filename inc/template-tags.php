@@ -26,7 +26,7 @@ if (!function_exists("mr_posted_on")):
 
         $posted_on = sprintf(
             /* translators: %s: post date. */
-            esc_html_x("Posted on %s", "post date", "macedon-ranges"),
+            esc_html_x("Posted on %s", "post date", "Bo"),
             '<a href="' .
                 esc_url(get_permalink()) .
                 '" rel="bookmark">' .
@@ -46,7 +46,7 @@ if (!function_exists("mr_posted_by")):
     {
         $byline = sprintf(
             /* translators: %s: post author. */
-            esc_html_x("by %s", "post author", "macedon-ranges"),
+            esc_html_x("by %s", "post author", "Bo"),
             '<span class="author vcard"><a class="url fn n" href="' .
                 esc_url(get_author_posts_url(get_the_author_meta("ID"))) .
                 '">' .
@@ -68,13 +68,13 @@ if (!function_exists("mr_entry_footer")):
         if ("post" === get_post_type()) {
             /* translators: used between list items, there is a space after the comma */
             $categories_list = get_the_category_list(
-                esc_html__(", ", "macedon-ranges"),
+                esc_html__(", ", "Bo"),
             );
             if ($categories_list) {
                 /* translators: 1: list of categories. */
                 printf(
                     '<span class="cat-links">' .
-                        esc_html__('Posted in %1$s', "macedon-ranges") .
+                        esc_html__('Posted in %1$s', "Bo") .
                         "</span>",
                     $categories_list,
                 );
@@ -83,13 +83,13 @@ if (!function_exists("mr_entry_footer")):
             /* translators: used between list items, there is a space after the comma */
             $tags_list = get_the_tag_list(
                 "",
-                esc_html_x(", ", "list item separator", "macedon-ranges"),
+                esc_html_x(", ", "list item separator", "Bo"),
             );
             if ($tags_list) {
                 /* translators: 1: list of tags. */
                 printf(
                     '<span class="tags-links">' .
-                        esc_html__('Tagged %1$s', "macedon-ranges") .
+                        esc_html__('Tagged %1$s', "Bo") .
                         "</span>",
                     $tags_list,
                 );
@@ -108,7 +108,7 @@ if (!function_exists("mr_entry_footer")):
                         /* translators: %s: post title */
                         __(
                             'Leave a Comment<span class="screen-reader-text"> on %s</span>',
-                            "macedon-ranges",
+                            "Bo",
                         ),
                         [
                             "span" => [
@@ -128,7 +128,7 @@ if (!function_exists("mr_entry_footer")):
                     /* translators: %s: Name of current post. Only visible to screen readers */
                     __(
                         'Edit <span class="screen-reader-text">%s</span>',
-                        "macedon-ranges",
+                        "Bo",
                     ),
                     [
                         "span" => [
@@ -185,11 +185,11 @@ if (!function_exists("mr_the_posts_navigation")):
             "prev_text" => sprintf(
                 '%s <span class="nav-prev-text">%s</span>',
                 '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z" clip-rule="evenodd"/></svg>',
-                esc_html__("Newer", "macedon-ranges"),
+                esc_html__("Newer", "Bo"),
             ),
             "next_text" => sprintf(
                 '<span class="nav-next-text">%s</span> %s',
-                esc_html__("Older", "macedon-ranges"),
+                esc_html__("Older", "Bo"),
                 '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z" clip-rule="evenodd"/></svg>',
             ),
         ]);
@@ -270,7 +270,7 @@ function mr_breadcrumbs()
     echo '<a href="' .
         esc_url(home_url("/")) .
         '">' .
-        __("Home", "macedon-ranges") .
+        __("Home", "Bo") .
         "</a>";
     echo '<span class="breadcrumb-separator">/</span>';
 
@@ -292,7 +292,7 @@ function mr_breadcrumbs()
         the_title('<span class="breadcrumb-current">', "</span>");
     } elseif (is_search()) {
         echo '<span class="breadcrumb-current">' .
-            __("Search Results", "macedon-ranges") .
+            __("Search Results", "Bo") .
             "</span>";
     }
 

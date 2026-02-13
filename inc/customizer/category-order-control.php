@@ -178,7 +178,7 @@ class AAAPOS_Category_Order_Control extends WP_Customize_Control {
         ));
         
         if (empty($categories) || is_wp_error($categories)) {
-            echo '<p>' . esc_html__('No categories found.', 'macedon-ranges') . '</p>';
+            echo '<p>' . esc_html__('No categories found.', 'Bo') . '</p>';
             return;
         }
         
@@ -254,7 +254,7 @@ class AAAPOS_Category_Order_Control extends WP_Customize_Control {
                         <p class="category-count">
                             <?php 
                             printf(
-                                _n('%s product', '%s products', $category->count, 'macedon-ranges'),
+                                _n('%s product', '%s products', $category->count, 'Bo'),
                                 number_format_i18n($category->count)
                             ); 
                             ?>

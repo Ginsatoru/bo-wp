@@ -7,7 +7,7 @@ function mr_homepage_sections_customizer($wp_customize)
 {
     // Homepage Sections
     $wp_customize->add_section("mr_homepage_sections", [
-        "title" => __("Homepage Sections", "macedon-ranges"),
+        "title" => __("Homepage Sections", "Bo"),
         "priority" => 45,
     ]);
 
@@ -22,7 +22,7 @@ function mr_homepage_sections_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("show_featured_products", [
-        "label" => __("Show Featured Products Section", "macedon-ranges"),
+        "label" => __("Show Featured Products Section", "Bo"),
         "section" => "mr_homepage_sections",
         "type" => "checkbox",
         "priority" => 10,
@@ -35,7 +35,7 @@ function mr_homepage_sections_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("featured_products_title", [
-        "label" => __("Featured Products Title", "macedon-ranges"),
+        "label" => __("Featured Products Title", "Bo"),
         "section" => "mr_homepage_sections",
         "type" => "text",
         "priority" => 20,
@@ -48,7 +48,7 @@ function mr_homepage_sections_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("featured_products_description", [
-        "label" => __("Featured Products Description", "macedon-ranges"),
+        "label" => __("Featured Products Description", "Bo"),
         "section" => "mr_homepage_sections",
         "type" => "textarea",
         "priority" => 25,
@@ -61,7 +61,7 @@ function mr_homepage_sections_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("featured_products_count", [
-        "label" => __("Number of Featured Products", "macedon-ranges"),
+        "label" => __("Number of Featured Products", "Bo"),
         "section" => "mr_homepage_sections",
         "type" => "number",
         "input_attrs" => [
@@ -83,7 +83,7 @@ function mr_homepage_sections_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("show_categories", [
-        "label" => __("Show Categories Section", "macedon-ranges"),
+        "label" => __("Show Categories Section", "Bo"),
         "section" => "mr_homepage_sections",
         "type" => "checkbox",
         "priority" => 40,
@@ -96,7 +96,7 @@ function mr_homepage_sections_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("categories_title", [
-        "label" => __("Categories Title", "macedon-ranges"),
+        "label" => __("Categories Title", "Bo"),
         "section" => "mr_homepage_sections",
         "type" => "text",
         "priority" => 50,
@@ -110,7 +110,7 @@ function mr_homepage_sections_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("categories_subtitle", [
-        "label" => __("Categories Subtitle", "macedon-ranges"),
+        "label" => __("Categories Subtitle", "Bo"),
         "section" => "mr_homepage_sections",
         "type" => "textarea",
         "priority" => 55,
@@ -130,10 +130,10 @@ function mr_homepage_sections_customizer($wp_customize)
                 $wp_customize,
                 "selected_categories",
                 [
-                    "label" => __("Select & Order Categories", "macedon-ranges"),
+                    "label" => __("Select & Order Categories", "Bo"),
                     "description" => __(
                         "Check categories to display and drag to reorder. Leave all unchecked to show top categories by product count.",
-                        "macedon-ranges"
+                        "Bo"
                     ),
                     "section" => "mr_homepage_sections",
                     "priority" => 56,
@@ -152,11 +152,11 @@ function mr_homepage_sections_customizer($wp_customize)
     $wp_customize->add_control("categories_count", [
         "label" => __(
             "Number of Categories (if none selected)",
-            "macedon-ranges",
+            "Bo",
         ),
         "description" => __(
             "This will show the top categories by product count when no specific categories are selected above.",
-            "macedon-ranges"
+            "Bo"
         ),
         "section" => "mr_homepage_sections",
         "type" => "number",
@@ -179,8 +179,8 @@ function mr_homepage_sections_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("show_deals", [
-        "label" => __("Show Special Deals Section", "macedon-ranges"),
-        "description" => __("Automatically displays products with active scheduled sales", "macedon-ranges"),
+        "label" => __("Show Special Deals Section", "Bo"),
+        "description" => __("Automatically displays products with active scheduled sales", "Bo"),
         "section" => "mr_homepage_sections",
         "type" => "checkbox",
         "priority" => 60,
@@ -193,7 +193,7 @@ function mr_homepage_sections_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("deals_title", [
-        "label" => __("Deals Section Title", "macedon-ranges"),
+        "label" => __("Deals Section Title", "Bo"),
         "section" => "mr_homepage_sections",
         "type" => "text",
         "priority" => 65,
@@ -206,10 +206,10 @@ function mr_homepage_sections_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("deals_description", [
-        "label" => __("Deals Section Description", "macedon-ranges"),
+        "label" => __("Deals Section Description", "Bo"),
         "description" => __(
             "Subtitle or tagline for the deals section",
-            "macedon-ranges",
+            "Bo",
         ),
         "section" => "mr_homepage_sections",
         "type" => "textarea",
@@ -228,10 +228,10 @@ function mr_homepage_sections_customizer($wp_customize)
             $wp_customize,
             "deals_background_image",
             [
-                "label" => __("Background Image", "macedon-ranges"),
+                "label" => __("Background Image", "Bo"),
                 "description" => __(
                     "Upload a background image for the deals section. Recommended size: 1920x800px. Leave empty to use default (deal.png).",
-                    "macedon-ranges",
+                    "Bo",
                 ),
                 "section" => "mr_homepage_sections",
                 "settings" => "deals_background_image",
@@ -248,10 +248,10 @@ function mr_homepage_sections_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("deals_overlay_opacity", [
-        "label" => __("Background Overlay Opacity", "macedon-ranges"),
+        "label" => __("Background Overlay Opacity", "Bo"),
         "description" => __(
             "Adjust the darkness of the overlay (0 = transparent, 1 = fully dark)",
-            "macedon-ranges",
+            "Bo",
         ),
         "section" => "mr_homepage_sections",
         "type" => "range",
@@ -274,7 +274,7 @@ function mr_homepage_sections_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("show_testimonials", [
-        "label" => __("Show Testimonials Section", "macedon-ranges"),
+        "label" => __("Show Testimonials Section", "Bo"),
         "section" => "mr_homepage_sections",
         "type" => "checkbox",
         "priority" => 100,
@@ -287,7 +287,7 @@ function mr_homepage_sections_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("testimonials_title", [
-        "label" => __("Testimonials Title", "macedon-ranges"),
+        "label" => __("Testimonials Title", "Bo"),
         "section" => "mr_homepage_sections",
         "type" => "text",
         "priority" => 110,
@@ -299,7 +299,7 @@ function mr_homepage_sections_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("testimonials_section_title", [
-        "label" => __("Testimonials Section Title", "macedon-ranges"),
+        "label" => __("Testimonials Section Title", "Bo"),
         "section" => "mr_homepage_sections",
         "type" => "text",
         "priority" => 111,
@@ -311,7 +311,7 @@ function mr_homepage_sections_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("testimonials_section_subtitle", [
-        "label" => __("Testimonials Section Subtitle", "macedon-ranges"),
+        "label" => __("Testimonials Section Subtitle", "Bo"),
         "section" => "mr_homepage_sections",
         "type" => "text",
         "priority" => 112,
@@ -328,7 +328,7 @@ function mr_homepage_sections_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("show_blog", [
-        "label" => __("Show Blog Section", "macedon-ranges"),
+        "label" => __("Show Blog Section", "Bo"),
         "section" => "mr_homepage_sections",
         "type" => "checkbox",
         "priority" => 120,
@@ -341,7 +341,7 @@ function mr_homepage_sections_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("blog_title", [
-        "label" => __("Blog Title", "macedon-ranges"),
+        "label" => __("Blog Title", "Bo"),
         "section" => "mr_homepage_sections",
         "type" => "text",
         "priority" => 130,
@@ -354,7 +354,7 @@ function mr_homepage_sections_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("blog_posts_count", [
-        "label" => __("Number of Blog Posts", "macedon-ranges"),
+        "label" => __("Number of Blog Posts", "Bo"),
         "section" => "mr_homepage_sections",
         "type" => "number",
         "input_attrs" => [
@@ -376,7 +376,7 @@ function mr_homepage_sections_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("show_newsletter", [
-        "label" => __("Show Newsletter Section", "macedon-ranges"),
+        "label" => __("Show Newsletter Section", "Bo"),
         "section" => "mr_homepage_sections",
         "type" => "checkbox",
         "priority" => 150,
@@ -389,7 +389,7 @@ function mr_homepage_sections_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("newsletter_title", [
-        "label" => __("Newsletter Title", "macedon-ranges"),
+        "label" => __("Newsletter Title", "Bo"),
         "section" => "mr_homepage_sections",
         "type" => "text",
         "priority" => 160,
@@ -403,7 +403,7 @@ function mr_homepage_sections_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("newsletter_description", [
-        "label" => __("Newsletter Description", "macedon-ranges"),
+        "label" => __("Newsletter Description", "Bo"),
         "section" => "mr_homepage_sections",
         "type" => "textarea",
         "priority" => 170,
@@ -416,7 +416,7 @@ function mr_homepage_sections_customizer($wp_customize)
     ]);
 
     $wp_customize->add_control("newsletter_gdpr", [
-        "label" => __("Show GDPR Checkbox", "macedon-ranges"),
+        "label" => __("Show GDPR Checkbox", "Bo"),
         "section" => "mr_homepage_sections",
         "type" => "checkbox",
         "priority" => 180,
