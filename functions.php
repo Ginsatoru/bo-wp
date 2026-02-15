@@ -1092,3 +1092,39 @@ function Bo_add_template_descriptions($templates) {
     return $templates;
 }
 add_filter('theme_page_templates', 'Bo_add_template_descriptions');
+
+/**
+ * Force load header scroll script - Add to functions.php
+ * This ensures it loads regardless of any other conditions
+ */
+function mr_force_header_scroll() {
+    wp_enqueue_script(
+        'mr-header-scroll',
+        get_template_directory_uri() . '/assets/js/header-scroll.js',
+        array(),
+        MR_THEME_VERSION, // Use theme version instead of time()
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'mr_force_header_scroll', 5); // Priority 5 = loads early
+
+/**
+ * TEMPORARY FIX - Force load navigation.js even in production mode
+ * Add this to your functions.php temporarily
+ */
+function mr_force_navigation_script() {
+    wp_enqueue_script(
+        'mr-navigation-force',
+        get_template_directory_uri() . '/assets/js/navigation.js',
+        array(),
+        '1.0.1', // Version bump to force refresh
+        true
+    );
+    
+    // Localize navigation script for AJAX
+    wp_localize_script('mr-navigation-force', 'mrNav', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'nonce' => wp_create_nonce('mr_cart_nonce')
+    ));
+}
+add_action('wp_enqueue_scripts', 'mr_force_navigation_script', 999);

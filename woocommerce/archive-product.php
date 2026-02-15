@@ -67,92 +67,22 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
                      */
                     ?>
                     <div class="shop-toolbar">
-                        
-                        <!-- Result Count -->
-                        <div class="woocommerce-result-count">
-                            <?php
-                            $total = wc_get_loop_prop('total');
-                            printf(
-                                esc_html__('Showing all %d results', 'Bo-prime'),
-                                $total
-                            );
-                            ?>
-                        </div>
-                        
-                        <!-- Sorting & Column Controls -->
-                        <div class="toolbar-controls">
-                            
-                            <!-- Sort By Dropdown -->
-                            <?php woocommerce_catalog_ordering(); ?>
-                            
-                            <!-- Column Toggle (2, 3, 4 columns) -->
-                            <div class="column-toggle-wrapper">
-                                <!-- 2 Columns Button -->
-                                <button 
-                                    type="button" 
-                                    class="column-toggle" 
-                                    data-columns="2" 
-                                    data-tooltip="<?php esc_attr_e('2 columns', 'Bo-prime'); ?>"
-                                    aria-label="<?php esc_attr_e('2 columns view', 'Bo-prime'); ?>">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                        <rect x="3" y="3" width="8" height="8" rx="1"></rect>
-                                        <rect x="13" y="3" width="8" height="8" rx="1"></rect>
-                                        <rect x="3" y="13" width="8" height="8" rx="1"></rect>
-                                        <rect x="13" y="13" width="8" height="8" rx="1"></rect>
-                                    </svg>
-                                </button>
-                                
-                                <!-- 3 Columns Button -->
-                                <button 
-                                    type="button" 
-                                    class="column-toggle" 
-                                    data-columns="3" 
-                                    data-tooltip="<?php esc_attr_e('3 columns', 'Bo-prime'); ?>"
-                                    aria-label="<?php esc_attr_e('3 columns view', 'Bo-prime'); ?>">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                        <rect x="2" y="3" width="5" height="5" rx="0.5"></rect>
-                                        <rect x="9.5" y="3" width="5" height="5" rx="0.5"></rect>
-                                        <rect x="17" y="3" width="5" height="5" rx="0.5"></rect>
-                                        <rect x="2" y="10" width="5" height="5" rx="0.5"></rect>
-                                        <rect x="9.5" y="10" width="5" height="5" rx="0.5"></rect>
-                                        <rect x="17" y="10" width="5" height="5" rx="0.5"></rect>
-                                        <rect x="2" y="17" width="5" height="5" rx="0.5"></rect>
-                                        <rect x="9.5" y="17" width="5" height="5" rx="0.5"></rect>
-                                        <rect x="17" y="17" width="5" height="5" rx="0.5"></rect>
-                                    </svg>
-                                </button>
-                                
-                                <!-- 4 Columns Button (Default Active) -->
-                                <button 
-                                    type="button" 
-                                    class="column-toggle active" 
-                                    data-columns="4" 
-                                    data-tooltip="<?php esc_attr_e('4 columns', 'Bo-prime'); ?>"
-                                    aria-label="<?php esc_attr_e('4 columns view', 'Bo-prime'); ?>">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                        <rect x="2" y="3" width="3.5" height="3.5" rx="0.5"></rect>
-                                        <rect x="7.5" y="3" width="3.5" height="3.5" rx="0.5"></rect>
-                                        <rect x="13" y="3" width="3.5" height="3.5" rx="0.5"></rect>
-                                        <rect x="18.5" y="3" width="3.5" height="3.5" rx="0.5"></rect>
-                                        <rect x="2" y="8.5" width="3.5" height="3.5" rx="0.5"></rect>
-                                        <rect x="7.5" y="8.5" width="3.5" height="3.5" rx="0.5"></rect>
-                                        <rect x="13" y="8.5" width="3.5" height="3.5" rx="0.5"></rect>
-                                        <rect x="18.5" y="8.5" width="3.5" height="3.5" rx="0.5"></rect>
-                                        <rect x="2" y="14" width="3.5" height="3.5" rx="0.5"></rect>
-                                        <rect x="7.5" y="14" width="3.5" height="3.5" rx="0.5"></rect>
-                                        <rect x="13" y="14" width="3.5" height="3.5" rx="0.5"></rect>
-                                        <rect x="18.5" y="14" width="3.5" height="3.5" rx="0.5"></rect>
-                                        <rect x="2" y="19.5" width="3.5" height="3.5" rx="0.5"></rect>
-                                        <rect x="7.5" y="19.5" width="3.5" height="3.5" rx="0.5"></rect>
-                                        <rect x="13" y="19.5" width="3.5" height="3.5" rx="0.5"></rect>
-                                        <rect x="18.5" y="19.5" width="3.5" height="3.5" rx="0.5"></rect>
-                                    </svg>
-                                </button>
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
+    <!-- Result Count -->
+    <div class="woocommerce-result-count">
+        <?php
+        $total = wc_get_loop_prop('total');
+        printf(
+            esc_html__('Showing all %d results', 'Bo-prime'),
+            $total
+        );
+        ?>
+    </div>
+    
+    <!-- Sort By Dropdown Only -->
+    <div class="toolbar-controls">
+        <?php woocommerce_catalog_ordering(); ?>
+    </div>
+</div>
                     <?php
 
                     // ============================================
@@ -210,35 +140,19 @@ $header_subtitle = get_theme_mod('shop_header_subtitle', 'Evoke emotion, highlig
     </div><!-- .container-wide -->
 </div><!-- .shop-page-wrapper -->
 
-<!-- Initialize column preference on page load -->
+<!-- Apply customizer column setting -->
 <script>
 (function() {
     'use strict';
     
-    // Get saved column preference (default: 4)
-    var savedColumns = localStorage.getItem('shopColumnsView');
-    
-    if (!savedColumns || savedColumns === 'undefined' || savedColumns === 'null') {
-        savedColumns = '4';
-        localStorage.setItem('shopColumnsView', '4');
-    }
+    // Get column setting from customizer (PHP outputs it)
+    var columns = '<?php echo esc_js(get_theme_mod('products_per_row', '3')); ?>';
     
     // Apply to grid
     var productsGrid = document.querySelector('.woocommerce ul.products, .woocommerce-page ul.products');
     if (productsGrid) {
-        productsGrid.setAttribute('data-columns', savedColumns);
+        productsGrid.setAttribute('data-columns', columns);
     }
-    
-    // Update active button
-    var columnToggles = document.querySelectorAll('.column-toggle');
-    columnToggles.forEach(function(toggle) {
-        var toggleColumns = toggle.getAttribute('data-columns');
-        if (toggleColumns === savedColumns) {
-            toggle.classList.add('active');
-        } else {
-            toggle.classList.remove('active');
-        }
-    });
 })();
 </script>
 

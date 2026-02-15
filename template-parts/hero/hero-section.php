@@ -1,233 +1,146 @@
 <?php
 /**
- * Hero section component with single WebM video support
+ * Hero section component with image slideshow OR video background
  */
-if (!get_theme_mod("show_hero", true)) {
+if (!get_theme_mod('show_hero', true)) {
     return;
 }
 
-// Get media type
-$media_type = get_theme_mod("hero_media_type", "image");
+// Get media type (image or video)
+$hero_media_type = get_theme_mod('hero_media_type', 'image');
+
+// Get video settings
+$video_id = get_theme_mod('hero_video_webm', '');
+$video_fallback_id = get_theme_mod('hero_video_fallback', '');
+$video_loop = get_theme_mod('hero_video_loop', true);
+$video_mute = get_theme_mod('hero_video_mute', true);
+$video_mobile_fallback = get_theme_mod('hero_video_mobile_fallback', true);
+
+// Get slideshow settings
+$enable_slideshow = get_theme_mod('hero_enable_slideshow', true);
+$hero_slide_1 = get_theme_mod('hero_slide_1');
+$hero_slide_2 = get_theme_mod('hero_slide_2');
+$hero_slide_3 = get_theme_mod('hero_slide_3');
+$hero_slide_4 = get_theme_mod('hero_slide_4');
+$slideshow_speed = get_theme_mod('hero_slideshow_speed', 5000);
 
 // Get content settings
-$badge_text = get_theme_mod(
-    "hero_badge_text",
-    "🐾 Quality Pet & Animal Supplies",
-);
-$hero_title = get_theme_mod("hero_title", "Premium Feed & Supplies");
-$hero_title_highlight = get_theme_mod(
-    "hero_title_highlight",
-    "For Your Beloved Pets & Livestock",
-);
-$hero_subtitle = get_theme_mod(
-    "hero_subtitle",
-    "Your trusted local supplier for premium pet food, animal feed, farm supplies, and everything your animals need. From dogs and cats to horses, poultry, and livestock.",
-);
-$primary_btn_text = get_theme_mod(
-    "hero_primary_button_text",
-    "Shop All Products",
-);
-$primary_btn_link = get_theme_mod("hero_primary_button_link", "/shop");
-$secondary_btn_text = get_theme_mod(
-    "hero_secondary_button_text",
-    "About Our Store",
-);
-$secondary_btn_link = get_theme_mod("hero_secondary_button_link", "/about");
+$badge_text = get_theme_mod('hero_badge_text', '🐾 Quality Pet & Animal Supplies');
+$hero_title = get_theme_mod('hero_title', 'Premium Feed & Supplies');
+$hero_title_highlight = get_theme_mod('hero_title_highlight', 'For Your Beloved Pets & Livestock');
+$hero_subtitle = get_theme_mod('hero_subtitle', 'Your trusted local supplier for premium pet food, animal feed, farm supplies, and everything your animals need. From dogs and cats to horses, poultry, and livestock.');
+$primary_btn_text = get_theme_mod('hero_primary_button_text', 'Shop All Products');
+$primary_btn_link = get_theme_mod('hero_primary_button_link', '/shop');
+$secondary_btn_text = get_theme_mod('hero_secondary_button_text', 'About Our Store');
+$secondary_btn_link = get_theme_mod('hero_secondary_button_link', '/about');
+$trust_1_number = get_theme_mod('hero_trust_1_number', '1000+');
+$trust_1_label = get_theme_mod('hero_trust_1_label', 'Products');
+$trust_2_number = get_theme_mod('hero_trust_2_number', '100%');
+$trust_2_label = get_theme_mod('hero_trust_2_label', 'Quality Assured');
+$trust_3_number = get_theme_mod('hero_trust_3_number', 'Local');
+$trust_3_label = get_theme_mod('hero_trust_3_label', 'Family Owned');
 
 // Default fallback images
-$default_images = [
-    "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1920&q=80",
-    "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=1920&q=80",
-    "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=1920&q=80",
-    "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1920&q=80",
-];
+$default_images = array(
+    'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1920&q=80',
+    'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=1920&q=80',
+    'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=1920&q=80',
+    'https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1920&q=80',
+);
 
-// Add CSS class
-$hero_class = "hero-section";
-if ($media_type === "video") {
-    $hero_class .= " hero-video-mode";
-} else {
-    $hero_class .= " hero-image-mode";
+// Build CSS class
+$hero_class = 'hero-section';
+if ($hero_media_type === 'video') {
+    $hero_class .= ' hero-video';
+} elseif (!$enable_slideshow) {
+    $hero_class .= ' hero-static';
 }
 
-// Get video settings if video mode
-if ($media_type === "video") {
-    $video_loop = get_theme_mod("hero_video_loop", true);
-    $video_mute = get_theme_mod("hero_video_mute", true);
-    $video_mobile_fallback = get_theme_mod("hero_video_mobile_fallback", true);
-
-    $video_id = get_theme_mod("hero_video_webm", "");
-    $video_url = $video_id ? wp_get_attachment_url($video_id) : "";
-
-    $fallback_image_id = get_theme_mod("hero_video_fallback", "");
-    $fallback_image_url = $fallback_image_id
-        ? wp_get_attachment_image_url($fallback_image_id, "full")
-        : "";
-
-    // Add video data attributes
-    $video_data_attrs = sprintf(
-        'data-video-url="%s" data-fallback-image="%s" data-video-loop="%s" data-video-mute="%s" data-mobile-fallback="%s"',
-        esc_url($video_url),
-        esc_url($fallback_image_url),
-        $video_loop ? "true" : "false",
-        $video_mute ? "true" : "false",
-        $video_mobile_fallback ? "true" : "false",
-    );
-} else {
-    $video_data_attrs = "";
-
-    // Get image slideshow settings
-    $enable_slideshow = get_theme_mod("hero_enable_slideshow", true);
-
-    // Get slide images
-    $hero_slide_1 = get_theme_mod("hero_slide_1");
-    $hero_slide_2 = get_theme_mod("hero_slide_2");
-    $hero_slide_3 = get_theme_mod("hero_slide_3");
-    $hero_slide_4 = get_theme_mod("hero_slide_4");
-
-    $slideshow_speed = get_theme_mod("hero_slideshow_speed", 5000);
-
-    // Build slides array
-    $slides = [$hero_slide_1, $hero_slide_2, $hero_slide_3, $hero_slide_4];
-
-    if (!$enable_slideshow) {
-        $hero_class .= " hero-static";
-    }
-}
+// Check if mobile and video mobile fallback is enabled
+$is_mobile = wp_is_mobile();
+$use_video = ($hero_media_type === 'video' && $video_id && (!$is_mobile || !$video_mobile_fallback));
 ?>
 
-<section class="<?php echo esc_attr(
-    $hero_class,
-); ?>" <?php echo $video_data_attrs; ?>>
+<section class="<?php echo esc_attr($hero_class); ?>">
     
-    <?php if ($media_type === "video"): ?>
-        <!-- Single Video Background -->
+    <?php if ($use_video) : ?>
+        <!-- Video Background -->
         <div class="hero-video-background">
-            <?php if ($video_url && $video_url): ?>
-                <div class="hero-video-container">
-                    <?php if ($fallback_image_url): ?>
-                        <img src="<?php echo esc_url($fallback_image_url); ?>" 
-                             alt="<?php echo esc_attr($hero_title); ?>"
-                             class="video-fallback-image"
-                             loading="lazy">
-                    <?php else: ?>
-                        <img src="<?php echo esc_url($default_images[0]); ?>" 
-                             alt="<?php echo esc_attr($hero_title); ?>"
-                             class="video-fallback-image"
-                             loading="lazy">
-                    <?php endif; ?>
-                    
-                    <div class="video-controls">
-                        <button class="video-play-btn" aria-label="Play video">
-                            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
-                        <button class="video-pause-btn" aria-label="Pause video" style="display: none;">
-                            <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-                            </svg>
-                        </button>
-                        <button class="video-mute-btn" aria-label="<?php echo $video_mute
-                            ? "Unmute video"
-                            : "Mute video"; ?>">
-                            <?php if ($video_mute): ?>
-                                <svg class="mute-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
-                                </svg>
-                            <?php else: ?>
-                                <svg class="unmute-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
-                                </svg>
-                            <?php endif; ?>
-                        </button>
-                    </div>
-                </div>
-            <?php else: ?>
-                <!-- No video uploaded, show fallback image -->
-                <div class="hero-static-background">
-                    <?php if ($fallback_image_url): ?>
-                        <img src="<?php echo esc_url($fallback_image_url); ?>" 
-                             alt="<?php echo esc_attr($hero_title); ?>"
-                             class="hero-static-image"
-                             loading="lazy">
-                    <?php else: ?>
-                        <img src="<?php echo esc_url($default_images[0]); ?>" 
-                             alt="<?php echo esc_attr($hero_title); ?>"
-                             class="hero-static-image"
-                             loading="lazy">
-                    <?php endif; ?>
-                    <div class="slide-overlay"></div>
-                </div>
-            <?php endif; ?>
+            <video 
+                class="hero-video-element"
+                autoplay
+                <?php echo $video_mute ? 'muted' : ''; ?>
+                <?php echo $video_loop ? 'loop' : ''; ?>
+                playsinline
+                preload="auto"
+                poster="<?php echo $video_fallback_id ? esc_url(wp_get_attachment_image_url($video_fallback_id, 'full')) : ''; ?>"
+            >
+                <source src="<?php echo esc_url(wp_get_attachment_url($video_id)); ?>" type="video/webm">
+                <?php if ($video_fallback_id) : ?>
+                    <!-- Fallback image shown if video can't play -->
+                    <?php echo wp_get_attachment_image($video_fallback_id, 'full', false, array(
+                        'class' => 'hero-video-fallback-image',
+                        'alt' => esc_attr($hero_title)
+                    )); ?>
+                <?php endif; ?>
+            </video>
             <div class="slide-overlay"></div>
         </div>
         
-    <?php // Added class for consistent styling
-        // Added class for consistent styling
-        else: ?>
-        <!-- In the image slideshow section, update the img tags: -->
-<?php if ($enable_slideshow): ?>
-    <!-- Hero Slider -->
-    <div class="hero-slider" 
-         data-autoplay="true" 
-         data-delay="<?php echo esc_attr($slideshow_speed); ?>"
-         data-pause-hover="true"
-         data-keyboard="true"
-         data-dots="false"
-         data-arrows="false"
-         data-loop="true">
-        <div class="hero-slides">
-            <?php foreach ($slides as $index => $slide_id): ?>
-                <div class="hero-slide">
-                    <?php if ($slide_id): ?>
-                        <?php echo wp_get_attachment_image(
-                            $slide_id,
-                            "full",
-                            false,
-                            [
-                                "alt" => esc_attr($hero_title),
-                                "loading" => "lazy",
-                                "class" => "hero-slide-image",
-                            ],
-                        ); ?>
-                    <?php else: ?>
-                        <img src="<?php echo esc_url(
-                            $default_images[$index],
-                        ); ?>" 
-                             alt="<?php echo esc_attr($hero_title); ?>"
-                             class="hero-slide-image" // Added class
-                             loading="lazy">
-                    <?php endif; ?>
-                    <div class="slide-overlay"></div>
-                </div>
-            <?php endforeach; ?>
+    <?php elseif ($hero_media_type === 'image' && $enable_slideshow) : ?>
+        <!-- Image Slideshow -->
+        <div class="hero-slider" 
+             data-autoplay="true" 
+             data-delay="<?php echo esc_attr($slideshow_speed); ?>"
+             data-pause-hover="true"
+             data-keyboard="true"
+             data-dots="false"
+             data-arrows="false"
+             data-loop="true">
+            <div class="hero-slides">
+                <?php 
+                $slides = array($hero_slide_1, $hero_slide_2, $hero_slide_3, $hero_slide_4);
+                foreach ($slides as $index => $slide_id) : 
+                ?>
+                    <div class="hero-slide">
+                        <?php if ($slide_id) : ?>
+                            <?php echo wp_get_attachment_image($slide_id, 'full', false, array('alt' => esc_attr($hero_title))); ?>
+                        <?php else : ?>
+                            <img src="<?php echo esc_url($default_images[$index]); ?>" alt="<?php echo esc_attr($hero_title); ?>">
+                        <?php endif; ?>
+                        <div class="slide-overlay"></div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
-    </div>
-<?php else: ?>
-    <!-- Static Background -->
-    <div class="hero-static-background">
-        <?php if ($hero_slide_1): ?>
-            <?php echo wp_get_attachment_image($hero_slide_1, "full", false, [
-                "alt" => esc_attr($hero_title),
-                "class" => "hero-static-image",
-                "loading" => "lazy",
-            ]); ?>
-        <?php else: ?>
-            <img src="<?php echo esc_url($default_images[0]); ?>" 
-                 alt="<?php echo esc_attr($hero_title); ?>" 
-                 class="hero-static-image"
-                 loading="lazy">
-        <?php endif; ?>
-        <div class="slide-overlay"></div>
-    </div>
-<?php endif; ?>
+        
+    <?php else : ?>
+        <!-- Static Background (single image or video fallback on mobile) -->
+        <div class="hero-static-background">
+            <?php 
+            // If video mode but mobile fallback is enabled, show fallback image
+            if ($hero_media_type === 'video' && $is_mobile && $video_mobile_fallback && $video_fallback_id) {
+                echo wp_get_attachment_image($video_fallback_id, 'full', false, array(
+                    'alt' => esc_attr($hero_title),
+                    'class' => 'hero-static-image'
+                ));
+            } elseif ($hero_slide_1) {
+                echo wp_get_attachment_image($hero_slide_1, 'full', false, array(
+                    'alt' => esc_attr($hero_title),
+                    'class' => 'hero-static-image'
+                ));
+            } else {
+                echo '<img src="' . esc_url($default_images[0]) . '" alt="' . esc_attr($hero_title) . '" class="hero-static-image">';
+            }
+            ?>
+            <div class="slide-overlay"></div>
+        </div>
     <?php endif; ?>
 
-    <!-- Hero Content with Scroll Animations -->
+    <!-- Hero Content -->
     <div class="hero-content-container">
         <div class="hero-content">
-            <?php if ($badge_text): ?>
+            <?php if ($badge_text) : ?>
             <div class="hero-badge-wrapper" 
                  data-animate="fade-down" 
                  data-animate-delay="100">
@@ -241,10 +154,8 @@ if ($media_type === "video") {
                 data-animate="fade-up" 
                 data-animate-delay="200">
                 <?php echo esc_html($hero_title); ?>
-                <?php if ($hero_title_highlight): ?>
-                <span class="hero-title-highlight"><?php echo esc_html(
-                    $hero_title_highlight,
-                ); ?></span>
+                <?php if ($hero_title_highlight) : ?>
+                <span class="hero-title-highlight"><?php echo esc_html($hero_title_highlight); ?></span>
                 <?php endif; ?>
             </h1>
             
@@ -257,10 +168,8 @@ if ($media_type === "video") {
             <div class="hero-buttons" 
                  data-animate="fade-up" 
                  data-animate-delay="400">
-                <?php if ($primary_btn_text): ?>
-                    <a href="<?php echo esc_url(
-                        $primary_btn_link,
-                    ); ?>" class="hero-btn hero-btn-primary">
+                <?php if ($primary_btn_text) : ?>
+                    <a href="<?php echo esc_url($primary_btn_link); ?>" class="hero-btn hero-btn-primary">
                         <?php echo esc_html($primary_btn_text); ?>
                         <svg class="hero-btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -268,10 +177,8 @@ if ($media_type === "video") {
                     </a>
                 <?php endif; ?>
 
-                <?php if ($secondary_btn_text): ?>
-                    <a href="<?php echo esc_url(
-                        $secondary_btn_link,
-                    ); ?>" class="hero-btn hero-btn-secondary">
+                <?php if ($secondary_btn_text) : ?>
+                    <a href="<?php echo esc_url($secondary_btn_link); ?>" class="hero-btn hero-btn-secondary">
                         <?php echo esc_html($secondary_btn_text); ?>
                         <svg class="hero-btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -279,14 +186,24 @@ if ($media_type === "video") {
                     </a>
                 <?php endif; ?>
             </div>
+            
+            <!-- Trust Indicators -->
+            <div class="hero-trust-indicators" 
+                 data-animate="fade-up" 
+                 data-animate-delay="500">
+                <div class="trust-item">
+                    <div class="trust-number"><?php echo esc_html($trust_1_number); ?></div>
+                    <div class="trust-label"><?php echo esc_html($trust_1_label); ?></div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-number"><?php echo esc_html($trust_2_number); ?></div>
+                    <div class="trust-label"><?php echo esc_html($trust_2_label); ?></div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-number"><?php echo esc_html($trust_3_number); ?></div>
+                    <div class="trust-label"><?php echo esc_html($trust_3_label); ?></div>
+                </div>
+            </div>
         </div>
     </div>
-    
-    <!-- Loading indicator for videos -->
-    <?php if ($media_type === "video" && $video_url): ?>
-        <div class="video-loading" style="display: none;">
-            <div class="loading-spinner"></div>
-            <span class="loading-text">Loading video...</span>
-        </div>
-    <?php endif; ?>
 </section>

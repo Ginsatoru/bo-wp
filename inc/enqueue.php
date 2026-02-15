@@ -232,22 +232,22 @@ function mr_enqueue_styles()
             MR_THEME_VERSION,
         );
     }
+    
     // Variation Alert styles
     wp_enqueue_style(
-    'Bo-variation-alert',
-    get_template_directory_uri() . '/assets/css/variation-alert.css',
-    array(),
-    '1.0.0'
-);
+        'Bo-variation-alert',
+        get_template_directory_uri() . '/assets/css/variation-alert.css',
+        array(),
+        '1.0.0'
+    );
 
-
-wp_enqueue_script(
-    'Bo-variation-alert',
-    get_template_directory_uri() . '/assets/js/variation-alert.js',
-    array('jquery'),
-    '1.0.0',
-    true
-);
+    wp_enqueue_script(
+        'Bo-variation-alert',
+        get_template_directory_uri() . '/assets/js/variation-alert.js',
+        array('jquery'),
+        '1.0.0',
+        true
+    );
 
     // Main theme stylesheet (for theme metadata)
     wp_enqueue_style("mr-style", get_stylesheet_uri(), [], MR_THEME_VERSION);
@@ -433,17 +433,19 @@ function mr_enqueue_scripts()
             );
         }
 
+        // ============================================================
+        // HEADER SCROLL - ALWAYS LOAD (NOT conditional on WooCommerce)
+        // ============================================================
+        wp_enqueue_script(
+            "mr-header-scroll",
+            MR_THEME_URI . "/assets/js/header-scroll.js",
+            [], // No dependencies - loads independently
+            MR_THEME_VERSION,
+            true
+        );
+
         // WooCommerce scripts (conditional)
         if (class_exists("WooCommerce")) {
-            // Header scroll effects
-            wp_enqueue_script(
-                "mr-header-scroll",
-                MR_THEME_URI . "/assets/js/header-scroll.js",
-                ["mr-theme"],
-                MR_THEME_VERSION,
-                true,
-            );
-
             // WooCommerce enhancements
             wp_enqueue_script(
                 "mr-woocommerce",
@@ -502,17 +504,14 @@ function mr_enqueue_scripts()
                     MR_THEME_VERSION,
                     true,
                 );
-            }
-
-            // Shop column toggle
-            if (is_shop() || is_product_category() || is_product_tag()) {
+                
+                // Product Share - ONLY on single product pages
                 wp_enqueue_script(
-                    "Bo-shop-column-toggle",
-                    get_template_directory_uri() .
-                        "/assets/js/shop-column-toggle.js",
-                    ["jquery"],
+                    'Bo-product-share',
+                    get_template_directory_uri() . '/assets/js/product-share.js',
+                    array('jquery'),
                     MR_THEME_VERSION,
-                    true,
+                    true
                 );
             }
 
@@ -525,33 +524,6 @@ function mr_enqueue_scripts()
                 true,
             );
 
-            // Product Share - ONLY on single product pages
-if (is_product()) {
-    wp_enqueue_script(
-        'Bo-product-share',
-        get_template_directory_uri() . '/assets/js/product-share.js',
-        array('jquery'),
-        MR_THEME_VERSION,
-        true
-    );
-}
-
-/**
- * Enqueue Checkout Shipping Visibility Handler
- */
-function Bo_enqueue_checkout_shipping_handler() {
-    // Only on checkout page
-    if (is_checkout() && !is_order_received_page()) {
-        wp_enqueue_script(
-            'Bo-checkout-shipping-visibility',
-            get_template_directory_uri() . '/assets/js/checkout-shipping.js',
-            array('jquery', 'wc-checkout'),
-            Bo_VERSION,
-            true
-        );
-    }
-}
-add_action('wp_enqueue_scripts', 'Bo_enqueue_checkout_shipping_handler', 1001);
             // Localize for cart.js and woocommerce.js
             wp_localize_script("mr-cart", "mr_ajax", [
                 "url" => admin_url("admin-ajax.php"),
@@ -603,15 +575,15 @@ add_action('wp_enqueue_scripts', 'Bo_enqueue_checkout_shipping_handler', 1001);
     );
 
     // Deals Rotation Script - ALWAYS LOAD (Both production and development)
-if (is_front_page()) {
-    wp_enqueue_script(
-        'Bo-deals-rotation',
-        get_template_directory_uri() . '/assets/js/deals-rotation.js',
-        array(), // REMOVE jQuery dependency - script is vanilla JS
-        MR_THEME_VERSION,
-        true // Load in footer
-    );
-}
+    if (is_front_page()) {
+        wp_enqueue_script(
+            'Bo-deals-rotation',
+            get_template_directory_uri() . '/assets/js/deals-rotation.js',
+            array(), // REMOVE jQuery dependency - script is vanilla JS
+            MR_THEME_VERSION,
+            true // Load in footer
+        );
+    }
 
     // Get custom image directly from customizer
     $login_image_id = get_theme_mod('auth_modal_login_image', '');
@@ -674,6 +646,24 @@ if (is_front_page()) {
     }
 }
 add_action("wp_enqueue_scripts", "mr_enqueue_scripts", 20);
+
+/**
+ * Enqueue Checkout Shipping Visibility Handler
+ * MOVED OUTSIDE mr_enqueue_scripts function
+ */
+function Bo_enqueue_checkout_shipping_handler() {
+    // Only on checkout page
+    if (is_checkout() && !is_order_received_page()) {
+        wp_enqueue_script(
+            'Bo-checkout-shipping-visibility',
+            get_template_directory_uri() . '/assets/js/checkout-shipping.js',
+            array('jquery', 'wc-checkout'),
+            MR_THEME_VERSION,
+            true
+        );
+    }
+}
+add_action('wp_enqueue_scripts', 'Bo_enqueue_checkout_shipping_handler', 1001);
 
 /**
  * Enqueue customizer live preview script

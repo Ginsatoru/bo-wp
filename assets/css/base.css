@@ -48,17 +48,29 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100%;
+}
+
+/* Remove body padding on pages with hero sections (transparent header overlay) */
+body.home,
+body.page-template-homepage,
+body.page-template-about,
+body.page-template-contact {
+  padding-top: 0 !important;
+}
+
+/* Add body padding on all other pages (header needs space) */
+body:not(.home):not(.page-template-homepage):not(.page-template-about):not(.page-template-contact) {
   padding-top: var(--header-height);
 }
 
-/* When topbar is enabled (has-topbar class added by header.php) */
+/* When topbar is enabled on non-hero pages */
 @media (min-width: 768px) {
-  body.has-topbar {
+  body.has-topbar:not(.home):not(.page-template-homepage):not(.page-template-about):not(.page-template-contact) {
     padding-top: var(--header-total-height);
   }
 
-  /* When topbar is disabled, use only header height */
-  body:not(.has-topbar) {
+  /* When topbar is disabled on non-hero pages, use only header height */
+  body:not(.has-topbar):not(.home):not(.page-template-homepage):not(.page-template-about):not(.page-template-contact) {
     padding-top: var(--header-height);
   }
 }

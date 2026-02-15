@@ -10,9 +10,43 @@
   background: var(--color-white);
 }
 
+/* Fixed header spacing - CRITICAL */
 .site-main {
   flex: 1;
   background: var(--color-white);
+}
+
+/* Pages WITHOUT hero/transparent header need padding for fixed header */
+body:not(.has-transparent-header) .site-main {
+  padding-top: 80px; /* Mobile header height */
+}
+
+@media (min-width: 992px) {
+  body:not(.has-transparent-header) .site-main {
+    padding-top: 90px; /* Desktop header height */
+  }
+}
+
+/* Admin bar adjustments for non-hero pages */
+body.admin-bar:not(.has-transparent-header) .site-main {
+  padding-top: 126px; /* 80px + 46px mobile */
+}
+
+@media (min-width: 782px) {
+  body.admin-bar:not(.has-transparent-header) .site-main {
+    padding-top: 112px; /* 80px + 32px */
+  }
+}
+
+@media (min-width: 992px) {
+  body.admin-bar:not(.has-transparent-header) .site-main {
+    padding-top: 122px; /* 90px + 32px */
+  }
+}
+
+/* Pages WITH hero - no padding on site-main, hero handles spacing */
+body.has-transparent-header .site-main {
+  padding-top: 0 !important;
 }
 
 /* ===================================
