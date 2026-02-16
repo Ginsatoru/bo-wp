@@ -1,4 +1,4 @@
-$zipFile = "aaapos-v1.0.0.zip"
+$zipFile = "bo-custom-v1.0.0.zip"
 
 # Remove old zip if exists
 if (Test-Path $zipFile) {

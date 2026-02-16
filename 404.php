@@ -22,17 +22,17 @@ get_header(); ?>
                 <!-- Error Messages -->
                 <div class="error-text" data-animate="fade-up">
                     <h2 class="error-subtitle">
-                        <?php esc_html_e("How did you get here?!", "aaapos"); ?>
+                        <?php esc_html_e("How did you get here?!", "Bo"); ?>
                     </h2>
                     <p class="error-description">
-                        <?php esc_html_e("It's cool. We'll help you out.", "aaapos"); ?>
+                        <?php esc_html_e("It's cool. We'll help you out.", "Bo"); ?>
                     </p>
                 </div>
                 
                 <!-- Back to Homepage Button -->
                 <div class="error-actions" data-animate="fade-up">
                     <a href="<?php echo esc_url(home_url("/")); ?>" class="btn-404-home">
-                        <?php esc_html_e("Back to Homepage", "aaapos"); ?>
+                        <?php esc_html_e("Back to Homepage", "Bo"); ?>
                     </a>
                 </div>
                 

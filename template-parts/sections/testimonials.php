@@ -152,37 +152,6 @@ if (!$testimonials_query->have_posts()) {
                 <div class="slider-dots" role="tablist" aria-label="Testimonial navigation"></div>
             <?php endif; ?>
         </div>
-        
-        <!-- Statistics Section with Staggered Animation -->
-        <div class="testimonials-stats">
-            <div class="stat-item" 
-                 data-animate="zoom-in" 
-                 data-animate-delay="300">
-                <div class="stat-item__value"><?php echo esc_html($stat_customers); ?></div>
-                <div class="stat-item__label"><?php echo esc_html($stat_customers_label); ?></div>
-            </div>
-            
-            <div class="stat-item" 
-                 data-animate="zoom-in" 
-                 data-animate-delay="400">
-                <div class="stat-item__value"><?php echo esc_html($stat_local); ?></div>
-                <div class="stat-item__label"><?php echo esc_html($stat_local_label); ?></div>
-            </div>
-            
-            <div class="stat-item" 
-                 data-animate="zoom-in" 
-                 data-animate-delay="500">
-                <div class="stat-item__value"><?php echo esc_html($stat_support); ?></div>
-                <div class="stat-item__label"><?php echo esc_html($stat_support_label); ?></div>
-            </div>
-            
-            <div class="stat-item" 
-                 data-animate="zoom-in" 
-                 data-animate-delay="600">
-                <div class="stat-item__value"><?php echo esc_html($stat_rating); ?></div>
-                <div class="stat-item__label"><?php echo esc_html($stat_rating_label); ?></div>
-            </div>
-        </div>
     </div>
 </section>
 

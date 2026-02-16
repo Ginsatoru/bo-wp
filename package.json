@@ -1,5 +1,5 @@
 {
-  "name": "aaapos",
+  "name": "Bo",
   "version": "1.0.0",
   "scripts": {
     "clean": "rimraf assets/css/dist assets/js/dist",

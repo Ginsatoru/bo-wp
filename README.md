@@ -42,16 +42,16 @@ Add this code to your `inc/enqueue.php` if not already present:
 /**
  * Enqueue Customizer Live Preview Script
  */
-function aaapos_customizer_live_preview() {
+function Bo_customizer_live_preview() {
     wp_enqueue_script(
-        'aaapos-customizer-preview',
-        AAAPOS_ASSETS_URI . '/js/customizer-preview.js',
+        'Bo-customizer-preview',
+        Bo_ASSETS_URI . '/js/customizer-preview.js',
         array('jquery', 'customize-preview'),
-        AAAPOS_VERSION,
+        Bo_VERSION,
         true
     );
 }
-add_action('customize_preview_init', 'aaapos_customizer_live_preview');
+add_action('customize_preview_init', 'Bo_customizer_live_preview');
 ```
 
 ### Step 4: Verify functions.php Includes
@@ -357,7 +357,7 @@ To make other component CSS files use the new color system, replace hardcoded co
 3. Verify the inline style is appearing in page source
 
 ### Live preview works but frontend doesn't
-1. Check that `aaapos_customizer_css_output()` is hooked to `wp_head`
+1. Check that `Bo_customizer_css_output()` is hooked to `wp_head`
 2. Verify the priority (should be 100 or higher to load after main CSS)
 3. Check for CSS specificity issues
 
@@ -374,20 +374,20 @@ To make other component CSS files use the new color system, replace hardcoded co
 
 ```php
 // Convert hex to RGB string
-$rgb = aaapos_hex_to_rgb('#0ea5e9'); // Returns "14, 165, 233"
+$rgb = Bo_hex_to_rgb('#0ea5e9'); // Returns "14, 165, 233"
 
 // Adjust color brightness (-100 to 100)
-$darker = aaapos_adjust_brightness('#0ea5e9', -20);
-$lighter = aaapos_adjust_brightness('#0ea5e9', 20);
+$darker = Bo_adjust_brightness('#0ea5e9', -20);
+$lighter = Bo_adjust_brightness('#0ea5e9', 20);
 
 // Get contrast ratio between two colors
-$ratio = aaapos_get_contrast_ratio('#0ea5e9', '#ffffff');
+$ratio = Bo_get_contrast_ratio('#0ea5e9', '#ffffff');
 
 // Get all default colors
-$defaults = aaapos_get_default_colors();
+$defaults = Bo_get_default_colors();
 
 // Reset all colors to defaults
-aaapos_reset_colors_to_defaults();
+Bo_reset_colors_to_defaults();
 ```
 
 ### JavaScript Functions (in customizer-preview.js)
@@ -422,7 +422,7 @@ Five built-in presets are available:
 
 - Always ensure sufficient color contrast (WCAG 4.5:1 for normal text)
 - Test with browser accessibility tools
-- The `aaapos_get_contrast_ratio()` function can help check contrast
+- The `Bo_get_contrast_ratio()` function can help check contrast
 - Focus states use `--color-focus-ring` for keyboard navigation visibility
 
 ---
@@ -442,5 +442,6 @@ If you encounter issues:
 1. Check the browser console for errors
 2. Verify all files are in the correct locations
 3. Ensure WordPress is updated to at least version 5.0
-4. Test with default theme to isolate issues#   a a a p o s - t h e m e  
+4. Test with default theme to isolate issues#   a a a p o s - t h e m e 
+ 
  
