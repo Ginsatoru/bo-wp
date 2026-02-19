@@ -1,337 +1,321 @@
 /* ==========================================================================
-   CHECKOUT PROGRESS STEPS - Modern progress indicator
+   CHECKOUT PROGRESS STEPS — Geometric tag-style indicator
    @package Macedon_Ranges
-   @since 1.0.0
    ========================================================================== */
 
 .woocommerce-checkout-progress {
-    width: 100%;
-    margin: 0 auto 2rem auto;
-    padding: 2rem 0 0 0;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-    grid-column: 1 / -1;
+	width: 100%;
+	margin: 0 auto 2rem;
+	padding: 2rem 0 0;
+	text-align: center;
+	position: relative;
+	z-index: 1;
+	grid-column: 1 / -1;
 }
 
 .checkout-steps {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	flex-wrap: wrap;
 }
 
-/* ==========================================================================
-   INDIVIDUAL STEP
-   ========================================================================== */
-
+/* --------------------------------------------------------------------------
+   INDIVIDUAL STEP — rectangular tag, no border-radius pill
+   -------------------------------------------------------------------------- */
 .checkout-step {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0;
-    background: transparent;
-    border: none;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    color: inherit;
-    cursor: default;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.45rem 1rem;
+	background: var(--color-white, #fff);
+	border: 1.5px solid #EDEDED;
+	border-radius: 4px;
+	color: var(--color-text-light, #6C757D);
+	font-family: var(--font-body);
+	font-size: var(--text-sm, 0.875rem);
+	font-weight: 500;
+	text-decoration: none;
+	cursor: default;
+	user-select: none;
+	transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
-/* Clickable (completed) steps */
+/* Clickable (completed) */
 .checkout-step.clickable {
-    cursor: pointer;
+	cursor: pointer;
+	border-color: var(--brand-color);
+	color: var(--brand-color);
 }
 
-.checkout-step.clickable:hover .step-number {
-    background: var(--brand-color, #0ea5e9);
-    color: white;
-    border-color: var(--brand-color, #0ea5e9);
+.checkout-step.clickable:hover {
+	background: var(--brand-color);
+	color: var(--color-white, #fff) !important;
 }
 
-.checkout-step.clickable:hover .step-label {
-    color: var(--brand-color, #0ea5e9);
+/* Active */
+.checkout-step.active {
+	background: var(--brand-color);
+	border-color: var(--brand-color);
+	color: var(--color-white, #fff);
+	font-weight: 700;
 }
 
-/* ==========================================================================
-   STEP NUMBER (Circle)
-   ========================================================================== */
-
+/* --------------------------------------------------------------------------
+   STEP NUMBER — small square badge inside the tag
+   -------------------------------------------------------------------------- */
 .step-number {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    font-weight: 600;
-    background: #E5E7EB;
-    color: #9CA3AF;
-    border: 2px solid transparent;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+	border-radius: 2px;
+	font-size: 0.75rem;
+	font-weight: 700;
+	flex-shrink: 0;
+	transition: background 0.2s ease, color 0.2s ease;
+
+	/* Default (inactive) */
+	background: #EDEDED;
+	color: var(--color-text-light, #6C757D);
 }
 
 /* Completed step number */
-.checkout-step.completed .step-number {
-    background: #E5E7EB;
-    color: #6B7280;
-    border-color: transparent;
+.checkout-step.clickable .step-number {
+	background: rgba(34, 66, 41, 0.1);
+	color: var(--brand-color);
+}
+
+.checkout-step.clickable:hover .step-number {
+	background: rgba(255, 255, 255, 0.2);
+	color: var(--color-white, #fff) !important;
 }
 
 /* Active step number */
 .checkout-step.active .step-number {
-    background: var(--color-text-dark, #1F2937);
-    color: #FFFFFF;
-    border-color: var(--color-text-dark, #1F2937);
+	background: rgba(255, 255, 255, 0.2);
+	color: var(--color-white, #fff);
 }
 
-/* ==========================================================================
-   STEP LABEL (Text)
-   ========================================================================== */
-
+/* --------------------------------------------------------------------------
+   STEP LABEL
+   -------------------------------------------------------------------------- */
 .step-label {
-    font-size: 1rem;
-    font-weight: 400;
-    color: #9CA3AF;
-    transition: color 0.3s ease;
-    white-space: nowrap;
+	font-size: inherit;
+	font-weight: inherit;
+	color: inherit;
+	white-space: nowrap;
+	transition: color 0.2s ease;
 }
 
-/* Completed step label */
-.checkout-step.completed .step-label {
-    color: #6B7280;
-}
-
-/* Active step label */
-.checkout-step.active .step-label {
-    color: var(--color-text-dark, #1F2937);
-    font-weight: 500;
-}
-
-/* ==========================================================================
-   ARROW SEPARATOR
-   ========================================================================== */
-
+/* --------------------------------------------------------------------------
+   ARROW CONNECTOR — thin, muted
+   -------------------------------------------------------------------------- */
 .step-arrow {
-    width: 24px;
-    height: 24px;
-    color: #D1D5DB;
-    flex-shrink: 0;
+	width: 16px;
+	height: 16px;
+	color: #D1D5DB;
+	flex-shrink: 0;
 }
 
-/* ==========================================================================
-   CART PAGE SPECIFIC
-   ========================================================================== */
-
+/* --------------------------------------------------------------------------
+   CART PAGE — progress sits above the two-column grid
+   -------------------------------------------------------------------------- */
 body.woocommerce-cart .woocommerce-checkout-progress {
-    margin-top: 0;
-    margin-bottom: -1.90rem;
-    text-align: center;
-    grid-column: 1 / -1;
-    width: 100%;
+	margin-top: 0;
+	margin-bottom: -1.9rem;
+	padding-top: 1.5rem;
+	text-align: center;
+	grid-column: 1 / -1;
+	width: 100%;
 }
 
 body.woocommerce-cart .checkout-steps {
-    display: inline-flex;
-    justify-content: center;
-    margin: 0 auto;
+	display: inline-flex;
+	justify-content: center;
+	margin: 0 auto;
 }
 
 body.woocommerce-cart .entry-content,
 body.woocommerce-cart .woocommerce {
-    text-align: left;
+	text-align: left;
 }
 
-/* ==========================================================================
-   CHECKOUT PAGE SPECIFIC
-   ========================================================================== */
-
+/* --------------------------------------------------------------------------
+   CHECKOUT PAGE
+   -------------------------------------------------------------------------- */
 body.woocommerce-checkout .woocommerce-checkout-progress {
-    margin-top: 0;
-    margin-bottom: 2rem;
-    text-align: center;
-    width: 100%;
+	margin-top: 0;
+	margin-bottom: 2rem;
+	padding-top: 1.5rem;
+	text-align: center;
+	width: 100%;
 }
 
 body.woocommerce-checkout .checkout-steps {
-    display: inline-flex;
-    justify-content: center;
-    margin: 0 auto;
+	display: inline-flex;
+	justify-content: center;
+	margin: 0 auto;
 }
 
 body.woocommerce-checkout .entry-content {
-    text-align: left;
+	text-align: left;
 }
 
-/* ==========================================================================
-   ORDER RECEIVED PAGE SPECIFIC
-   ========================================================================== */
-
+/* --------------------------------------------------------------------------
+   ORDER RECEIVED PAGE
+   -------------------------------------------------------------------------- */
 body.woocommerce-order-received .woocommerce-checkout-progress {
-    margin-top: 0;
-    margin-bottom: 2rem;
-    text-align: center;
+	margin-top: -20px;
+	margin-bottom: 2rem;
+	padding-top: 1.5rem;
+	text-align: center;
 }
 
 body.woocommerce-order-received .checkout-steps {
-    display: inline-flex;
-    justify-content: center;
+	display: inline-flex;
+	justify-content: center;
 }
 
-/* ==========================================================================
-   RESPONSIVE DESIGN
-   ========================================================================== */
+/* On order received, step 3 should appear active — handled via PHP class,
+   but ensure completed steps render correctly here too */
+body.woocommerce-order-received .checkout-step.completed {
+	border-color: var(--brand-color);
+	color: var(--brand-color);
+}
 
-/* Tablets and smaller */
+/* --------------------------------------------------------------------------
+   RESPONSIVE — TABLET (≤768px)
+   -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
-    .woocommerce-checkout-progress {
-        margin-bottom: 1.5rem;
-        padding-top: 1.5rem;
-        text-align: center;
-    }
-    
-    .checkout-steps {
-        gap: 1rem;
-        display: inline-flex;
-        justify-content: center;
-        flex-wrap: nowrap;
-    }
-    
-    .checkout-step {
-        gap: 0.5rem;
-    }
-    
-    .step-number {
-        width: 36px;
-        height: 36px;
-        font-size: 0.9375rem;
-    }
-    
-    .step-label {
-        font-size: 0.875rem;
-        white-space: nowrap;
-    }
-    
-    .step-arrow {
-        width: 20px;
-        height: 20px;
-        margin: 0 0.25rem;
-    }
+	.woocommerce-checkout-progress {
+		margin-bottom: 1.5rem;
+		padding-top: 1.25rem;
+	}
+
+	.checkout-steps {
+		gap: 0.375rem;
+		flex-wrap: nowrap;
+	}
+
+	.checkout-step {
+		padding: 0.4rem 0.875rem;
+		font-size: 0.8125rem;
+	}
+
+	.step-number {
+		width: 18px;
+		height: 18px;
+		font-size: 0.6875rem;
+	}
+
+	.step-arrow {
+		width: 14px;
+		height: 14px;
+	}
 }
 
-/* Mobile devices - Horizontal layout with proper spacing */
+/* --------------------------------------------------------------------------
+   RESPONSIVE — SMALL MOBILE (≤640px)
+   -------------------------------------------------------------------------- */
 @media (max-width: 640px) {
-    .woocommerce-checkout-progress {
-        margin-bottom: 1.25rem;
-        padding-top: 1rem;
-        text-align: center;
-        overflow-x: auto;
-        overflow-y: visible;
-    }
-    
-    .checkout-steps {
-        gap: 0.75rem;
-        justify-content: flex-start;
-        width: auto;
-        display: inline-flex;
-        flex-wrap: nowrap;
-        padding: 0 1rem;
-        min-width: min-content;
-    }
-    
-    .checkout-step {
-        gap: 0.5rem;
-        flex-shrink: 0;
-    }
-    
-    .step-number {
-        width: 32px;
-        height: 32px;
-        font-size: 0.875rem;
-    }
-    
-    .step-label {
-        font-size: 0.8125rem;
-        white-space: nowrap;
-    }
-    
-    .step-arrow {
-        width: 16px;
-        height: 16px;
-        margin: 0 0.25rem;
-        flex-shrink: 0;
-    }
+	.woocommerce-checkout-progress {
+		margin-bottom: 1.25rem;
+		padding-top: 1rem;
+		overflow-x: auto;
+		overflow-y: visible;
+	}
+
+	.checkout-steps {
+		gap: 0.3rem;
+		justify-content: flex-start;
+		flex-wrap: nowrap;
+		padding: 0 1rem;
+		min-width: min-content;
+	}
+
+	.checkout-step {
+		flex-shrink: 0;
+		padding: 0.375rem 0.75rem;
+		font-size: 0.8125rem;
+	}
+
+	.step-arrow {
+		width: 12px;
+		height: 12px;
+		margin: 0;
+	}
 }
 
-/* Very small mobile - Keep arrows visible */
+/* --------------------------------------------------------------------------
+   RESPONSIVE — VERY SMALL MOBILE (≤480px)
+   -------------------------------------------------------------------------- */
 @media (max-width: 480px) {
-    .woocommerce-checkout-progress {
-        text-align: center;
-        margin-bottom: 1rem;
-        overflow-x: auto;
-        overflow-y: visible;
-    }
-    
-    .checkout-steps {
-        gap: 0.5rem;
-        justify-content: flex-start;
-        display: inline-flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        padding: 0 0.5rem;
-        min-width: min-content;
-    }
-    
-    .checkout-step {
-        flex-direction: column;
-        gap: 0.5rem;
-        text-align: center;
-        flex-shrink: 0;
-        min-width: 70px;
-    }
-    
-    .step-number {
-        width: 36px;
-        height: 36px;
-        font-size: 0.875rem;
-    }
-    
-    /* Keep arrows visible on mobile */
-    .step-arrow {
-        display: block !important;
-        width: 16px;
-        height: 16px;
-        margin: 0 0.25rem;
-        flex-shrink: 0;
-        align-self: center;
-        transform: rotate(0deg);
-    }
-    
-    .step-label {
-        font-size: 0.7rem;
-        max-width: 70px;
-        line-height: 1.2;
-        white-space: normal;
-        word-wrap: break-word;
-        text-align: center;
-    }
+	.woocommerce-checkout-progress {
+		margin-bottom: 1rem;
+		overflow-x: auto;
+		overflow-y: visible;
+	}
+
+	.checkout-steps {
+		gap: 0.25rem;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		padding: 0 0.5rem;
+		min-width: min-content;
+	}
+
+	/* Stack number above label on very small screens */
+	.checkout-step {
+		flex-direction: column;
+		align-items: center;
+		gap: 0.25rem;
+		padding: 0.5rem 0.625rem;
+		min-width: 64px;
+		flex-shrink: 0;
+	}
+
+	.step-number {
+		width: 22px;
+		height: 22px;
+		font-size: 0.75rem;
+		border-radius: 2px;
+	}
+
+	.step-label {
+		font-size: 0.6875rem;
+		line-height: 1.2;
+		white-space: normal;
+		text-align: center;
+		max-width: 60px;
+		word-break: break-word;
+	}
+
+	/* Arrow aligns to centre of stacked step */
+	.step-arrow {
+		display: block !important;
+		width: 12px;
+		height: 12px;
+		align-self: center;
+		flex-shrink: 0;
+		margin: 0;
+	}
 }
 
-/* ==========================================================================
+/* --------------------------------------------------------------------------
    ACCESSIBILITY
-   ========================================================================== */
-
+   -------------------------------------------------------------------------- */
 .checkout-step .screen-reader-text {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
 }

@@ -7,7 +7,7 @@
 /**
  * Sanitize Google Maps embed code - Extract URL from iframe
  */
-function aaapos_sanitize_map_url($input) {
+function bo_sanitize_map_url($input) {
     if (empty($input)) {
         return '';
     }
@@ -33,13 +33,13 @@ function aaapos_sanitize_map_url($input) {
     return '';
 }
 
-function aaapos_contact_page_customizer($wp_customize) {
+function bo_contact_page_customizer($wp_customize) {
     
     // ===================================
     // CONTACT PAGE SECTION
     // ===================================
-    $wp_customize->add_section('aaapos_contact_page', array(
-        'title'    => __('Contact Page', 'aaapos-prime'),
+    $wp_customize->add_section('bo_contact_page', array(
+        'title'    => __('Contact Page', 'bo-prime'),
         'priority' => 150,
     ));
 
@@ -54,34 +54,34 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_phone', array(
-        'label'    => __('Phone Number', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Phone Number', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'text',
         'priority' => 5,
     ));
 
     // Email Address
     $wp_customize->add_setting('contact_email', array(
-        'default'           => 'support@aaapos.com',
+        'default'           => 'support@bo.com',
         'sanitize_callback' => 'sanitize_email',
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_email', array(
-        'label'    => __('Email Address', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Email Address', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'email',
         'priority' => 6,
     ));
 
     // Physical Address
     $wp_customize->add_setting('contact_address', array(
-        'default'           => '123 Farm Road, AAAPOS VIC 3440',
+        'default'           => '123 Farm Road, bo VIC 3440',
         'sanitize_callback' => 'sanitize_textarea_field',
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_address', array(
-        'label'    => __('Physical Address', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Physical Address', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'textarea',
         'priority' => 7,
     ));
@@ -96,9 +96,9 @@ function aaapos_contact_page_customizer($wp_customize) {
     ));
 
     $wp_customize->add_control("contact_form_email", array(
-        "label" => __("Contact Form Email", "aaapos-prime"),
-        "description" => __("Email address to receive contact form submissions", "aaapos-prime"),
-        "section" => "aaapos_contact_page",
+        "label" => __("Contact Form Email", "bo-prime"),
+        "description" => __("Email address to receive contact form submissions", "bo-prime"),
+        "section" => "bo_contact_page",
         "type" => "email",
         "priority" => 10,
     ));
@@ -114,8 +114,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_show_hero', array(
-        'label'    => __('Show Hero Section', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Show Hero Section', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'checkbox',
         'priority' => 15,
     ));
@@ -127,8 +127,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_hero_badge', array(
-        'label'    => __('Hero Badge Text', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Hero Badge Text', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'text',
         'priority' => 20,
     ));
@@ -140,8 +140,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_hero_title', array(
-        'label'    => __('Hero Title', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Hero Title', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'text',
         'priority' => 30,
     ));
@@ -153,8 +153,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_hero_subtitle', array(
-        'label'    => __('Hero Subtitle', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Hero Subtitle', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'textarea',
         'priority' => 40,
     ));
@@ -170,8 +170,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_show_quick_stats', array(
-        'label'    => __('Show Quick Stats Section', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Show Quick Stats Section', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'checkbox',
         'priority' => 42,
     ));
@@ -183,8 +183,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_show_stat1', array(
-        'label'    => __('Show Stat 1', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Show Stat 1', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'checkbox',
         'priority' => 44,
     ));
@@ -196,8 +196,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_stat1_title', array(
-        'label'    => __('Quick Stat 1 - Title', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Quick Stat 1 - Title', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'text',
         'priority' => 45,
     ));
@@ -208,8 +208,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_stat1_text', array(
-        'label'    => __('Quick Stat 1 - Text', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Quick Stat 1 - Text', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'text',
         'priority' => 46,
     ));
@@ -221,8 +221,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_show_stat2', array(
-        'label'    => __('Show Stat 2', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Show Stat 2', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'checkbox',
         'priority' => 46,
     ));
@@ -234,8 +234,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_stat2_title', array(
-        'label'    => __('Quick Stat 2 - Title', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Quick Stat 2 - Title', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'text',
         'priority' => 47,
     ));
@@ -246,8 +246,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_stat2_text', array(
-        'label'    => __('Quick Stat 2 - Text', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Quick Stat 2 - Text', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'text',
         'priority' => 48,
     ));
@@ -259,8 +259,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_show_stat3', array(
-        'label'    => __('Show Stat 3', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Show Stat 3', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'checkbox',
         'priority' => 48,
     ));
@@ -272,20 +272,20 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_stat3_title', array(
-        'label'    => __('Quick Stat 3 - Title', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Quick Stat 3 - Title', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'text',
         'priority' => 49,
     ));
 
     $wp_customize->add_setting('contact_stat3_text', array(
-        'default'           => 'AAAPOS',
+        'default'           => 'bo',
         'sanitize_callback' => 'sanitize_text_field',
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_stat3_text', array(
-        'label'    => __('Quick Stat 3 - Text', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Quick Stat 3 - Text', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'text',
         'priority' => 50,
     ));
@@ -301,8 +301,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_show_form', array(
-        'label'    => __('Show Contact Form', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Show Contact Form', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'checkbox',
         'priority' => 55,
     ));
@@ -314,8 +314,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_form_title', array(
-        'label'    => __('Form Section Title', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Form Section Title', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'text',
         'priority' => 60,
     ));
@@ -327,8 +327,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_form_intro', array(
-        'label'    => __('Form Introduction Text', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Form Introduction Text', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'textarea',
         'priority' => 70,
     ));
@@ -344,8 +344,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_show_info_block', array(
-        'label'    => __('Show Contact Info Block', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Show Contact Info Block', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'checkbox',
         'priority' => 75,
     ));
@@ -357,8 +357,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_info_title', array(
-        'label'    => __('Contact Info Block - Title', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Contact Info Block - Title', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'text',
         'priority' => 80,
     ));
@@ -370,8 +370,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_info_text', array(
-        'label'    => __('Contact Info Block - Text', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Contact Info Block - Text', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'textarea',
         'priority' => 90,
     ));
@@ -387,8 +387,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_show_hours', array(
-        'label'    => __('Show Business Hours', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Show Business Hours', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'checkbox',
         'priority' => 95,
     ));
@@ -400,8 +400,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_hours_title', array(
-        'label'    => __('Business Hours - Title', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Business Hours - Title', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'text',
         'priority' => 100,
     ));
@@ -413,8 +413,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_hours_weekday', array(
-        'label'    => __('Weekday Hours (Mon-Fri)', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Weekday Hours (Mon-Fri)', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'text',
         'priority' => 110,
     ));
@@ -426,8 +426,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_hours_saturday', array(
-        'label'    => __('Saturday Hours', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Saturday Hours', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'text',
         'priority' => 120,
     ));
@@ -439,8 +439,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_hours_sunday', array(
-        'label'    => __('Sunday Hours', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Sunday Hours', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'text',
         'priority' => 130,
     ));
@@ -456,8 +456,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_show_social', array(
-        'label'    => __('Show Social Media Block', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Show Social Media Block', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'checkbox',
         'priority' => 135,
     ));
@@ -469,8 +469,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_social_title', array(
-        'label'    => __('Social Block - Title', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Social Block - Title', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'text',
         'priority' => 140,
     ));
@@ -482,9 +482,9 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_social_text', array(
-        'label'       => __('Social Block - Text', 'aaapos-prime'),
-        'description' => __('Social media links are managed in Footer settings', 'aaapos-prime'),
-        'section'     => 'aaapos_contact_page',
+        'label'       => __('Social Block - Text', 'bo-prime'),
+        'description' => __('Social media links are managed in Footer settings', 'bo-prime'),
+        'section'     => 'bo_contact_page',
         'type'        => 'text',
         'priority'    => 150,
     ));
@@ -500,8 +500,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_show_map', array(
-        'label'    => __('Show Map Section', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Show Map Section', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'checkbox',
         'priority' => 155,
     ));
@@ -509,14 +509,14 @@ function aaapos_contact_page_customizer($wp_customize) {
     // Map Embed
     $wp_customize->add_setting('contact_map_embed', array(
         'default'           => '',
-        'sanitize_callback' => 'aaapos_sanitize_map_url',
+        'sanitize_callback' => 'bo_sanitize_map_url',
         'transport'         => 'refresh',
     ));
     
     $wp_customize->add_control('contact_map_embed', array(
-        'label'       => __('Google Maps Embed', 'aaapos-prime'),
-        'description' => __('Paste your Google Maps iframe code or embed URL here', 'aaapos-prime'),
-        'section'     => 'aaapos_contact_page',
+        'label'       => __('Google Maps Embed', 'bo-prime'),
+        'description' => __('Paste your Google Maps iframe code or embed URL here', 'bo-prime'),
+        'section'     => 'bo_contact_page',
         'type'        => 'textarea',
         'priority'    => 160,
         'input_attrs' => array(
@@ -532,8 +532,8 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_map_title', array(
-        'label'    => __('Map Section Title', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Map Section Title', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'text',
         'priority' => 170,
     ));
@@ -545,10 +545,10 @@ function aaapos_contact_page_customizer($wp_customize) {
         'transport'         => 'refresh',
     ));
     $wp_customize->add_control('contact_map_subtitle', array(
-        'label'    => __('Map Section Subtitle', 'aaapos-prime'),
-        'section'  => 'aaapos_contact_page',
+        'label'    => __('Map Section Subtitle', 'bo-prime'),
+        'section'  => 'bo_contact_page',
         'type'     => 'text',
         'priority' => 180,
     ));
 }
-add_action('customize_register', 'aaapos_contact_page_customizer');
+add_action('customize_register', 'bo_contact_page_customizer');

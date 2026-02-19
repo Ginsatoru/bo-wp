@@ -1,13 +1,23 @@
 /* ============================================
    My Account Sidebar - Navigation & Profile
+   myaccount-sidebar.css
+   Style variant: Modern / Geometric
    ============================================ */
 
-/* === Seamless White Card Sidebar === */
+/* ── Sidebar Card ─────────────────────────────────────────────────── */
+/*
+   Changed:
+   - border-radius reduced from xl → 8px
+   - shadow lightened
+   - added 1px border + brand-color top accent (matches content panel)
+*/
 .woocommerce-MyAccount-navigation {
   background: var(--color-white);
-  border-radius: var(--border-radius-xl);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-top: 2px solid var(--brand-color);
   padding: 0;
-  box-shadow: var(--shadow);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   position: sticky;
   top: calc(var(--header-total-height) + var(--space-6));
   overflow: hidden;
@@ -19,21 +29,26 @@
   }
 }
 
-/* === User Profile Section (Top of Sidebar) === */
+/* ── User Profile Section ─────────────────────────────────────────── */
 .myaccount-user-profile {
   padding: var(--space-6);
   text-align: center;
-  border-bottom: 1px solid var(--color-border-light);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   background: var(--color-white);
 }
 
+/*
+   Changed:
+   - avatar border from color-bg-tertiary to brand-color at low opacity
+   - radius stays full circle
+*/
 .myaccount-user-profile__avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: var(--border-radius-full);
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
   margin: 0 auto var(--space-3);
   overflow: hidden;
-  border: 3px solid var(--color-bg-tertiary);
+  border: 2px solid rgba(14, 165, 233, 0.25);
   position: relative;
 }
 
@@ -46,105 +61,117 @@
 .myaccount-user-profile__avatar .avatar-placeholder {
   width: 100%;
   height: 100%;
-  background: var(--color-primary);
+  background: var(--brand-color);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-white);
-  font-size: var(--text-3xl);
-  font-weight: var(--font-bold);
+  font-size: var(--text-2xl);
+  font-weight: 800;
   text-transform: uppercase;
+  letter-spacing: -0.02em;
 }
 
 .myaccount-user-profile__name {
-  font-size: var(--text-lg);
-  font-weight: var(--font-bold);
+  font-size: var(--text-base);
+  font-weight: 700;
   color: var(--color-text-dark);
   margin: 0 0 var(--space-1);
   font-family: var(--font-body);
+  letter-spacing: -0.01em;
 }
 
 .myaccount-user-profile__email {
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   color: var(--color-text-light);
   margin: 0 0 var(--space-3);
   font-family: var(--font-body);
 }
 
+/* Edit profile link — text + underline style (matches our button pattern) */
 .myaccount-user-profile__edit {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   font-size: var(--text-xs);
-  color: var(--color-primary);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--brand-color);
   text-decoration: none;
-  font-weight: var(--font-medium);
-  transition: var(--transition-fast);
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--border-radius-lg);
+  text-transform: uppercase;
+  padding: 0;
+  border-bottom: 1px solid rgba(14, 165, 233, 0.3);
+  padding-bottom: 1px;
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 .myaccount-user-profile__edit:hover {
-  background: var(--color-bg-tertiary);
-  color: var(--color-primary-hover);
+  color: var(--brand-color-hover);
+  border-bottom-color: var(--brand-color-hover);
 }
 
 .myaccount-user-profile__edit svg {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
 }
 
-/* === Navigation Links === */
+/* ── Navigation Links ─────────────────────────────────────────────── */
 .woocommerce-MyAccount-navigation ul {
   list-style: none;
   margin: 0;
-  padding: var(--space-4) var(--space-3);
+  padding: var(--space-3) var(--space-3);
 }
 
 .woocommerce-MyAccount-navigation li {
   margin: 0;
 }
 
+/*
+   Changed:
+   - border-radius 8px → 6px on links
+   - left border treatment on hover/active (matches dropdown & filter)
+   - font-weight bump on active
+*/
 .woocommerce-MyAccount-navigation li a {
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  padding: var(--space-3) var(--space-4);
+  padding: 10px var(--space-4);
   color: var(--color-text);
   text-decoration: none;
-  font-weight: var(--font-medium);
-  font-size: var(--text-base);
+  font-weight: 500;
+  font-size: var(--text-sm);
   font-family: var(--font-body);
-  border-radius: var(--border-radius-lg);
-  transition: var(--transition-fast);
-  margin-bottom: 4px;
+  border-radius: 6px;
+  border-left: 2px solid transparent;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  margin-bottom: 2px;
 }
 
 .woocommerce-MyAccount-navigation li a:hover {
-  background: var(--color-bg-tertiary);
-  color: var(--color-primary);
+  background: var(--color-bg-secondary, #f8f9fa);
+  color: var(--brand-color);
+  border-left-color: var(--brand-color);
 }
 
 .woocommerce-MyAccount-navigation li.is-active a {
-  background: rgba(var(--brand-color-rgb), 0.1);
-  color: var(--color-primary);
-  font-weight: var(--font-semibold);
+  background: rgba(14, 165, 233, 0.08);
+  color: var(--brand-color);
+  font-weight: 700;
+  border-left-color: var(--brand-color);
 }
 
-.woocommerce-MyAccount-navigation li.is-active a::before {
-  opacity: 1;
-}
-
-/* Icons for navigation items */
+/* Nav icons */
 .woocommerce-MyAccount-navigation li a::before {
   content: "";
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
+  opacity: 0.6;
+  flex-shrink: 0;
+  transition: opacity 0.15s ease;
 }
 
 .woocommerce-MyAccount-navigation li.is-active a::before,
@@ -152,7 +179,7 @@
   opacity: 1;
 }
 
-/* Specific icon styles */
+/* Icon definitions */
 .woocommerce-MyAccount-navigation-link--dashboard a::before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%234B5563'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6'/%3E%3C/svg%3E");
 }
@@ -181,19 +208,20 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%234B5563'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15'/%3E%3C/svg%3E");
 }
 
-/* === Logout Link === */
+/* ── Logout Link ──────────────────────────────────────────────────── */
 .woocommerce-MyAccount-navigation
   li.woocommerce-MyAccount-navigation-link--customer-logout {
   margin-top: var(--space-3);
   padding-top: var(--space-3);
-  border-top: 1px solid var(--color-border-light);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .woocommerce-MyAccount-navigation
   li.woocommerce-MyAccount-navigation-link--customer-logout
   a {
-  color: var(--color-danger);
-  font-weight: var(--font-semibold);
+  color: var(--color-danger, #dc2626);
+  font-weight: 600;
+  border-left-color: transparent;
 }
 
 .woocommerce-MyAccount-navigation
@@ -205,6 +233,7 @@
 .woocommerce-MyAccount-navigation
   li.woocommerce-MyAccount-navigation-link--customer-logout
   a:hover {
-  background: var(--color-danger-light);
-  color: var(--color-danger);
+  background: rgba(220, 38, 38, 0.06);
+  color: var(--color-danger, #dc2626);
+  border-left-color: var(--color-danger, #dc2626);
 }

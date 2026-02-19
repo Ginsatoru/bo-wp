@@ -3,16 +3,16 @@
  * About Page Customizer Settings
  * Complete customization options with image uploads and show/hide controls
  *
- * @package AAAPOS
+ * @package Bo
  */
 
-function aaapos_about_page_customizer($wp_customize)
+function Bo_about_page_customizer($wp_customize)
 {
     // ===================================
     // ABOUT PAGE SECTION
     // ===================================
-    $wp_customize->add_section("aaapos_about_page", [
-        "title" => __("About Page", "aaapos-prime"),
+    $wp_customize->add_section("Bo_about_page", [
+        "title" => __("About Page", "Bo-prime"),
         "priority" => 151,
     ]);
 
@@ -27,8 +27,8 @@ function aaapos_about_page_customizer($wp_customize)
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_show_hero", [
-        "label" => __("Show Hero Section", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Show Hero Section", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "checkbox",
         "priority" => 5,
     ]);
@@ -41,12 +41,12 @@ function aaapos_about_page_customizer($wp_customize)
     ]);
     $wp_customize->add_control(
         new WP_Customize_Image_Control($wp_customize, "about_hero_image", [
-            "label" => __("Hero Image", "aaapos-prime"),
+            "label" => __("Hero Image", "Bo-prime"),
             "description" => __(
                 "Upload a custom hero image (recommended: 800x600px)",
-                "aaapos-prime",
+                "Bo-prime",
             ),
-            "section" => "aaapos_about_page",
+            "section" => "Bo_about_page",
             "priority" => 8,
         ]),
     );
@@ -58,12 +58,12 @@ function aaapos_about_page_customizer($wp_customize)
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_hero_title", [
-        "label" => __("Hero Title", "aaapos-prime"),
+        "label" => __("Hero Title", "Bo-prime"),
         "description" => __(
             'Use comma to split title for styling (e.g., "Part One, Part Two")',
-            "aaapos-prime",
+            "Bo-prime",
         ),
-        "section" => "aaapos_about_page",
+        "section" => "Bo_about_page",
         "type" => "text",
         "priority" => 20,
     ]);
@@ -76,9 +76,9 @@ function aaapos_about_page_customizer($wp_customize)
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_hero_intro", [
-        "label" => __("Hero Introduction", "aaapos-prime"),
-        "description" => __("Leave empty to hide intro text", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Hero Introduction", "Bo-prime"),
+        "description" => __("Leave empty to hide intro text", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "textarea",
         "priority" => 30,
     ]);
@@ -90,8 +90,8 @@ function aaapos_about_page_customizer($wp_customize)
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_show_hero_meta", [
-        "label" => __("Show Hero Meta Information", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Show Hero Meta Information", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "checkbox",
         "priority" => 35,
     ]);
@@ -103,8 +103,8 @@ function aaapos_about_page_customizer($wp_customize)
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_since_year", [
-        "label" => __("Since Year", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Since Year", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "text",
         "priority" => 40,
     ]);
@@ -116,8 +116,8 @@ function aaapos_about_page_customizer($wp_customize)
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_meta1_title", [
-        "label" => __("Meta Item 1 - Title", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Meta Item 1 - Title", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "text",
         "priority" => 45,
     ]);
@@ -129,8 +129,8 @@ function aaapos_about_page_customizer($wp_customize)
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_meta1_text", [
-        "label" => __("Meta Item 1 - Text", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Meta Item 1 - Text", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "text",
         "priority" => 46,
     ]);
@@ -146,8 +146,8 @@ function aaapos_about_page_customizer($wp_customize)
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_show_story", [
-        "label" => __("Show Story Section", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Show Story Section", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "checkbox",
         "priority" => 55,
     ]);
@@ -159,9 +159,9 @@ function aaapos_about_page_customizer($wp_customize)
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_story_heading", [
-        "label" => __("Story Section Heading", "aaapos-prime"),
-        "description" => __("Leave empty to hide heading", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Story Section Heading", "Bo-prime"),
+        "description" => __("Leave empty to hide heading", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "text",
         "priority" => 60,
     ]);
@@ -173,8 +173,8 @@ function aaapos_about_page_customizer($wp_customize)
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_show_quote", [
-        "label" => __("Show Featured Quote", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Show Featured Quote", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "checkbox",
         "priority" => 65,
     ]);
@@ -187,8 +187,8 @@ function aaapos_about_page_customizer($wp_customize)
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_quote", [
-        "label" => __("Featured Quote Text", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Featured Quote Text", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "textarea",
         "priority" => 70,
     ]);
@@ -204,8 +204,8 @@ function aaapos_about_page_customizer($wp_customize)
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_show_values", [
-        "label" => __("Show Values Section", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Show Values Section", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "checkbox",
         "priority" => 75,
     ]);
@@ -217,8 +217,8 @@ function aaapos_about_page_customizer($wp_customize)
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_values_title", [
-        "label" => __("Values Section Title", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Values Section Title", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "text",
         "priority" => 80,
     ]);
@@ -230,8 +230,8 @@ function aaapos_about_page_customizer($wp_customize)
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_values_subtitle", [
-        "label" => __("Values Section Subtitle", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Values Section Subtitle", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "text",
         "priority" => 90,
     ]);
@@ -270,8 +270,8 @@ function aaapos_about_page_customizer($wp_customize)
             "transport" => "refresh",
         ]);
         $wp_customize->add_control("about_show_value{$i}", [
-            "label" => sprintf(__("Show Value %d", "aaapos-prime"), $i),
-            "section" => "aaapos_about_page",
+            "label" => sprintf(__("Show Value %d", "Bo-prime"), $i),
+            "section" => "Bo_about_page",
             "type" => "checkbox",
             "priority" => $priority,
         ]);
@@ -283,8 +283,8 @@ function aaapos_about_page_customizer($wp_customize)
             "transport" => "refresh",
         ]);
         $wp_customize->add_control("about_value{$i}_title", [
-            "label" => sprintf(__("Value %d - Title", "aaapos-prime"), $i),
-            "section" => "aaapos_about_page",
+            "label" => sprintf(__("Value %d - Title", "Bo-prime"), $i),
+            "section" => "Bo_about_page",
             "type" => "text",
             "priority" => $priority + 1,
         ]);
@@ -297,10 +297,10 @@ function aaapos_about_page_customizer($wp_customize)
         ]);
         $wp_customize->add_control("about_value{$i}_text", [
             "label" => sprintf(
-                __("Value %d - Description", "aaapos-prime"),
+                __("Value %d - Description", "Bo-prime"),
                 $i,
             ),
-            "section" => "aaapos_about_page",
+            "section" => "Bo_about_page",
             "type" => "textarea",
             "priority" => $priority + 2,
         ]);
@@ -317,8 +317,8 @@ function aaapos_about_page_customizer($wp_customize)
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_show_timeline", [
-        "label" => __("Show Timeline Section", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Show Timeline Section", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "checkbox",
         "priority" => 200,
     ]);
@@ -330,9 +330,9 @@ function aaapos_about_page_customizer($wp_customize)
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_timeline_title", [
-        "label" => __("Timeline Section Title", "aaapos-prime"),
-        "description" => __("Leave empty to hide title", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Timeline Section Title", "Bo-prime"),
+        "description" => __("Leave empty to hide title", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "text",
         "priority" => 201,
     ]);
@@ -375,8 +375,8 @@ function aaapos_about_page_customizer($wp_customize)
             "transport" => "refresh",
         ]);
         $wp_customize->add_control("about_show_timeline{$i}", [
-            "label" => sprintf(__("Show Timeline Item %d", "aaapos-prime"), $i),
-            "section" => "aaapos_about_page",
+            "label" => sprintf(__("Show Timeline Item %d", "Bo-prime"), $i),
+            "section" => "Bo_about_page",
             "type" => "checkbox",
             "priority" => $priority,
         ]);
@@ -388,8 +388,8 @@ function aaapos_about_page_customizer($wp_customize)
             "transport" => "refresh",
         ]);
         $wp_customize->add_control("about_timeline{$i}_year", [
-            "label" => sprintf(__("Timeline %d - Year", "aaapos-prime"), $i),
-            "section" => "aaapos_about_page",
+            "label" => sprintf(__("Timeline %d - Year", "Bo-prime"), $i),
+            "section" => "Bo_about_page",
             "type" => "text",
             "priority" => $priority + 1,
         ]);
@@ -401,8 +401,8 @@ function aaapos_about_page_customizer($wp_customize)
             "transport" => "refresh",
         ]);
         $wp_customize->add_control("about_timeline{$i}_title", [
-            "label" => sprintf(__("Timeline %d - Title", "aaapos-prime"), $i),
-            "section" => "aaapos_about_page",
+            "label" => sprintf(__("Timeline %d - Title", "Bo-prime"), $i),
+            "section" => "Bo_about_page",
             "type" => "text",
             "priority" => $priority + 2,
         ]);
@@ -415,10 +415,10 @@ function aaapos_about_page_customizer($wp_customize)
         ]);
         $wp_customize->add_control("about_timeline{$i}_text", [
             "label" => sprintf(
-                __("Timeline %d - Description", "aaapos-prime"),
+                __("Timeline %d - Description", "Bo-prime"),
                 $i,
             ),
-            "section" => "aaapos_about_page",
+            "section" => "Bo_about_page",
             "type" => "textarea",
             "priority" => $priority + 3,
         ]);
@@ -435,8 +435,8 @@ function aaapos_about_page_customizer($wp_customize)
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_show_team", [
-        "label" => __("Show Team Section", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Show Team Section", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "checkbox",
         "priority" => 300,
     ]);
@@ -448,9 +448,9 @@ function aaapos_about_page_customizer($wp_customize)
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_team_title", [
-        "label" => __("Team Section Title", "aaapos-prime"),
-        "description" => __("Leave empty to hide title", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Team Section Title", "Bo-prime"),
+        "description" => __("Leave empty to hide title", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "text",
         "priority" => 301,
     ]);
@@ -463,9 +463,9 @@ function aaapos_about_page_customizer($wp_customize)
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_team_subtitle", [
-        "label" => __("Team Section Subtitle", "aaapos-prime"),
-        "description" => __("Leave empty to hide subtitle", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Team Section Subtitle", "Bo-prime"),
+        "description" => __("Leave empty to hide subtitle", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "text",
         "priority" => 302,
     ]);
@@ -499,8 +499,8 @@ function aaapos_about_page_customizer($wp_customize)
             "transport" => "refresh",
         ]);
         $wp_customize->add_control("about_show_team{$i}", [
-            "label" => sprintf(__("Show Team Member %d", "aaapos-prime"), $i),
-            "section" => "aaapos_about_page",
+            "label" => sprintf(__("Show Team Member %d", "Bo-prime"), $i),
+            "section" => "Bo_about_page",
             "type" => "checkbox",
             "priority" => $priority,
         ]);
@@ -517,14 +517,14 @@ function aaapos_about_page_customizer($wp_customize)
                 "about_team{$i}_image",
                 [
                     "label" => sprintf(
-                        __("Team Member %d - Photo", "aaapos-prime"),
+                        __("Team Member %d - Photo", "Bo-prime"),
                         $i,
                     ),
                     "description" => __(
                         "Upload team member photo (recommended: 400x400px)",
-                        "aaapos-prime",
+                        "Bo-prime",
                     ),
-                    "section" => "aaapos_about_page",
+                    "section" => "Bo_about_page",
                     "priority" => $priority + 1,
                 ],
             ),
@@ -537,8 +537,8 @@ function aaapos_about_page_customizer($wp_customize)
             "transport" => "refresh",
         ]);
         $wp_customize->add_control("about_team{$i}_name", [
-            "label" => sprintf(__("Team Member %d - Name", "aaapos-prime"), $i),
-            "section" => "aaapos_about_page",
+            "label" => sprintf(__("Team Member %d - Name", "Bo-prime"), $i),
+            "section" => "Bo_about_page",
             "type" => "text",
             "priority" => $priority + 2,
         ]);
@@ -550,8 +550,8 @@ function aaapos_about_page_customizer($wp_customize)
             "transport" => "refresh",
         ]);
         $wp_customize->add_control("about_team{$i}_role", [
-            "label" => sprintf(__("Team Member %d - Role", "aaapos-prime"), $i),
-            "section" => "aaapos_about_page",
+            "label" => sprintf(__("Team Member %d - Role", "Bo-prime"), $i),
+            "section" => "Bo_about_page",
             "type" => "text",
             "priority" => $priority + 3,
         ]);
@@ -564,11 +564,11 @@ function aaapos_about_page_customizer($wp_customize)
         ]);
         $wp_customize->add_control("about_team{$i}_quote", [
             "label" => sprintf(
-                __("Team Member %d - Quote", "aaapos-prime"),
+                __("Team Member %d - Quote", "Bo-prime"),
                 $i,
             ),
-            "description" => __("Leave empty to hide quote", "aaapos-prime"),
-            "section" => "aaapos_about_page",
+            "description" => __("Leave empty to hide quote", "Bo-prime"),
+            "section" => "Bo_about_page",
             "type" => "text",
             "priority" => $priority + 4,
         ]);
@@ -585,8 +585,8 @@ function aaapos_about_page_customizer($wp_customize)
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_show_cta", [
-        "label" => __("Show CTA Section", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Show CTA Section", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "checkbox",
         "priority" => 400,
     ]);
@@ -599,12 +599,12 @@ $wp_customize->add_setting("about_cta_bg_image", [
 ]);
 $wp_customize->add_control(
     new WP_Customize_Image_Control($wp_customize, "about_cta_bg_image", [
-        "label" => __("CTA Background Image", "aaapos-prime"),
+        "label" => __("CTA Background Image", "Bo-prime"),
         "description" => __(
             "Upload a background image for the CTA section (recommended: 1920x600px). Falls back to ctabg.jpg if not set.",
-            "aaapos-prime",
+            "Bo-prime",
         ),
-        "section" => "aaapos_about_page",
+        "section" => "Bo_about_page",
         "priority" => 405,
     ]),
 );
@@ -616,9 +616,9 @@ $wp_customize->add_setting("about_cta_overlay_opacity", [
     "transport" => "refresh",
 ]);
 $wp_customize->add_control("about_cta_overlay_opacity", [
-    "label" => __("CTA Overlay Opacity", "aaapos-prime"),
-    "description" => __("Black overlay opacity (0.0 to 1.0, default: 0.6)", "aaapos-prime"),
-    "section" => "aaapos_about_page",
+    "label" => __("CTA Overlay Opacity", "Bo-prime"),
+    "description" => __("Black overlay opacity (0.0 to 1.0, default: 0.6)", "Bo-prime"),
+    "section" => "Bo_about_page",
     "type" => "number",
     "input_attrs" => [
         "min" => "0",
@@ -635,9 +635,9 @@ $wp_customize->add_control("about_cta_overlay_opacity", [
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_cta_title", [
-        "label" => __("CTA Title", "aaapos-prime"),
-        "description" => __("Leave empty to hide title", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("CTA Title", "Bo-prime"),
+        "description" => __("Leave empty to hide title", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "text",
         "priority" => 410,
     ]);
@@ -650,9 +650,9 @@ $wp_customize->add_control("about_cta_overlay_opacity", [
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_cta_text", [
-        "label" => __("CTA Text", "aaapos-prime"),
-        "description" => __("Leave empty to hide text", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("CTA Text", "Bo-prime"),
+        "description" => __("Leave empty to hide text", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "textarea",
         "priority" => 420,
     ]);
@@ -664,8 +664,8 @@ $wp_customize->add_control("about_cta_overlay_opacity", [
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_show_cta_shop_btn", [
-        "label" => __("Show Shop Now Button", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Show Shop Now Button", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "checkbox",
         "priority" => 425,
     ]);
@@ -677,8 +677,8 @@ $wp_customize->add_control("about_cta_overlay_opacity", [
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_cta_shop_text", [
-        "label" => __("Shop Button Text", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Shop Button Text", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "text",
         "priority" => 430,
     ]);
@@ -690,8 +690,8 @@ $wp_customize->add_control("about_cta_overlay_opacity", [
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_show_cta_contact_btn", [
-        "label" => __("Show Contact Button", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Show Contact Button", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "checkbox",
         "priority" => 435,
     ]);
@@ -703,8 +703,8 @@ $wp_customize->add_control("about_cta_overlay_opacity", [
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_cta_contact_text", [
-        "label" => __("Contact Button Text", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Contact Button Text", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "text",
         "priority" => 440,
     ]);
@@ -716,11 +716,11 @@ $wp_customize->add_control("about_cta_overlay_opacity", [
         "transport" => "refresh",
     ]);
     $wp_customize->add_control("about_cta_contact_url", [
-        "label" => __("Contact Button URL", "aaapos-prime"),
-        "description" => __("Link for the contact button", "aaapos-prime"),
-        "section" => "aaapos_about_page",
+        "label" => __("Contact Button URL", "Bo-prime"),
+        "description" => __("Link for the contact button", "Bo-prime"),
+        "section" => "Bo_about_page",
         "type" => "url",
         "priority" => 445,
     ]);
 }
-add_action("customize_register", "aaapos_about_page_customizer");
+add_action("customize_register", "Bo_about_page_customizer");

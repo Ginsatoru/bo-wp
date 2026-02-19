@@ -2,8 +2,6 @@
 /**
  * Review order table
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/checkout/review-order.php.
- *
  * @package WooCommerce\Templates
  * @version 5.2.0
  */
@@ -30,11 +28,14 @@ defined( 'ABSPATH' ) || exit;
 				<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
 					<td class="product-name">
 						<?php echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) ); ?>
-						<?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times;&nbsp;%s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-						<?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+						<?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times;&nbsp;%s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); ?>
+						<?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						echo wc_get_formatted_cart_item_data( $cart_item ); ?>
 					</td>
 					<td class="product-total">
-						<?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+						<?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); ?>
 					</td>
 				</tr>
 				<?php
@@ -66,25 +67,21 @@ defined( 'ABSPATH' ) || exit;
 				<th><?php esc_html_e( 'Shipping', 'woocommerce' ); ?></th>
 				<td data-title="<?php esc_attr_e( 'Shipping', 'woocommerce' ); ?>">
 					<?php
-					// Get the chosen shipping method
-					$packages = WC()->shipping()->get_packages();
+					$packages       = WC()->shipping()->get_packages();
 					$chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
-					
+
 					if ( ! empty( $packages ) && ! empty( $chosen_methods ) ) {
-						$package = reset( $packages );
+						$package       = reset( $packages );
 						$chosen_method = isset( $chosen_methods[0] ) ? $chosen_methods[0] : '';
-						
-						// Find the chosen shipping rate
-						if ( isset( $package['rates'][$chosen_method] ) ) {
-							$rate = $package['rates'][$chosen_method];
+
+						if ( isset( $package['rates'][ $chosen_method ] ) ) {
+							$rate = $package['rates'][ $chosen_method ];
 							echo wc_price( $rate->cost );
-							
-							// Add tax if applicable
+
 							if ( $rate->get_shipping_tax() > 0 && ! wc_prices_include_tax() ) {
 								echo ' <small class="tax_label">' . WC()->countries->inc_tax_or_vat() . '</small>';
 							}
 						} else {
-							// No shipping method selected yet
 							esc_html_e( 'Select a shipping method', 'woocommerce' );
 						}
 					} else {
@@ -133,35 +130,34 @@ defined( 'ABSPATH' ) || exit;
 	</tfoot>
 </table>
 
-<!-- Coupon Field with Toggle Button (Apply/Remove) -->
-<?php if ( wc_coupons_enabled() ) : 
+<?php if ( wc_coupons_enabled() ) :
 	$applied_coupons = WC()->cart->get_applied_coupons();
-	$has_coupon = !empty($applied_coupons);
-	$coupon_code = $has_coupon ? $applied_coupons[0] : '';
-?>
+	$has_coupon      = ! empty( $applied_coupons );
+	$coupon_code     = $has_coupon ? $applied_coupons[0] : '';
+	?>
 	<div class="checkout-coupon-bottom">
 		<form class="coupon-form-bottom" method="post">
 			<?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
 			<input type="hidden" name="redirect" value="<?php echo esc_url( wc_get_checkout_url() ); ?>" />
 			<div class="coupon-input-wrapper">
-				<input 
-					type="text" 
-					name="coupon_code" 
-					class="input-text" 
-					placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" 
-					id="coupon_code_bottom" 
-					value="<?php echo esc_attr($coupon_code); ?>"
+				<input
+					type="text"
+					name="coupon_code"
+					class="input-text"
+					id="coupon_code_bottom"
+					placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>"
+					value="<?php echo esc_attr( $coupon_code ); ?>"
 					<?php echo $has_coupon ? 'readonly' : ''; ?>
 				/>
-				<button 
-					type="submit" 
-					class="button coupon-apply-btn <?php echo $has_coupon ? 'is-applied' : ''; ?>" 
-					name="<?php echo $has_coupon ? 'remove_coupon' : 'apply_coupon'; ?>" 
-					value="<?php echo $has_coupon ? esc_attr($coupon_code) : esc_attr__('Apply', 'woocommerce'); ?>"
+				<button
+					type="submit"
+					class="button coupon-apply-btn<?php echo $has_coupon ? ' is-applied' : ''; ?>"
+					name="<?php echo $has_coupon ? 'remove_coupon' : 'apply_coupon'; ?>"
+					value="<?php echo $has_coupon ? esc_attr( $coupon_code ) : esc_attr__( 'Apply', 'woocommerce' ); ?>"
 					data-action="<?php echo $has_coupon ? 'remove' : 'apply'; ?>"
-					data-coupon-code="<?php echo esc_attr($coupon_code); ?>"
+					data-coupon-code="<?php echo esc_attr( $coupon_code ); ?>"
 				>
-					<?php echo $has_coupon ? esc_html__('Remove', 'woocommerce') : esc_html__('Apply', 'woocommerce'); ?>
+					<?php echo $has_coupon ? esc_html__( 'Remove', 'woocommerce' ) : esc_html__( 'Apply', 'woocommerce' ); ?>
 				</button>
 			</div>
 		</form>

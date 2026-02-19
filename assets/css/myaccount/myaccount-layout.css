@@ -1,8 +1,10 @@
 /* ============================================
    My Account Layout - Grid & Container Styles
+   myaccount-layout.css
+   Style variant: Modern / Geometric
    ============================================ */
 
-/* === My Account Page Container === */
+/* ── Page Container ───────────────────────────────────────────────── */
 .woocommerce-account {
   margin-top: -110px !important;
   background: var(--color-bg-secondary);
@@ -15,11 +17,12 @@
   max-width: 1400px;
 }
 
-/* === My Account Layout - 29% / 71% Split === */
+/* ── Grid — 29% / 71% split ──────────────────────────────────────── */
 .woocommerce-MyAccount-wrapper {
   display: grid;
   grid-template-columns: 29% 71%;
   align-items: start;
+  gap: 0;
 }
 
 @media (max-width: 1023px) {
@@ -29,40 +32,55 @@
   }
 }
 
-/* ========================================
-   MAIN CONTENT (RIGHT COLUMN - 71%)
-   ======================================== */
-
+/* ── Main Content (right column) ──────────────────────────────────── */
+/*
+   Changed:
+   - border-radius reduced from xl → 8px (sharper, geometric)
+   - shadow lightened
+   - added 1px border for definition
+   - top border accent in brand-color
+*/
 .woocommerce-MyAccount-content {
   background: var(--color-white);
-  border-radius: var(--border-radius-xl);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-top: 2px solid var(--brand-color);
   padding: var(--space-8);
-  box-shadow: var(--shadow);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   min-height: 500px;
 }
 
 @media (max-width: 767px) {
   .woocommerce-MyAccount-content {
     padding: var(--space-5);
+    border-radius: 6px;
   }
 }
 
-/* === Page Headers === */
+/* ── Section Headers ──────────────────────────────────────────────── */
+/*
+   Changed:
+   - border-bottom replaced with a short brand-color underline line
+     using padding-bottom and a left-aligned accent
+   - letter-spacing added
+*/
 .woocommerce-MyAccount-content h2,
 .woocommerce-MyAccount-content h3 {
-  font-size: var(--text-3xl);
-  font-weight: var(--font-bold);
+  font-size: var(--text-2xl);
+  font-weight: 800;
   color: var(--color-text-dark);
   margin-bottom: var(--space-6);
   padding-bottom: var(--space-4);
-  border-bottom: 1px solid var(--color-border-light);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 @media (max-width: 767px) {
   .woocommerce-MyAccount-content h2,
   .woocommerce-MyAccount-content h3 {
-    font-size: var(--text-2xl);
+    font-size: var(--text-xl);
     margin-bottom: var(--space-4);
   }
 }
@@ -71,11 +89,7 @@
   margin-bottom: 0;
 }
 
-/* ==========================================================================
-   Clean Centered Empty State for WooCommerce My Account
-   ========================================================================== */
-
-/* Remove card styling from empty state messages */
+/* ── Empty State Messages ─────────────────────────────────────────── */
 .woocommerce-MyAccount-content .woocommerce-message,
 .woocommerce-MyAccount-content .woocommerce-info {
   background: transparent !important;
@@ -85,20 +99,15 @@
   box-shadow: none !important;
   padding: var(--space-12) var(--space-6) !important;
   margin: 0 !important;
-
-  /* Vertical column layout, centered */
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
   text-align: center !important;
   gap: 0 !important;
-
-  /* Minimum height for better centering */
   min-height: 400px !important;
 }
 
-/* Icon at the top */
 .woocommerce-MyAccount-content .woocommerce-message::before,
 .woocommerce-MyAccount-content .woocommerce-info::before {
   display: block !important;
@@ -110,73 +119,55 @@
   order: -2 !important;
 }
 
-/* Title/message text in the middle */
 .woocommerce-MyAccount-content .woocommerce-message,
 .woocommerce-MyAccount-content .woocommerce-info {
-  font-size: var(--text-lg) !important;
+  font-size: var(--text-base) !important;
   color: var(--color-text) !important;
   font-weight: var(--font-normal) !important;
   line-height: 1.5 !important;
+  list-style: none !important;
 }
 
-/* Modern button at the bottom - close to title */
+/* Empty state button */
 .woocommerce-MyAccount-content .woocommerce-message .button,
 .woocommerce-MyAccount-content .woocommerce-info .button,
 .woocommerce-MyAccount-content .woocommerce-message a.button,
 .woocommerce-MyAccount-content .woocommerce-info a.button {
-  /* Spacing - closer to title */
   margin: var(--space-5) 0 0 0 !important;
-
-  /* Modern styling matching sidebar buttons */
   display: inline-flex !important;
   align-items: center !important;
   gap: var(--space-2) !important;
-  padding: var(--space-3) var(--space-6) !important;
-
-  /* Colors */
-  background: var(--color-primary) !important;
+  padding: 10px var(--space-6) !important;
+  background: var(--brand-color) !important;
   color: var(--color-white) !important;
-
-  /* Typography */
   font-size: var(--text-sm) !important;
-  font-weight: var(--font-semibold) !important;
+  font-weight: 700 !important;
   font-family: var(--font-body) !important;
   text-decoration: none !important;
-
-  /* Border and shape */
   border: none !important;
-  border-radius: var(--border-radius) !important;
-
-  /* Shadow */
-  box-shadow: var(--shadow-sm) !important;
-
-  /* Smooth transitions */
+  border-radius: 6px !important;
   transition: all 0.2s ease !important;
-
-  /* Order */
   order: 1 !important;
+  letter-spacing: 0.02em !important;
 }
 
-/* Button hover state */
 .woocommerce-MyAccount-content .woocommerce-message .button:hover,
 .woocommerce-MyAccount-content .woocommerce-info .button:hover,
 .woocommerce-MyAccount-content .woocommerce-message a.button:hover,
 .woocommerce-MyAccount-content .woocommerce-info a.button:hover {
-  background: var(--color-primary-dark) !important;
-  box-shadow: var(--shadow) !important;
+  background: var(--brand-color-hover) !important;
   transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Button active/focus state */
 .woocommerce-MyAccount-content .woocommerce-message .button:active,
 .woocommerce-MyAccount-content .woocommerce-info .button:active,
 .woocommerce-MyAccount-content .woocommerce-message a.button:active,
 .woocommerce-MyAccount-content .woocommerce-info a.button:active {
   transform: translateY(0) !important;
-  box-shadow: var(--shadow-sm) !important;
+  box-shadow: none !important;
 }
 
-/* Ensure the content area has proper layout */
 .woocommerce-account-downloads .woocommerce-MyAccount-content,
 .woocommerce-account-orders .woocommerce-MyAccount-content {
   display: flex !important;
@@ -184,13 +175,6 @@
   justify-content: center !important;
 }
 
-/* Remove any list-style icon if present */
-.woocommerce-MyAccount-content .woocommerce-message,
-.woocommerce-MyAccount-content .woocommerce-info {
-  list-style: none !important;
-}
-
-/* Remove default WooCommerce info/message icon positioning */
 .woocommerce-info::before,
 .woocommerce-message::before {
   top: auto !important;
