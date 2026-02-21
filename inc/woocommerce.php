@@ -383,33 +383,34 @@ function Bo_display_secure_payment_badges() {
     $title = get_theme_mod('secure_payments_title', __('Secure payments:', 'Bo'));
     
     // Payment cards mapping
-    $payment_cards = array(
-        'visa' => array(
-            'setting' => 'payment_icon_visa',
-            'show' => 'payment_show_visa',
-            'fallback' => 'https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg'
-        ),
-        'mastercard' => array(
-            'setting' => 'payment_icon_mastercard',
-            'show' => 'payment_show_mastercard',
-            'fallback' => 'https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg'
-        ),
-        'amex' => array(
-            'setting' => 'payment_icon_amex',
-            'show' => 'payment_show_amex',
-            'fallback' => 'https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg'
-        ),
-        'paypal' => array(
-            'setting' => 'payment_icon_paypal',
-            'show' => 'payment_show_paypal',
-            'fallback' => 'https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg'
-        ),
-        'discover' => array(
-            'setting' => 'payment_icon_discover',
-            'show' => 'payment_show_discover',
-            'fallback' => 'https://upload.wikimedia.org/wikipedia/commons/5/57/Discover_Card_logo.svg'
-        ),
-    );
+$assets_uri = get_template_directory_uri() . '/images/payments/';
+$payment_cards = array(
+    'visa' => array(
+        'setting' => 'payment_icon_visa',
+        'show' => 'payment_show_visa',
+        'fallback' => $assets_uri . 'payment-visa.png'
+    ),
+    'mastercard' => array(
+        'setting' => 'payment_icon_mastercard',
+        'show' => 'payment_show_mastercard',
+        'fallback' => $assets_uri . 'payment-mastercard.png'
+    ),
+    'amex' => array(
+        'setting' => 'payment_icon_amex',
+        'show' => 'payment_show_amex',
+        'fallback' => $assets_uri . 'payment-amex.png'
+    ),
+    'paypal' => array(
+        'setting' => 'payment_icon_paypal',
+        'show' => 'payment_show_paypal',
+        'fallback' => $assets_uri . 'payment-paypal.png'
+    ),
+    'discover' => array(
+        'setting' => 'payment_icon_discover',
+        'show' => 'payment_show_discover',
+        'fallback' => $assets_uri . 'payment-discover.png'
+    ),
+);
     
     // Build array of payment icons to display
     $payment_icons = array();
